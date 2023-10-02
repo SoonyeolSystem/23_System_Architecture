@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 
-import '../../../common/common.dart';
+import '../../../../common/common.dart';
 
 class TalkingResultPage extends StatelessWidget {
   const TalkingResultPage({super.key});
@@ -63,26 +63,24 @@ class TalkingResultPage extends StatelessWidget {
                 ),
               ),
               Align(
-                        alignment: Alignment.bottomCenter,
-
-                child:ElevatedButton(
-                onPressed: () {
-                  // 버튼 클릭 시 수행할 작업
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                  backgroundColor: Color(0xFF47CDD6),
-                  minimumSize: Size(400, 60),
-                ),
-                child: Text(
-                  '대화 저장하기',
-                  style: TextStyle(
-                    fontSize: 20,
+                alignment: Alignment.bottomCenter,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // 버튼 클릭 시 수행할 작업
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    backgroundColor: Color(0xFF47CDD6),
+                    minimumSize: Size(400, 60),
+                  ),
+                  child: Text(
+                    '대화 저장하기',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
-              ),
-             
             ],
           ),
         ),

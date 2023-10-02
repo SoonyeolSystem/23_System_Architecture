@@ -4,7 +4,7 @@ import 'package:soonyeol_architecture/pages/dev_route/controller/route_view_cont
 import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
+import 'package:soonyeol_architecture/pages/talking/view/component/talking_result_page.dart';
 
 class RouteViewPage extends StatelessWidget {
   const RouteViewPage({super.key});
