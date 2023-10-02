@@ -9,6 +9,7 @@ class Common extends GetxService {
   static const String authbaseUrl = "https://localhost:8003/";
 
   static double get getWidth => GetPlatform.isMobile ? Get.width : 500;
+  static double get getHeight => GetPlatform.isMobile ? Get.height : 1000;
   Future<Common> init() async {
     Common.logger.d('$runtimeType init!');
     return this;
