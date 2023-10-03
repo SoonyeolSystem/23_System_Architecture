@@ -1,19 +1,23 @@
 class Talking {
-  String? line;
+  String? character;
+  String? script;
 
   Talking({
-    this.line,
+    this.character,
+    this.script,
   });
 
   // JSON serialization method
   Talking.fromJson(Map<String, dynamic> json) {
-    line = json['대사'];
+    character = json['character'];
+    script = json['대사'];
   }
 
   // JSON serialization method
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['대사'] = line;
+    data['character'] = character;
+    data['대사'] = script;
 
     return data;
   }

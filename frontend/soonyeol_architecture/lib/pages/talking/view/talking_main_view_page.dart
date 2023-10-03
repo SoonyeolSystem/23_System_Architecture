@@ -11,64 +11,89 @@ class TalkingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
-    return SizedBox(
-        child: Column(
-      children: [
-        Expanded(
-            child: CustomScrollView(
-          controller: controller.scrollcontroller.value,
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, top: 45, bottom: 25),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('사막에서 살아남기', style: TextStyle(fontSize: 20)),
-                        const SizedBox(
-                          width: 7,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                  ],
+    return Scaffold(
+      body: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                Color.fromARGB(255, 1, 56, 8),
+                Color(0xFF000118),
+                Color.fromARGB(255, 33, 7, 1)
+              ])),
+          child: Column(
+            children: [
+              AppBar(
+                elevation: 0.0,
+                centerTitle: true,
+                title: const Text(
+                  '사막에서 살아남기',
+                  style: TextStyle(
+                      color: Colors.white,
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+                backgroundColor: Colors.transparent,
+                leading: InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 20,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
-            ),
-            Obx(
-              () => SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                ((context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Column(
-                      children: [
-                        if (index == 0) const SizedBox(height: 20),
-                        TalkingViewComponent(
-                            model: controller.talkingList.value[index]),
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 10, top: 15),
-                          child: Divider(
-                            height: 1,
-                            thickness: 1,
+              Expanded(
+                  child: CustomScrollView(
+                controller: controller.scrollcontroller.value,
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  Obx(
+                    () => SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                      ((context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Column(
+                            children: [
+                              if (index == 0) const SizedBox(height: 20),
+                              TalkingViewComponent(
+                                  model: controller.talkingList.value[index]),
+                              const Padding(
+                                padding: EdgeInsets.only(bottom: 10, top: 15),
+                              )
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                  );
-                }),
-                childCount: controller.talkingList.length,
+                        );
+                      }),
+                      childCount: controller.talkingList.length,
+                    )),
+                  )
+                ],
               )),
-            )
-          ],
-        ))
-      ],
-    ));
+              //const SizedBox(
+              //  height: 80,
+              //child: Icon(Icons.mic, size: 40, color: Colors.white)),
+              Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: SizedBox(
+                  height: 43,
+                  width: 35,
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Icon(
+                      Icons.mic,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
   }
 }

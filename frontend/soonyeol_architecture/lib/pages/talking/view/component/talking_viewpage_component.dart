@@ -10,10 +10,27 @@ class TalkingViewComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     //final controller = Get.put(TalkingViewController());
-    return Text(
-      '${model.line ?? '???'}',
-      style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+    return Container(
+      //width: 300,
+      padding: model.character == "me"
+          ? EdgeInsets.only(
+              top: 10, bottom: 25, left: screenWidth * 0.25, right: 10)
+          : EdgeInsets.only(
+              top: 10, bottom: 25, right: screenWidth * 0.25, left: 10),
+      //padding: const EdgeInsets.only(top: 20, bottom: 20, left: 200),
+      alignment: model.character == "me"
+          ? Alignment.centerRight
+          : Alignment.centerLeft,
+      child: Text(
+        textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
+        model.script ?? '???',
+        style: const TextStyle(
+            color: Colors.white,
+            //fontWeight: FontWeight.bold,
+            fontSize: 20),
+      ),
     );
   }
 }

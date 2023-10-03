@@ -15,8 +15,46 @@ class TalkingViewController extends GetxController {
 
   Future<void> getTalkingList() async {
     List<Map<String, dynamic>> fakeJsonData = [
-      {"대사": "hello"},
-      {"대사": "hi!!"},
+      {"character": "me", "대사": "Oh my god! Where are we?"},
+      {
+        "character": "you",
+        "대사": "I have no idea, but we need to find water and shelter fast!"
+      },
+      {"character": "me", "대사": "But I can't see anything but sand here!"},
+      {
+        "character": "you",
+        "대사":
+            "Let's start walking in that direction. Maybe we'll find something."
+      },
+      {
+        "character": "me",
+        "대사":
+            "Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?"
+      },
+      {
+        "character": "you",
+        "대사": "I have no idea, but we need to find water and shelter fast!"
+      },
+      {"character": "me", "대사": "Oh my god! Where are we?"},
+      {
+        "character": "you",
+        "대사": "I have no idea, but we need to find water and shelter fast!"
+      },
+      {"character": "me", "대사": "Oh my god! Where are we?"},
+      {
+        "character": "you",
+        "대사": "I have no idea, but we need to find water and shelter fast!"
+      },
+      {"character": "me", "대사": "Oh my god! Where are we?"},
+      {
+        "character": "you",
+        "대사": "I have no idea, but we need to find water and shelter fast!"
+      },
+      {"character": "me", "대사": "Oh my god! Where are we?"},
+      {
+        "character": "you",
+        "대사": "I have no idea, but we need to find water and shelter fast!"
+      },
     ];
 
     List<Talking> fakeTalkings =
