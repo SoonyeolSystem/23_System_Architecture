@@ -9,7 +9,7 @@ class MainViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MainViewController());
+    //final controller = Get.put(MainViewController());
     return const Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
