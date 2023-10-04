@@ -43,12 +43,12 @@ class TalkingViewController extends GetxController {
       {"character": "me", "대사": "Oh my god! Where are we?"},
       {
         "character": "you",
-        "대사": "I have no idea, but we need to find water and shelter fast!"
+        "대사": "I have no idea"
       },
-      {"character": "me", "대사": "Oh my god! Where are we?"},
+      {"character": "me", "대사": "Oh my god! Where are we? gggggggg okay let's take a look."},
       {
         "character": "you",
-        "대사": "I have no idea, but we need to find water and shelter fast!"
+        "대사": "hello!"
       },
       {"character": "me", "대사": "Oh my god! Where are we?"},
       {

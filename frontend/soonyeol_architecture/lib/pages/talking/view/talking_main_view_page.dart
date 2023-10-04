@@ -40,8 +40,8 @@ class TalkingViewPage extends StatelessWidget {
                     Get.back();
                   },
                   child: const Icon(
-                    Icons.arrow_back_ios,
-                    size: 20,
+                    Icons.close,
+                    size:30,
                     color: Colors.grey,
                   ),
                 ),
