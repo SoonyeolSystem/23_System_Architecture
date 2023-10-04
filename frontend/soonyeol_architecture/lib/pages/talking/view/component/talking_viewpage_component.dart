@@ -23,14 +23,20 @@ class TalkingViewComponent extends StatelessWidget {
       alignment: model.character == "me"
           ? Alignment.centerRight
           : Alignment.centerLeft,
-      child: Text(
-        textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
-        model.script ?? '???',
-        style: const TextStyle(
-            color: Colors.white,
-            //fontWeight: FontWeight.bold,
-            fontSize: 20),
+      child: Column(
+        children: [
+          Text(
+            textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
+            model.script ?? '???',
+            style: const TextStyle(
+                color: Colors.white,
+                //fontWeight: FontWeight.bold,
+                fontSize: 20),
+          ),
+          if (model.character == "you") const Icon(Icons.volume_up_rounded, size:20, color: Colors.white)
+        ],
       ),
     );
+
   }
 }

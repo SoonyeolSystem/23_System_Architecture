@@ -77,8 +77,8 @@ class TalkingViewPage extends StatelessWidget {
               //const SizedBox(
               //  height: 80,
               //child: Icon(Icons.mic, size: 40, color: Colors.white)),
-              Padding(
-                padding: const EdgeInsets.all(13.0),
+              const Padding(
+                padding: EdgeInsets.all(13.0),
                 child: SizedBox(
                   height: 43,
                   width: 35,
