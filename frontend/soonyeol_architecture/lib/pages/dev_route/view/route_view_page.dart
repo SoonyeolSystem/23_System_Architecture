@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/dev_route/controller/route_view_controller.dart';
-import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
+import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_result_page.dart';
+import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
 
 class RouteViewPage extends StatelessWidget {
   const RouteViewPage({super.key});
@@ -30,7 +31,7 @@ class RouteViewPage extends StatelessWidget {
               ElevatedButton(
                 child: Text('Main Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
-                  Get.offAllNamed(MainViewPage.url);
+                  Get.offAllNamed(Navigation.url);
                 },
               ),
               ElevatedButton(
@@ -45,6 +46,13 @@ class RouteViewPage extends StatelessWidget {
                     style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(TalkingResultPage.url);
+                },
+              ),
+              ElevatedButton(
+                child: Text('Scenario Page',
+                    style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Get.offAllNamed(ScenarioMainPage.url);
                 },
               ),
             ]),
