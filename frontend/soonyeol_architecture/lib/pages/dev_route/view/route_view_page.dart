@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/dev_route/controller/route_view_controller.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
+import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_result_page.dart';
@@ -53,6 +55,20 @@ class RouteViewPage extends StatelessWidget {
                     style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(ScenarioMainPage.url);
+                },
+              ),
+               ElevatedButton(
+                child: Text('Login Page',
+                    style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Get.offAllNamed(LoginPage.url);
+                },
+              ),
+              ElevatedButton(
+                child: Text('Sign Up Page',
+                    style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Get.offAllNamed(SignUpPage.url);
                 },
               ),
             ]),

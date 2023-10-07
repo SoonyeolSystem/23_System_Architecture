@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
+import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_result_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
@@ -16,5 +18,8 @@ class CustomRouter {
     GetPage(name: TalkingCustomPage.url, page: () => const TalkingCustomPage()),
     GetPage(name: TalkingResultPage.url, page: () => const TalkingResultPage()),
     GetPage(name: ScenarioMainPage.url, page: () => const ScenarioMainPage()),
+    GetPage(name: LoginPage.url, page: () => const LoginPage()),
+    GetPage(name: SignUpPage.url, page: () => const SignUpPage()),
+
   ];
 }
