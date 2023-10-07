@@ -64,5 +64,10 @@ class TalkingViewController extends GetxController {
   }
 
   RxList<Talking> talkingList = <Talking>[].obs;
+  RxDouble speakingSpeed = 15.0.obs;
+  RxInt speakingCount = 20.obs;
+  RxDouble speakingTime=2.4.obs;
+  RxInt talkingScore = 80.obs;
+
   Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }
