@@ -58,9 +58,7 @@ class Navigation extends StatelessWidget {
                             index: 1,
                             icon: [
                               Iconsax.video_play,
-                              Iconsax.video_play1
-                              // Icons.home,
-                              // Icons.home_filled
+                              Iconsax.video_play,
                             ],
                             text: "시나리오")),
                     Expanded(
