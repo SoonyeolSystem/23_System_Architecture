@@ -25,7 +25,10 @@ class MyInfoPage extends StatelessWidget {
                     padding: EdgeInsets.only(left: 0.0, top: 30.0, bottom: 30),
                     child: Text(
                       '홍길동 님의 정보',
-                      style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                   ),
                 ),
@@ -43,9 +46,10 @@ class MyInfoPage extends StatelessWidget {
                     alignment: Alignment.center,
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: 
-                        [Icon(Icons.timer,
-                          size:50,
+                      children: [
+                        Icon(
+                          Icons.timer,
+                          size: 50,
                           color: Colors.grey,
                         ),
                         SizedBox(height: 5),
@@ -61,7 +65,6 @@ class MyInfoPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   Container(
                     height: 250,
                     width: 200,
@@ -72,9 +75,10 @@ class MyInfoPage extends StatelessWidget {
                     alignment: Alignment.center,
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: 
-                        [Icon(Icons.question_answer,
-                          size:50,
+                      children: [
+                        Icon(
+                          Icons.question_answer,
+                          size: 50,
                           color: Colors.grey,
                         ),
                         SizedBox(height: 5),
@@ -93,7 +97,7 @@ class MyInfoPage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 30),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
@@ -106,9 +110,10 @@ class MyInfoPage extends StatelessWidget {
                     alignment: Alignment.center,
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: 
-                        [Icon(Icons.emoji_events,
-                          size:50,
+                      children: [
+                        Icon(
+                          Icons.emoji_events,
+                          size: 50,
                           color: Colors.grey,
                         ),
                         SizedBox(height: 5),
@@ -124,7 +129,6 @@ class MyInfoPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   Container(
                     height: 250,
                     width: 200,
@@ -135,9 +139,10 @@ class MyInfoPage extends StatelessWidget {
                     alignment: Alignment.center,
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: 
-                        [Icon(Icons.movie,
-                          size:50,
+                      children: [
+                        Icon(
+                          Icons.movie,
+                          size: 50,
                           color: Colors.grey,
                         ),
                         SizedBox(height: 5),
@@ -154,9 +159,7 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                 ],
-                
-              ) 
-
+              )
             ],
           ),
         ),
