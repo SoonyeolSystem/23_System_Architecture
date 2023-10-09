@@ -44,7 +44,7 @@ class MyInfoPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                     alignment: Alignment.center,
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
@@ -73,7 +73,7 @@ class MyInfoPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                     alignment: Alignment.center,
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
@@ -108,7 +108,7 @@ class MyInfoPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                     alignment: Alignment.center,
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
@@ -137,7 +137,7 @@ class MyInfoPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                     alignment: Alignment.center,
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(

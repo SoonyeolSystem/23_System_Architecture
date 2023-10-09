@@ -99,6 +99,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+<<<<<<< Updated upstream
   iconsax:
     dependency: "direct main"
     description:
@@ -107,6 +108,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.8"
+=======
+>>>>>>> Stashed changes
   js:
     dependency: transitive
     description:
@@ -241,4 +244,8 @@ packages:
     source: hosted
     version: "2.1.4"
 sdks:
+<<<<<<< Updated upstream
   dart: ">=2.18.2 <3.0.0"
+=======
+  dart: ">=2.19.0 <3.0.0"
+>>>>>>> Stashed changes
