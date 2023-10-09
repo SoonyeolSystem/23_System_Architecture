@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/dev_route/controller/route_view_controller.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
+import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
@@ -69,6 +70,13 @@ class RouteViewPage extends StatelessWidget {
                     style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(SignUpPage.url);
+                },
+              ),
+              ElevatedButton(
+                child: Text('My Info Page',
+                    style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Get.offAllNamed(MyInfoPage.url);
                 },
               ),
             ]),
