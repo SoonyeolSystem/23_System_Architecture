@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
+import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
@@ -20,6 +21,6 @@ class CustomRouter {
     GetPage(name: ScenarioMainPage.url, page: () => const ScenarioMainPage()),
     GetPage(name: LoginPage.url, page: () => const LoginPage()),
     GetPage(name: SignUpPage.url, page: () => const SignUpPage()),
-
+    GetPage(name: MyInfoPage.url, page: () => const MyInfoPage())
   ];
 }
