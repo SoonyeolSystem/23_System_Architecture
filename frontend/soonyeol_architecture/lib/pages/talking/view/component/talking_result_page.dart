@@ -74,7 +74,7 @@ class TalkingResultPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                                left: 10, right: 40.0, top: 35.0),
+                                left: 10, right: 48.0, top: 35.0),
                             child: Text('s',
                                 style: TextStyle(
                                     fontSize: 24,
