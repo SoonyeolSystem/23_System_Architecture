@@ -14,6 +14,7 @@ class TalkingResultPage extends StatelessWidget {
     final controller = Get.put(TalkingViewController());
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Center(
         child: Container(
           width: Common.getWidth,
