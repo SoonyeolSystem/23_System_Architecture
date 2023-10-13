@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 
 import '../../../../common/common.dart';
 
@@ -11,6 +12,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Center(
         child: Container(
           width: Common.getWidth,
@@ -93,6 +95,8 @@ class LoginPage extends StatelessWidget {
                   color: Color(0xFFF3F8F5),
                 ),
                 child: TextFormField(
+                                      obscureText : true,
+
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
@@ -131,10 +135,15 @@ class LoginPage extends StatelessWidget {
                   alignment: Alignment.topRight,
                   child: Padding(
                     padding: EdgeInsets.only(right: 60.0, top: 30.0),
-                    child: Text(
-                      '회원가입',
-                      style: TextStyle(fontSize: 18, color: Color(0xFF888888)),
-                    ),
+                    child: GestureDetector(
+  onTap: () {
+    Get.offAllNamed(SignUpPage.url);
+  },
+  child: Text(
+    '회원가입',
+    style: TextStyle(fontSize: 18, color: Color(0xFF888888)),
+  ),
+)
                   ),
                 ),
               ),
