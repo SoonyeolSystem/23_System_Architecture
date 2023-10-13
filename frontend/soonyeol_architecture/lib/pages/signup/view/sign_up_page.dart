@@ -113,6 +113,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   child: TextFormField(
                     controller: _controller,
+                                        obscureText : true,
+
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
@@ -139,7 +141,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     color: Color(0xFFF3F8F5),
                   ),
                   child: TextFormField(
+                    obscureText : true,
                     style: TextStyle(
+
                       fontSize: 20,
                       color: Colors.black,
                     ),

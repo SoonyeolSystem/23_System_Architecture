@@ -95,6 +95,8 @@ class LoginPage extends StatelessWidget {
                   color: Color(0xFFF3F8F5),
                 ),
                 child: TextFormField(
+                                      obscureText : true,
+
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
