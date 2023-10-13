@@ -32,7 +32,7 @@ class TalkingViewPage extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       //fontWeight: FontWeight.bold,
-                      fontSize: 20),
+                      fontSize: 24),
                 ),
                 backgroundColor: Colors.transparent,
                 leading: InkWell(
@@ -77,19 +77,29 @@ class TalkingViewPage extends StatelessWidget {
               //const SizedBox(
               //  height: 80,
               //child: Icon(Icons.mic, size: 40, color: Colors.white)),
-              const Padding(
-                padding: EdgeInsets.all(13.0),
-                child: SizedBox(
-                  height: 43,
-                  width: 35,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Icon(
-                      Icons.mic,
-                      size: 40,
-                      color: Colors.white,
+              Material(
+                 child: InkWell(
+                  customBorder: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    ),
+                  highlightColor: Colors.white.withOpacity(0.5),
+                  child: const Padding(
+                    padding: EdgeInsets.all(13.0),
+                    child: SizedBox(
+                      height: 43,
+                      width: 35,
+                      child: FittedBox(
+                        fit: BoxFit.fill,
+                        child: Icon(
+                          Icons.mic,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
+                  onTap: () {print("mic");},
+                  
                 ),
               ),
             ],

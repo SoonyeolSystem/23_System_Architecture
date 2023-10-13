@@ -19,24 +19,29 @@ class MyInfoPage extends StatelessWidget {
             children: [
               Material(
                 type: MaterialType.transparency,
-                child: Container(
-                  alignment: Alignment.topLeft,
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 0.0, top: 30.0, bottom: 30),
-                    child: Text(
-                      '홍길동 님의 정보',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                child: Row(
+                  children: [
+                    Container(
+                      alignment: Alignment.topLeft,
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 0.0, top: 25.0, bottom: 35),
+                        child: Text(
+                          '홍길동 님의 정보',
+                          style: TextStyle(
+                              fontSize: 30,
+                              //fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
+                    margin: EdgeInsets.only(left:20, right:20),
                     height: 250,
                     width: 200,
                     decoration: const BoxDecoration(
@@ -49,8 +54,8 @@ class MyInfoPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.timer,
-                          size: 50,
-                          color: Colors.grey,
+                          size: 60,
+                          //color: Colors.grey,
                         ),
                         SizedBox(height: 5),
                         Text(
@@ -66,8 +71,9 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.only(left:20, right: 20),
                     height: 250,
-                    width: 200,
+                    width: 210,
                     decoration: const BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -96,13 +102,14 @@ class MyInfoPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 10),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
+                    margin: EdgeInsets.all(20),
                     height: 250,
-                    width: 200,
+                    width: 210,
                     decoration: const BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -130,8 +137,9 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.all(20),
                     height: 250,
-                    width: 200,
+                    width: 210,
                     decoration: const BoxDecoration(
                       color: Colors.black12,
                       borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -159,7 +167,8 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+
             ],
           ),
         ),
