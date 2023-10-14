@@ -24,4 +24,8 @@ class MainViewController extends GetxController {
     const ScenarioMainPage(),
     const MyInfoPage(),
   ];
+
+  RxInt bookmarkCount = 5.obs;
+
+  Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }
