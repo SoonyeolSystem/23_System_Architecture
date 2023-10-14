@@ -21,18 +21,29 @@ class TalkingViewComponent extends StatelessWidget {
           ? Alignment.centerRight
           : Alignment.centerLeft,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: model.character == "me"
+          ? CrossAxisAlignment.end
+          :CrossAxisAlignment.start,
         children: [
+          Text(
+            textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
+            model.character ?? '???',
+            style: const TextStyle(
+                color: Colors.white,
+                //fontWeight: FontWeight.bold,
+                fontSize: 20),
+          ),
+          const SizedBox(height: 5),
           Text(
             textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
             model.script ?? '???',
             style: const TextStyle(
                 color: Colors.white,
                 //fontWeight: FontWeight.bold,
-                fontSize: 20),
+                fontSize: 22),
           ),
-          const SizedBox(height: 15),
-          if (model.character == "you") const Icon(Icons.volume_up_rounded, size:20, color: Colors.grey)
+          const SizedBox(height: 10),
+          if (model.character == "you")  InkWell(child: const Icon(Icons.volume_up_rounded, size:20, color: Colors.grey),onTap:(){print("speak");})
         ],
       ),
     );
