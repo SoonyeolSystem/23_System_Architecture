@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
+
 import '../../../../common/common.dart';
-import '../../scenario/view/scenario_main_view_page.dart';
 
 class MainViewPage extends StatelessWidget {
   const MainViewPage({super.key});
@@ -12,8 +10,8 @@ class MainViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final controller = MainViewController.instance;
-    final controller = Get.put(MainViewController());
+    final controller = MainViewController.instance;
+    //final controller = Get.put(MainViewController());
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 161, 180, 162),
