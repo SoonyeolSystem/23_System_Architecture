@@ -60,10 +60,10 @@ class TalkingCustomPage extends StatelessWidget {
                             TextField(
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(color: Colors.white),
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.white),
                                 ),
-                                focusedBorder: OutlineInputBorder(
+                                focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
@@ -81,10 +81,10 @@ class TalkingCustomPage extends StatelessWidget {
                             TextField(
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(color: Colors.white),
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.white),
                                 ),
-                                focusedBorder: OutlineInputBorder(
+                                focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
@@ -102,10 +102,10 @@ class TalkingCustomPage extends StatelessWidget {
                             TextField(
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(color: Colors.white),
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.white),
                                 ),
-                                focusedBorder: OutlineInputBorder(
+                                focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
@@ -128,7 +128,7 @@ class TalkingCustomPage extends StatelessWidget {
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               side: BorderSide(
-                                color: Color(0xFF47CDD6),
+                                color: Color(0xFF33C26C),
                                 width: 2,
                               ),
                               backgroundColor: Color(0xFF434343),
@@ -151,7 +151,7 @@ class TalkingCustomPage extends StatelessWidget {
                           height: 180,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF346D70),
+                              backgroundColor: Color(0xFF2E7649),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
@@ -179,7 +179,7 @@ class TalkingCustomPage extends StatelessWidget {
                           ),
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFF47CDD6),
+                            primary: Color(0xFF33C26C),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
