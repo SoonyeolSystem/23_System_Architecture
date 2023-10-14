@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-import 'package:soonyeol_architecture/pages/my_info/controller/info_view_controller.dart';
+import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/scenario/controller/scenario_main_controller.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/routes.dart';
@@ -33,7 +33,7 @@ void main() async {
 void initController() {
   Get.put(MainViewController());
   Get.put(ScenarioMainController());
-  Get.put(InfoViewController());
+  Get.put(MyInfoViewController());
 }
 
 Future<void> initServices() async {
