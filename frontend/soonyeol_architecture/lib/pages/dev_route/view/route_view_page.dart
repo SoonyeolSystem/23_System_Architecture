@@ -4,11 +4,11 @@ import 'package:soonyeol_architecture/pages/dev_route/controller/route_view_cont
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
-import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
-import 'package:soonyeol_architecture/pages/talking/view/component/talking_result_page.dart';
 import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
+import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
+import 'package:soonyeol_architecture/pages/talking/view/component/talking_result_page.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 
 class RouteViewPage extends StatelessWidget {
   const RouteViewPage({super.key});
@@ -25,56 +25,49 @@ class RouteViewPage extends StatelessWidget {
             child: Column(children: [
               const Text('RouteViewPage'),
               ElevatedButton(
-                child:
-                    Text('Talking Page', style: TextStyle(color: Colors.black)),
-                onPressed: () {
-                  Get.offAllNamed(TalkingViewPage.url);
-                },
-              ),
-              ElevatedButton(
-                child: Text('Main Page', style: TextStyle(color: Colors.black)),
+                child: const Text('Go to Main Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(Navigation.url);
                 },
               ),
               ElevatedButton(
-                child: Text('Talking Custom Page',
-                    style: TextStyle(color: Colors.black)),
+                child: const Text('Talking Page', style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Get.offAllNamed(TalkingViewPage.url);
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Talking Custom Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(TalkingCustomPage.url);
                 },
               ),
               ElevatedButton(
-                child: Text('Talking Result Page',
-                    style: TextStyle(color: Colors.black)),
+                child: const Text('Talking Result Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(TalkingResultPage.url);
                 },
               ),
               ElevatedButton(
-                child: Text('Scenario Page',
-                    style: TextStyle(color: Colors.black)),
+                child: const Text('Scenario Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(ScenarioMainPage.url);
                 },
               ),
-               ElevatedButton(
-                child: Text('Login Page',
-                    style: TextStyle(color: Colors.black)),
+              ElevatedButton(
+                child: const Text('Login Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(LoginPage.url);
                 },
               ),
               ElevatedButton(
-                child: Text('Sign Up Page',
-                    style: TextStyle(color: Colors.black)),
+                child: const Text('Sign Up Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(SignUpPage.url);
                 },
               ),
               ElevatedButton(
-                child: Text('My Info Page',
-                    style: TextStyle(color: Colors.black)),
+                child: const Text('My Info Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(MyInfoPage.url);
                 },

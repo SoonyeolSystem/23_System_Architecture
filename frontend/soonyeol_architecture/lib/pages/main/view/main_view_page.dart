@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
+
 import '../../../../common/common.dart';
-import '../../scenario/view/scenario_main_view_page.dart';
 
 class MainViewPage extends StatelessWidget {
   const MainViewPage({super.key});
@@ -15,7 +13,7 @@ class MainViewPage extends StatelessWidget {
     final controller = MainViewController.instance;
 
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 161, 180, 162),
+        backgroundColor: const Color.fromARGB(255, 161, 180, 162),
         body: Center(
             child: Container(
                 color: Colors.white,
@@ -29,23 +27,18 @@ class MainViewPage extends StatelessWidget {
                       slivers: [
                         SliverToBoxAdapter(
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, top: 25, bottom: 25),
+                            padding: const EdgeInsets.only(left: 20, top: 25, bottom: 25),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text('SoonYeol',
-                                        style: TextStyle(
-                                            fontSize: 24,
-                                            color: Color(0xFF33C26C),
-                                            fontWeight: FontWeight.bold)),
+                                    const Text('SoonYeol', style: TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold)),
                                     IconButton(
                                         onPressed: () => {},
                                         //Get.toNamed(ScenarioMainPage.url),
-                                        padding: EdgeInsets.only(left: 330.0),
+                                        padding: const EdgeInsets.only(left: 330.0),
                                         icon: const Icon(Icons.search)),
                                   ],
                                 ),
