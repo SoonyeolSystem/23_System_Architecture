@@ -51,34 +51,34 @@ class RouteViewPage extends StatelessWidget {
                   Get.offAllNamed(TalkingResultPage.url);
                 },
               ),
+              // ElevatedButton(
+              //   child: Text('Scenario Page',
+              //       style: TextStyle(color: Colors.black)),
+              //   onPressed: () {
+              //     Get.offAllNamed(ScenarioMainPage.url);
+              //   },
+              // ),
               ElevatedButton(
-                child: Text('Scenario Page',
-                    style: TextStyle(color: Colors.black)),
-                onPressed: () {
-                  Get.offAllNamed(ScenarioMainPage.url);
-                },
-              ),
-               ElevatedButton(
-                child: Text('Login Page',
-                    style: TextStyle(color: Colors.black)),
+                child:
+                    Text('Login Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(LoginPage.url);
                 },
               ),
               ElevatedButton(
-                child: Text('Sign Up Page',
-                    style: TextStyle(color: Colors.black)),
+                child:
+                    Text('Sign Up Page', style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(SignUpPage.url);
                 },
               ),
-              ElevatedButton(
-                child: Text('My Info Page',
-                    style: TextStyle(color: Colors.black)),
-                onPressed: () {
-                  Get.offAllNamed(MyInfoPage.url);
-                },
-              ),
+              // ElevatedButton(
+              //   child: Text('My Info Page',
+              //       style: TextStyle(color: Colors.black)),
+              //   onPressed: () {
+              //     Get.offAllNamed(MyInfoPage.url);
+              //   },
+              // ),
             ]),
           ),
         ));
