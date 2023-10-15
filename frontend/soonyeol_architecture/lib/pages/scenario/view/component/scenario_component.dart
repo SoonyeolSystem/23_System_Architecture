@@ -33,7 +33,7 @@ class ScenarioComponent extends StatelessWidget {
                     ]),
               ),
               const Spacer(),
-              if (model.isbookmark == 1)
+              if (model.isbookmark == true)
                 Container(
                   alignment: Alignment.centerRight,
                   child: Column(
@@ -50,12 +50,12 @@ class ScenarioComponent extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 3),
-                        Text("조회수 ${model.views} views",
+                        Text("조회수 ${model.views}",
                             style: const TextStyle(
                                 fontSize: 12, color: Colors.grey)),
                       ]),
                 ),
-              if (model.isbookmark == 0)
+              if (model.isbookmark == false)
                 Container(
                   alignment: Alignment.centerRight,
                   child: Column(
@@ -73,7 +73,7 @@ class ScenarioComponent extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 3),
-                        Text("조회수 ${model.views} views",
+                        Text("조회수 ${model.views}",
                             style: const TextStyle(
                                 fontSize: 12, color: Colors.grey)),
                       ]),

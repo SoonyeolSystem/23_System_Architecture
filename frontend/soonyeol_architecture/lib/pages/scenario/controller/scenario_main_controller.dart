@@ -32,8 +32,8 @@ class ScenarioMainController extends GetxController {
       {
         "scenarioname": "사막에서 살아남기",
         "bookmarkcount": 32,
-        "view": 123,
-        "isLisbookmarkiked": true,
+        "views": 123,
+        "isbookmark": true,
         "situation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
         "genre": ["재난", "생존"],
         "character": ["생존자1", "생존자2"],
@@ -42,8 +42,8 @@ class ScenarioMainController extends GetxController {
       {
         "scenarioname": "사막에서 살아남기2",
         "bookmarkcount": 31,
-        "view": 10,
-        "isLisbookmarkiked": false,
+        "views": 10,
+        "isbookmark": false,
         "situation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
         "genre": ["재난", "생존"],
         "character": ["생존자3", "생존자4"],

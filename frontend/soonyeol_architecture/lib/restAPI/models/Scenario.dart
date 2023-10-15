@@ -1,7 +1,7 @@
 class Scenario {
   String? scenarioname; // 시나리오 이름
   int? bookmarkcount; // 즐겨찾기(별표) 수
-  String? views; // 조회수
+  int? views; // 조회수
   bool? isbookmark; // 즐겨찾기 여부
   String? stiuation; //상황
   List<String>? genre; //장르
