@@ -1,29 +1,29 @@
 class Scenario {
   String? name; // 시나리오 이름
-  String? like; // 즐겨찾기(별표) 수
+  String? bookmarkcount; // 즐겨찾기(별표) 수
   String? views; // 조회수
-  bool? isLiked; // 즐겨찾기 여부
+  bool? isbookmark; // 즐겨찾기 여부
 
   Scenario({
     this.name,
-    this.like,
+    this.bookmarkcount,
     this.views,
-    this.isLiked,
+    this.isbookmark,
   });
 
   Scenario.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    like = json['like'];
+    bookmarkcount = json['bookmarkcount'];
     views = json['views'];
-    isLiked = json['isLiked'];
+    isbookmark = json['isbookmark'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
-    data['like'] = like;
+    data['bookmarkcount'] = bookmarkcount;
     data['views'] = views;
-    data['isLiked'] = isLiked;
+    data['isbookmark'] = isbookmark;
 
     return data;
   }

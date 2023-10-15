@@ -10,14 +10,8 @@ import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import '../../../restAPI/models/Scenario.dart';
 
 class ScenarioMainController extends GetxController {
-  RxList<Scenario> scenarioList = RxList<Scenario>();
-  Rx<Scenario> scenario = Scenario().obs;
-  RxList<bool> onTapList = List.filled(4, false).obs;
-
   static ScenarioMainController get instance =>
       Get.find<ScenarioMainController>();
-
-  Rx<ScrollController> scrollcontroller = ScrollController().obs;
 
   @override
   void onInit() async {
@@ -33,5 +27,30 @@ class ScenarioMainController extends GetxController {
     //   scenarioList.value = scenarioList.value.toList();
     // }
     // scenarioList.refresh();
+
+    List<Map<String, dynamic>> fakeJsonData = [
+      {
+        "name": "사막에서 살아남기",
+        "bookmarkcount": 32,
+        "view": 123,
+        "isLisbookmarkiked": true
+      },
+      {
+        "name": "사막에서 살아남기2",
+        "bookmarkcount": 31,
+        "view": 10,
+        "isLisbookmarkiked": false
+      },
+    ];
+    List<Scenario> fakeScenarios =
+        fakeJsonData.map((jsonData) => Scenario.fromJson(jsonData)).toList();
+    scenarioList.value = fakeScenarios;
+    scenarioList.refresh();
   }
+
+  RxList<Scenario> scenarioList = <Scenario>[].obs;
+  Rx<Scenario> scenario = Scenario().obs;
+  RxList<bool> onTapList = List.filled(4, false).obs;
+
+  Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }
