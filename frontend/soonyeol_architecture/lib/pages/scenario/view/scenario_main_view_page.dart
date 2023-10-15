@@ -11,7 +11,7 @@ class ScenarioMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Get.put(ScenarioMainController());
+    final controller = Get.put(ScenarioMainController());
     return SizedBox(
       width: Common.getWidth,
       child: Column(children: [
