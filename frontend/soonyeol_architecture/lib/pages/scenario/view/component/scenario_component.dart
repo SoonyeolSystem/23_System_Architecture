@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/common/widget/panel_component.dart';
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 import '../../controller/scenario_main_controller.dart';
@@ -13,7 +14,28 @@ class ScenarioComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ScenarioMainController());
 
-    return Container(
+    return InkWell(
+      onTap: () {
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: ((context) {
+              return Container(
+                  child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  Container(
+                    child: Row(children: [
+                      SizedBox(width: 20),
+                      Text('${model.scenarioname}',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                    ]),
+                  )
+                ],
+              ));
+            }));
+      },
       child: Column(children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -63,11 +85,11 @@ class ScenarioComponent extends StatelessWidget {
                         Row(
                           children: [
                             SizedBox(height: 3),
-                            Icon(Icons.star, size: 18, color: Colors.yellow),
+                            Icon(Icons.star, size: 20, color: Colors.yellow),
                             SizedBox(width: 3),
                             Text("${model.bookmarkcount}",
                                 style: const TextStyle(
-                                    fontSize: 18, color: Color(0xFF434343))),
+                                    fontSize: 20, color: Color(0xFF434343))),
                           ],
                         ),
                         const SizedBox(height: 3),
@@ -86,11 +108,11 @@ class ScenarioComponent extends StatelessWidget {
                           children: [
                             SizedBox(height: 3),
                             Icon(Icons.star_border,
-                                size: 18, color: Color(0xFF434343)),
+                                size: 20, color: Color(0xFF434343)),
                             SizedBox(width: 3),
                             Text("${model.bookmarkcount}",
                                 style: const TextStyle(
-                                    fontSize: 18, color: Color(0xFF434343))),
+                                    fontSize: 20, color: Color(0xFF434343))),
                           ],
                         ),
                         const SizedBox(height: 3),
