@@ -22,7 +22,7 @@ class ScenarioMainPage extends StatelessWidget {
               slivers: [
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 40, top: 40),
+                    padding: EdgeInsets.only(left: 20, top: 40),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

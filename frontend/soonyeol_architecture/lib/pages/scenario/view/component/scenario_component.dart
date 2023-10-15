@@ -25,11 +25,32 @@ class ScenarioComponent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("${model.scenarioname}",
-                          style: const TextStyle(fontSize: 18)),
-                      const SizedBox(width: 2),
-                      Text("#${model.genre![0]} #${model.genre![1]}",
-                          style: const TextStyle(
-                              fontSize: 12, color: Colors.grey)),
+                          style: const TextStyle(fontSize: 20)),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          for (int i = 0; i < model.genre!.length; i++)
+                            Row(
+                              children: [
+                                Text(
+                                  "#",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Color(0xFF33C26C),
+                                  ),
+                                ),
+                                Text(
+                                  "${model.genre![i]}",
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    color: Color(0xFF808080),
+                                  ),
+                                ),
+                                SizedBox(width: 5)
+                              ],
+                            ),
+                        ],
+                      )
                     ]),
               ),
               const Spacer(),
@@ -42,17 +63,17 @@ class ScenarioComponent extends StatelessWidget {
                         Row(
                           children: [
                             SizedBox(height: 3),
-                            Icon(Icons.star, size: 15, color: Colors.yellow),
+                            Icon(Icons.star, size: 18, color: Colors.yellow),
                             SizedBox(width: 3),
                             Text("${model.bookmarkcount}",
                                 style: const TextStyle(
-                                    fontSize: 12, color: Colors.grey)),
+                                    fontSize: 18, color: Color(0xFF434343))),
                           ],
                         ),
                         const SizedBox(height: 3),
-                        Text("조회수 ${model.views}",
+                        Text("조회수 ${model.views}회",
                             style: const TextStyle(
-                                fontSize: 12, color: Colors.grey)),
+                                fontSize: 15, color: Color(0xFF434343))),
                       ]),
                 ),
               if (model.isbookmark == false)
@@ -65,17 +86,17 @@ class ScenarioComponent extends StatelessWidget {
                           children: [
                             SizedBox(height: 3),
                             Icon(Icons.star_border,
-                                size: 15, color: Colors.grey),
+                                size: 18, color: Color(0xFF434343)),
                             SizedBox(width: 3),
                             Text("${model.bookmarkcount}",
                                 style: const TextStyle(
-                                    fontSize: 12, color: Colors.grey)),
+                                    fontSize: 18, color: Color(0xFF434343))),
                           ],
                         ),
                         const SizedBox(height: 3),
-                        Text("조회수 ${model.views}",
+                        Text("조회수 ${model.views}회",
                             style: const TextStyle(
-                                fontSize: 12, color: Colors.grey)),
+                                fontSize: 15, color: Color(0xFF434343))),
                       ]),
                 ),
             ],
