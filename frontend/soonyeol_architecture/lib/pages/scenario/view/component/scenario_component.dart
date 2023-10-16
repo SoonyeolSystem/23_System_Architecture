@@ -12,8 +12,6 @@ class ScenarioComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ScenarioMainController());
-
     return InkWell(
       onTap: () {
         showModalBottomSheet(
