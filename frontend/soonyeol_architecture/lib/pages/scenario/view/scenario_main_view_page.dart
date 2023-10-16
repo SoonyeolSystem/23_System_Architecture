@@ -11,7 +11,7 @@ class ScenarioMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ScenarioMainController());
+    final controller = ScenarioMainController.instance;
     return SizedBox(
       width: Common.getWidth,
       child: Column(
@@ -54,7 +54,7 @@ class ScenarioMainPage extends StatelessWidget {
                         children: [
                           if (index == 0) const SizedBox(height: 20),
                           ScenarioComponent(
-                              model: controller.scenarioList[index]),
+                              model: controller.scenarioList.value[index]),
                           const Padding(
                             padding: EdgeInsets.only(bottom: 10, top: 15),
                             child: Divider(
