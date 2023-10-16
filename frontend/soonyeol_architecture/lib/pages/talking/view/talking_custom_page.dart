@@ -56,7 +56,7 @@ class TalkingCustomPage extends StatelessWidget {
                               style:
                                   TextStyle(fontSize: 20, color: Colors.white),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 5),
                             TextField(
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(color: Colors.white),
@@ -71,13 +71,34 @@ class TalkingCustomPage extends StatelessWidget {
                               cursorColor: Colors.white,
                               maxLines: null,
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 15),
+                            Text(
+                              '장르',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
+                            SizedBox(height: 5),
+                            TextField(
+                              decoration: InputDecoration(
+                                labelStyle: TextStyle(color: Colors.white),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                              ),
+                              style: TextStyle(color: Colors.white),
+                              cursorColor: Colors.white,
+                              maxLines: null,
+                            ),
+                            SizedBox(height: 15),
                             Text(
                               '주인공',
                               style:
                                   TextStyle(fontSize: 20, color: Colors.white),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 5),
                             TextField(
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(color: Colors.white),
@@ -92,13 +113,13 @@ class TalkingCustomPage extends StatelessWidget {
                               cursorColor: Colors.white,
                               maxLines: null,
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 15),
                             Text(
                               '등장인물',
                               style:
                                   TextStyle(fontSize: 20, color: Colors.white),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: 5),
                             TextField(
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(color: Colors.white),

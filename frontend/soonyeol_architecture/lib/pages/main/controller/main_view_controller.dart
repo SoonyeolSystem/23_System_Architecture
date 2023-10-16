@@ -1,5 +1,77 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../restAPI/models/Conversation.dart';
 
 class MainViewController extends GetxController {
   static MainViewController get instance => Get.find<MainViewController>();
+
+  // final List<Widget> bodyContent = [
+  //   const MainViewPage(),
+  //   const ConversationMainPage(),
+  //   const MyInfoPage(),S
+  // ];scenario
+
+  @override
+  void onInit() async {
+    super.onInit();
+    await getConversationList();
+  }
+
+  Future<void> getConversationList() async {
+    // ApiResponse<ConversationListResponse> response =
+    //     await ApiService.instance.getConversationList();
+    // if (response.result) {
+    //   ConversationList.value = response.value!.ConversationList!;
+    //   ConversationList.value = ConversationList.value.toList();
+    // }
+    // ConversationList.refresh();
+
+    List<Map<String, dynamic>> fakeJsonData = [
+      {
+        "scenarioname": "사막에서 살아남기",
+        "likeCount": 32,
+        "views": 123,
+        "isLike": true,
+        "situation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "genre": ["재난", "생존"],
+        "character": ["생존자1", "생존자2"],
+        "maincharacter": "생존자1",
+        "userName": "Miso",
+      },
+      {
+        "scenarioname": "사막에서 살아남기2",
+        "likeCount": 31,
+        "views": 10,
+        "isLike": false,
+        "situation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "genre": ["재난", "생존"],
+        "character": ["생존자3", "생존자4"],
+        "maincharacter": "생존자3",
+        "userName": "SOjeong",
+      },
+      {
+        "scenarioname": "사막에서 살아남기3",
+        "likeCount": 31,
+        "views": 10,
+        "isLike": false,
+        "situation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "genre": ["재난", "생존"],
+        "character": ["생존자3", "생존자4"],
+        "maincharacter": "생존자3",
+        "userName": "SOjeong",
+      },
+    ];
+    List<Conversation> fakeConversations = fakeJsonData
+        .map((jsonData) => Conversation.fromJson(jsonData))
+        .toList();
+    conversationList.value = fakeConversations;
+    conversationList.refresh();
+  }
+
+  RxList<Conversation> conversationList = <Conversation>[].obs;
+  Rx<Conversation> conversation = Conversation().obs;
+
+  RxInt bookmarkCount = 5.obs;
+
+  Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }
