@@ -1,23 +1,27 @@
 class MyInfo {
-  String? character;
-  String? script;
+  String? scenarioName;
+  List<String>? genre;
+  int? processivity;
 
   MyInfo({
-    this.character,
-    this.script,
+    this.scenarioName,
+    this.genre,
+    this.processivity,
   });
 
   // JSON serialization method
   MyInfo.fromJson(Map<String, dynamic> json) {
-    character = json['character'];
-    script = json['대사'];
+    scenarioName = json['scenario_name'];
+    genre = json['장르'].cast<String>();
+    processivity = json['진행도'];
   }
 
   // JSON serialization method
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['character'] = character;
-    data['대사'] = script;
+    data['scenario_name'] = scenarioName;
+    data['장르'] = genre;
+    data['진행도'] = processivity;
 
     return data;
   }

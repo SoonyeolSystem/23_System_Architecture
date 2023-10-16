@@ -13,25 +13,28 @@ class MyInfoViewController extends GetxController {
 
   Future<void> getInfoList() async {
     List<Map<String, dynamic>> fakeJsonData = [
-      {"character": "me", "대사": "Oh my god! Where are we?"},
-      {"character": "you", "대사": "I have no idea, but we need to find water and shelter fast!"},
-      {"character": "me", "대사": "But I can't see anything but sand here!"},
-      {"character": "you", "대사": "Let's start walking in that direction. Maybe we'll find something."},
-      {"character": "me", "대사": "Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?"},
-      {"character": "you", "대사": "I have no idea, but we need to find water and shelter fast!"},
-      {"character": "me", "대사": "Oh my god! Where are we?"},
+      {"scenario_name": "사막에서 살아남기", "장르": ["생존", "공포"], "진행도" : 0},
+      {"scenario_name": "사막에서 살아남기", "장르": ["생존", "공포"], "진행도" : 0},
+      {"scenario_name": "커피 주문하기", "장르": ["생활", "주문"], "진행도" : 0},
+      {"scenario_name": "경찰에게 체포되기 직전", "장르": ["생존", "스피드"], "진행도" : 1},
+      {"scenario_name": "식당 예약하기", "장르": ["생활", "예약"], "진행도" : 1},
     ];
 
-    List<MyInfo> fakeInfos = fakeJsonData.map((jsonData) => MyInfo.fromJson(jsonData)).toList();
+    List<MyInfo> fakeInfos = 
+      fakeJsonData.map((jsonData) => MyInfo.fromJson(jsonData)).toList();
     infoList.value = fakeInfos;
     infoList.refresh();
+
   }
 
   RxList<MyInfo> infoList = <MyInfo>[].obs;
-  RxDouble speakingSpeed = 15.0.obs;
-  RxInt speakingCount = 20.obs;
-  RxDouble speakingTime = 2.4.obs;
-  RxInt talkingScore = 80.obs;
+  Rx<MyInfo> myinfo = MyInfo().obs;
+
+  RxInt speakingTime = 17.obs;
+  RxInt speakingCount = 7.obs;
+  RxDouble talkingScore = 7.8.obs;
+  RxInt completeScenario = 3.obs;
+  RxString userName = '홍길동'.obs;
 
   Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }
