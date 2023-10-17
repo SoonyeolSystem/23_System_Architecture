@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/TTS/tts.dart';
 import 'package:soonyeol_architecture/pages/dev_route/controller/route_view_controller.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
@@ -85,6 +86,13 @@ class RouteViewPage extends StatelessWidget {
                     style: TextStyle(color: Colors.black)),
                 onPressed: () {
                   Get.offAllNamed(MyInfoPage.url);
+                },
+              ),
+              ElevatedButton(
+                child: const Text('TTS Page',
+                    style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Get.offAllNamed(TTSPage.url);
                 },
               ),
             ]),
