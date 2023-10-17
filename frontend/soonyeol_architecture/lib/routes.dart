@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/STT/view/stt_page.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
@@ -21,6 +22,6 @@ class CustomRouter {
     GetPage(name: ScenarioMainPage.url, page: () => const ScenarioMainPage()),
     GetPage(name: LoginPage.url, page: () => const LoginPage()),
     GetPage(name: SignUpPage.url, page: () => const SignUpPage()),
-    GetPage(name: MyInfoPage.url, page: () => const MyInfoPage())
+    GetPage(name: STTPage.url, page: () => const STTPage())
   ];
 }
