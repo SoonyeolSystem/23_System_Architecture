@@ -12,7 +12,6 @@ import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_result_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
 
-
 // CustomRouter is used to define the routes
 class CustomRouter {
   static final routes = [
@@ -24,8 +23,8 @@ class CustomRouter {
     GetPage(name: ScenarioMainPage.url, page: () => const ScenarioMainPage()),
     GetPage(name: LoginPage.url, page: () => const LoginPage()),
     GetPage(name: SignUpPage.url, page: () => const SignUpPage()),
-    GetPage(name: MyInfoPage.url, page: ()=> const MyInfoPage()),
-    GetPage(name: TTSPage.url, page: ()=> TTSPage()),
+    GetPage(name: MyInfoPage.url, page: () => const MyInfoPage()),
+    GetPage(name: TTSPage.url, page: () => TTSPage()),
     GetPage(name: STTPage.url, page: () => const STTPage())
   ];
 }

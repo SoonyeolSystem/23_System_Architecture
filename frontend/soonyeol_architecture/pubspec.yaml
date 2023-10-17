@@ -47,6 +47,7 @@ dependencies:
   flutter_svg: ^1.1.6
   speech_to_text: ^6.1.1
   avatar_glow: ^2.0.2
+  text_to_speech: ^0.2.3
   
  
 
