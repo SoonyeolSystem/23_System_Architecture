@@ -74,19 +74,41 @@ class TalkingViewPage extends StatelessWidget {
                   )
                 ],
               )),
+              //floatingActionButton: FloatingActionButton(onPressed: () {}),
               //const SizedBox(
               //  height: 80,
               //child: Icon(Icons.mic, size: 40, color: Colors.white)),
-              Material(
-                 child: InkWell(
-                  customBorder: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    ),
-                  highlightColor: Colors.white.withOpacity(0.5),
-                  child: const Padding(
-                    padding: EdgeInsets.all(13.0),
-                    child: SizedBox(
-                      height: 43,
+              // Material(
+              //    child: InkWell(
+              //     customBorder: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(50),
+              //       ),
+              //     highlightColor: Colors.white.withOpacity(0.5),
+              //     child: const Padding(
+              //       padding: EdgeInsets.all(13.0),
+              //       child: SizedBox(
+              //         height: 43,
+              //         width: 35,
+              //         child: FittedBox(
+              //           fit: BoxFit.fill,
+              //           child: Icon(
+              //             Icons.mic,
+              //             size: 40,
+              //             color: Colors.white,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //     onTap: () {print("mic");},
+                  
+              //   ),
+              // ),
+            ],
+          )),
+          floatingActionButton: FloatingActionButton(onPressed: () {},
+          backgroundColor: Colors.transparent,
+          child:SizedBox(
+                      height: 42,
                       width: 35,
                       child: FittedBox(
                         fit: BoxFit.fill,
@@ -96,14 +118,8 @@ class TalkingViewPage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                    ),
-                  ),
-                  onTap: () {print("mic");},
-                  
-                ),
-              ),
-            ],
-          )),
+                    ),),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
