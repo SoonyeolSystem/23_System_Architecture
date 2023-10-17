@@ -64,7 +64,10 @@ class TalkingViewPage extends StatelessWidget {
                                   model: controller.talkingList.value[index]),
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 10, top: 15),
-                              )
+                              ),
+                              if (index == controller.talkingList.length -1)
+                              SizedBox(height: 20,)
+
                             ],
                           ),
                         );
@@ -74,9 +77,7 @@ class TalkingViewPage extends StatelessWidget {
                   )
                 ],
               )),
-              const SizedBox(
-                height: 50,
-              ),
+              
               //floatingActionButton: FloatingActionButton(onPressed: () {}),
               //const SizedBox(
               //  height: 80,
