@@ -284,6 +284,27 @@ class ScenarioComponent extends StatelessWidget {
                                 color: Color.fromARGB(255, 242, 242, 242)),
                           ),
                         ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding:
+                                EdgeInsets.only(left: 20, top: 20, bottom: 25),
+                            child: Text(
+                              '다른 유저의 Conversation',
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black),
+                            ),
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.only(
+                                left: Common.getWidth * 0.03,
+                                right: Common.getWidth * 0.03),
+                            height: 1.0,
+                            width: double.infinity,
+                            color: Color.fromARGB(255, 209, 209, 209)),
                       ],
                     )),
               );
