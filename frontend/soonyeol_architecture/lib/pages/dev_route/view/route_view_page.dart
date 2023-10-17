@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+<<<<<<< HEAD
+import 'package:soonyeol_architecture/pages/TTS/tts.dart';
+=======
+import 'package:soonyeol_architecture/pages/STT/view/stt_page.dart';
+>>>>>>> f0f9ab1659a55f78050ec24259b043437a218fa8
 import 'package:soonyeol_architecture/pages/dev_route/controller/route_view_controller.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
@@ -81,10 +86,17 @@ class RouteViewPage extends StatelessWidget {
                 },
               ),
               ElevatedButton(
-                child: const Text('My Info Page',
+                child: const Text('STT Page',
                     style: TextStyle(color: Colors.black)),
                 onPressed: () {
-                  Get.offAllNamed(MyInfoPage.url);
+                  Get.offAllNamed(STTPage.url);
+                },
+              ),
+              ElevatedButton(
+                child: const Text('TTS Page',
+                    style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Get.offAllNamed(TTSPage.url);
                 },
               ),
             ]),

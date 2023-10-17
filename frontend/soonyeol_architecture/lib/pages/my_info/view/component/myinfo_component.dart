@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../restAPI/models/MyInfo.dart';
 
 class InfoViewComponent extends StatelessWidget {
@@ -7,46 +8,88 @@ class InfoViewComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     //final controller = Get.put(TalkingViewController());
-    return Container(
-      //width: 300,
-      padding: model.character == "me"
-          ? EdgeInsets.only(
-              top: 0, bottom: 20, left: screenWidth * 0.25, right: 10)
-          : EdgeInsets.only(
-              top: 10, bottom: 20, right: screenWidth * 0.25, left: 10),
-      //padding: const EdgeInsets.only(top: 20, bottom: 20, left: 200),
-      alignment: model.character == "me"
-          ? Alignment.centerRight
-          : Alignment.centerLeft,
-      child: Column(
-        crossAxisAlignment: model.character == "me"
-          ? CrossAxisAlignment.end
-          :CrossAxisAlignment.start,
-        children: [
-          Text(
-            textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
-            model.character ?? '???',
-            style: const TextStyle(
-                color: Colors.white,
-                //fontWeight: FontWeight.bold,
-                fontSize: 20),
+    return InkWell(
+      onTap: () {
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: ((context) {
+              return Center(
+                child: Container(
+                    child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Container(
+                      child: Row(children: [
+                        SizedBox(width: 20),
+                        Text('${model.scenarioName}',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                      ]),
+                    )
+                  ],
+                )),
+              );
+            }));
+      },
+      child: Column(children: [
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("${model.scenarioName}",
+                          style: const TextStyle(fontSize: 20)),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          for (int i = 0; i < model.genre!.length; i++)
+                            Row(
+                              children: [
+                                Text(
+                                  "#",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: model.processivity == 0
+                                        ? Color(0xFF33C26C)
+                                        : Color.fromARGB(255, 255, 0, 0),
+                                  ),
+                                ),
+                                Text(
+                                  model.genre![i],
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    color: Color(0xFF808080),
+                                  ),
+                                ),
+                                SizedBox(width: 5)
+                              ],
+                            ),
+                        ],
+                      )
+                    ]),
+              ),
+              const Spacer(),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  margin: EdgeInsets.only(left: 5, top: 2),
+                  child: Icon(
+                    Icons.delete_outline,
+                    size: 30,
+                    color: Color(0xFF888888),
+                  ),
+                ),
+              )
+            ],
           ),
-          const SizedBox(height: 5),
-          Text(
-            textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
-            model.script ?? '???',
-            style: const TextStyle(
-                color: Colors.white,
-                //fontWeight: FontWeight.bold,
-                fontSize: 22),
-          ),
-          const SizedBox(height: 10),
-          if (model.character == "you")  InkWell(child: const Icon(Icons.volume_up_rounded, size:20, color: Colors.grey),onTap:(){print("speak");})
-        ],
-      ),
+        )
+      ]),
     );
-
   }
 }

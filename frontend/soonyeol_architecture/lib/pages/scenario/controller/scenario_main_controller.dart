@@ -34,7 +34,7 @@ class ScenarioMainController extends GetxController {
         "bookmarkcount": 32,
         "views": 123,
         "isbookmark": true,
-        "situation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "stiuation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
         "genre": ["재난", "생존"],
         "character": ["생존자1", "생존자2"],
         "maincharacter": "생존자1"
@@ -44,7 +44,7 @@ class ScenarioMainController extends GetxController {
         "bookmarkcount": 31,
         "views": 10,
         "isbookmark": false,
-        "situation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "stiuation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
         "genre": ["재난", "생존"],
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3"
