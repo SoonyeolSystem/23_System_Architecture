@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../restAPI/models/MyInfo.dart';
 
-
 class InfoViewComponent extends StatelessWidget {
   final MyInfo model;
   const InfoViewComponent({super.key, required this.model});
@@ -16,20 +15,22 @@ class InfoViewComponent extends StatelessWidget {
             isScrollControlled: true,
             context: context,
             builder: ((context) {
-              return Container(
-                  child: Column(
-                children: [
-                  SizedBox(height: 20),
-                  Container(
-                    child: Row(children: [
-                      SizedBox(width: 20),
-                      Text('${model.scenarioName}',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
-                    ]),
-                  )
-                ],
-              ));
+              return Center(
+                child: Container(
+                    child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Container(
+                      child: Row(children: [
+                        SizedBox(width: 20),
+                        Text('${model.scenarioName}',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                      ]),
+                    )
+                  ],
+                )),
+              );
             }));
       },
       child: Column(children: [
@@ -54,7 +55,9 @@ class InfoViewComponent extends StatelessWidget {
                                   "#",
                                   style: TextStyle(
                                     fontSize: 15,
-                                    color: model.processivity == 0 ? Color(0xFF33C26C) : Color.fromARGB(255, 255, 0, 0),
+                                    color: model.processivity == 0
+                                        ? Color(0xFF33C26C)
+                                        : Color.fromARGB(255, 255, 0, 0),
                                   ),
                                 ),
                                 Text(
@@ -75,7 +78,7 @@ class InfoViewComponent extends StatelessWidget {
               GestureDetector(
                 onTap: () {},
                 child: Container(
-                  margin: EdgeInsets.only(left:5,  top: 2),
+                  margin: EdgeInsets.only(left: 5, top: 2),
                   child: Icon(
                     Icons.delete_outline,
                     size: 30,

@@ -18,6 +18,6 @@ class NavigationController extends GetxController {
   final List<Widget> bodyContent = [
     const MainViewPage(),
     const ScenarioMainPage(),
-    const MyInfoPage()
+    const MyInfoPage(),
   ];
 }

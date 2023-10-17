@@ -17,27 +17,33 @@ class ScenarioComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // showModalBottomSheet(
-        //     isScrollControlled: true,
-        //     context: context,
-        //     builder: ((context) {
-        //       return Container(
-        //           width: Common.getWidth,
-        //           child: Column(
-        //             children: [
-        //               SizedBox(height: 20),
-        //               Container(
-        //                 child: Row(children: [
-        //                   SizedBox(width: 20),
-        //                   Text('${model.scenarioname}',
-        //                       style: TextStyle(
-        //                           fontSize: 20, fontWeight: FontWeight.bold)),
-        //                 ]),
-        //               )
-        //             ],
-        //           ));
-        //     }));
-        Get.toNamed(ScenarioChoosePage.url, arguments: {model: model});
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: ((context) {
+              return Center(
+                child: Container(
+                    width: Common.getWidth,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20),
+                        Container(
+                          child: Row(children: [
+                            Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.black,
+                            ),
+                            SizedBox(width: 20),
+                            Text('${model.scenarioname}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
+                          ]),
+                        )
+                      ],
+                    )),
+              );
+            }));
       },
       child: Column(children: [
         Container(
