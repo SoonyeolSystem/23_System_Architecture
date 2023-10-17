@@ -26,20 +26,29 @@ class ScenarioComponent extends StatelessWidget {
                     width: Common.getWidth,
                     child: Column(
                       children: [
-                        SizedBox(height: 20),
-                        Container(
-                          child: Row(children: [
-                            Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                            SizedBox(width: 20),
-                            Text('${model.scenarioname}',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold)),
-                          ]),
-                        )
+                        AppBar(
+                elevation: 0.0,
+                centerTitle: true,
+                title: Text(
+                  '${model.scenarioname}',
+                  style: TextStyle(
+                      color: Colors.black,
+                      //fontWeight: FontWeight.bold,
+                      fontSize: 24),
+                ),
+                backgroundColor: Colors.transparent,
+                leading: InkWell(
+                  onTap: () {
+                    Get.offNamed('/route');
+                  },
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size:30,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+
                       ],
                     )),
               );
