@@ -44,7 +44,7 @@ class InfoViewComponent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("${model.scenarioName}",
-                          style: const TextStyle(fontSize: 20)),
+                          style: const TextStyle(fontSize: 18)),
                       const SizedBox(height: 4),
                       Row(
                         children: [
