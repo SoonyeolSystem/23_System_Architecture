@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/widget/panel_component.dart';
+import 'package:soonyeol_architecture/pages/scenario/view/component/scenario_choose_page.dart';
+import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 import '../../controller/scenario_main_controller.dart';
@@ -14,25 +17,27 @@ class ScenarioComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            builder: ((context) {
-              return Container(
-                  child: Column(
-                children: [
-                  SizedBox(height: 20),
-                  Container(
-                    child: Row(children: [
-                      SizedBox(width: 20),
-                      Text('${model.scenarioname}',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
-                    ]),
-                  )
-                ],
-              ));
-            }));
+        // showModalBottomSheet(
+        //     isScrollControlled: true,
+        //     context: context,
+        //     builder: ((context) {
+        //       return Container(
+        //           width: Common.getWidth,
+        //           child: Column(
+        //             children: [
+        //               SizedBox(height: 20),
+        //               Container(
+        //                 child: Row(children: [
+        //                   SizedBox(width: 20),
+        //                   Text('${model.scenarioname}',
+        //                       style: TextStyle(
+        //                           fontSize: 20, fontWeight: FontWeight.bold)),
+        //                 ]),
+        //               )
+        //             ],
+        //           ));
+        //     }));
+        Get.toNamed(ScenarioChoosePage.url, arguments: {model: model});
       },
       child: Column(children: [
         Container(
