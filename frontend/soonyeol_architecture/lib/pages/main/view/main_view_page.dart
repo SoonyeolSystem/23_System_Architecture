@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
+import 'package:soonyeol_architecture/pages/main/view/component/bestTalking_component.dart';
 import 'package:soonyeol_architecture/pages/main/view/component/ongoing_component.dart';
 import '../../../../common/common.dart';
 
@@ -64,8 +65,8 @@ class MainViewPage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   gradient: LinearGradient(
-                                    end: Alignment.topCenter,
-                                    begin: Alignment.bottomCenter,
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
                                     colors: [
                                       Color.fromARGB(255, 237, 237, 237),
                                       Color(0xFF33C26C)
@@ -95,7 +96,7 @@ class MainViewPage extends StatelessWidget {
                                             '나만의 시나리오를\n직접 만들어보세요!',
                                             style: TextStyle(
                                               fontSize: 16,
-                                              color: Colors.black54,
+                                              color: Colors.white,
                                             ),
                                             textAlign: TextAlign.left,
                                           ),
@@ -172,7 +173,7 @@ class MainViewPage extends StatelessWidget {
                       ],
                     ),
                     //공간 띄우기
-                    SizedBox(height: 50),
+                    SizedBox(height: 40),
                     //이어서 대화하기
                     Row(
                       // crossAxisAlignment:
@@ -213,7 +214,7 @@ class MainViewPage extends StatelessWidget {
                       children: [
                         if (index == 0)
                           const SizedBox(
-                            width: 30,
+                            width: 40,
                           ),
                         OngoingComponent(
                             model: controller.conversationList[index]),
@@ -221,6 +222,64 @@ class MainViewPage extends StatelessWidget {
                     )
                 ],
               ),
+            ),
+            SizedBox(
+              height: 35,
+            ),
+            Row(
+              children: [
+                SizedBox(width: 25),
+                const Text('Best Conversation',
+                    style: TextStyle(
+                        fontSize: 23,
+                        color: Color.fromARGB(255, 90, 90, 90),
+                        fontWeight: FontWeight.w600)),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Column(
+              children: [
+                Container(
+                  width: 390,
+                  height: 910,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color.fromARGB(255, 242, 243, 243),
+                    border: Border.all(
+                      color: Color(0xFFE9EBEE),
+                      width: 1.4,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      for (int index = 0;
+                          index < controller.conversationList.length;
+                          index++)
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // if (index == 0)
+                            //   const SizedBox(
+                            //     width: 40,
+                            //   ),
+                            BestTalkingComponent(
+                              model: controller.conversationList[index],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 10, top: 15),
+                              child: Divider(
+                                height: 1,
+                                thickness: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
+                ),
+              ],
             )
           ])),
     );
