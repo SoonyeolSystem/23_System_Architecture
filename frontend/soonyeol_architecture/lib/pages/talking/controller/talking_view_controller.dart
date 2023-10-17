@@ -68,6 +68,7 @@ class TalkingViewController extends GetxController {
   RxInt speakingCount = 20.obs;
   RxDouble speakingTime=2.4.obs;
   RxInt talkingScore = 80.obs;
+  RxString scenarioname = '사막에서 살아남기'.obs;
 
   Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }

@@ -1,6 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+<<<<<<< HEAD
 import 'package:soonyeol_architecture/pages/TTS/tts.dart';
+=======
+import 'package:soonyeol_architecture/pages/STT/view/stt_page.dart';
+>>>>>>> f0f9ab1659a55f78050ec24259b043437a218fa8
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
@@ -23,7 +27,11 @@ class CustomRouter {
     GetPage(name: ScenarioMainPage.url, page: () => const ScenarioMainPage()),
     GetPage(name: LoginPage.url, page: () => const LoginPage()),
     GetPage(name: SignUpPage.url, page: () => const SignUpPage()),
+<<<<<<< HEAD
     GetPage(name: MyInfoPage.url, page: ()=> const MyInfoPage()),
     GetPage(name: TTSPage.url, page: ()=> TTSPage()),
+=======
+    GetPage(name: STTPage.url, page: () => const STTPage())
+>>>>>>> f0f9ab1659a55f78050ec24259b043437a218fa8
   ];
 }

@@ -15,7 +15,6 @@ class MyInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MyInfoViewController());
-    int listnum = 0;
     return MaterialApp(
         debugShowCheckedModeBanner:
             false, //채연아 이거 내가 추가한거야! 오른쪽 상단에 Debug 표시 없애려고
@@ -433,7 +432,8 @@ class MyInfoPage extends StatelessWidget {
                                       Divider(
                                         height: 1,
                                         thickness: 1,
-                                      )
+                                      ),
+                                      
                                   ],
                                 ),
                             ])),

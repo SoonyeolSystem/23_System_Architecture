@@ -27,8 +27,8 @@ class TalkingViewPage extends StatelessWidget {
               AppBar(
                 elevation: 0.0,
                 centerTitle: true,
-                title: const Text(
-                  '사막에서 살아남기',
+                title: Text(
+                  '${controller.scenarioname}',
                   style: TextStyle(
                       color: Colors.white,
                       //fontWeight: FontWeight.bold,
@@ -74,6 +74,9 @@ class TalkingViewPage extends StatelessWidget {
                   )
                 ],
               )),
+              const SizedBox(
+                height: 50,
+              ),
               //floatingActionButton: FloatingActionButton(onPressed: () {}),
               //const SizedBox(
               //  height: 80,
