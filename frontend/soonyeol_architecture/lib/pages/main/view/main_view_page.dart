@@ -58,6 +58,7 @@ class MainViewPage extends StatelessWidget {
                           height: 185,
                           child: Material(
                             child: InkWell(
+                              borderRadius: BorderRadius.circular(10),
                               onTap: () {
                                 // 버튼이 클릭되었을 때 실행되는 코드
                               },
@@ -117,6 +118,7 @@ class MainViewPage extends StatelessWidget {
                           height: 185,
                           child: Material(
                             child: InkWell(
+                              borderRadius: BorderRadius.circular(10),
                               onTap: () {
                                 // 버튼이 클릭되었을 때 실행되는 코드
                               },
