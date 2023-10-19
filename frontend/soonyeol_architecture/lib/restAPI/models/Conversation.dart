@@ -32,7 +32,7 @@ class Conversation {
     genre = json['genre'].cast<String>();
     character = json['character'].cast<String>();
     maincharacter = json['maincharacter'];
-    userName = json['userNmae'];
+    userName = json['userName'];
     conversation = json['conversation'].cast<String>();
   }
 

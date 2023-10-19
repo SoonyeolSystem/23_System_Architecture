@@ -72,8 +72,8 @@ class MainViewPage extends StatelessWidget {
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      Color.fromARGB(255, 237, 237, 237),
-                                      Color(0xFF33C26C)
+                                      Color.fromARGB(255, 249, 253, 207),
+                                      Color.fromARGB(255, 28, 136, 71)
                                     ], // 그라데이션 색상 설정
                                   ),
                                 ),
@@ -82,7 +82,7 @@ class MainViewPage extends StatelessWidget {
                                   children: [
                                     SizedBox(height: 10),
                                     Padding(
-                                      padding: EdgeInsets.only(right: 20),
+                                      padding: EdgeInsets.only(right: 24),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -90,16 +90,16 @@ class MainViewPage extends StatelessWidget {
                                           Text(
                                             '커스텀\n시나리오',
                                             style: TextStyle(
-                                              fontSize: 30,
-                                              color: Colors.white,
-                                            ),
+                                                fontSize: 30,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700),
                                             textAlign: TextAlign.left,
                                           ),
                                           SizedBox(height: 27),
                                           Text(
                                             '나만의 시나리오를\n직접 만들어보세요!',
                                             style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 15,
                                               color: Colors.white,
                                             ),
                                             textAlign: TextAlign.left,
@@ -128,7 +128,7 @@ class MainViewPage extends StatelessWidget {
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xFFE7F8EE),
+                                  color: Color.fromARGB(57, 140, 187, 126),
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -144,23 +144,25 @@ class MainViewPage extends StatelessWidget {
                                             '즐겨찾기',
                                             style: TextStyle(
                                                 fontSize: 30,
-                                                color: Color(0xFF33C26C)),
+                                                color: Color.fromARGB(
+                                                    255, 46, 161, 92),
+                                                fontWeight: FontWeight.w700),
                                             textAlign: TextAlign.left,
                                           ),
                                           SizedBox(height: 70),
                                           Text(
-                                            '즐겨찾기 해놓은 ',
+                                            '즐겨찾기한',
                                             style: TextStyle(
-                                                fontSize: 16,
+                                                fontSize: 15,
                                                 color: Colors.black54),
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
                                             children: [
                                               Text(
-                                                '시나리오가 ${controller.bookmarkCount.value}개 있어요',
+                                                '시나리오를 확인해보세요',
                                                 style: TextStyle(
-                                                    fontSize: 16,
+                                                    fontSize: 15,
                                                     color: Colors.black54),
                                                 textAlign: TextAlign.center,
                                               ),
@@ -242,18 +244,18 @@ class MainViewPage extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 25,
             ),
             Column(
               children: [
                 Container(
-                  width: 390,
-                  height: 910,
+                  width: 410,
+                  height: 892.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(255, 242, 243, 243),
+                    color: Color.fromARGB(70, 208, 212, 208),
                     border: Border.all(
-                      color: Color(0xFFE9EBEE),
+                      color: Color.fromARGB(255, 238, 238, 238),
                       width: 1.4,
                     ),
                   ),
@@ -262,30 +264,32 @@ class MainViewPage extends StatelessWidget {
                       for (int index = 0;
                           index < controller.conversationList.length;
                           index++)
-                        Row(
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            // if (index == 0)
-                            //   const SizedBox(
-                            //     width: 40,
-                            //   ),
                             BestTalkingComponent(
                               model: controller.conversationList[index],
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 10, top: 15),
-                              child: Divider(
-                                height: 1,
-                                thickness: 1,
+                            if (index < 9)
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 20, right: 20),
+                                child: Divider(
+                                  height: 1,
+                                  thickness: 0.7,
+                                  color: Colors.black26,
+                                ),
                               ),
-                            ),
                           ],
                         ),
                     ],
                   ),
                 ),
               ],
-            )
+            ),
+            SizedBox(
+              height: 20,
+            ),
           ])),
     );
   }
