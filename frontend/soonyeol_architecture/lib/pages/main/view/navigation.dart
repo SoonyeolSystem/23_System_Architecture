@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/title.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
 

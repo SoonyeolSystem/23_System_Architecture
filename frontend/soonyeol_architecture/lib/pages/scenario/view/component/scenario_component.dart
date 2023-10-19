@@ -42,7 +42,7 @@ class ScenarioComponent extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           leading: InkWell(
                             onTap: () {
-                              Get.back();
+                              Navigator.pop(context, true);
                             },
                             child: const Icon(
                               Icons.arrow_back_ios,
