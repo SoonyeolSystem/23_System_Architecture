@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
@@ -20,7 +19,7 @@ class OngoingComponent extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
               borderRadius: BorderRadius.circular(10),
-              onTap: () {Get.to(() => TalkingViewPage());},
+              onTap: () {},
               child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),

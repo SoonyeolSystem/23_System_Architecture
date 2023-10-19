@@ -236,7 +236,7 @@ class TalkingResultPage extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     onPressed: () {
-                      showSnackBar();
+                      // 버튼 클릭 시 수행할 작업
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blue,
@@ -259,18 +259,3 @@ class TalkingResultPage extends StatelessWidget {
     );
   }
 }
-void showSnackBar() {
-    Get.snackbar(
-      '',
-      '',
-      maxWidth:Common.getWidth,
-      titleText: Container(),
-      messageText: Padding(
-        padding: const EdgeInsets.only(bottom:8.0),
-        child: Text('대화가 저장되었습니다.', style: TextStyle(color: Colors.white),),
-      ),
-      colorText: Colors.white,
-      backgroundColor: Colors.black,
-      snackPosition: SnackPosition.BOTTOM
-    );
-  }

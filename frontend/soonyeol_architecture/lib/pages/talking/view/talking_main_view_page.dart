@@ -37,7 +37,7 @@ class TalkingViewPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 leading: InkWell(
                   onTap: () {
-                    Get.back();
+                    Get.offNamed('/route');
                   },
                   child: const Icon(
                     Icons.close,
