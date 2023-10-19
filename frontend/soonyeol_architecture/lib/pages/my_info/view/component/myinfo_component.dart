@@ -1,4 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 
 import '../../../../restAPI/models/MyInfo.dart';
 
@@ -10,29 +16,7 @@ class InfoViewComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     //final controller = Get.put(TalkingViewController());
     return InkWell(
-      onTap: () {
-        showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            builder: ((context) {
-              return Center(
-                child: Container(
-                    child: Column(
-                  children: [
-                    SizedBox(height: 20),
-                    Container(
-                      child: Row(children: [
-                        SizedBox(width: 20),
-                        Text('${model.scenarioName}',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold)),
-                      ]),
-                    )
-                  ],
-                )),
-              );
-            }));
-      },
+      onTap: () {Get.to(() => TalkingViewPage());},
       child: Column(children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -76,7 +60,7 @@ class InfoViewComponent extends StatelessWidget {
               ),
               const Spacer(),
               GestureDetector(
-                onTap: () {},
+                onTap: () {showDefaultDialog();},
                 child: Container(
                   margin: EdgeInsets.only(left: 5, top: 2),
                   child: Icon(
@@ -93,3 +77,35 @@ class InfoViewComponent extends StatelessWidget {
     );
   }
 }
+
+void showDefaultDialog() {
+    Get.defaultDialog(
+      title: '',
+      content : const Text('정말 삭제하시겠습니까?\n'),
+      contentPadding: EdgeInsets.only(top:20, bottom: 30, left: 10, right: 10),
+      buttonColor: Color(0xFF33C26C),
+      textConfirm: '삭제',
+      confirmTextColor: Colors.white,
+      onConfirm: (){Get.back();
+      showSnackBar();
+      
+      },
+      textCancel: '취소',
+      onCancel: Get.back,
+    );
+  }
+void showSnackBar() {
+    Get.snackbar(
+      '',
+      '',
+      maxWidth:Common.getWidth,
+      titleText: Container(),
+      messageText: Padding(
+        padding: const EdgeInsets.only(bottom:8.0),
+        child: Text('시나리오가 삭제되었습니다.', style: TextStyle(color: Colors.white),),
+      ),
+      colorText: Colors.white,
+      backgroundColor: Colors.black,
+      snackPosition: SnackPosition.BOTTOM
+    );
+  }
