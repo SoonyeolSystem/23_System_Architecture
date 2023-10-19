@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 
 import '../../../common/common.dart';
 
@@ -198,7 +199,7 @@ class TalkingCustomPage extends StatelessWidget {
                             '시작하기',
                             style: TextStyle(fontSize: 22),
                           ),
-                          onPressed: () {},
+                          onPressed: () {Get.to(() => TalkingViewPage());},
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFF33C26C),
                             shape: RoundedRectangleBorder(

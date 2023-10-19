@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/component/bestTalking_component.dart';
 import 'package:soonyeol_architecture/pages/main/view/component/ongoing_component.dart';
+import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
 import '../../../../common/common.dart';
 
 class MainViewPage extends StatelessWidget {
@@ -60,6 +62,7 @@ class MainViewPage extends StatelessWidget {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(10),
                               onTap: () {
+                                Get.offAllNamed(TalkingCustomPage.url);
                                 // 버튼이 클릭되었을 때 실행되는 코드
                               },
                               child: Container(
