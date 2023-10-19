@@ -28,6 +28,40 @@ class ConversationComponent extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(width: 10),
+          Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Row(
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 9,
+                      ),
+                      Text(
+                        "${model.userName}",
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        '${model.conversation}',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.black54,
+                        ),
+                        textAlign: TextAlign.left,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  )
+                ],
+              ))
         ],
       ),
     );

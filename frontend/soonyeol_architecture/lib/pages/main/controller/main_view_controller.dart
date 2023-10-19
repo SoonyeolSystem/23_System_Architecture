@@ -37,6 +37,7 @@ class MainViewController extends GetxController {
         "character": ["생존자1", "생존자2"],
         "maincharacter": "생존자1",
         "userName": "Miso",
+        "conversation": ["Oh my god! Where are we?... "],
       },
       {
         "scenarioname": "사막에서 살아남기2",
@@ -48,6 +49,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
+        "conversation": ["Hey thanos! You'd better... "],
       },
       {
         "scenarioname": "사막에서 살아남기3",
@@ -59,6 +61,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
+        "conversation": ["Hey thanos! You'd better... "],
       },
     ];
     List<Conversation> fakeConversations = fakeJsonData
