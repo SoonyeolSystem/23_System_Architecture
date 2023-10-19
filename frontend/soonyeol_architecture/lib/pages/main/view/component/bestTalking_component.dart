@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
@@ -20,7 +21,7 @@ class BestTalkingComponent extends StatelessWidget {
               splashColor:
                   Colors.transparent, // 마우스 클릭 시의 효과 색상 (투명하게 설정하여 효과를 없앰)
               highlightColor: Colors.transparent,
-              onTap: () {},
+              onTap: () {Get.to(() => TalkingViewPage());},
               child: Container(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
