@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/widget/panel_component.dart';
+import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
+import 'package:soonyeol_architecture/pages/scenario/view/component/conversation_component.dart';
 import 'package:soonyeol_architecture/pages/scenario/view/component/scenario_choose_page.dart';
 import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
@@ -15,6 +17,7 @@ class ScenarioComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = MainViewController.instance;
     return InkWell(
       onTap: () {
         showModalBottomSheet(
@@ -305,6 +308,35 @@ class ScenarioComponent extends StatelessWidget {
                             height: 1.0,
                             width: double.infinity,
                             color: Color.fromARGB(255, 209, 209, 209)),
+                        Container(
+                          child: Column(
+                            children: [
+                              for (int index = 0;
+                                  index < controller.conversationList.length;
+                                  index++)
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    // if (index == 0)
+                                    //   const SizedBox(
+                                    //     width: 40,
+                                    //   ),
+                                    ConversationComponent(
+                                      model: controller.conversationList[index],
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(bottom: 10, top: 15),
+                                      child: Divider(
+                                        height: 1,
+                                        thickness: 1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                            ],
+                          ),
+                        ),
                       ],
                     )),
               );
