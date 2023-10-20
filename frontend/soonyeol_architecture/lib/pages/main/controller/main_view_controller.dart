@@ -61,7 +61,6 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
