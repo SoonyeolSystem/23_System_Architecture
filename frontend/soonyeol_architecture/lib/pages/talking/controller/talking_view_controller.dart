@@ -18,6 +18,7 @@ class TalkingViewController extends GetxController {
     channel = WebSocketChannel.connect(Uri.parse(Common.websocketUrl));
 
     receiveMessage();
+    await getTalkingList();
   }
 
   @override
@@ -38,28 +39,28 @@ class TalkingViewController extends GetxController {
     });
   }
 
-  // Future<void> getTalkingList() async {
-  //   List<Map<String, dynamic>> fakeJsonData = [
-  //     {"character": "me", "대사": "Oh my god! Where are we?"},
-  //     {"character": "you", "대사": "I have no idea, but we need to find water and shelter fast!"},
-  //     {"character": "me", "대사": "But I can't see anything but sand here!"},
-  //     {"character": "you", "대사": "Let's start walking in that direction. Maybe we'll find something."},
-  //     {"character": "me", "대사": "Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?"},
-  //     {"character": "you", "대사": "I have no idea, but we need to find water and shelter fast!"},
-  //     {"character": "me", "대사": "Oh my god! Where are we?"},
-  //     {"character": "you", "대사": "I have no idea, but we need to find water and shelter fast!"},
-  //     {"character": "me", "대사": "Oh my god! Where are we?"},
-  //     {"character": "you", "대사": "I have no idea"},
-  //     {"character": "me", "대사": "Oh my god! Where are we? gggggggg okay let's take a look."},
-  //     {"character": "you", "대사": "hello!"},
-  //     {"character": "me", "대사": "Oh my god! Where are we?"},
-  //     {"character": "you", "대사": "I have no idea, but we need to find water and shelter fast!"},
-  //   ];
+  Future<void> getTalkingList() async {
+    List<Map<String, dynamic>> fakeJsonData = [
+      {"character": "me", "script": "Oh my god! Where are we?"},
+      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+      {"character": "me", "script": "But I can't see anything but sand here!"},
+      {"character": "you", "script": "Let's start walking in that direction. Maybe we'll find something."},
+      {"character": "me", "script": "Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?"},
+      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+      {"character": "me", "script": "Oh my god! Where are we?"},
+      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+      {"character": "me", "script": "Oh my god! Where are we?"},
+      {"character": "you", "script": "I have no idea"},
+      {"character": "me", "script": "Oh my god! Where are we? gggggggg okay let's take a look."},
+      {"character": "you", "script": "hello!"},
+      {"character": "me", "script": "Oh my god! Where are we?"},
+      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+    ];
 
-  //   List<Talking> fakeTalkings = fakeJsonData.map((jsonData) => Talking.fromJson(jsonData)).toList();
-  //   talkingList.value = fakeTalkings;
-  //   talkingList.refresh();
-  // }
+    List<Talking> fakeTalkings = fakeJsonData.map((jsonData) => Talking.fromJson(jsonData)).toList();
+    talkingList.value = fakeTalkings;
+    talkingList.refresh();
+  }
 
   RxList<Talking> talkingList = <Talking>[].obs;
   RxDouble speakingSpeed = 15.0.obs;
