@@ -10,7 +10,7 @@ class ConversationComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MainViewController());
+    final controller = MainViewController.instance;
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
