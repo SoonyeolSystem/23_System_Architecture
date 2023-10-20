@@ -37,8 +37,8 @@ class ScenarioComponent extends StatelessWidget {
                               '${model.scenarioname}',
                               style: TextStyle(
                                   color: Colors.black,
-                                  //fontWeight: FontWeight.bold,
-                                  fontSize: 24),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23),
                             ),
                             backgroundColor: Colors.transparent,
                             leading: InkWell(
@@ -69,14 +69,14 @@ class ScenarioComponent extends StatelessWidget {
                                           Text(
                                             "#",
                                             style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 18,
                                               color: Color(0xFF33C26C),
                                             ),
                                           ),
                                           Text(
                                             "${model.genre![i]}",
                                             style: const TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 18,
                                               color: Color(0xFF808080),
                                             ),
                                           ),
@@ -101,7 +101,7 @@ class ScenarioComponent extends StatelessWidget {
                                               model.isbookmark == true
                                                   ? Icons.star
                                                   : Icons.star_border,
-                                              size: 20,
+                                              size: 18,
                                               color: model.isbookmark == true
                                                   ? Colors.yellow
                                                   : Color(0xFF434343),
@@ -110,8 +110,9 @@ class ScenarioComponent extends StatelessWidget {
                                             Text(
                                               "${model.bookmarkcount}",
                                               style: const TextStyle(
-                                                  fontSize: 20,
-                                                  color: Color(0xFF434343)),
+                                                  fontSize: 18,
+                                                  color: Color(0xFF434343),
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                           ],
                                         ),
@@ -119,8 +120,9 @@ class ScenarioComponent extends StatelessWidget {
                                         Text(
                                           "조회수 ${model.views}회",
                                           style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Color(0xFF434343)),
+                                              fontSize: 15,
+                                              color: Color(0xFF434343),
+                                              fontWeight: FontWeight.w500),
                                         ),
                                       ],
                                     ),
@@ -149,7 +151,8 @@ class ScenarioComponent extends StatelessWidget {
                                       '상황',
                                       style: TextStyle(
                                           fontSize: 18,
-                                          color: Color(0xFF888888)),
+                                          color: Color(0xFF888888),
+                                          fontWeight: FontWeight.w500),
                                     ),
                                     SizedBox(height: 10),
                                     Row(
@@ -160,9 +163,9 @@ class ScenarioComponent extends StatelessWidget {
                                           child: Text(
                                             "${model.stiuation}",
                                             style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w900),
+                                                fontSize: 16,
+                                                color: Color(0xFF000000),
+                                                fontWeight: FontWeight.w500),
                                           ),
                                         ),
                                       ],
@@ -172,7 +175,8 @@ class ScenarioComponent extends StatelessWidget {
                                       '장르',
                                       style: TextStyle(
                                           fontSize: 18,
-                                          color: Color(0xFF888888)),
+                                          color: Color(0xFF888888),
+                                          fontWeight: FontWeight.w500),
                                     ),
                                     SizedBox(height: 10),
                                     Row(
@@ -186,12 +190,12 @@ class ScenarioComponent extends StatelessWidget {
                                                 padding: const EdgeInsets.only(
                                                     left: 8.0),
                                                 child: Text(
-                                                  "${model.genre![i]}, ",
+                                                  "${model.genre![i]}${i < model.genre!.length - 1 ? ',' : ''}",
                                                   style: TextStyle(
-                                                      fontSize: 15,
+                                                      fontSize: 16,
                                                       color: Colors.black,
                                                       fontWeight:
-                                                          FontWeight.w900),
+                                                          FontWeight.w500),
                                                 ),
                                               ),
                                             ],
@@ -203,7 +207,8 @@ class ScenarioComponent extends StatelessWidget {
                                       '등장인물',
                                       style: TextStyle(
                                           fontSize: 18,
-                                          color: Color(0xFF888888)),
+                                          color: Color(0xFF888888),
+                                          fontWeight: FontWeight.w500),
                                     ),
                                     SizedBox(height: 10),
                                     Row(
@@ -217,12 +222,12 @@ class ScenarioComponent extends StatelessWidget {
                                                 padding: const EdgeInsets.only(
                                                     left: 8.0),
                                                 child: Text(
-                                                  "${model.character![i]}, ",
+                                                  "${model.character![i]}${i < model.character!.length - 1 ? ',' : ''}",
                                                   style: TextStyle(
-                                                      fontSize: 15,
+                                                      fontSize: 16,
                                                       color: Colors.black,
                                                       fontWeight:
-                                                          FontWeight.w900),
+                                                          FontWeight.w500),
                                                 ),
                                               ),
                                             ],
@@ -240,7 +245,8 @@ class ScenarioComponent extends StatelessWidget {
                                               '주인공',
                                               style: TextStyle(
                                                   fontSize: 18,
-                                                  color: Color(0xFF888888)),
+                                                  color: Color(0xFF888888),
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                             SizedBox(height: 10),
                                             Row(
@@ -252,10 +258,10 @@ class ScenarioComponent extends StatelessWidget {
                                                   child: Text(
                                                     "${model.maincharacter}",
                                                     style: TextStyle(
-                                                        fontSize: 15,
+                                                        fontSize: 16,
                                                         color: Colors.black,
                                                         fontWeight:
-                                                            FontWeight.w900),
+                                                            FontWeight.w500),
                                                   ),
                                                 ),
                                               ],
@@ -270,14 +276,14 @@ class ScenarioComponent extends StatelessWidget {
                                                     Color(0xFF33C26C)),
                                             padding: MaterialStateProperty.all(
                                               EdgeInsets.symmetric(
-                                                  horizontal: 40, vertical: 15),
+                                                  horizontal: 45, vertical: 13),
                                             ),
                                           ),
                                           child: Text(
                                             '시작하기',
                                             style: TextStyle(
                                               fontSize:
-                                                  20, // Text size remains the same
+                                                  22, // Text size remains the same
                                               color: Colors.white,
                                             ),
                                           ),
@@ -304,7 +310,7 @@ class ScenarioComponent extends StatelessWidget {
                               child: Text(
                                 '다른 유저의 Conversation',
                                 style: TextStyle(
-                                    fontSize: 25,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black),
                               ),
@@ -359,7 +365,8 @@ class ScenarioComponent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("${model.scenarioname}",
-                          style: const TextStyle(fontSize: 20)),
+                          style: const TextStyle(
+                              fontSize: 19, fontWeight: FontWeight.w500)),
                       const SizedBox(height: 4),
                       Row(
                         children: [
@@ -369,14 +376,14 @@ class ScenarioComponent extends StatelessWidget {
                                 Text(
                                   "#",
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Color(0xFF33C26C),
                                   ),
                                 ),
                                 Text(
                                   "${model.genre![i]}",
                                   style: const TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Color(0xFF808080),
                                   ),
                                 ),
@@ -401,13 +408,17 @@ class ScenarioComponent extends StatelessWidget {
                             SizedBox(width: 3),
                             Text("${model.bookmarkcount}",
                                 style: const TextStyle(
-                                    fontSize: 20, color: Color(0xFF434343))),
+                                    fontSize: 18,
+                                    color: Color(0xFF434343),
+                                    fontWeight: FontWeight.w500)),
                           ],
                         ),
                         const SizedBox(height: 3),
                         Text("조회수 ${model.views}회",
                             style: const TextStyle(
-                                fontSize: 15, color: Color(0xFF434343))),
+                                fontSize: 15,
+                                color: Color(0xFF434343),
+                                fontWeight: FontWeight.w500)),
                       ]),
                 ),
               if (model.isbookmark == false)
@@ -420,17 +431,21 @@ class ScenarioComponent extends StatelessWidget {
                           children: [
                             SizedBox(height: 3),
                             Icon(Icons.star_border,
-                                size: 20, color: Color(0xFF434343)),
+                                size: 18, color: Color(0xFF434343)),
                             SizedBox(width: 3),
                             Text("${model.bookmarkcount}",
                                 style: const TextStyle(
-                                    fontSize: 20, color: Color(0xFF434343))),
+                                    fontSize: 18,
+                                    color: Color(0xFF434343),
+                                    fontWeight: FontWeight.w500)),
                           ],
                         ),
                         const SizedBox(height: 3),
                         Text("조회수 ${model.views}회",
                             style: const TextStyle(
-                                fontSize: 15, color: Color(0xFF434343))),
+                                fontSize: 15,
+                                color: Color(0xFF434343),
+                                fontWeight: FontWeight.w500)),
                       ]),
                 ),
             ],

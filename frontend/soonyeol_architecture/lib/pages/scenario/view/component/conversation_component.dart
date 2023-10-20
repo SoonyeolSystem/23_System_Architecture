@@ -37,18 +37,18 @@ class ConversationComponent extends StatelessWidget {
                   Text(
                     "${model.userName}",
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(height: 10),
                   Text(
                     '${model.conversation![0]}',
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black54,
-                    ),
+                        fontSize: 16,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w500),
                     textAlign: TextAlign.left,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -65,21 +65,21 @@ class ConversationComponent extends StatelessWidget {
                     model.isLike == true
                         ? Icons.favorite
                         : Icons.favorite_border,
-                    size: 29,
+                    size: 25,
                     color: Color.fromARGB(255, 233, 57, 51),
                   ),
                   SizedBox(width: 5),
                   Text(
                     '${model.likeCount}',
                     style:
-                        const TextStyle(fontSize: 17, color: Color(0xFF434343)),
+                        const TextStyle(fontSize: 15, color: Color(0xFF434343)),
                   ),
                 ],
               ),
               SizedBox(height: 10),
               Text(
                 "조회수 ${model.views}회",
-                style: const TextStyle(fontSize: 18, color: Color(0xFF434343)),
+                style: const TextStyle(fontSize: 15, color: Color(0xFF434343)),
               ),
             ],
           ),
