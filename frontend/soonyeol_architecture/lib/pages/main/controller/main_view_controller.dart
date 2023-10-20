@@ -37,7 +37,7 @@ class MainViewController extends GetxController {
         "character": ["생존자1", "생존자2"],
         "maincharacter": "생존자1",
         "userName": "Miso",
-        "conversation": ["Oh my god! Where are we?... "],
+        "conversation": ["Oh my god! Where are we?... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기2",
@@ -49,7 +49,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기3",
@@ -62,6 +62,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기4",
@@ -73,7 +74,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기5",
@@ -85,7 +86,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기6",
@@ -97,7 +98,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기7",
@@ -109,7 +110,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기8",
@@ -121,7 +122,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기9",
@@ -133,7 +134,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
       {
         "scenarioname": "사막에서 살아남기10",
@@ -145,7 +146,7 @@ class MainViewController extends GetxController {
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3",
         "userName": "SOjeong",
-        "conversation": ["Hey thanos! You'd better... "],
+        "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
       },
     ];
     List<Conversation> fakeConversations = fakeJsonData
