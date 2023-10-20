@@ -81,8 +81,8 @@ class MyInfoPage extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 20, right: 0, bottom: 15),
-                    height: 230,
-                    width: 190,
+                    height: 210,
+                    width: 180,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -127,8 +127,8 @@ class MyInfoPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 0, right: 20, bottom: 15),
-                    height: 230,
-                    width: 190,
+                    height: 210,
+                    width: 180,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -179,8 +179,8 @@ class MyInfoPage extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 20, bottom: 40),
-                    height: 230,
-                    width: 200,
+                    height: 210,
+                    width: 180,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -225,8 +225,8 @@ class MyInfoPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 0, right: 20, bottom: 40),
-                    height: 230,
-                    width: 200,
+                    height: 210,
+                    width: 180,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),

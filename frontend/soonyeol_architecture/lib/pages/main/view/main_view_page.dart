@@ -266,7 +266,7 @@ class MainViewPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-          ])),
+          ])),  
     );
   }
 }
