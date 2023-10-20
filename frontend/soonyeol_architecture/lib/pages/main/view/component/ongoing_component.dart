@@ -11,7 +11,7 @@ class OngoingComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MainViewController());
+    final controller = MainViewController.instance;
     return Container(
       padding: EdgeInsets.only(right: 15),
       width: 175,
@@ -59,7 +59,7 @@ class OngoingComponent extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Color.fromARGB(255, 43, 43, 43),
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w600,
                                 ),
                                 textAlign: TextAlign.left,
                               ),

@@ -39,13 +39,7 @@ class MainViewPage extends StatelessWidget {
                                 fontSize: 26,
                                 color: Color(0xFF33C26C),
                                 fontWeight: FontWeight.bold)),
-                        IconButton(
-                          onPressed: () => {},
-                          //Get.toNamed(ScenarioMainPage.url),
-                          padding: EdgeInsets.only(left: 310.0),
-                          icon: const Icon(Icons.search),
-                          iconSize: 28,
-                        ),
+                        
                       ],
                     ),
                     //공간 띄우기
@@ -72,8 +66,8 @@ class MainViewPage extends StatelessWidget {
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
-                                      Color.fromARGB(255, 249, 253, 207),
-                                      Color.fromARGB(255, 28, 136, 71)
+                                      Color.fromARGB(255, 183, 230, 183),
+                                      Color.fromARGB(255, 26, 141, 72)
                                     ], // 그라데이션 색상 설정
                                   ),
                                 ),
@@ -253,7 +247,16 @@ class MainViewPage extends StatelessWidget {
                   height: 892.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(70, 208, 212, 208),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromARGB(255, 247, 243, 243),
+                        Color.fromARGB(255, 226, 227, 232)
+                      ],
+                     
+                    //color: Color.fromARGB(70, 208, 212, 208),
+                    ),
                     border: Border.all(
                       color: Color.fromARGB(255, 238, 238, 238),
                       width: 1.4,

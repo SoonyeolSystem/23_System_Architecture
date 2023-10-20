@@ -20,7 +20,7 @@ class BestTalkingComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MainViewController());
+    final controller = MainViewController.instance;
 
     int colorIndex = Random().nextInt(3);
     Color selectedColor = avatarColors[colorIndex];
@@ -87,13 +87,13 @@ class BestTalkingComponent extends StatelessWidget {
               ),
               Icon(
                 model.isLike == true ? Icons.favorite : Icons.favorite_border,
-                size: 29,
-                color: Color.fromARGB(255, 233, 57, 51),
+                size: 24,
+                color: Color.fromARGB(255, 229, 91, 86),
               ),
               SizedBox(width: 5),
               Text(
                 '${model.likeCount}',
-                style: const TextStyle(fontSize: 17, color: Color(0xFF434343)),
+                style: const TextStyle(fontSize: 14, color: Color(0xFF434343)),
               ),
             ],
           ),
@@ -122,8 +122,10 @@ class BestTalkingComponent extends StatelessWidget {
         SizedBox(width: rank_width),
       ],
     );
-
-    index++; // 다음 위젯을 위해 인덱스 증가
+  if(index<10)
+    index++;
+  else index=1; 
+  // 다음 위젯을 위해 인덱스 증가
     return rankWidget;
   }
 }
