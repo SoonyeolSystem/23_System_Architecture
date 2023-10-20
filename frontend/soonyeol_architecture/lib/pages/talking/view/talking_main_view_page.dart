@@ -17,11 +17,7 @@ class TalkingViewPage extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
-                  colors: [
-                Color.fromARGB(255, 1, 56, 8),
-                Color(0xFF000118),
-                Color.fromARGB(255, 33, 7, 1)
-              ])),
+                  colors: [Color.fromARGB(255, 1, 56, 8), Color(0xFF000118), Color.fromARGB(255, 33, 7, 1)])),
           child: Column(
             children: [
               AppBar(
@@ -29,7 +25,7 @@ class TalkingViewPage extends StatelessWidget {
                 centerTitle: true,
                 title: Text(
                   '${controller.scenarioname}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       //fontWeight: FontWeight.bold,
                       fontSize: 24),
@@ -41,7 +37,7 @@ class TalkingViewPage extends StatelessWidget {
                   },
                   child: const Icon(
                     Icons.close,
-                    size:30,
+                    size: 30,
                     color: Colors.grey,
                   ),
                 ),
@@ -60,14 +56,14 @@ class TalkingViewPage extends StatelessWidget {
                           child: Column(
                             children: [
                               if (index == 0) const SizedBox(height: 20),
-                              TalkingViewComponent(
-                                  model: controller.talkingList.value[index]),
+                              TalkingViewComponent(model: controller.talkingList.value[index]),
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 10, top: 15),
                               ),
-                              if (index == controller.talkingList.length -1)
-                              SizedBox(height: 20,)
-
+                              if (index == controller.talkingList.length - 1)
+                                const SizedBox(
+                                  height: 20,
+                                )
                             ],
                           ),
                         );
@@ -77,7 +73,7 @@ class TalkingViewPage extends StatelessWidget {
                   )
                 ],
               )),
-              
+
               //floatingActionButton: FloatingActionButton(onPressed: () {}),
               //const SizedBox(
               //  height: 80,
@@ -104,26 +100,30 @@ class TalkingViewPage extends StatelessWidget {
               //       ),
               //     ),
               //     onTap: () {print("mic");},
-                  
+
               //   ),
               // ),
             ],
           )),
-          floatingActionButton: FloatingActionButton(onPressed: () {},
-          backgroundColor: Colors.transparent,
-          child:SizedBox(
-                      height: 42,
-                      width: 35,
-                      child: FittedBox(
-                        fit: BoxFit.fill,
-                        child: Icon(
-                          Icons.mic,
-                          size: 40,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          controller.sendMesage();
+        },
+        backgroundColor: Colors.transparent,
+        child: const SizedBox(
+          height: 42,
+          width: 35,
+          child: FittedBox(
+            fit: BoxFit.fill,
+            child: Icon(
+              Icons.mic,
+              size: 40,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

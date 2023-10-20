@@ -48,6 +48,7 @@ dependencies:
   speech_to_text: ^6.1.1
   avatar_glow: ^2.0.2
   text_to_speech: ^0.2.3
+  web_socket_channel: ^2.4.0
   
  
 
