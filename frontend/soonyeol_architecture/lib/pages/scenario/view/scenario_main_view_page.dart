@@ -39,7 +39,7 @@ class ScenarioMainPage extends StatelessWidget {
                                       const Text(
                                         '시나리오',
                                         style: TextStyle(
-                                          fontSize: 30,
+                                          fontSize: 28,
                                           color: Colors.black,
                                         ),
                                       ),
