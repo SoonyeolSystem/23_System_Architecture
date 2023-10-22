@@ -16,7 +16,9 @@ class InfoViewComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     //final controller = Get.put(TalkingViewController());
     return InkWell(
-      onTap: () {Get.to(() => TalkingViewPage());},
+      onTap: () {
+        Get.to(() => TalkingViewPage());
+      },
       child: Column(children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -28,8 +30,8 @@ class InfoViewComponent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("${model.scenarioName}",
-                          style: const TextStyle(fontSize: 18)),
-                      const SizedBox(height: 4),
+                          style: const TextStyle(fontSize: 16)),
+                      const SizedBox(height: 6),
                       Row(
                         children: [
                           for (int i = 0; i < model.genre!.length; i++)
@@ -38,7 +40,7 @@ class InfoViewComponent extends StatelessWidget {
                                 Text(
                                   "#",
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     color: model.processivity == 0
                                         ? Color(0xFF33C26C)
                                         : Color.fromARGB(255, 255, 0, 0),
@@ -60,12 +62,14 @@ class InfoViewComponent extends StatelessWidget {
               ),
               const Spacer(),
               GestureDetector(
-                onTap: () {showDefaultDialog();},
+                onTap: () {
+                  showDefaultDialog();
+                },
                 child: Container(
                   margin: EdgeInsets.only(left: 5, top: 2),
                   child: Icon(
                     Icons.delete_outline,
-                    size: 30,
+                    size: 23,
                     color: Color(0xFF888888),
                   ),
                 ),
@@ -79,33 +83,34 @@ class InfoViewComponent extends StatelessWidget {
 }
 
 void showDefaultDialog() {
-    Get.defaultDialog(
-      title: '',
-      content : const Text('정말 삭제하시겠습니까?\n'),
-      contentPadding: EdgeInsets.only(top:20, bottom: 30, left: 10, right: 10),
-      buttonColor: Color(0xFF33C26C),
-      textConfirm: '삭제',
-      confirmTextColor: Colors.white,
-      onConfirm: (){Get.back();
+  Get.defaultDialog(
+    title: '',
+    content: const Text('정말 삭제하시겠습니까?\n'),
+    contentPadding: EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
+    buttonColor: Color(0xFF33C26C),
+    textConfirm: '삭제',
+    confirmTextColor: Colors.white,
+    onConfirm: () {
+      Get.back();
       showSnackBar();
-      
-      },
-      textCancel: '취소',
-      onCancel: Get.back,
-    );
-  }
+    },
+    textCancel: '취소',
+    onCancel: Get.back,
+  );
+}
+
 void showSnackBar() {
-    Get.snackbar(
-      '',
-      '',
-      maxWidth:Common.getWidth,
+  Get.snackbar('', '',
+      maxWidth: Common.getWidth,
       titleText: Container(),
       messageText: Padding(
-        padding: const EdgeInsets.only(bottom:8.0),
-        child: Text('시나리오가 삭제되었습니다.', style: TextStyle(color: Colors.white),),
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Text(
+          '시나리오가 삭제되었습니다.',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       colorText: Colors.white,
       backgroundColor: Colors.black,
-      snackPosition: SnackPosition.BOTTOM
-    );
-  }
+      snackPosition: SnackPosition.BOTTOM);
+}
