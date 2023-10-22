@@ -21,7 +21,7 @@ class OngoingComponent extends StatelessWidget {
           child: InkWell(
               borderRadius: BorderRadius.circular(10),
               onTap: () {
-                Get.to(() => TalkingViewPage());
+                Get.toNamed(TalkingViewPage.url);
               },
               child: Container(
                   decoration: BoxDecoration(

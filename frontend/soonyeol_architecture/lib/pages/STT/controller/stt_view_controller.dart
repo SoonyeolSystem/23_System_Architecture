@@ -9,8 +9,6 @@ class STTViewController extends GetxController {
   var speechText = 'press the Mic button  and start speaking'.obs;
   late SpeechToText speechToText;
 
-
-
   @override
   void onInit() async {
     super.onInit();

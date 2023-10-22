@@ -15,7 +15,7 @@ class ConversationComponent extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Get.to(() => TalkingViewPage());
+        Get.toNamed(TalkingViewPage.url);
       },
       child: Column(
         children: [

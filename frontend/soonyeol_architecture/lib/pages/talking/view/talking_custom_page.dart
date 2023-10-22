@@ -199,7 +199,7 @@ class TalkingCustomPage extends StatelessWidget {
                             '시작하기',
                             style: TextStyle(fontSize: 22),
                           ),
-                          onPressed: () {Get.to(() => TalkingViewPage());},
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFF33C26C),
                             shape: RoundedRectangleBorder(

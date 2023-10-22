@@ -16,7 +16,7 @@ class InfoViewComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     //final controller = Get.put(TalkingViewController());
     return InkWell(
-      onTap: () {Get.to(() => TalkingViewPage());},
+      onTap: () {Get.toNamed(TalkingViewPage.url);},
       child: Column(children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),

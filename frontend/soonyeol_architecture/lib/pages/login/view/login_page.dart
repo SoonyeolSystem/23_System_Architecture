@@ -137,7 +137,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.only(right: 60.0, top: 30.0),
                     child: GestureDetector(
   onTap: () {
-    Get.offAllNamed(SignUpPage.url);
+    Get.toNamed(SignUpPage.url);
   },
   child: Text(
     '회원가입',

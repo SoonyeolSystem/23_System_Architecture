@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 
@@ -11,6 +12,14 @@ class TalkingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
+    final List<Color> colors = [
+    const Color.fromARGB(255, 240, 135, 135)!,
+    const Color.fromARGB(255, 136, 241, 143)!,
+    const Color.fromARGB(255, 136, 180, 245)!,
+    const Color.fromARGB(255, 121, 121, 121)!
+  ];
+
+  final List<int> duration = [900, 700, 600, 800, 500];
     return Scaffold(
       body: Container(
           decoration: const BoxDecoration(
@@ -42,6 +51,9 @@ class TalkingViewPage extends StatelessWidget {
                   ),
                 ),
               ),
+              Obx(() => Text(
+                  controller.speechText.value,
+                  style:  TextStyle(fontSize:20, color: Colors.white))),
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
@@ -103,11 +115,22 @@ class TalkingViewPage extends StatelessWidget {
 
               //   ),
               // ),
-            ],
+              Obx(()=>controller.isListening.value?
+               Padding(
+                 padding: const EdgeInsets.only(bottom:28.0),
+                 child: MusicVisualizer(
+                  barCount: 30,
+                  colors: colors,
+                  duration: duration,
+                             ),
+               ):Container()
+          )],
           )),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.sendMesage();
+          //controller.sendMesage();
+          controller.listen();
         },
         backgroundColor: Colors.transparent,
         child: const SizedBox(

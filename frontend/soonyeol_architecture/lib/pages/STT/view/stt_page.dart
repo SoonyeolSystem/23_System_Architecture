@@ -1,6 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/pages/STT/controller/stt_view_controller.dart';
 
 class STTPage extends StatelessWidget {
@@ -8,9 +9,11 @@ class STTPage extends StatelessWidget {
 
   static const String url = '/stt';
 
+  
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(STTViewController());
+    
     return Scaffold(
         body: SingleChildScrollView(
           child: Container(
@@ -19,12 +22,13 @@ class STTPage extends StatelessWidget {
               children: [
                 Obx(() => Text(
                   controller.speechText.value,
-                  style:  TextStyle(fontSize:20)))
+                  style:  TextStyle(fontSize:20))),
                 
               ],
             ),
           ),
         ),
+        
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Obx(
           ()=> AvatarGlow(

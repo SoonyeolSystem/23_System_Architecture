@@ -49,6 +49,7 @@ dependencies:
   avatar_glow: ^2.0.2
   text_to_speech: ^0.2.3
   web_socket_channel: ^2.4.0
+  music_visualizer: ^1.0.4
   
  
 

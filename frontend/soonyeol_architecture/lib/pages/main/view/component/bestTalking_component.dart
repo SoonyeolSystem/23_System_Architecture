@@ -31,7 +31,7 @@ class BestTalkingComponent extends StatelessWidget {
       child: Material(
         child: InkWell(
           onTap: () {
-            Get.to(() => TalkingViewPage());
+            Get.toNamed(TalkingViewPage.url);
           },
           child: Row(
             children: [
