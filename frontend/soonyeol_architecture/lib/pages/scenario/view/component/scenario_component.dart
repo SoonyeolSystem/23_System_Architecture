@@ -55,81 +55,86 @@ class ScenarioComponent extends StatelessWidget {
                           SizedBox(
                             height: 30,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    for (int i = 0;
-                                        i < model.genre!.length;
-                                        i++)
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "#",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              color: Color(0xFF33C26C),
-                                            ),
-                                          ),
-                                          Text(
-                                            "${model.genre![i]}",
-                                            style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Color(0xFF808080),
-                                            ),
-                                          ),
-                                          SizedBox(width: 5),
-                                        ],
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerRight,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 15.0, right: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      for (int i = 0;
+                                          i < model.genre!.length;
+                                          i++)
                                         Row(
                                           children: [
-                                            SizedBox(height: 3),
-                                            Icon(
-                                              model.isbookmark == true
-                                                  ? Icons.star
-                                                  : Icons.star_border,
-                                              size: 18,
-                                              color: model.isbookmark == true
-                                                  ? Colors.yellow
-                                                  : Color(0xFF434343),
-                                            ),
-                                            SizedBox(width: 3),
                                             Text(
-                                              "${model.bookmarkcount}",
-                                              style: const TextStyle(
-                                                  fontSize: 18,
-                                                  color: Color(0xFF434343),
-                                                  fontWeight: FontWeight.w500),
+                                              "#",
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                color: Color(0xFF33C26C),
+                                              ),
                                             ),
+                                            Text(
+                                              "${model.genre![i]}",
+                                              style: const TextStyle(
+                                                fontSize: 18,
+                                                color: Color(0xFF808080),
+                                              ),
+                                            ),
+                                            SizedBox(width: 5),
                                           ],
                                         ),
-                                        const SizedBox(height: 3),
-                                        Text(
-                                          "조회수 ${model.views}회",
-                                          style: const TextStyle(
-                                              fontSize: 15,
-                                              color: Color(0xFF434343),
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ],
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.centerRight,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              SizedBox(height: 3),
+                                              Icon(
+                                                model.isbookmark == true
+                                                    ? Icons.star
+                                                    : Icons.star_border,
+                                                size: 18,
+                                                color: model.isbookmark == true
+                                                    ? Colors.yellow
+                                                    : Color(0xFF434343),
+                                              ),
+                                              SizedBox(width: 3),
+                                              Text(
+                                                "${model.bookmarkcount}",
+                                                style: const TextStyle(
+                                                    fontSize: 18,
+                                                    color: Color(0xFF434343),
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 3),
+                                          Text(
+                                            "조회수 ${model.views}회",
+                                            style: const TextStyle(
+                                                fontSize: 15,
+                                                color: Color(0xFF434343),
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(height: 10),
                           Container(

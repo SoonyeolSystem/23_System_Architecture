@@ -71,7 +71,7 @@ class ConversationComponent extends StatelessWidget {
                               ? Icons.favorite
                               : Icons.favorite_border,
                           size: 25,
-                          color: Color.fromARGB(255, 233, 57, 51),
+                          color: Color.fromARGB(255, 229, 91, 86),
                         ),
                         SizedBox(width: 5),
                         Text(

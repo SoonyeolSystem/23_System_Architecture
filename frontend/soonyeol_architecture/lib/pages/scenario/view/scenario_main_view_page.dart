@@ -27,7 +27,7 @@ class ScenarioMainPage extends StatelessWidget {
                     slivers: [
                       SliverToBoxAdapter(
                         child: Padding(
-                          padding: EdgeInsets.only(left: 20, top: 40),
+                          padding: EdgeInsets.only(left: 20, top: 28),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -39,8 +39,9 @@ class ScenarioMainPage extends StatelessWidget {
                                       const Text(
                                         '시나리오',
                                         style: TextStyle(
-                                          fontSize: 28,
-                                          color: Colors.black,
+                                          fontSize: 26,
+                                          color:
+                                              Color.fromARGB(255, 39, 15, 15),
                                         ),
                                       ),
                                     ],
