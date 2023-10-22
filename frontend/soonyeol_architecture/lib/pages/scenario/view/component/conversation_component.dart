@@ -20,7 +20,7 @@ class ConversationComponent extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -34,7 +34,7 @@ class ConversationComponent extends StatelessWidget {
                         color: Color.fromARGB(255, 148, 148, 148),
                       ),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -70,22 +70,22 @@ class ConversationComponent extends StatelessWidget {
                           model.isLike == true
                               ? Icons.favorite
                               : Icons.favorite_border,
-                          size: 25,
-                          color: Color.fromARGB(255, 233, 57, 51),
+                          size: 22,
+                          color: Color.fromARGB(255, 229, 91, 86),
                         ),
                         SizedBox(width: 5),
                         Text(
                           '${model.likeCount}',
                           style: const TextStyle(
-                              fontSize: 15, color: Color(0xFF434343)),
+                              fontSize: 14, color: Color(0xFF434343)),
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 5),
                     Text(
                       "조회수 ${model.views}회",
                       style: const TextStyle(
-                          fontSize: 15, color: Color(0xFF434343)),
+                          fontSize: 14, color: Color(0xFF434343)),
                     ),
                   ],
                 ),

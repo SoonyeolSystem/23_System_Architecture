@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import '../../../../restAPI/models/Talking.dart';
 
 class TalkingViewComponent extends StatelessWidget {
@@ -7,6 +8,7 @@ class TalkingViewComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = TalkingViewController.instance;
     double screenWidth = MediaQuery.of(context).size.width;
     //final controller = Get.put(TalkingViewController());
     return Container(
@@ -22,11 +24,12 @@ class TalkingViewComponent extends StatelessWidget {
           : Alignment.centerLeft,
       child: Column(
         crossAxisAlignment: model.character == "me"
-          ? CrossAxisAlignment.end
-          :CrossAxisAlignment.start,
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
         children: [
           Text(
-            textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
+            textAlign:
+                model.character == "me" ? TextAlign.right : TextAlign.left,
             model.character ?? '???',
             style: const TextStyle(
                 color: Colors.white,
@@ -35,7 +38,8 @@ class TalkingViewComponent extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            textAlign: model.character == "me" ? TextAlign.right : TextAlign.left,
+            textAlign:
+                model.character == "me" ? TextAlign.right : TextAlign.left,
             model.script ?? '???',
             style: const TextStyle(
                 color: Colors.white,
@@ -43,10 +47,15 @@ class TalkingViewComponent extends StatelessWidget {
                 fontSize: 22),
           ),
           const SizedBox(height: 10),
-          if (model.character == "you")  InkWell(child: const Icon(Icons.volume_up_rounded, size:20, color: Colors.grey),onTap:(){print("speak");})
+          if (model.character == "you")
+            InkWell(
+                child: const Icon(Icons.volume_up_rounded,
+                    size: 20, color: Colors.grey),
+                onTap: () {
+                  controller.textTospeech(model.script!);
+                })
         ],
       ),
     );
-
   }
 }

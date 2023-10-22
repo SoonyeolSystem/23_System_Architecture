@@ -40,7 +40,7 @@ class MyInfoPage extends StatelessWidget {
                         child: Text(
                           '${controller.userName.value} 님의 정보',
                           style: TextStyle(
-                              fontSize: 27,
+                              fontSize: 26,
                               fontWeight: FontWeight.w500,
                               color: Colors.black),
                         ),
@@ -81,9 +81,9 @@ class MyInfoPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 20, right: 0, bottom: 15),
-                    height: 210,
-                    width: 180,
+                    margin: EdgeInsets.only(left: 25, right: 0, bottom: 15),
+                    height: 190,
+                    width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -130,9 +130,9 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 0, right: 20, bottom: 15),
-                    height: 210,
-                    width: 180,
+                    margin: EdgeInsets.only(left: 0, right: 25, bottom: 15),
+                    height: 190,
+                    width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -182,9 +182,9 @@ class MyInfoPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 20, bottom: 40),
-                    height: 210,
-                    width: 180,
+                    margin: EdgeInsets.only(left: 25, bottom: 40),
+                    height: 190,
+                    width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -228,9 +228,9 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 0, right: 20, bottom: 40),
-                    height: 210,
-                    width: 180,
+                    margin: EdgeInsets.only(left: 0, right: 25, bottom: 40),
+                    height: 190,
+                    width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -292,7 +292,7 @@ class MyInfoPage extends StatelessWidget {
                   child: Text(
                     'My 시나리오',
                     style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: FontWeight.w600,
                         color: Colors.black),
                   ),
@@ -326,7 +326,7 @@ class MyInfoPage extends StatelessWidget {
                       child: Text(
                         '진행중',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             //fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
@@ -358,7 +358,7 @@ class MyInfoPage extends StatelessWidget {
                   ]),
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 22),
               Row(
                 children: [
                   Container(
@@ -379,7 +379,7 @@ class MyInfoPage extends StatelessWidget {
                       child: Text(
                         '완료',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             //fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),

@@ -30,7 +30,7 @@ class OngoingComponent extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color.fromARGB(255, 205, 206, 209),
+                        Color.fromARGB(131, 205, 206, 209),
                         Color.fromARGB(255, 215, 224, 230)
                       ],
                       //color: Color.fromARGB(255, 233, 236, 239)

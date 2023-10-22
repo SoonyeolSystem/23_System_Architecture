@@ -256,16 +256,16 @@ class MainViewPage extends StatelessWidget {
                   height: 892.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromARGB(255, 247, 243, 243),
-                        Color.fromARGB(255, 226, 227, 232)
-                      ],
+                    // gradient: LinearGradient(
+                    //   begin: Alignment.topCenter,
+                    //   end: Alignment.bottomCenter,
+                    //   colors: [
+                    //     Color.fromARGB(255, 247, 243, 243),
+                    //     Color.fromARGB(255, 226, 227, 232)
+                    //   ],
 
-                      //color: Color.fromARGB(70, 208, 212, 208),
-                    ),
+                    // ),
+                    color: Color.fromARGB(70, 221, 225, 227),
                     border: Border.all(
                       color: const Color.fromARGB(255, 238, 238, 238),
                       width: 1.4,

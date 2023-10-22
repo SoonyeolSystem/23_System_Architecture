@@ -27,7 +27,7 @@ class ScenarioMainPage extends StatelessWidget {
                     slivers: [
                       SliverToBoxAdapter(
                         child: Padding(
-                          padding: EdgeInsets.only(left: 20, top: 40),
+                          padding: EdgeInsets.only(left: 20, top: 28),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -39,8 +39,9 @@ class ScenarioMainPage extends StatelessWidget {
                                       const Text(
                                         '시나리오',
                                         style: TextStyle(
-                                          fontSize: 28,
-                                          color: Colors.black,
+                                          fontSize: 23,
+                                          color:
+                                              Color.fromARGB(255, 39, 15, 15),
                                         ),
                                       ),
                                     ],
@@ -55,20 +56,25 @@ class ScenarioMainPage extends StatelessWidget {
                       SliverList(
                         delegate: SliverChildBuilderDelegate(
                           (context, index) {
-                            return Column(
-                              children: [
-                                if (index == 0) const SizedBox(height: 20),
-                                ScenarioComponent(
-                                  model: controller.scenarioList.value[index],
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(bottom: 10, top: 15),
-                                  child: Divider(
-                                    height: 1,
-                                    thickness: 1,
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20.0, right: 20),
+                              child: Column(
+                                children: [
+                                  if (index == 0) const SizedBox(height: 20),
+                                  ScenarioComponent(
+                                    model: controller.scenarioList.value[index],
                                   ),
-                                ),
-                              ],
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(bottom: 10, top: 15),
+                                    child: Divider(
+                                      height: 1,
+                                      thickness: 1,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             );
                           },
                           childCount: controller.scenarioList.length,
