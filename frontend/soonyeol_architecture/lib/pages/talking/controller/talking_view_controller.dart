@@ -11,7 +11,7 @@ import '../../../restAPI/models/Talking.dart';
 class TalkingViewController extends GetxController {
   static TalkingViewController get instance =>
       Get.find<TalkingViewController>();
-  final FlutterTts tts = FlutterTts();
+  FlutterTts tts = FlutterTts();
   final TextEditingController con = TextEditingController();
   late final WebSocketChannel? channel;
 
@@ -27,6 +27,8 @@ class TalkingViewController extends GetxController {
   @override
   void onClose() {
     channel?.sink.close();
+    tts.stop();
+
     super.onClose();
   }
 
