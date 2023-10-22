@@ -30,7 +30,7 @@ class ScenarioMainController extends GetxController {
 
     List<Map<String, dynamic>> fakeJsonData = [
       {
-        "scenarioname": "사막에서 살아남기",
+        "scenarioname": "사막에서 살아남기1",
         "bookmarkcount": 32,
         "views": 123,
         "isbookmark": true,
@@ -48,6 +48,36 @@ class ScenarioMainController extends GetxController {
         "genre": ["재난", "생존"],
         "character": ["생존자3", "생존자4"],
         "maincharacter": "생존자3"
+      },
+      {
+        "scenarioname": "사막에서 살아남기3",
+        "bookmarkcount": 32,
+        "views": 123,
+        "isbookmark": true,
+        "stiuation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "genre": ["재난", "생존"],
+        "character": ["생존자1", "생존자2"],
+        "maincharacter": "생존자1"
+      },
+      {
+        "scenarioname": "사막에서 살아남기4",
+        "bookmarkcount": 32,
+        "views": 123,
+        "isbookmark": true,
+        "stiuation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "genre": ["재난", "생존"],
+        "character": ["생존자1", "생존자2"],
+        "maincharacter": "생존자1"
+      },
+      {
+        "scenarioname": "사막에서 살아남기",
+        "bookmarkcount": 32,
+        "views": 123,
+        "isbookmark": true,
+        "stiuation": "난파된 비행기에서 살아남아 사막에서 정신을 차렸다.",
+        "genre": ["재난", "생존"],
+        "character": ["생존자1", "생존자2"],
+        "maincharacter": "생존자1"
       },
     ];
     List<Scenario> fakeScenarios =
