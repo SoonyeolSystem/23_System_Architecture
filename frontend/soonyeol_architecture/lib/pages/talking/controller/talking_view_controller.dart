@@ -19,7 +19,6 @@ class TalkingViewController extends GetxController {
 
   FlutterTts tts = FlutterTts();
   final TextEditingController con = TextEditingController();
-  late final WebSocketChannel? channel;
 
   @override
   void onInit() async {
