@@ -13,18 +13,42 @@ class MyInfoViewController extends GetxController {
 
   Future<void> getInfoList() async {
     List<Map<String, dynamic>> fakeJsonData = [
-      {"scenario_name": "사막에서 살아남기", "장르": ["생존", "공포"], "진행도" : 0},
-      {"scenario_name": "사막에서 살아남기", "장르": ["생존", "공포"], "진행도" : 0},
-      {"scenario_name": "커피 주문하기", "장르": ["생활", "주문"], "진행도" : 0},
-      {"scenario_name": "경찰에게 체포되기 직전", "장르": ["생존", "스피드"], "진행도" : 1},
-      {"scenario_name": "식당 예약하기", "장르": ["생활", "예약"], "진행도" : 1},
+      {
+        "scenario_name": "사막에서 살아남기",
+        "장르": ["생존", "공포"],
+        "진행도": 0,
+        "last_talking": "Where are we?"
+      },
+      {
+        "scenario_name": "사막에서 살아남기",
+        "장르": ["생존", "공포"],
+        "진행도": 0,
+        "last_talking": "Where are we?"
+      },
+      {
+        "scenario_name": "커피 주문하기",
+        "장르": ["생활", "주문"],
+        "진행도": 0,
+        "last_talking": "Would you recommend anything but hot?"
+      },
+      {
+        "scenario_name": "경찰에게 체포되기 직전",
+        "장르": ["생존", "스피드"],
+        "진행도": 1,
+        "last_talking": "OMG! There's no way to run away!"
+      },
+      {
+        "scenario_name": "식당 예약하기",
+        "장르": ["생활", "예약"],
+        "진행도": 1,
+        "last_talking": "Thank you. That's all!"
+      },
     ];
 
-    List<MyInfo> fakeInfos = 
-      fakeJsonData.map((jsonData) => MyInfo.fromJson(jsonData)).toList();
+    List<MyInfo> fakeInfos =
+        fakeJsonData.map((jsonData) => MyInfo.fromJson(jsonData)).toList();
     infoList.value = fakeInfos;
     infoList.refresh();
-
   }
 
   RxList<MyInfo> infoList = <MyInfo>[].obs;
