@@ -82,7 +82,7 @@ class MyInfoPage extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 25, right: 0, bottom: 15),
-                    height: 190,
+                    height: 180,
                     width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
@@ -93,14 +93,14 @@ class MyInfoPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 48.0),
+                          padding: const EdgeInsets.only(right: 42.0),
                           child: Icon(
                             Iconsax.timer_15,
-                            size: 46,
+                            size: 40,
                             color: Color.fromARGB(255, 130, 156, 223),
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 15),
                         Text(
                           '총 학습 시간',
                           style: TextStyle(
@@ -114,7 +114,7 @@ class MyInfoPage extends StatelessWidget {
                             Text(
                               controller.speakingTime.value.toString(),
                               style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 24,
                                   color: Color(0xFF384252),
                                   fontWeight: FontWeight.w900),
                             ),
@@ -131,7 +131,7 @@ class MyInfoPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 0, right: 25, bottom: 15),
-                    height: 190,
+                    height: 180,
                     width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
@@ -143,10 +143,10 @@ class MyInfoPage extends StatelessWidget {
                       children: [
                         Icon(
                           Iconsax.message_text_15,
-                          size: 46,
+                          size: 40,
                           color: Color.fromARGB(255, 172, 168, 150),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 15),
                         Text(
                           '총 말한 문장',
                           style: TextStyle(
@@ -160,7 +160,7 @@ class MyInfoPage extends StatelessWidget {
                             Text(
                               controller.speakingCount.value.toString(),
                               style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 24,
                                   color: Color(0xFF384252),
                                   fontWeight: FontWeight.w900),
                             ),
@@ -183,7 +183,7 @@ class MyInfoPage extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 25, bottom: 40),
-                    height: 190,
+                    height: 180,
                     width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
@@ -195,10 +195,10 @@ class MyInfoPage extends StatelessWidget {
                       children: [
                         Icon(
                           Iconsax.ranking_15,
-                          size: 46,
+                          size: 40,
                           color: Color.fromARGB(255, 255, 233, 120),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 15),
                         Text(
                           '대화 평균 점수',
                           style: TextStyle(
@@ -212,7 +212,7 @@ class MyInfoPage extends StatelessWidget {
                             Text(
                               controller.talkingScore.value.toString(),
                               style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 24,
                                   color: Color(0xFF384252),
                                   fontWeight: FontWeight.w900),
                             ),
@@ -229,7 +229,7 @@ class MyInfoPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 0, right: 25, bottom: 40),
-                    height: 190,
+                    height: 180,
                     width: 170,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 244, 244, 246),
@@ -239,12 +239,12 @@ class MyInfoPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Iconsax.video_horizontal5,
-                          size: 46,
+                          size: 40,
                           color: Colors.green,
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
                         Text(
                           '완료한 시나리오',
                           style: TextStyle(
@@ -258,7 +258,7 @@ class MyInfoPage extends StatelessWidget {
                             Text(
                               controller.completeScenario.value.toString(),
                               style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 24,
                                   color: Color(0xFF384252),
                                   fontWeight: FontWeight.w900),
                             ),
