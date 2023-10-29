@@ -29,8 +29,8 @@ class TalkingViewPage extends StatelessWidget {
           decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.fill,
-              //image: AssetImage('assets/images/talking2.jpg'),
-              image: AssetImage('assets/images/talking.jpg'),
+              image: AssetImage('assets/images/talking2.jpg'),
+              //image: AssetImage('assets/images/talking.jpg'),
             ),
           ),
           child: Column(
