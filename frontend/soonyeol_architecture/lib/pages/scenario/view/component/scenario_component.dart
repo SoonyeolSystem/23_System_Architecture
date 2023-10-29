@@ -123,30 +123,27 @@ class ScenarioComponent extends StatelessWidget {
                                               //     //setState(() {});
                                               //   },
                                               // ),
-                                              Container(
-                                                  child: Obx(() => controller_
-                                                              .scenario
-                                                              .value
-                                                              .isbookmark ==
-                                                          true
-                                                      ? IconButton(
-                                                          icon: const Icon(
-                                                              Icons.star),
-                                                          color: Colors.yellow,
-                                                          iconSize: 15,
-                                                          onPressed: () async {
-                                                            await controller_
-                                                                .postBookmarkScenario();
-                                                          })
-                                                      : IconButton(
-                                                          icon: const Icon(Icons
-                                                              .star_border),
-                                                          iconSize: 15,
-                                                          onPressed: () async {
-                                                            await controller_
-                                                                .postBookmarkScenario();
-                                                          },
-                                                        ))),
+                                              Obx(() => controller_.scenario
+                                                          .value.isbookmark ==
+                                                      true
+                                                  ? IconButton(
+                                                      icon: const Icon(
+                                                          Icons.star),
+                                                      color: Colors.yellow,
+                                                      iconSize: 15,
+                                                      onPressed: () async {
+                                                        await controller_
+                                                            .postBookmarkScenario();
+                                                      })
+                                                  : IconButton(
+                                                      icon: const Icon(
+                                                          Icons.star_border),
+                                                      iconSize: 15,
+                                                      onPressed: () async {
+                                                        await controller_
+                                                            .postBookmarkScenario();
+                                                      },
+                                                    )),
                                               // SizedBox(width: 3),
                                               Text(
                                                 "${model.bookmarkcount}",
