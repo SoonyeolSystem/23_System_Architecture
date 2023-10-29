@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
 
 import '../../../../common/common.dart';
 
@@ -20,32 +21,41 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Center(
+      home: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child:Center(
         child: Container(
           width: Common.getWidth,
           color: Colors.white,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                alignment: Alignment.centerLeft, // 왼쪽 정렬
-                                    padding: EdgeInsets.only(left: 10.0, top: 10.0),
-
-                child: Icon(
-                  Icons.arrow_back,
-                  color: Color(0xFF888888),
-                  size: 40.0, // 아이콘의 크기를 40으로 설정
+              AppBar(
+                elevation: 0.0,
+                centerTitle: true,
+                title: Text(''),
+                backgroundColor: Colors.transparent,
+                leading: InkWell(
+                  onTap: () {
+                    Get.offAllNamed(RouteViewPage.url);
+                  },
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 30,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
+              
               Material(
                 type: MaterialType.transparency,
                 child: Container(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 40.0, top: 40.0),
+                    padding: EdgeInsets.only(left: 40.0, top: 10.0),
                     child: Text(
                       '회원가입',
-                      style: TextStyle(fontSize: 30, color: Colors.black),
+                      style: TextStyle(fontSize: 27, color: Colors.black),
                     ),
                   ),
                 ),
@@ -249,10 +259,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
               ),
+              SizedBox(height: 90),
             ],
           ),
         ),
       ),
-    );
+    ));
   }
 }

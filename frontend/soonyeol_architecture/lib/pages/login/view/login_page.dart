@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 
 import '../../../../common/common.dart';
@@ -13,22 +14,40 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Center(
+      home: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child:Center(
         child: Container(
           width: Common.getWidth,
           color: Colors.white,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AppBar(
+                elevation: 0.0,
+                centerTitle: true,
+                title: Text(''),
+                backgroundColor: Colors.transparent,
+                leading: InkWell(
+                  onTap: () {
+                    Get.offAllNamed(RouteViewPage.url);
+                  },
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 30,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
               Material(
                 type: MaterialType.transparency,
                 child: Container(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 40.0, top: 50.0),
+                    padding: EdgeInsets.only(left: 40.0, top: 10.0),
                     child: Text(
                       '로그인',
-                      style: TextStyle(fontSize: 30, color: Colors.black),
+                      style: TextStyle(fontSize: 25, color: Colors.black),
                     ),
                   ),
                 ),
@@ -38,7 +57,7 @@ class LoginPage extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 45.0, top: 40.0),
+                    padding: EdgeInsets.only(left: 45.0, top: 30.0),
                     child: Text(
                       'ID',
                       style: TextStyle(fontSize: 22, color: Color(0xFF888888)),
@@ -147,10 +166,12 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 80),
             ],
           ),
         ),
       ),
+    )
     );
   }
 }

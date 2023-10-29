@@ -15,7 +15,9 @@ class TalkingResultPage extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Center(
+      home: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Center(
         child: Container(
           width: Common.getWidth,
           color: Colors.black.withOpacity(0.9),
@@ -251,12 +253,13 @@ class TalkingResultPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: 80),
               ],
             ),
           ),
         ),
       ),
-    );
+    ));
   }
 }
 void showSnackBar() {
