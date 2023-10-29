@@ -66,6 +66,12 @@ class ConversationComponent extends StatelessWidget {
                   children: [
                     Row(
                       children: [
+                        Text(
+                          "${model.talkingtime}",
+                          style: const TextStyle(
+                              fontSize: 14, color: Color(0xFF808080)),
+                        ),
+                        SizedBox(width: 10),
                         Icon(
                           model.isLike == true
                               ? Icons.favorite

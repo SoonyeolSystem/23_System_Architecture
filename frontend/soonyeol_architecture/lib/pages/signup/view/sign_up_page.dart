@@ -19,11 +19,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child:Center(
+    return Scaffold(
+      body: Center(
         child: Container(
           width: Common.getWidth,
           color: Colors.white,
@@ -123,8 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   child: TextFormField(
                     controller: _controller,
-                                        obscureText : true,
-
+                    obscureText: true,
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
@@ -151,9 +147,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     color: Color(0xFFF3F8F5),
                   ),
                   child: TextFormField(
-                    obscureText : true,
+                    obscureText: true,
                     style: TextStyle(
-
                       fontSize: 20,
                       color: Colors.black,
                     ),
@@ -170,32 +165,30 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               // SizedBox(height: 20),
-              
-           Material(
-  type: MaterialType.transparency,
-  child: Padding(
-    padding: EdgeInsets.only(left: 220.0, top:10 ),
-    child: Container(
-      height: 30, // 설정한 높이
-      child: _errorText != null
-        ? Row(
-            children: <Widget>[
-              Icon(Icons.warning, color: Colors.red),
-              SizedBox(width: 5),
-              Text(
-                _errorText!,
-                style: TextStyle(color: Colors.red, fontSize: 20),
-              )
-            ],
-          )
-        : null,
-    ),
-  ),
-),
 
+              Material(
+                type: MaterialType.transparency,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 220.0, top: 10),
+                  child: Container(
+                    height: 30, // 설정한 높이
+                    child: _errorText != null
+                        ? Row(
+                            children: <Widget>[
+                              Icon(Icons.warning, color: Colors.red),
+                              SizedBox(width: 5),
+                              Text(
+                                _errorText!,
+                                style:
+                                    TextStyle(color: Colors.red, fontSize: 20),
+                              )
+                            ],
+                          )
+                        : null,
+                  ),
+                ),
+              ),
 
-        
-              
               Material(
                 type: MaterialType.transparency,
                 child: Container(
@@ -225,7 +218,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                    
                       contentPadding: EdgeInsets.only(left: 20, top: 10),
                     ),
                   ),
@@ -237,14 +229,14 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_controller.text.length < 6) {
-                    setState(() {
-                      _errorText = '6자리 이상 입력해주세요';
-                    });
-                  } else {
-                    setState(() {
-                      _errorText = null;
-                    });
-                  }
+                      setState(() {
+                        _errorText = '6자리 이상 입력해주세요';
+                      });
+                    } else {
+                      setState(() {
+                        _errorText = null;
+                      });
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blue,
@@ -264,6 +256,6 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
       ),
-    ));
+    );
   }
 }

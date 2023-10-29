@@ -9,6 +9,7 @@ class Conversation {
   String? maincharacter; //주인공
   String? userName; //대화 유저
   List<String>? conversation; //대화내용
+  String? talkingtime; //대화시간
 
   Conversation({
     this.scenarioname,
@@ -21,6 +22,7 @@ class Conversation {
     this.maincharacter,
     this.userName,
     this.conversation,
+    this.talkingtime,
   });
 
   Conversation.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class Conversation {
     maincharacter = json['maincharacter'];
     userName = json['userName'];
     conversation = json['conversation'].cast<String>();
+    talkingtime = json['talkingtime'];
   }
 
   Map<String, dynamic> toJson() {
@@ -48,6 +51,7 @@ class Conversation {
     data['maincharacter'] = maincharacter;
     data['userName'] = userName;
     data['conversation'] = conversation;
+    data['talkingtime'] = talkingtime;
 
     return data;
   }

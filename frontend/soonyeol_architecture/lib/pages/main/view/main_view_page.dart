@@ -195,7 +195,7 @@ class MainViewPage extends StatelessWidget {
                         TextButton(
                           onPressed: () {
                             //Get.to(() => MyInfoPage());
-                            final controller = Get.put(NavigationController());
+                            final controller = NavigationController.instance;
                             Obx(() => controller.bodyContent[2]);
                           },
                           child: const Text(
