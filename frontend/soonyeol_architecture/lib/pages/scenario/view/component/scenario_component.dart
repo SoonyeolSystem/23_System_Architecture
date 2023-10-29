@@ -123,27 +123,56 @@ class ScenarioComponent extends StatelessWidget {
                                               //     //setState(() {});
                                               //   },
                                               // ),
-                                              Obx(() => controller_.scenario
-                                                          .value.isbookmark ==
-                                                      true
-                                                  ? IconButton(
-                                                      icon: const Icon(
-                                                          Icons.star),
-                                                      color: Colors.yellow,
-                                                      iconSize: 15,
-                                                      onPressed: () async {
-                                                        await controller_
-                                                            .postBookmarkScenario();
-                                                      })
-                                                  : IconButton(
-                                                      icon: const Icon(
-                                                          Icons.star_border),
-                                                      iconSize: 15,
-                                                      onPressed: () async {
-                                                        await controller_
-                                                            .postBookmarkScenario();
-                                                      },
-                                                    )),
+                                              // Icon(
+                                              //   model.isbookmark == true
+                                              //       ? Icons.star
+                                              //       : Icons.star_border,
+                                              //   size: 15,
+                                              //   color: model.isbookmark == true
+                                              //       ? Colors.yellow
+                                              //       : Color(0xFF434343),
+                                              // ),
+                                              // SizedBox(width: 3),
+                                              InkWell(
+                                                onTap: () {
+                                                  // Toggle the bookmark status here (change the value of model.isbookmark)
+                                                  // For example, you can do:
+                                                  model.isbookmark =
+                                                      !model.isbookmark!;
+                                                },
+                                                child: Icon(
+                                                  model.isbookmark == true
+                                                      ? Icons.star
+                                                      : Icons.star_border,
+                                                  size: 15,
+                                                  color:
+                                                      model.isbookmark == true
+                                                          ? Colors.yellow
+                                                          : Color(0xFF434343),
+                                                ),
+                                              ),
+                                              SizedBox(width: 3),
+                                              // Obx(() => controller_.scenario
+                                              //             .value.isbookmark ==
+                                              //         true
+                                              //     ? IconButton(
+                                              //         icon: const Icon(
+                                              //             Icons.star),
+                                              //         color: Colors.yellow,
+                                              //         iconSize: 15,
+                                              //         onPressed: () async {
+                                              //           await controller_
+                                              //               .postBookmarkScenario();
+                                              //         })
+                                              //     : IconButton(
+                                              //         icon: const Icon(
+                                              //             Icons.star_border),
+                                              //         iconSize: 15,
+                                              //         onPressed: () async {
+                                              //           await controller_
+                                              //               .postBookmarkScenario();
+                                              //         },
+                                              //       )),
                                               // SizedBox(width: 3),
                                               Text(
                                                 "${model.bookmarkcount}",
