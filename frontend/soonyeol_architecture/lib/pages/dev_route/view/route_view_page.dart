@@ -18,7 +18,7 @@ class RouteViewPage extends StatelessWidget {
   static const String url = '/route';
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RouteViewController());
+    final controller = RouteViewController.instance;
 
     return Scaffold(
         backgroundColor: Colors.white,

@@ -11,7 +11,7 @@ class TalkingResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(TalkingViewController());
+    final controller = TalkingViewController.instance;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -259,18 +259,19 @@ class TalkingResultPage extends StatelessWidget {
     );
   }
 }
+
 void showSnackBar() {
-    Get.snackbar(
-      '',
-      '',
-      maxWidth:Common.getWidth,
+  Get.snackbar('', '',
+      maxWidth: Common.getWidth,
       titleText: Container(),
       messageText: Padding(
-        padding: const EdgeInsets.only(bottom:8.0),
-        child: Text('대화가 저장되었습니다.', style: TextStyle(color: Colors.white),),
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Text(
+          '대화가 저장되었습니다.',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       colorText: Colors.white,
       backgroundColor: Colors.black,
-      snackPosition: SnackPosition.BOTTOM
-    );
-  }
+      snackPosition: SnackPosition.BOTTOM);
+}

@@ -10,7 +10,7 @@ class TalkingViewComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = TalkingViewController.instance;
     double screenWidth = MediaQuery.of(context).size.width;
-    //final controller = Get.put(TalkingViewController());
+
     return Container(
       //width: 300,
       padding: model.character == "me"

@@ -19,6 +19,11 @@ class ScenarioMainController extends GetxController {
     await getScenarioList();
   }
 
+  Future<void> postBookmarkScenario() async {
+    scenario.value.isbookmark = !scenario.value.isbookmark!;
+    scenario.refresh();
+  }
+
   Future<void> getScenarioList() async {
     // ApiResponse<ScenarioListResponse> response =
     //     await ApiService.instance.getScenarioList();

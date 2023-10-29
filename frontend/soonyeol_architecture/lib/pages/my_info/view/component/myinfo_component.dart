@@ -14,9 +14,11 @@ class InfoViewComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Get.put(TalkingViewController());
+    //final controller = TalkingViewController.instance;
     return InkWell(
-      onTap: () {Get.toNamed(TalkingViewPage.url);},
+      onTap: () {
+        Get.toNamed(TalkingViewPage.url);
+      },
       child: Column(children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
