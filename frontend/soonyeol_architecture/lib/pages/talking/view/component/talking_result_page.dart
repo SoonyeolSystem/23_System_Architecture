@@ -13,9 +13,8 @@ class TalkingResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = TalkingViewController.instance;
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Center(
+    return Scaffold(
+      body: Center(
         child: Container(
           width: Common.getWidth,
           color: Colors.black.withOpacity(0.9),
