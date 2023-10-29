@@ -29,13 +29,15 @@ class MyInfoViewController extends GetxController {
         "scenario_name": "커피 주문하기",
         "장르": ["생활", "주문"],
         "진행도": 0,
-        "last_talking": "Would you recommend anything but hot?"
+        "last_talking":
+            "Would you recommend anything but iced? It's super hot outside."
       },
       {
         "scenario_name": "경찰에게 체포되기 직전",
         "장르": ["생존", "스피드"],
         "진행도": 1,
-        "last_talking": "OMG! There's no way to run away!"
+        "last_talking":
+            "OMG! There's no way to run away! I think we have to give up."
       },
       {
         "scenario_name": "식당 예약하기",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
+import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 
@@ -13,20 +14,24 @@ class TalkingViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
     final List<Color> colors = [
-    const Color.fromARGB(255, 240, 135, 135)!,
-    const Color.fromARGB(255, 136, 241, 143)!,
-    const Color.fromARGB(255, 136, 180, 245)!,
-    const Color.fromARGB(255, 121, 121, 121)!
-  ];
+      const Color.fromARGB(255, 240, 135, 135)!,
+      const Color.fromARGB(255, 136, 241, 143)!,
+      const Color.fromARGB(255, 136, 180, 245)!,
+      const Color.fromARGB(255, 121, 121, 121)!
+    ];
 
-  final List<int> duration = [900, 700, 600, 800, 500];
+    final List<int> duration = [900, 700, 600, 800, 500];
     return Scaffold(
-      body: Container(
+      body: Center(
+        child: Container(
+          width: Common.getWidth,
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Color.fromARGB(255, 1, 56, 8), Color(0xFF000118), Color.fromARGB(255, 33, 7, 1)])),
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              //image: AssetImage('assets/images/talking2.jpg'),
+              image: AssetImage('assets/images/talking.jpg'),
+            ),
+          ),
           child: Column(
             children: [
               AppBar(
@@ -51,9 +56,8 @@ class TalkingViewPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Obx(() => Text(
-                  controller.speechText.value,
-                  style:  TextStyle(fontSize:20, color: Colors.white))),
+              Obx(() => Text(controller.speechText.value,
+                  style: TextStyle(fontSize: 20, color: Colors.white))),
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
@@ -68,7 +72,8 @@ class TalkingViewPage extends StatelessWidget {
                           child: Column(
                             children: [
                               if (index == 0) const SizedBox(height: 20),
-                              TalkingViewComponent(model: controller.talkingList.value[index]),
+                              TalkingViewComponent(
+                                  model: controller.talkingList.value[index]),
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 10, top: 15),
                               ),
@@ -115,18 +120,20 @@ class TalkingViewPage extends StatelessWidget {
 
               //   ),
               // ),
-              Obx(()=>controller.isListening.value?
-               Padding(
-                 padding: const EdgeInsets.only(bottom:28.0),
-                 child: MusicVisualizer(
-                  barCount: 30,
-                  colors: colors,
-                  duration: duration,
-                             ),
-               ):Container()
-          )],
-          )),
-      
+              Obx(() => controller.isListening.value
+                  ? Padding(
+                      padding: const EdgeInsets.only(bottom: 28.0),
+                      child: MusicVisualizer(
+                        barCount: 30,
+                        colors: colors,
+                        duration: duration,
+                      ),
+                    )
+                  : Container())
+            ],
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //controller.sendMesage();

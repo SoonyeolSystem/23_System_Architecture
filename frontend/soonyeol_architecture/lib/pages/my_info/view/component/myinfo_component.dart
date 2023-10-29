@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -30,8 +30,11 @@ class InfoViewComponent extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text("${model.scenarioName}",
-                              style: const TextStyle(fontSize: 16)),
+                          Text(
+                            "${model.scenarioName}",
+                            style: const TextStyle(fontSize: 16),
+                            overflow: TextOverflow.ellipsis,
+                          ),
                           SizedBox(width: 10),
                           for (int i = 0; i < model.genre!.length; i++)
                             Row(
@@ -57,18 +60,24 @@ class InfoViewComponent extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Text(
-                            '${model.scenarioName}',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: const Color.fromARGB(137, 50, 50, 50),
-                                fontWeight: FontWeight.w200),
-                            textAlign: TextAlign.left,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+                      SizedBox(
+                        width: 300,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                '${model.lastTalking}',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: const Color.fromARGB(137, 50, 50, 50),
+                                  fontWeight: FontWeight.w200,
+                                ),
+                                textAlign: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ]),
               ),

@@ -10,7 +10,8 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../restAPI/models/Talking.dart';
 
 class TalkingViewController extends GetxController {
-  static TalkingViewController get instance => Get.find<TalkingViewController>();
+  static TalkingViewController get instance =>
+      Get.find<TalkingViewController>();
 
   late final WebSocketChannel? channel;
   var isListening = false.obs;
@@ -72,22 +73,46 @@ class TalkingViewController extends GetxController {
   Future<void> getTalkingList() async {
     List<Map<String, dynamic>> fakeJsonData = [
       {"character": "me", "script": "Oh my god! Where are we?"},
-      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+      {
+        "character": "you",
+        "script": "I have no idea, but we need to find water and shelter fast!"
+      },
       {"character": "me", "script": "But I can't see anything but sand here!"},
-      {"character": "you", "script": "Let's start walking in that direction. Maybe we'll find something."},
-      {"character": "me", "script": "Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?"},
-      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+      {
+        "character": "you",
+        "script":
+            "Let's start walking in that direction. Maybe we'll find something."
+      },
+      {
+        "character": "me",
+        "script":
+            "Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?Oh my god! Where are we?"
+      },
+      {
+        "character": "you",
+        "script": "I have no idea, but we need to find water and shelter fast!"
+      },
       {"character": "me", "script": "Oh my god! Where are we?"},
-      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+      {
+        "character": "you",
+        "script": "I have no idea, but we need to find water and shelter fast!"
+      },
       {"character": "me", "script": "Oh my god! Where are we?"},
       {"character": "you", "script": "I have no idea"},
-      {"character": "me", "script": "Oh my god! Where are we? gggggggg okay let's take a look."},
+      {
+        "character": "me",
+        "script": "Oh my god! Where are we? gggggggg okay let's take a look."
+      },
       {"character": "you", "script": "hello!"},
       {"character": "me", "script": "Oh my god! Where are we?"},
-      {"character": "you", "script": "I have no idea, but we need to find water and shelter fast!"},
+      {
+        "character": "you",
+        "script": "I have no idea, but we need to find water and shelter fast!"
+      },
     ];
 
-    List<Talking> fakeTalkings = fakeJsonData.map((jsonData) => Talking.fromJson(jsonData)).toList();
+    List<Talking> fakeTalkings =
+        fakeJsonData.map((jsonData) => Talking.fromJson(jsonData)).toList();
     talkingList.value = fakeTalkings;
     talkingList.refresh();
   }
