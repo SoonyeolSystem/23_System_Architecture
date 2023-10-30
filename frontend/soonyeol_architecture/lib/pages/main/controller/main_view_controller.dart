@@ -38,7 +38,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자1",
         "userName": "Miso",
         "conversation": ["Oh my god! Where are we?... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기2",
@@ -51,7 +51,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기3",
@@ -64,7 +64,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기4",
@@ -77,7 +77,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기5",
@@ -90,7 +90,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기6",
@@ -103,7 +103,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기7",
@@ -116,7 +116,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기8",
@@ -129,7 +129,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기9",
@@ -142,7 +142,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
       {
         "scenarioname": "사막에서 살아남기10",
@@ -155,7 +155,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "talkingtime": "2021/09/08",
+        "saved_time": DateTime.now()
       },
     ];
     List<Conversation> fakeConversations = fakeJsonData
