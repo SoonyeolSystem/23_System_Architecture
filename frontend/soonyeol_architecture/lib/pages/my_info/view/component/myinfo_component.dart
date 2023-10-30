@@ -1,11 +1,10 @@
 import 'dart:io';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
-
 import '../../../../restAPI/models/MyInfo.dart';
 
 class InfoViewComponent extends StatelessWidget {
@@ -14,9 +13,12 @@ class InfoViewComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Get.put(TalkingViewController());
+    //final controller = TalkingViewController.instance;
+    Common.logger.i(model.genre);
     return InkWell(
-      onTap: () {Get.toNamed(TalkingViewPage.url);},
+      onTap: () {
+        Get.toNamed(TalkingViewPage.url);
+      },
       child: Column(children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -27,11 +29,14 @@ class InfoViewComponent extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${model.scenarioName}",
-                          style: const TextStyle(fontSize: 16)),
-                      const SizedBox(height: 6),
                       Row(
                         children: [
+                          Text(
+                            "${model.scenarioName}",
+                            style: const TextStyle(fontSize: 16),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(width: 10),
                           for (int i = 0; i < model.genre!.length; i++)
                             Row(
                               children: [
@@ -47,30 +52,58 @@ class InfoViewComponent extends StatelessWidget {
                                 Text(
                                   model.genre![i],
                                   style: const TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     color: Color(0xFF808080),
                                   ),
                                 ),
-                                SizedBox(width: 5)
                               ],
                             ),
                         ],
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: 300,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                '${model.lastTalking}',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: const Color.fromARGB(137, 50, 50, 50),
+                                  fontWeight: FontWeight.w200,
+                                ),
+                                textAlign: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ]),
               ),
               const Spacer(),
-              GestureDetector(
-                onTap: () {
-                  showDefaultDialog();
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 5, top: 2),
-                  child: Icon(
-                    Icons.delete_outline,
-                    size: 23,
-                    color: Color(0xFF888888),
+              Column(
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                      padding: EdgeInsets.all(0),
+                      icon: const Icon(Icons.close),
+                      color: Color.fromARGB(255, 195, 195, 195),
+                      iconSize: 19,
+                      onPressed: () {
+                        showDefaultDialog();
+                      }),
+                  Text(
+                    savedTime(model.savedTime!),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color(0xFF808080),
+                      fontWeight: FontWeight.w100,
+                    ),
                   ),
-                ),
+                  SizedBox(height: 5),
+                ],
               )
             ],
           ),
@@ -111,4 +144,29 @@ void showSnackBar() {
       colorText: Colors.white,
       backgroundColor: Colors.black,
       snackPosition: SnackPosition.BOTTOM);
+}
+
+String savedTime(DateTime savedTime) {
+  var nowTime = DateTime.now();
+
+  int difference = nowTime.difference(savedTime).inSeconds;
+  if (difference < 60) {
+    return '방금 전';
+  }
+
+  difference = nowTime.difference(savedTime).inMinutes;
+
+  if (difference < 60) {
+    return '$difference분 전';
+  } else {
+    if (difference < 720) {
+      return '${difference ~/ 60}시간 전';
+    } else {
+      if (difference < 1440) {
+        return DateFormat.Hm().format(savedTime).toString();
+      } else {
+        return DateFormat('mm/dd').format(savedTime).toString();
+      }
+    }
+  }
 }

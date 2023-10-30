@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
@@ -38,14 +39,24 @@ class ConversationComponent extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 9),
-                        Text(
-                          "${model.userName}",
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
+                        Row(
+                          children: [
+                            SizedBox(height: 9),
+                            Text(
+                              "${model.userName}",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.left,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              savedTime(model.savedTime!),
+                              style: const TextStyle(
+                                  fontSize: 12, color: Color(0xFF808080)),
+                            ),
+                          ],
                         ),
                         SizedBox(height: 10),
                         Text(
@@ -95,5 +106,30 @@ class ConversationComponent extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+String savedTime(DateTime savedTime) {
+  var nowTime = DateTime.now();
+
+  int difference = nowTime.difference(savedTime).inSeconds;
+  if (difference < 60) {
+    return '방금 전';
+  }
+
+  difference = nowTime.difference(savedTime).inMinutes;
+
+  if (difference < 60) {
+    return '$difference분 전';
+  } else {
+    if (difference < 720) {
+      return '${difference ~/ 60}시간 전';
+    } else {
+      if (difference < 1440) {
+        return DateFormat.Hm().format(savedTime).toString();
+      } else {
+        return DateFormat('mm/dd').format(savedTime).toString();
+      }
+    }
   }
 }

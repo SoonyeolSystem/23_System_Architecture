@@ -13,7 +13,7 @@ class Navigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
+    final controller = NavigationController.instance;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

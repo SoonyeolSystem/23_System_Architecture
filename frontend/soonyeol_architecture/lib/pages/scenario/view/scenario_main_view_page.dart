@@ -12,79 +12,74 @@ class ScenarioMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = ScenarioMainController.instance;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          // Center 위젯 추가
-          child: Container(
-            width: Common.getWidth,
-            child: Column(
-              children: [
-                Expanded(
-                  child: CustomScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 20, top: 28),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      const Text(
-                                        '시나리오',
-                                        style: TextStyle(
-                                          fontSize: 23,
-                                          color:
-                                              Color.fromARGB(255, 39, 15, 15),
-                                        ),
+    return Scaffold(
+      body: Center(
+        // Center 위젯 추가
+        child: Container(
+          width: Common.getWidth,
+          child: Column(
+            children: [
+              Expanded(
+                child: CustomScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20, top: 28),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Text(
+                                      '시나리오',
+                                      style: TextStyle(
+                                        fontSize: 23,
+                                        color: Color.fromARGB(255, 39, 15, 15),
                                       ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 10),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 20.0, right: 20),
-                              child: Column(
-                                children: [
-                                  if (index == 0) const SizedBox(height: 20),
-                                  ScenarioComponent(
-                                    model: controller.scenarioList.value[index],
-                                  ),
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.only(bottom: 10, top: 15),
-                                    child: Divider(
-                                      height: 1,
-                                      thickness: 1,
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                          childCount: controller.scenarioList.length,
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          return Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, right: 20),
+                            child: Column(
+                              children: [
+                                if (index == 0) const SizedBox(height: 20),
+                                ScenarioComponent(
+                                  model: controller.scenarioList.value[index],
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(bottom: 10, top: 15),
+                                  child: Divider(
+                                    height: 1,
+                                    thickness: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        childCount: controller.scenarioList.length,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
