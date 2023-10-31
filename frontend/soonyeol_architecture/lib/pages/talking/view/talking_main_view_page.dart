@@ -4,21 +4,23 @@ import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
-import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 class TalkingViewPage extends StatelessWidget {
-  const TalkingViewPage({super.key});
+  const TalkingViewPage({
+    super.key,
+  });
 
   static const String url = '/talking';
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
+    controller.passParameter(Get.arguments);
     final List<Color> colors = [
-      const Color.fromARGB(255, 240, 135, 135)!,
-      const Color.fromARGB(255, 136, 241, 143)!,
-      const Color.fromARGB(255, 136, 180, 245)!,
-      const Color.fromARGB(255, 121, 121, 121)!
+      const Color.fromARGB(255, 240, 135, 135),
+      const Color.fromARGB(255, 136, 241, 143),
+      const Color.fromARGB(255, 136, 180, 245),
+      const Color.fromARGB(255, 121, 121, 121)
     ];
 
     final List<int> duration = [900, 700, 600, 800, 500];
@@ -48,8 +50,7 @@ class TalkingViewPage extends StatelessWidget {
                         fontSize: 24,
                       ),
                     ),
-                    const SizedBox(
-                        width: 30), // Add some spacing between text and icon
+                    const SizedBox(width: 30), // Add some spacing between text and icon
                     InkWell(
                       onTap: () {
                         // Use Builder to get the context of the current Scaffold
@@ -64,15 +65,14 @@ class TalkingViewPage extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text("OK"),
+                                  child: const Text("OK"),
                                 ),
                               ],
                             );
                           },
                         );
                       },
-                      child: Icon(Icons.info_outline_rounded,
-                          color: Colors.white, size: 18),
+                      child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
                     ),
                   ],
                 ),
@@ -89,8 +89,7 @@ class TalkingViewPage extends StatelessWidget {
                 ),
               ),
 
-              Obx(() => Text(controller.speechText.value,
-                  style: TextStyle(fontSize: 20, color: Colors.white))),
+              Obx(() => Text(controller.speechText.value, style: const TextStyle(fontSize: 20, color: Colors.white))),
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
@@ -105,8 +104,7 @@ class TalkingViewPage extends StatelessWidget {
                           child: Column(
                             children: [
                               if (index == 0) const SizedBox(height: 20),
-                              TalkingViewComponent(
-                                  model: controller.talkingList.value[index]),
+                              TalkingViewComponent(model: controller.talkingList.value[index]),
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 10, top: 15),
                               ),
