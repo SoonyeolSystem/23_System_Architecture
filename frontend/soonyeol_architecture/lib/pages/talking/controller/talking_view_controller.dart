@@ -24,8 +24,12 @@ class TalkingViewController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    channel = WebSocketChannel.connect(Uri.parse(Common.websocketUrl));
-
+    try{
+      channel = WebSocketChannel.connect(Uri.parse(Common.websocketUrl));
+    }
+    catch(e){
+      Get.back();
+    }
     receiveMessage();
     speechToText = SpeechToText();
     await getTalkingList();
