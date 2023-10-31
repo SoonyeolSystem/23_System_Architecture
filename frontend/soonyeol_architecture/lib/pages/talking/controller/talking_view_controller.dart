@@ -12,7 +12,7 @@ import '../../../restAPI/models/Talking.dart';
 class TalkingViewController extends GetxController {
   static TalkingViewController get instance =>
       Get.find<TalkingViewController>();
-
+  
   late final WebSocketChannel? channel;
   var isListening = false.obs;
   var speechText = 'press the Mic button  and start speaking'.obs;
