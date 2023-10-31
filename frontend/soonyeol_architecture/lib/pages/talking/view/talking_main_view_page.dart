@@ -160,7 +160,7 @@ class TalkingViewPage extends StatelessWidget {
                         duration: duration,
                       ),
                     )
-                  : Container())
+                  : SizedBox())
             ],
           ),
         ),
@@ -169,19 +169,28 @@ class TalkingViewPage extends StatelessWidget {
         onPressed: () {
           //controller.sendMesage();
           controller.listen();
-          controller.scrollcontroller.value.animateTo(controller.scrollcontroller.value.position.maxScrollExtent, duration:Duration(milliseconds: 700), curve: Curves.ease);
         },
         backgroundColor: Colors.transparent,
-        child: const SizedBox(
-          height: 42,
-          width: 35,
-          child: FittedBox(
-            fit: BoxFit.fill,
-            child: Icon(
-              Icons.mic,
-              size: 40,
-              color: Colors.white,
-            ),
+        child: Obx(
+          () => SizedBox(
+            height: 42,
+            width: 35,
+            child: controller.isLoaded.value
+                ? const SizedBox(
+                    height: 35,
+                    width: 35,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                : const FittedBox(
+                    fit: BoxFit.fill,
+                    child: Icon(
+                      Icons.mic,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                  ),
           ),
         ),
       ),
