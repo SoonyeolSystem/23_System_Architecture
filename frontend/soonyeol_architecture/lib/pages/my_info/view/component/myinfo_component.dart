@@ -14,6 +14,7 @@ class InfoViewComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //final controller = TalkingViewController.instance;
+    Common.logger.i(model.genre);
     return InkWell(
       onTap: () {
         Get.toNamed(TalkingViewPage.url);
@@ -82,18 +83,27 @@ class InfoViewComponent extends StatelessWidget {
                     ]),
               ),
               const Spacer(),
-              GestureDetector(
-                onTap: () {
-                  showDefaultDialog();
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 5, top: 2),
-                  child: Icon(
-                    Icons.delete_outline,
-                    size: 23,
-                    color: Color(0xFF888888),
+              Column(
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                      padding: EdgeInsets.all(0),
+                      icon: const Icon(Icons.close),
+                      color: Color.fromARGB(255, 195, 195, 195),
+                      iconSize: 19,
+                      onPressed: () {
+                        showDefaultDialog();
+                      }),
+                  Text(
+                    savedTime(model.savedTime!),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color(0xFF808080),
+                      fontWeight: FontWeight.w100,
+                    ),
                   ),
-                ),
+                  SizedBox(height: 5),
+                ],
               )
             ],
           ),
@@ -134,4 +144,29 @@ void showSnackBar() {
       colorText: Colors.white,
       backgroundColor: Colors.black,
       snackPosition: SnackPosition.BOTTOM);
+}
+
+String savedTime(DateTime savedTime) {
+  var nowTime = DateTime.now();
+
+  int difference = nowTime.difference(savedTime).inSeconds;
+  if (difference < 60) {
+    return '방금 전';
+  }
+
+  difference = nowTime.difference(savedTime).inMinutes;
+
+  if (difference < 60) {
+    return '$difference분 전';
+  } else {
+    if (difference < 720) {
+      return '${difference ~/ 60}시간 전';
+    } else {
+      if (difference < 1440) {
+        return DateFormat.Hm().format(savedTime).toString();
+      } else {
+        return DateFormat('mm/dd').format(savedTime).toString();
+      }
+    }
+  }
 }

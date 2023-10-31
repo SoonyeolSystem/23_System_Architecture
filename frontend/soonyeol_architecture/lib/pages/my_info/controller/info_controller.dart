@@ -15,35 +15,40 @@ class MyInfoViewController extends GetxController {
     List<Map<String, dynamic>> fakeJsonData = [
       {
         "scenario_name": "사막에서 살아남기",
-        "장르": ["생존", "공포"],
-        "진행도": 0,
-        "last_talking": "Where are we?"
+        "genre": ["생존", "공포"],
+        "progress": 0,
+        "last_talking": "Where are we?",
+        "saved_time": DateTime.now()
       },
       {
         "scenario_name": "사막에서 살아남기",
-        "장르": ["생존", "공포"],
-        "진행도": 0,
-        "last_talking": "Where are we?"
+        "genre": ["생존", "공포"],
+        "progress": 0,
+        "last_talking": "Where are we?",
+        "saved_time": DateTime(2023, 10, 11, 14, 05)
       },
       {
         "scenario_name": "커피 주문하기",
-        "장르": ["생활", "주문"],
-        "진행도": 0,
+        "genre": ["생활", "주문"],
+        "progress": 0,
         "last_talking":
-            "Would you recommend anything but iced? It's super hot outside."
+            "Would you recommend anything but iced? It's super hot outside.",
+        "saved_time": DateTime(2023, 10, 30, 14, 05)
       },
       {
         "scenario_name": "경찰에게 체포되기 직전",
-        "장르": ["생존", "스피드"],
-        "진행도": 1,
+        "genre": ["생존", "스피드"],
+        "progress": 1,
         "last_talking":
-            "OMG! There's no way to run away! I think we have to give up."
+            "OMG! There's no way to run away! I think we have to give up.",
+        "saved_time": DateTime(2023, 10, 30, 15, 55)
       },
       {
         "scenario_name": "식당 예약하기",
-        "장르": ["생활", "예약"],
-        "진행도": 1,
-        "last_talking": "Thank you. That's all!"
+        "genre": ["생활", "예약"],
+        "progress": 1,
+        "last_talking": "Thank you. That's all!",
+        "saved_time": DateTime(2023, 10, 29, 10, 05)
       },
     ];
 
