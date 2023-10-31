@@ -38,9 +38,6 @@ void initController() {
   Get.put(MainViewController());
   Get.put(ScenarioMainController());
   Get.put(MyInfoViewController());
-  Get.put(TalkingViewController());
-  Get.put(RouteViewController());
-  Get.put(NavigationController());
 }
 
 Future<void> initServices() async {

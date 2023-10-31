@@ -13,7 +13,7 @@ class TalkingViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = TalkingViewController.instance;
+    final controller = Get.put(TalkingViewController());
     final List<Color> colors = [
       const Color.fromARGB(255, 240, 135, 135)!,
       const Color.fromARGB(255, 136, 241, 143)!,
