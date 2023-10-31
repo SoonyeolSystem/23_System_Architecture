@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
+import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/response/login_response.dart';
@@ -141,20 +142,21 @@ class LoginPage extends StatelessWidget {
                       String userId = userIdController.text;
                       String password = passwordController.text;
 
-                      ApiResponse<LoginResponse> response = await ApiService.instance.login(userId, password);
+                      ApiResponse<LoginResponse> response =
+                          await ApiService.instance.login(userId, password);
 
                       if (response.statusCode == 200) {
                         // 로그인 성공
+                        Get.offAllNamed(MainViewPage.url);
+
                         Get.snackbar("success", "로그인에 성공하였습니다.");
-                      } else if (response.statusCode == 404) {
+                      } else if (response.statusCode == 400) {
                         // ID가 존재하지 않음
-                        Get.snackbar("Error", "ID가 존재하지 않습니다.");
-                      } else if (response.statusCode == 405) {
-                        // 닉네임이 이미 존재
-                        Get.snackbar("Error", "닉네임이 이미 존재합니다.");
-                      } else {
+                        Get.snackbar("ID/Password not Found", "ID/비밀번호가 존재하지 않습니다.");
+                      } else{
                         // 기타 오류
-                        Get.snackbar("Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
+                        Get.snackbar(
+                            "Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
                       }
                     },
                     style: ElevatedButton.styleFrom(
