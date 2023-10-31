@@ -44,7 +44,7 @@ class TalkingViewPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '${controller.scenarioname}',
+                      '${controller.parameters['title']}',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -59,7 +59,7 @@ class TalkingViewPage extends StatelessWidget {
                           builder: (BuildContext context) {
                             // Create and return your info dialog here
                             return AlertDialog(
-                              content: Text("상황\n ${controller.scenarioname}"),
+                              content: Text("상황\n ${controller.parameters['title']}"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -160,7 +160,7 @@ class TalkingViewPage extends StatelessWidget {
                         duration: duration,
                       ),
                     )
-                  : SizedBox())
+                  : const SizedBox())
             ],
           ),
         ),
