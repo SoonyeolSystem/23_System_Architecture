@@ -35,7 +35,7 @@ class ScenarioMainController extends GetxController {
 
     List<Map<String, dynamic>> fakeJsonData = [
       {
-        "scenarioname": "사막에서 살아남기1",
+        "scenarioname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
         "bookmarkcount": 32,
         "views": 123,
         "isbookmark": true,
@@ -45,7 +45,7 @@ class ScenarioMainController extends GetxController {
         "maincharacter": "생존자1"
       },
       {
-        "scenarioname": "사막에서 살아남기2",
+        "scenarioname": "무지막지하게 추운 겨울날 스타벅스 들어가서 얼죽아 자랑하며 주문하기",
         "bookmarkcount": 31,
         "views": 10,
         "isbookmark": false,

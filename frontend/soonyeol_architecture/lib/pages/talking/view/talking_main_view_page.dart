@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 class TalkingViewPage extends StatelessWidget {
@@ -47,6 +49,7 @@ class TalkingViewPage extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 24,
                       ),
+                      overflow: TextOverflow.clip,
                     ),
                     const SizedBox(
                         width: 30), // Add some spacing between text and icon
@@ -79,7 +82,8 @@ class TalkingViewPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 leading: InkWell(
                   onTap: () {
-                    Get.back();
+                    //Get.back();
+                    showDefaultDialog();
                   },
                   child: const Icon(
                     Icons.close,
@@ -189,4 +193,33 @@ class TalkingViewPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
+}
+
+void showDefaultDialog() {
+  Get.defaultDialog(
+      title: '',
+      content: Column(
+        children: [
+          Row(children: [
+            IconButton(
+                padding: EdgeInsets.only(top: 3, right: 3),
+                icon: const Icon(Icons.close),
+                color: Colors.grey,
+                iconSize: 23,
+                onPressed: () {
+                  Get.back();
+                }),
+          ]),
+          const Text('대화를 그만두시겠습니까?\n'),
+        ],
+      ),
+      contentPadding: EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
+      buttonColor: Color(0xFF33C26C),
+      textConfirm: '대화 결과 보기',
+      confirmTextColor: Colors.white,
+      onConfirm: () {
+        Get.toNamed(TalkingResultPage.url);
+      },
+      textCancel: '홈으로 돌아가기',
+      onCancel: () => Get.offAllNamed(Navigation.url));
 }

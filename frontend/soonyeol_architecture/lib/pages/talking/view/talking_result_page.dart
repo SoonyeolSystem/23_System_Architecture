@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 
-import '../../../../common/common.dart';
+import '../../../common/common.dart';
 
 class TalkingResultPage extends StatelessWidget {
   const TalkingResultPage({super.key});
@@ -14,8 +14,8 @@ class TalkingResultPage extends StatelessWidget {
     final controller = TalkingViewController.instance;
 
     return Scaffold(
-      body:  SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Center(
           child: Container(
             width: Common.getWidth,

@@ -126,9 +126,9 @@ String savedTime(DateTime savedTime) {
       return '${difference ~/ 60}시간 전';
     } else {
       if (difference < 1440) {
-        return DateFormat.Hm().format(savedTime).toString();
+        return DateFormat('h:mm').format(savedTime);
       } else {
-        return DateFormat('mm/dd').format(savedTime).toString();
+        return DateFormat('MM/dd').format(savedTime);
       }
     }
   }
