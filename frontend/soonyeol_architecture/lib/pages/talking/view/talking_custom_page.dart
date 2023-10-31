@@ -37,7 +37,10 @@ class TalkingCustomPage extends StatelessWidget {
                           centerTitle: true,
                           title: const Text(
                             '시나리오 커스텀',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 23),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 23),
                           ),
                           backgroundColor: Colors.transparent,
                           leading: InkWell(
@@ -64,8 +67,30 @@ class TalkingCustomPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, // 컨텐츠 가운데 정렬
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start, // 컨텐츠 가운데 정렬
                         children: [
+                          const Text(
+                            '이름',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                          const SizedBox(height: 5),
+                          TextField(
+                            controller: controller.situationC,
+                            decoration: const InputDecoration(
+                              labelStyle: TextStyle(color: Colors.white),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                            cursorColor: Colors.white,
+                            maxLines: null,
+                          ),
+                          const SizedBox(height: 15),
                           const Text(
                             '상황',
                             style: TextStyle(fontSize: 20, color: Colors.white),
@@ -169,7 +194,8 @@ class TalkingCustomPage extends StatelessWidget {
                             ),
                             backgroundColor: const Color(0xFF434343),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
+                              borderRadius: BorderRadius.circular(
+                                  10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
                             ),
                           ),
                           onPressed: () {},
@@ -187,7 +213,8 @@ class TalkingCustomPage extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF2E7649),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
+                              borderRadius: BorderRadius.circular(
+                                  10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
                             ),
                           ),
                           onPressed: () {},
