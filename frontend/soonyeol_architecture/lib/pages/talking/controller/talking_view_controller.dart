@@ -28,7 +28,7 @@ class TalkingViewController extends GetxController {
   void passParameter(Map<String, String> parameters) {
     this.parameters = parameters;
     channel = WebSocketChannel.connect(Uri.parse(
-        '${'${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}'}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userID}}&conversationid=${parameters['conversationid']}'));
+        '${'${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}'}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userID}}&conversationid=${parameters['conversationid']}&title=${parameters['title']}'));
     receiveMessage();
   }
 

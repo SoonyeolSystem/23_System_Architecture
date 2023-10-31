@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class TalkingCustomViewController extends GetxController {
   static TalkingCustomViewController get instance => Get.find<TalkingCustomViewController>();
 
+  final TextEditingController titleC = TextEditingController();
   final TextEditingController situationC =
       TextEditingController(text: "Choi Jee-Woo asks David Beckham to take her picture, but he seems to have a crush on her.");
   final TextEditingController genreC = TextEditingController(text: "Romance");
@@ -16,6 +17,7 @@ class TalkingCustomViewController extends GetxController {
     genreC.dispose();
     nameC.dispose();
     characterC.dispose();
+    titleC.dispose();
     super.onClose();
   }
 }
