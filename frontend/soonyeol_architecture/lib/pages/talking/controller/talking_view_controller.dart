@@ -43,6 +43,7 @@ class TalkingViewController extends GetxController {
     super.onClose();
   }
 
+  
   void listen() async {
     if (!isListening.value) {
       bool available = await speechToText.initialize(

@@ -171,6 +171,7 @@ class TalkingViewPage extends StatelessWidget {
         onPressed: () {
           //controller.sendMesage();
           controller.listen();
+          controller.scrollcontroller.value.animateTo(controller.scrollcontroller.value.position.maxScrollExtent, duration:Duration(milliseconds: 700), curve: Curves.ease);
         },
         backgroundColor: Colors.transparent,
         child: const SizedBox(
