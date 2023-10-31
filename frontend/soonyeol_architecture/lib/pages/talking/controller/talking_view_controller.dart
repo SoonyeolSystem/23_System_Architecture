@@ -23,11 +23,12 @@ class TalkingViewController extends GetxController {
   final TextEditingController con = TextEditingController();
 
   Map<String, String> parameters = {};
+  RxBool isLoaded = false.obs;
 
   void passParameter(Map<String, String> parameters) {
     this.parameters = parameters;
     channel = WebSocketChannel.connect(Uri.parse(
-        '${'${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}'}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userID}}&conversationid=${parameters['conversationid']}'));
+        '${'${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}'}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userID}}&conversationid=${parameters['conversationid']}&title=${parameters['title']}'));
     receiveMessage();
   }
 
@@ -45,9 +46,8 @@ class TalkingViewController extends GetxController {
     super.onClose();
   }
 
-  
   void listen() async {
-    if (!isListening.value) {
+    if (!isListening.value && !isLoaded.value) {
       bool available = await speechToText.initialize(
         onStatus: (val) {},
         onError: (val) {},
@@ -59,25 +59,30 @@ class TalkingViewController extends GetxController {
         });
       }
     } else {
+      isLoaded.value = true;
       isListening.value = false;
+      sendMesage(speechText.value);
       speechToText.stop();
-      sendMesage();
       speechText.value = '';
     }
   }
 
-  void sendMesage() {
-    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': speechText.value}));
+  void sendMesage(String text) {
+    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text}));
   }
 
   void receiveMessage() {
-    channel?.stream.listen((event) {
+    channel?.stream.listen((event) async {
       final response = jsonDecode(event) as Map<String, dynamic>;
       print(response);
       ScriptResponse scriptResponse = ScriptResponse.fromJson(response);
+      isLoaded.value = false;
       if (scriptResponse.scriptHistory != null && scriptResponse.statusCode == "200") {
         talkingList.value = scriptResponse.scriptHistory!;
         talkingList.refresh();
+        textTospeech(scriptResponse.scriptHistory!.last.script!);
+        await Future.delayed(const Duration(milliseconds: 100));
+        scrollcontroller.value.animateTo(scrollcontroller.value.position.maxScrollExtent, duration: const Duration(milliseconds: 100), curve: Curves.ease);
       } else {
         Get.snackbar("Error", "에러가 발생하였습니다.");
       }

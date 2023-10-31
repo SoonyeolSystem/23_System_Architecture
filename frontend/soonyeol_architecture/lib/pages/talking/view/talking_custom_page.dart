@@ -67,6 +67,27 @@ class TalkingCustomPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start, // 컨텐츠 가운데 정렬
                         children: [
                           const Text(
+                            '제목',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                          const SizedBox(height: 5),
+                          TextField(
+                            controller: controller.titleC,
+                            decoration: const InputDecoration(
+                              labelStyle: TextStyle(color: Colors.white),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                            cursorColor: Colors.white,
+                            maxLines: null,
+                          ),
+                          const SizedBox(height: 15),
+                          const Text(
                             '상황',
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
@@ -213,6 +234,7 @@ class TalkingCustomPage extends StatelessWidget {
                             'genre': controller.genreC.text,
                             'name': controller.nameC.text,
                             'character': controller.characterC.text,
+                            'title': controller.titleC.text,
                           });
                         },
                         style: ElevatedButton.styleFrom(

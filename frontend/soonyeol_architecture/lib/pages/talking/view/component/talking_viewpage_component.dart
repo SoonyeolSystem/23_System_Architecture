@@ -28,7 +28,7 @@ class TalkingViewComponent extends StatelessWidget {
             style: const TextStyle(
                 color: Colors.white,
                 //fontWeight: FontWeight.bold,
-                fontSize: 20),
+                fontSize: 18),
           ),
           const SizedBox(height: 5),
           Text(
