@@ -1,3 +1,4 @@
+//import 'dart:ffi';
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -31,12 +32,16 @@ class InfoViewComponent extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            "${model.scenarioName}",
-                            style: const TextStyle(fontSize: 16),
-                            overflow: TextOverflow.ellipsis,
+                          SizedBox(
+                            width: lenScenario(model.scenarioName!),
+                            //width: 250,
+                            child: Text(
+                              "${model.scenarioName}",
+                              style: const TextStyle(fontSize: 16),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 5),
                           for (int i = 0; i < model.genre!.length; i++)
                             Row(
                               children: [
@@ -163,10 +168,17 @@ String savedTime(DateTime savedTime) {
       return '${difference ~/ 60}시간 전';
     } else {
       if (difference < 1440) {
-        return DateFormat.Hm().format(savedTime).toString();
+        return DateFormat('h:mm').format(savedTime);
       } else {
-        return DateFormat('mm/dd').format(savedTime).toString();
+        return DateFormat('MM/dd').format(savedTime);
       }
     }
   }
+}
+
+double lenScenario(String scenarioName) {
+  if (scenarioName.length < 20) {
+    return (scenarioName.length * 14).toDouble();
+  } else
+    return 250.0;
 }

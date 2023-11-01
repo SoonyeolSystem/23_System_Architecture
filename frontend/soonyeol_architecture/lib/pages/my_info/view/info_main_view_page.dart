@@ -23,7 +23,7 @@ class MyInfoPage extends StatelessWidget {
         controller: controller.scrollcontroller.value,
         physics: const BouncingScrollPhysics(),
         child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.,
             children: [
               Material(
                 type: MaterialType.transparency,

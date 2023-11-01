@@ -62,6 +62,7 @@ class OngoingComponent extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                 ),
                                 textAlign: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               SizedBox(height: 15),
                               Text(

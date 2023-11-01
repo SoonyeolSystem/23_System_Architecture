@@ -5,7 +5,6 @@ import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/widget/panel_component.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/scenario/view/component/conversation_component.dart';
-import 'package:soonyeol_architecture/pages/scenario/view/component/scenario_choose_page.dart';
 import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
@@ -35,12 +34,25 @@ class ScenarioComponent extends StatelessWidget {
                           AppBar(
                             elevation: 0.0,
                             centerTitle: true,
-                            title: Text(
-                              '${model.scenarioname}',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 23),
+                            title: Container(
+                              width: 380,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Text(
+                                      '${model.scenarioname}',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 23),
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.clip,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             backgroundColor: Colors.transparent,
                             leading: InkWell(
@@ -465,9 +477,13 @@ class ScenarioComponent extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${model.scenarioname}",
-                          style: const TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w500)),
+                      SizedBox(
+                        width: 330,
+                        child: Text("${model.scenarioname}",
+                            style: const TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.w500),
+                            overflow: TextOverflow.ellipsis),
+                      ),
                       const SizedBox(height: 4),
                       Row(
                         children: [

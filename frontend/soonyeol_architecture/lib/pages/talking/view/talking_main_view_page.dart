@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
+import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 class TalkingViewPage extends StatelessWidget {
   const TalkingViewPage({
@@ -15,7 +18,9 @@ class TalkingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
-    controller.passParameter(Get.arguments);
+    if (Get.arguments != null) {
+      controller.passParameter(Get.arguments);
+    }
     final List<Color> colors = [
       const Color.fromARGB(255, 240, 135, 135),
       const Color.fromARGB(255, 136, 241, 143),
@@ -49,8 +54,10 @@ class TalkingViewPage extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 24,
                       ),
+                      overflow: TextOverflow.clip,
                     ),
-                    const SizedBox(width: 30), // Add some spacing between text and icon
+                    const SizedBox(
+                        width: 30), // Add some spacing between text and icon
                     InkWell(
                       onTap: () {
                         // Use Builder to get the context of the current Scaffold
@@ -59,7 +66,8 @@ class TalkingViewPage extends StatelessWidget {
                           builder: (BuildContext context) {
                             // Create and return your info dialog here
                             return AlertDialog(
-                              content: Text("상황\n ${controller.parameters['title']}"),
+                              content: Text(
+                                  "상황\n ${controller.parameters['title']}"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -72,14 +80,16 @@ class TalkingViewPage extends StatelessWidget {
                           },
                         );
                       },
-                      child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
+                      child: const Icon(Icons.info_outline_rounded,
+                          color: Colors.white, size: 18),
                     ),
                   ],
                 ),
                 backgroundColor: Colors.transparent,
                 leading: InkWell(
                   onTap: () {
-                    Get.back();
+                    //Get.back();
+                    showDefaultDialog();
                   },
                   child: const Icon(
                     Icons.close,
@@ -89,7 +99,8 @@ class TalkingViewPage extends StatelessWidget {
                 ),
               ),
 
-              Obx(() => Text(controller.speechText.value, style: const TextStyle(fontSize: 20, color: Colors.white))),
+              Obx(() => Text(controller.speechText.value,
+                  style: const TextStyle(fontSize: 20, color: Colors.white))),
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
@@ -104,7 +115,8 @@ class TalkingViewPage extends StatelessWidget {
                           child: Column(
                             children: [
                               if (index == 0) const SizedBox(height: 20),
-                              TalkingViewComponent(model: controller.talkingList.value[index]),
+                              TalkingViewComponent(
+                                  model: controller.talkingList.value[index]),
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 10, top: 15),
                               ),
@@ -197,4 +209,33 @@ class TalkingViewPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
+}
+
+void showDefaultDialog() {
+  Get.defaultDialog(
+      title: '',
+      content: Column(
+        children: [
+          Row(children: [
+            IconButton(
+                padding: EdgeInsets.only(top: 3, right: 3),
+                icon: const Icon(Icons.close),
+                color: Colors.grey,
+                iconSize: 23,
+                onPressed: () {
+                  Get.back();
+                }),
+          ]),
+          const Text('대화를 그만두시겠습니까?\n'),
+        ],
+      ),
+      contentPadding: EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
+      buttonColor: Color(0xFF33C26C),
+      textConfirm: '대화 결과 보기',
+      confirmTextColor: Colors.white,
+      onConfirm: () {
+        Get.toNamed(TalkingResultPage.url);
+      },
+      textCancel: '홈으로 돌아가기',
+      onCancel: () => Get.offAllNamed(Navigation.url));
 }
