@@ -15,7 +15,9 @@ class TalkingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
-    controller.passParameter(Get.arguments);
+    if (Get.arguments != null) {
+      controller.passParameter(Get.arguments);
+    }
     final List<Color> colors = [
       const Color.fromARGB(255, 240, 135, 135),
       const Color.fromARGB(255, 136, 241, 143),
