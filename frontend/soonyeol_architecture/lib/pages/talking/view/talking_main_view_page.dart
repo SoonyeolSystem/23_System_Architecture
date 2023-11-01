@@ -9,18 +9,21 @@ import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dar
 import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 class TalkingViewPage extends StatelessWidget {
-  const TalkingViewPage({super.key});
+  const TalkingViewPage({
+    super.key,
+  });
 
   static const String url = '/talking';
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
+    controller.passParameter(Get.arguments);
     final List<Color> colors = [
-      const Color.fromARGB(255, 240, 135, 135)!,
-      const Color.fromARGB(255, 136, 241, 143)!,
-      const Color.fromARGB(255, 136, 180, 245)!,
-      const Color.fromARGB(255, 121, 121, 121)!
+      const Color.fromARGB(255, 240, 135, 135),
+      const Color.fromARGB(255, 136, 241, 143),
+      const Color.fromARGB(255, 136, 180, 245),
+      const Color.fromARGB(255, 121, 121, 121)
     ];
 
     final List<int> duration = [900, 700, 600, 800, 500];
@@ -44,7 +47,7 @@ class TalkingViewPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '${controller.scenarioname}',
+                      '${controller.parameters['title']}',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -61,20 +64,21 @@ class TalkingViewPage extends StatelessWidget {
                           builder: (BuildContext context) {
                             // Create and return your info dialog here
                             return AlertDialog(
-                              content: Text("상황\n ${controller.scenarioname}"),
+                              content: Text(
+                                  "상황\n ${controller.parameters['title']}"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text("OK"),
+                                  child: const Text("OK"),
                                 ),
                               ],
                             );
                           },
                         );
                       },
-                      child: Icon(Icons.info_outline_rounded,
+                      child: const Icon(Icons.info_outline_rounded,
                           color: Colors.white, size: 18),
                     ),
                   ],
@@ -94,7 +98,7 @@ class TalkingViewPage extends StatelessWidget {
               ),
 
               Obx(() => Text(controller.speechText.value,
-                  style: TextStyle(fontSize: 20, color: Colors.white))),
+                  style: const TextStyle(fontSize: 20, color: Colors.white))),
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
@@ -166,7 +170,7 @@ class TalkingViewPage extends StatelessWidget {
                         duration: duration,
                       ),
                     )
-                  : Container())
+                  : const SizedBox())
             ],
           ),
         ),
@@ -177,16 +181,26 @@ class TalkingViewPage extends StatelessWidget {
           controller.listen();
         },
         backgroundColor: Colors.transparent,
-        child: const SizedBox(
-          height: 42,
-          width: 35,
-          child: FittedBox(
-            fit: BoxFit.fill,
-            child: Icon(
-              Icons.mic,
-              size: 40,
-              color: Colors.white,
-            ),
+        child: Obx(
+          () => SizedBox(
+            height: 42,
+            width: 35,
+            child: controller.isLoaded.value
+                ? const SizedBox(
+                    height: 35,
+                    width: 35,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                : const FittedBox(
+                    fit: BoxFit.fill,
+                    child: Icon(
+                      Icons.mic,
+                      size: 40,
+                      color: Colors.white,
+                    ),
+                  ),
           ),
         ),
       ),

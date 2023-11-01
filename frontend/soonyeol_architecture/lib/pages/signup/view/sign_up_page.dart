@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
+import 'package:soonyeol_architecture/restAPI/api_service.dart';
+import 'package:soonyeol_architecture/restAPI/response/sign_up_response.dart';
 
 import '../../../../common/common.dart';
 
@@ -13,15 +17,17 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _controller = TextEditingController();
+  final userIdController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final nicknameController = TextEditingController();
   String? _errorText;
-  static const String url = '/signup';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Center(
           child: Container(
             width: Common.getWidth,
@@ -36,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   backgroundColor: Colors.transparent,
                   leading: InkWell(
                     onTap: () {
-                      Get.offAllNamed(RouteViewPage.url);
+                      Get.offAllNamed(LoginPage.url);
                     },
                     child: const Icon(
                       Icons.arrow_back_ios,
@@ -45,7 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
-                
+
                 Material(
                   type: MaterialType.transparency,
                   child: Container(
@@ -67,7 +73,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: EdgeInsets.only(left: 45.0, top: 40.0),
                       child: Text(
                         'ID',
-                        style: TextStyle(fontSize: 22, color: Color(0xFF888888)),
+                        style:
+                            TextStyle(fontSize: 22, color: Color(0xFF888888)),
                       ),
                     ),
                   ),
@@ -82,6 +89,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: Color(0xFFF3F8F5),
                     ),
                     child: TextFormField(
+                      controller: userIdController,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -106,7 +114,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: EdgeInsets.only(left: 45.0, top: 40.0),
                       child: Text(
                         'Password',
-                        style: TextStyle(fontSize: 22, color: Color(0xFF888888)),
+                        style:
+                            TextStyle(fontSize: 22, color: Color(0xFF888888)),
                       ),
                     ),
                   ),
@@ -121,7 +130,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: Color(0xFFF3F8F5),
                     ),
                     child: TextFormField(
-                      controller: _controller,
+                      controller: passwordController,
                       obscureText: true,
                       style: TextStyle(
                         fontSize: 20,
@@ -149,6 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: Color(0xFFF3F8F5),
                     ),
                     child: TextFormField(
+                      controller: confirmPasswordController,
                       obscureText: true,
                       style: TextStyle(
                         fontSize: 20,
@@ -167,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 // SizedBox(height: 20),
-      
+
                 Material(
                   type: MaterialType.transparency,
                   child: Padding(
@@ -181,8 +191,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 SizedBox(width: 5),
                                 Text(
                                   _errorText!,
-                                  style:
-                                      TextStyle(color: Colors.red, fontSize: 20),
+                                  style: TextStyle(
+                                      color: Colors.red, fontSize: 20),
                                 )
                               ],
                             )
@@ -190,7 +200,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
-      
+
                 Material(
                   type: MaterialType.transparency,
                   child: Container(
@@ -199,7 +209,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: EdgeInsets.only(left: 45.0, top: 25.0),
                       child: Text(
                         '닉네임',
-                        style: TextStyle(fontSize: 22, color: Color(0xFF888888)),
+                        style:
+                            TextStyle(fontSize: 22, color: Color(0xFF888888)),
                       ),
                     ),
                   ),
@@ -214,6 +225,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: Color(0xFFF3F8F5),
                     ),
                     child: TextFormField(
+                      controller: nicknameController,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -229,16 +241,50 @@ class _SignUpPageState extends State<SignUpPage> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (_controller.text.length < 6) {
+                    onPressed: () async {
+                      
+                      String userId = userIdController.text;
+                      String password = passwordController.text;
+                      String confirmPassword = confirmPasswordController.text;
+                      String nickname = nicknameController.text;
+
+                      // if (validateInputs(userId, password, confirmPassword, nickname)) {
+                      // 회원가입을 시도
+                      
+                      if (passwordController.text.length < 6) {
                         setState(() {
                           _errorText = '6자리 이상 입력해주세요';
                         });
-                      } else {
+                      } else{
                         setState(() {
                           _errorText = null;
                         });
+                        ApiResponse<SignUpResponse> response = await ApiService
+                          .instance
+                          .signup(userId, password, nickname);
+                          if (password != confirmPassword) {
+                        Get.snackbar("Error", "비밀번호가 일치하지 않습니다.");
+                      } else if (response.statusCode == 200) {
+                        // 회원가입 성공
+                        Get.offAllNamed(LoginPage.url);
+                        Get.snackbar("Success", "회원가입이 성공적으로 완료되었습니다.");
+                      }else if(response.statusCode==401){
+                        // 회원가입 실패, 에러 메시지 처리
+                        Get.snackbar(
+                            "Error", response.errorMsg ?? "이미 존재하는 ID입니다.");
+                      }else if(response.statusCode==402){
+                        // 회원가입 실패, 에러 메시지 처리
+                        Get.snackbar(
+                            "Error", response.errorMsg ?? "이미 존재하는 닉네임입니다.");
                       }
+                      else {
+                        // 회원가입 실패, 에러 메시지 처리
+                        Get.snackbar(
+                            "Error", response.errorMsg ?? "회원가입 중 오류가 발생했습니다.");
+                      }
+                      }
+                      
+                      // }
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blue,
