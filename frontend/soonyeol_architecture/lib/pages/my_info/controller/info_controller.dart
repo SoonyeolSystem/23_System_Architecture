@@ -30,16 +30,14 @@ class MyInfoViewController extends GetxController {
         "scenario_name": "커피 주문하기",
         "genre": ["생활", "주문"],
         "progress": 0,
-        "last_talking":
-            "Would you recommend anything but iced? It's super hot outside.",
+        "last_talking": "Would you recommend anything but iced? It's super hot outside.",
         "saved_time": DateTime(2023, 10, 30, 14, 05)
       },
       {
         "scenario_name": "경찰에게 체포되기 직전",
         "genre": ["생존", "스피드"],
         "progress": 1,
-        "last_talking":
-            "OMG! There's no way to run away! I think we have to give up.",
+        "last_talking": "OMG! There's no way to run away! I think we have to give up.",
         "saved_time": DateTime(2023, 10, 30, 15, 55)
       },
       {
@@ -51,8 +49,7 @@ class MyInfoViewController extends GetxController {
       },
     ];
 
-    List<MyInfo> fakeInfos =
-        fakeJsonData.map((jsonData) => MyInfo.fromJson(jsonData)).toList();
+    List<MyInfo> fakeInfos = fakeJsonData.map((jsonData) => MyInfo.fromJson(jsonData)).toList();
     infoList.value = fakeInfos;
     infoList.refresh();
   }
@@ -63,7 +60,7 @@ class MyInfoViewController extends GetxController {
   RxInt speakingTime = 17.obs;
   RxInt speakingCount = 7.obs;
   RxDouble talkingScore = 7.8.obs;
-  RxInt completeScenario = 3.obs;
+  RxInt completeSituation = 3.obs;
   RxString userName = '홍길동'.obs;
 
   Rx<ScrollController> scrollcontroller = ScrollController().obs;

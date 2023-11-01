@@ -223,7 +223,7 @@ class MyInfoPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              controller.completeScenario.value.toString(),
+                              controller.completeSituation.value.toString(),
                               style: const TextStyle(fontSize: 24, color: Color(0xFF384252), fontWeight: FontWeight.w900),
                             ),
                             const Text(

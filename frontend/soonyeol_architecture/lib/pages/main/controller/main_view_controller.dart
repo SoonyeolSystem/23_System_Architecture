@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../restAPI/models/Conversation.dart';
 
 class MainViewController extends GetxController {
@@ -9,7 +10,7 @@ class MainViewController extends GetxController {
   //   const MainViewPage(),
   //   const ConversationMainPage(),
   //   const MyInfoPage(),S
-  // ];scenario
+  // ];situation
 
   @override
   void onInit() async {
@@ -158,9 +159,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
     ];
-    List<Conversation> fakeConversations = fakeJsonData
-        .map((jsonData) => Conversation.fromJson(jsonData))
-        .toList();
+    List<Conversation> fakeConversations = fakeJsonData.map((jsonData) => Conversation.fromJson(jsonData)).toList();
     conversationList.value = fakeConversations;
     conversationList.refresh();
   }
