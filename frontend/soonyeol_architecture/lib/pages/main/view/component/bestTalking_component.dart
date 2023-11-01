@@ -69,14 +69,17 @@ class BestTalkingComponent extends StatelessWidget {
                             textAlign: TextAlign.left,
                           ),
                           SizedBox(height: 7),
-                          Text(
-                            '${model.scenarioname}',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
+                          SizedBox(
+                            width: 180,
+                            child: Text(
+                              '${model.scenarioname}',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black54,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.left,
                             ),
-                            textAlign: TextAlign.left,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
@@ -122,10 +125,11 @@ class BestTalkingComponent extends StatelessWidget {
         SizedBox(width: rank_width),
       ],
     );
-  if(index<10)
-    index++;
-  else index=1; 
-  // 다음 위젯을 위해 인덱스 증가
+    if (index < 10)
+      index++;
+    else
+      index = 1;
+    // 다음 위젯을 위해 인덱스 증가
     return rankWidget;
   }
 }

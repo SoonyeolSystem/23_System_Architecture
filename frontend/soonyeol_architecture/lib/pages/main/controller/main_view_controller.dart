@@ -28,7 +28,7 @@ class MainViewController extends GetxController {
 
     List<Map<String, dynamic>> fakeJsonData = [
       {
-        "scenarioname": "사막에서 살아남기",
+        "scenarioname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
         "likeCount": 32,
         "views": 123,
         "isLike": true,
@@ -116,7 +116,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "saved_time": DateTime.now()
+        "saved_time": DateTime(2023, 10, 31, 2)
       },
       {
         "scenarioname": "사막에서 살아남기8",
