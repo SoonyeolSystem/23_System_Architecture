@@ -36,16 +36,22 @@ class ScenarioComponent extends StatelessWidget {
                             centerTitle: true,
                             title: Container(
                               width: 380,
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Text(
-                                  '${model.scenarioname}',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 23),
-                                  overflow: TextOverflow.clip,
-                                ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Text(
+                                      '${model.scenarioname}',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 23),
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.clip,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             backgroundColor: Colors.transparent,
