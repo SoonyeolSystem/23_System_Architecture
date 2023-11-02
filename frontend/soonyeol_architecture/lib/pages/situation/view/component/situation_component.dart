@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
@@ -60,7 +61,7 @@ class SituationComponent extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 20,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 30.0, right: 30.0),
@@ -70,8 +71,9 @@ class SituationComponent extends StatelessWidget {
                                 Expanded(
                                   child: Row(
                                     children: [
-                                      Column(children: [
-                                        const Text('User Name', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        Text('${model.userName}', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                        const SizedBox(height: 7),
                                         Row(
                                           children: [
                                             for (int i = 0; i < model.genre!.length; i++)
@@ -148,9 +150,10 @@ class SituationComponent extends StatelessWidget {
                                                   model.isbookmark = !model.isbookmark!;
                                                 },
                                                 child: Icon(
-                                                  model.isbookmark == true ? Icons.star : Icons.star_border,
-                                                  size: 15,
-                                                  color: model.isbookmark == true ? Colors.yellow : const Color(0xFF434343),
+                                                  model.isbookmark == true ? CupertinoIcons.star_fill : CupertinoIcons.star,
+                                                  size: 22,
+                                                  //color: model.isbookmark == true ? Colors.yellow : const Color(0xFF434343),
+                                                  color: Colors.yellow,
                                                 ),
                                               ),
                                               const SizedBox(width: 3),
@@ -184,8 +187,8 @@ class SituationComponent extends StatelessWidget {
                                           ),
                                           const SizedBox(height: 3),
                                           Text(
-                                            "조회수 ${model.views ?? "0"}회",
-                                            style: const TextStyle(fontSize: 13, color: Color(0xFF434343), fontWeight: FontWeight.w500),
+                                            "플레이 수 ${model.views ?? "0"}회",
+                                            style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500),
                                           ),
                                         ],
                                       ),
@@ -421,13 +424,14 @@ class SituationComponent extends StatelessWidget {
                   Row(
                     children: [
                       const SizedBox(height: 3),
-                      Icon(Icons.star_border, size: 15, color: model.isbookmark ?? false ? Colors.yellow : const Color(0xFF434343)),
+                      Icon(model.isbookmark == true ? CupertinoIcons.star_fill : CupertinoIcons.star,
+                          size: 15, color: model.isbookmark ?? false ? Colors.yellow : const Color(0xFF434343)),
                       const SizedBox(width: 3),
                       Text("${model.bookmarkcount}", style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
                     ],
                   ),
                   const SizedBox(height: 3),
-                  Text("조회수 ${model.views}회", style: const TextStyle(fontSize: 13, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
+                  Text("플레이 수 ${model.views}회", style: const TextStyle(fontSize: 13, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
                 ]),
               ),
             ],

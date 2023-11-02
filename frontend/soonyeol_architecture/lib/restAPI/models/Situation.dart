@@ -8,6 +8,7 @@ class Situation {
   List<String>? character; //등장인물
   String? maincharacter; //주인공
   String? situationid; //상황 id
+  String? userName;
 
   Situation({
     this.scenarioname,
@@ -18,6 +19,7 @@ class Situation {
     this.genre,
     this.character,
     this.maincharacter,
+    this.userName,
   });
 
   Situation.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class Situation {
     }
     maincharacter = json['name'];
     situationid = json['situationid'];
+    userName = json['userName'];
   }
 
   Map<String, dynamic> toJson() {
@@ -47,6 +50,7 @@ class Situation {
     data['character'] = character;
     data['name'] = maincharacter;
     data['situationid'] = situationid;
+    data['userName'] = userName;
 
     return data;
   }
