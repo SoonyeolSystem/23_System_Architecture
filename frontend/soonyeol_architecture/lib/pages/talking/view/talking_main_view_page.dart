@@ -296,6 +296,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
         ),
+        backgroundColor: const Color.fromARGB(232, 255, 255, 255),
 
         content: SizedBox(
           width: 307,
