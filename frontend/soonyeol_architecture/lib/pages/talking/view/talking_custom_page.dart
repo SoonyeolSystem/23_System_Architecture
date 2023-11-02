@@ -155,7 +155,7 @@ class TalkingCustomPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 15),
                           const Text(
-                            '등장인물',
+                            '대화 상대',
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                           const SizedBox(height: 5),

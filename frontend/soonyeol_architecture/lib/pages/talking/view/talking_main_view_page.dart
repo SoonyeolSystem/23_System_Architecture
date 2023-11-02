@@ -56,7 +56,8 @@ class TalkingViewPage extends StatelessWidget {
                       ),
                       overflow: TextOverflow.clip,
                     ),
-                    const SizedBox(width: 30), // Add some spacing between text and icon
+                    const SizedBox(
+                        width: 30), // Add some spacing between text and icon
                     InkWell(
                       onTap: () {
                         // Use Builder to get the context of the current Scaffold
@@ -65,7 +66,8 @@ class TalkingViewPage extends StatelessWidget {
                           builder: (BuildContext context) {
                             // Create and return your info dialog here
                             return AlertDialog(
-                              content: Text("상황\n ${controller.parameters['title']}"),
+                              content: Text(
+                                  "상황\n ${controller.parameters['title']}"),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -78,15 +80,15 @@ class TalkingViewPage extends StatelessWidget {
                           },
                         );
                       },
-                      child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
+                      child: const Icon(Icons.info_outline_rounded,
+                          color: Colors.white, size: 18),
                     ),
                   ],
                 ),
                 backgroundColor: Colors.transparent,
                 leading: InkWell(
                   onTap: () {
-                    //Get.back();
-                    showDefaultDialog();
+                    showCustomAlertDialog(context);
                   },
                   child: const Icon(
                     Icons.close,
@@ -96,7 +98,8 @@ class TalkingViewPage extends StatelessWidget {
                 ),
               ),
 
-              Obx(() => Text(controller.speechText.value, style: const TextStyle(fontSize: 20, color: Colors.white))),
+              Obx(() => Text(controller.speechText.value,
+                  style: const TextStyle(fontSize: 20, color: Colors.white))),
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
@@ -111,7 +114,8 @@ class TalkingViewPage extends StatelessWidget {
                           child: Column(
                             children: [
                               if (index == 0) const SizedBox(height: 20),
-                              TalkingViewComponent(model: controller.talkingList.value[index]),
+                              TalkingViewComponent(
+                                  model: controller.talkingList.value[index]),
                               const Padding(
                                 padding: EdgeInsets.only(bottom: 10, top: 15),
                               ),
@@ -206,31 +210,91 @@ class TalkingViewPage extends StatelessWidget {
   }
 }
 
-void showDefaultDialog() {
-  Get.defaultDialog(
-      title: '',
-      content: Column(
-        children: [
-          Row(children: [
-            IconButton(
-                padding: EdgeInsets.only(top: 3, right: 3),
-                icon: const Icon(Icons.close),
-                color: Colors.grey,
-                iconSize: 23,
-                onPressed: () {
-                  Get.back();
-                }),
-          ]),
-          const Text('대화를 그만두시겠습니까?\n'),
-        ],
-      ),
-      contentPadding: EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
-      buttonColor: Color(0xFF33C26C),
-      textConfirm: '대화 결과 보기',
-      confirmTextColor: Colors.white,
-      onConfirm: () {
-        Get.toNamed(TalkingResultPage.url);
-      },
-      textCancel: '홈으로 돌아가기',
-      onCancel: () => Get.offAllNamed(Navigation.url));
+void showCustomAlertDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        contentPadding: EdgeInsets.all(20), // 알림창의 내용(padding) 크기 조절
+        shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.circular(20.0), // 알림창의 모서리(rounded corners) 조절
+        ),
+
+        content: Container(
+          width: 290,
+          height: 160,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    color: Colors.grey,
+                    iconSize: 22,
+                    onPressed: () {
+                      Get.back(); // 알림창을 닫습니다.
+                    },
+                  ),
+                ],
+              ),
+              Text(
+                '대화를 그만두시겠습니까?\n',
+                style: const TextStyle(fontSize: 17),
+              ),
+              SizedBox(
+                height: 26,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Get.offAllNamed(Navigation.url);
+                      // 홈으로 돌아가기 동작 수행
+                    },
+                    child: Text(
+                      '홈으로 돌아가기',
+                      style: TextStyle(color: Colors.black, fontSize: 14),
+                    ),
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all<BorderSide>(
+                        BorderSide(color: Color(0xFF33C26C), width: 2.0),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0))),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Get.toNamed(TalkingResultPage.url);
+                    },
+                    child: Text('대화 결과 보기',
+                        style: TextStyle(color: Colors.white, fontSize: 14)),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0))),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFF33C26C)),
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        EdgeInsets.symmetric(horizontal: 22, vertical: 18),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }

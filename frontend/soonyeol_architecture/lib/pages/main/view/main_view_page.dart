@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/component/bestTalking_component.dart';
@@ -7,10 +8,7 @@ import 'package:soonyeol_architecture/pages/main/view/component/ongoing_componen
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
-
 import '../../../../common/common.dart';
-
-//final GlobalKey ongoingKey = GlobalKey();
 
 class MainViewPage extends StatelessWidget {
   const MainViewPage({super.key});
@@ -20,6 +18,7 @@ class MainViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
+    bool isLogined = true;
 
     return SizedBox(
       width: Common.getWidth,
@@ -192,53 +191,110 @@ class MainViewPage extends StatelessWidget {
                                 color: Color.fromARGB(255, 90, 90, 90),
                                 fontWeight: FontWeight.w600)),
                         const SizedBox(width: 240),
-                        TextButton(
-                          onPressed: () async {
-                            //Get.to(() => MyInfoPage());
-                            final controller = NavigationController.instance;
-                            controller.selectTab(2);
-                            final controller2 = MyInfoViewController.instance;
-                            await Future.delayed(Duration(milliseconds: 50));
+                        if (isLogined == true &&
+                            controller.conversationList.length > 0)
+                          TextButton(
+                            onPressed: () async {
+                              //Get.to(() => MyInfoPage());
+                              final controller = NavigationController.instance;
+                              controller.selectTab(2);
+                              final controller2 = MyInfoViewController.instance;
+                              await Future.delayed(Duration(milliseconds: 50));
 
-                            controller2.scrollcontroller.value.animateTo(537.0,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease);
-                          },
-                          child: const Text(
-                            '전체보기',
-                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                              controller2.scrollcontroller.value.animateTo(
+                                  537.0,
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.ease);
+                            },
+                            child: const Text(
+                              '전체보기',
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.grey),
+                            ),
                           ),
-                        ),
                       ],
                     ),
-                    // SizedBox(
-                    //   height: 2,
-                    // ),
-                    //이어서 하기 시나리오
                   ],
                 )),
-            SizedBox(
-              height: 150,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  for (int index = 0;
-                      index < controller.conversationList.length;
-                      index++)
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (index == 0)
-                          const SizedBox(
-                            width: 40,
-                          ),
-                        OngoingComponent(
-                            model: controller.conversationList[index]),
-                      ],
-                    )
+            if (isLogined == false)
+              Column(
+                children: [
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    '로그인 후 \n 이어서 대화해보세요!',
+                    style: TextStyle(fontSize: 15, color: Colors.grey),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      Get.toNamed(LoginPage.url);
+                    },
+                    child: const Text(
+                      '로그인 하기 >',
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFF33C26C),
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                ],
+              )
+            else if (controller.conversationList.length > 0)
+              SizedBox(
+                height: 150,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    for (int index = 0;
+                        index < controller.conversationList.length;
+                        index++)
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (index == 0)
+                            const SizedBox(
+                              width: 40,
+                            ),
+                          OngoingComponent(
+                              model: controller.conversationList[index]),
+                        ],
+                      )
+                  ],
+                ),
+              )
+            else
+              Column(
+                children: [
+                  SizedBox(height: 20),
+                  Text('아직 진행 중인 대화가 없어요.',
+                      style: TextStyle(fontSize: 15, color: Colors.grey)),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      final controller = NavigationController.instance;
+                      controller.selectTab(1);
+                    },
+                    child: const Text(
+                      '대화 시작하기 >',
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFF33C26C),
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  SizedBox(height: 20),
                 ],
               ),
-            ),
             const SizedBox(
               height: 35,
             ),

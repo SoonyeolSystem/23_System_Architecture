@@ -159,7 +159,9 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
     ];
-    List<Conversation> fakeConversations = fakeJsonData.map((jsonData) => Conversation.fromJson(jsonData)).toList();
+    List<Conversation> fakeConversations = fakeJsonData
+        .map((jsonData) => Conversation.fromJson(jsonData))
+        .toList();
     conversationList.value = fakeConversations;
     conversationList.refresh();
   }
