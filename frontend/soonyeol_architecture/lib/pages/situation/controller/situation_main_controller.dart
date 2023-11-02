@@ -6,7 +6,8 @@ import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
 
 class SituationMainController extends GetxController {
-  static SituationMainController get instance => Get.find<SituationMainController>();
+  static SituationMainController get instance =>
+      Get.find<SituationMainController>();
 
   Future<void> postBookmarkSituation() async {
     situation.value.isbookmark = !situation.value.isbookmark!;
@@ -14,7 +15,8 @@ class SituationMainController extends GetxController {
   }
 
   Future<void> getSituationList() async {
-    ApiResponse<SituationListResponse> response = await ApiService.instance.getSituationList();
+    ApiResponse<SituationListResponse> response =
+        await ApiService.instance.getSituationList();
     if (response.result) {
       situationList.value = response.value!.situationList!;
     }
