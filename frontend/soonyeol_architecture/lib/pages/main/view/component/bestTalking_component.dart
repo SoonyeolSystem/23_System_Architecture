@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 
 int index = 1;
 
@@ -73,7 +72,7 @@ class BestTalkingComponent extends StatelessWidget {
                           SizedBox(
                             width: 180,
                             child: Text(
-                              '${model.scenarioname}',
+                              '${model.situationname}',
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.black54,

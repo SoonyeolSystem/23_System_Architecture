@@ -38,7 +38,7 @@ class SituationComponent extends StatelessWidget {
                                   SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
                                     child: Text(
-                                      '${model.scenarioname}',
+                                      '${model.situationname}',
                                       style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 23),
                                       textAlign: TextAlign.center,
                                       overflow: TextOverflow.clip,
@@ -385,7 +385,7 @@ class SituationComponent extends StatelessWidget {
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   SizedBox(
                     width: 330,
-                    child: Text("${model.scenarioname}", style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
+                    child: Text("${model.situationname}", style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(height: 4),
                   Row(

@@ -1,5 +1,5 @@
 class Conversation {
-  String? scenarioname; // 시나리오 이름
+  String? situationname; // 시나리오 이름
   int? likeCount; // 좋아요 수
   int? views; // 조회수
   bool? isLike; // 좋아요 여부
@@ -8,11 +8,12 @@ class Conversation {
   List<String>? character; //등장인물
   String? maincharacter; //주인공
   String? userName; //대화 유저
-  List<String>? conversation; //대화내용
+  String? headScript; //대화내용
   DateTime? savedTime; //대화시간
+  bool? endStory;
 
   Conversation({
-    this.scenarioname,
+    this.situationname,
     this.likeCount,
     this.views,
     this.isLike,
@@ -21,27 +22,31 @@ class Conversation {
     this.character,
     this.maincharacter,
     this.userName,
-    this.conversation,
+    this.headScript,
     this.savedTime,
   });
 
   Conversation.fromJson(Map<String, dynamic> json) {
-    scenarioname = json['scenarioname'];
-    likeCount = json['likeCount'];
-    views = json['views'];
-    isLike = json['isLike'];
+    situationname = json['title'];
+    likeCount = json['like'];
+    views = json['view'];
+    isLike = json['islike'];
     stiuation = json['stiuation'];
-    genre = json['genre'].cast<String>();
-    character = json['character'].cast<String>();
+    if (json['genre'] != null) {
+      genre = json['genre'].split(',');
+    }
+    if (json['character'] != null) {
+      character = json['character'].split(',');
+    }
     maincharacter = json['maincharacter'];
     userName = json['userName'];
-    conversation = json['conversation'].cast<String>();
+    headScript = json['conversation'].cast<String>();
     savedTime = json['saved_time'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['scenarioname'] = scenarioname;
+    data['situationname'] = situationname;
     data['likeCount'] = likeCount;
     data['views'] = views;
     data['isLike'] = isLike;
@@ -50,7 +55,7 @@ class Conversation {
     data['character'] = character;
     data['maincharacter'] = maincharacter;
     data['userName'] = userName;
-    data['conversation'] = conversation;
+    data['conversation'] = headScript;
     data['saved_time'] = savedTime;
 
     return data;

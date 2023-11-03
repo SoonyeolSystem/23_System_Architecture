@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 
 class OngoingComponent extends StatelessWidget {
   final Conversation model;
@@ -52,7 +51,7 @@ class OngoingComponent extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "${model.scenarioname}",
+                                "${model.situationname}",
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Color.fromARGB(255, 43, 43, 43),
