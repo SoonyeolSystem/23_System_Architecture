@@ -297,6 +297,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
           borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
         ),
         backgroundColor: const Color.fromARGB(232, 255, 255, 255),
+        alignment: Alignment.lerp(Alignment.topCenter, Alignment.bottomCenter, 0.09),
 
         content: SizedBox(
           width: 307,
@@ -323,7 +324,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                   const SizedBox(
                     width: 210,
                     child: Text(
-                      "I'm in a payphone trying to call home all of my changes I spent on you",
+                      "I'm at a payphone trying to call home All of my change I spent on you Where have the times gone baby, it's all wrong where are the plans we made for two ",
                       //"${controller.parameters['situation']}",
                       style: TextStyle(
                         fontSize: 16,
