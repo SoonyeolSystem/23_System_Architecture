@@ -271,16 +271,16 @@ class _SignUpPageState extends State<SignUpPage> {
                       }else if(response.statusCode==401){
                         // 회원가입 실패, 에러 메시지 처리
                         Get.snackbar(
-                            "Error", response.errorMsg ?? "이미 존재하는 ID입니다.");
+                            "Error",  "이미 존재하는 ID입니다.");
                       }else if(response.statusCode==402){
                         // 회원가입 실패, 에러 메시지 처리
                         Get.snackbar(
-                            "Error", response.errorMsg ?? "이미 존재하는 닉네임입니다.");
+                            "Error",  "이미 존재하는 닉네임입니다.");
                       }
                       else {
                         // 회원가입 실패, 에러 메시지 처리
                         Get.snackbar(
-                            "Error", response.errorMsg ?? "회원가입 중 오류가 발생했습니다.");
+                            "Error", "회원가입 중 오류가 발생했습니다.");
                       }
                       }
                       
@@ -292,7 +292,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       minimumSize: Size(420, 60),
                     ),
                     child: Text(
-                      'Login',
+                      '가입',
                       style: TextStyle(
                         fontSize: 20,
                       ),
