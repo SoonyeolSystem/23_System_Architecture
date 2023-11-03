@@ -73,7 +73,7 @@ class ConversationComponent extends StatelessWidget {
                         Icon(
                           model.isLike == true ? Icons.favorite : Icons.favorite_border,
                           size: 22,
-                          color: const Color.fromARGB(255, 229, 91, 86),
+                          color: const Color.fromARGB(255, 242, 96, 108), //const Color.fromARGB(255, 229, 91, 86),
                         ),
                         const SizedBox(width: 5),
                         Text(
