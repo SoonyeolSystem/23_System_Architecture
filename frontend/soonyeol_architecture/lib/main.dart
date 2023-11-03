@@ -19,7 +19,8 @@ void main() async {
         canvasColor: Colors.transparent,
         fontFamily: 'NotoSansKR',
         brightness: Brightness.light,
-        appBarTheme: const AppBarTheme(iconTheme: IconThemeData(color: Colors.black)),
+        appBarTheme:
+            const AppBarTheme(iconTheme: IconThemeData(color: Colors.black)),
         colorScheme: const ColorScheme.light(
           primary: Colors.white,
           secondary: Colors.black,

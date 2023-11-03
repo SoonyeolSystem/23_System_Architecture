@@ -55,22 +55,21 @@ class SituationMainPage extends StatelessWidget {
                           child: Column(
                             children: [
                               for (int index = 0; index < controller.situationList.length; index++)
-                                (index == 0)
-                                    ? const SizedBox(height: 20)
-                                    : Column(
-                                        children: [
-                                          SituationComponent(
-                                            model: controller.situationList.value[index],
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.only(bottom: 10, top: 15),
-                                            child: Divider(
-                                              height: 1,
-                                              thickness: 1,
-                                            ),
-                                          ),
-                                        ],
-                                      )
+                                Column(
+                                  children: [
+                                    if (index == 0) const SizedBox(height: 20),
+                                    SituationComponent(
+                                      model: controller.situationList.value[index],
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 10, top: 15),
+                                      child: Divider(
+                                        height: 1,
+                                        thickness: 1,
+                                      ),
+                                    ),
+                                  ],
+                                )
                             ],
                           ),
                         ),

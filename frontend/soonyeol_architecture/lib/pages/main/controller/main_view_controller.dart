@@ -38,7 +38,7 @@ class MainViewController extends GetxController {
         "character": ["생존자1", "생존자2"],
         "maincharacter": "생존자1",
         "userName": "Miso",
-        "conversation": ["Oh my god! Where are we?... ", "I don't know... "],
+        "conversation": ["Oh my god! Where are we? There's nothing except desert ", "I don't know... "],
         "saved_time": DateTime.now()
       },
       {

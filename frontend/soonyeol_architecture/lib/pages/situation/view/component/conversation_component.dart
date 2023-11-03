@@ -37,11 +37,11 @@ class ConversationComponent extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            const SizedBox(height: 9),
                             Text(
                               "${model.userName}",
                               style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
@@ -82,7 +82,7 @@ class ConversationComponent extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 3),
                     Text(
                       "조회수 ${model.views}회",
                       style: const TextStyle(fontSize: 14, color: Color(0xFF434343)),
