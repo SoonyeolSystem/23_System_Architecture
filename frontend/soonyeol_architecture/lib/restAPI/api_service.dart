@@ -63,12 +63,12 @@ class ApiService extends GetxService {
     }
   }
 
-  Future<ApiResponse<LoginResponse>> login(String userId, String password) async {
+  Future<ApiResponse<LoginResponse>> login(String loginId, String password) async {
     try {
       var response = await userDio.post(
         '/user/login',
         data: jsonEncode({
-          'userId': userId,
+          'loginId': loginId,
           'password': password,
         }),
       );
@@ -87,12 +87,12 @@ class ApiService extends GetxService {
     }
   }
 
-  Future<ApiResponse<SignUpResponse>> signup(String userId, String password, String nickname) async {
+  Future<ApiResponse<SignUpResponse>> signup(String loginId, String password, String nickname) async {
     try {
       var response = await userDio.post(
         '/user/signup',
         data: jsonEncode({
-          'userId': userId,
+          'loginId': loginId,
           'password': password,
           'nickname': nickname,
         }),

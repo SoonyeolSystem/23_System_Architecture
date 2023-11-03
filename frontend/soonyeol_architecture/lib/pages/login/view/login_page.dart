@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userIdController = TextEditingController();
+    final loginIdController = TextEditingController();
     final passwordController = TextEditingController();
 
     return Scaffold(
@@ -83,7 +83,7 @@ class LoginPage extends StatelessWidget {
                       color: const Color(0xFFF3F8F5),
                     ),
                     child: TextFormField(
-                      controller: userIdController,
+                      controller: loginIdController,
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -142,11 +142,11 @@ class LoginPage extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     onPressed: () async {
-                      String userId = userIdController.text;
+                      String loginId = loginIdController.text;
                       String password = passwordController.text;
 
                       ApiResponse<LoginResponse> response =
-                          await ApiService.instance.login(userId, password);
+                          await ApiService.instance.login(loginId, password);
 
                       if (response.statusCode == 200) {
                         // 로그인 성공

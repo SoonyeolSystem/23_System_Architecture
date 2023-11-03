@@ -17,7 +17,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final userIdController = TextEditingController();
+  final loginIdController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final nicknameController = TextEditingController();
@@ -89,7 +89,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       color: Color(0xFFF3F8F5),
                     ),
                     child: TextFormField(
-                      controller: userIdController,
+                      controller: loginIdController,
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -243,7 +243,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: ElevatedButton(
                     onPressed: () async {
                       
-                      String userId = userIdController.text;
+                      String loginId = loginIdController.text;
                       String password = passwordController.text;
                       String confirmPassword = confirmPasswordController.text;
                       String nickname = nicknameController.text;
@@ -261,7 +261,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         });
                         ApiResponse<SignUpResponse> response = await ApiService
                           .instance
-                          .signup(userId, password, nickname);
+                          .signup(loginId, password, nickname);
                           if (password != confirmPassword) {
                         Get.snackbar("Error", "비밀번호가 일치하지 않습니다.");
                       } else if (response.statusCode == 200) {
