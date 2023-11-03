@@ -1,11 +1,12 @@
 import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
+import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 
 int index = 1;
 
@@ -69,14 +70,17 @@ class BestTalkingComponent extends StatelessWidget {
                             textAlign: TextAlign.left,
                           ),
                           SizedBox(height: 7),
-                          Text(
-                            '${model.scenarioname}',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
+                          SizedBox(
+                            width: 180,
+                            child: Text(
+                              '${model.scenarioname}',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black54,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.left,
                             ),
-                            textAlign: TextAlign.left,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
@@ -122,10 +126,11 @@ class BestTalkingComponent extends StatelessWidget {
         SizedBox(width: rank_width),
       ],
     );
-  if(index<10)
-    index++;
-  else index=1; 
-  // 다음 위젯을 위해 인덱스 증가
+    if (index < 10)
+      index++;
+    else
+      index = 1;
+    // 다음 위젯을 위해 인덱스 증가
     return rankWidget;
   }
 }

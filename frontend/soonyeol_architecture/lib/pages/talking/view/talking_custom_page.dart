@@ -86,7 +86,7 @@ class TalkingCustomPage extends StatelessWidget {
                             cursorColor: Colors.white,
                             maxLines: null,
                           ),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 20),
                           const Text(
                             '상황',
                             style: TextStyle(fontSize: 20, color: Colors.white),
@@ -107,7 +107,7 @@ class TalkingCustomPage extends StatelessWidget {
                             cursorColor: Colors.white,
                             maxLines: null,
                           ),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 20),
                           const Text(
                             '장르',
                             style: TextStyle(fontSize: 20, color: Colors.white),
@@ -128,7 +128,7 @@ class TalkingCustomPage extends StatelessWidget {
                             cursorColor: Colors.white,
                             maxLines: null,
                           ),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 20),
                           const Text(
                             '주인공',
                             style: TextStyle(fontSize: 20, color: Colors.white),
@@ -149,9 +149,9 @@ class TalkingCustomPage extends StatelessWidget {
                             cursorColor: Colors.white,
                             maxLines: null,
                           ),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 20),
                           const Text(
-                            '등장인물',
+                            '대화 상대',
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                           const SizedBox(height: 5),

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
+import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
 
 class TalkingViewPage extends StatelessWidget {
   const TalkingViewPage({
@@ -15,7 +17,9 @@ class TalkingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
-    controller.passParameter(Get.arguments);
+    if (Get.arguments != null) {
+      controller.passParameter(Get.arguments);
+    }
     final List<Color> colors = [
       const Color.fromARGB(255, 240, 135, 135),
       const Color.fromARGB(255, 136, 241, 143),
@@ -49,28 +53,13 @@ class TalkingViewPage extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 24,
                       ),
+                      overflow: TextOverflow.clip,
                     ),
                     const SizedBox(width: 30), // Add some spacing between text and icon
                     InkWell(
                       onTap: () {
                         // Use Builder to get the context of the current Scaffold
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            // Create and return your info dialog here
-                            return AlertDialog(
-                              content: Text("상황\n ${controller.parameters['title']}"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text("OK"),
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                        showInformation(context, controller);
                       },
                       child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
                     ),
@@ -79,7 +68,7 @@ class TalkingViewPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 leading: InkWell(
                   onTap: () {
-                    Get.back();
+                    showCustomAlertDialog(context);
                   },
                   child: const Icon(
                     Icons.close,
@@ -197,4 +186,255 @@ class TalkingViewPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
+}
+
+void showCustomAlertDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        contentPadding: const EdgeInsets.all(20), // 알림창의 내용(padding) 크기 조절
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0), // 알림창의 모서리(rounded corners) 조절
+        ),
+
+        content: SizedBox(
+          width: 290,
+          height: 160,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    color: Colors.grey,
+                    iconSize: 22,
+                    onPressed: () {
+                      Get.back(); // 알림창을 닫습니다.
+                    },
+                  ),
+                ],
+              ),
+              const Text(
+                '대화를 그만두시겠습니까?\n',
+                style: TextStyle(fontSize: 17),
+              ),
+              const SizedBox(
+                height: 26,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Get.offAllNamed(Navigation.url);
+                      // 홈으로 돌아가기 동작 수행
+                    },
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all<BorderSide>(
+                        const BorderSide(color: Color(0xFF33C26C), width: 2.0),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+                      ),
+                    ),
+                    child: const Text(
+                      '홈으로 돌아가기',
+                      style: TextStyle(color: Colors.black, fontSize: 14),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Get.toNamed(TalkingResultPage.url);
+                    },
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
+                      backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF33C26C)),
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
+                      ),
+                    ),
+                    child: const Text('대화 결과 보기', style: TextStyle(color: Colors.white, fontSize: 14)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+void showInformation(BuildContext context, TalkingViewController controller) {
+  // showDialog(
+  //   context: context,
+  //   builder: (BuildContext context) {
+  //     // Create and return your info dialog here
+  //     return AlertDialog(
+  //       content: Text("상황\n ${controller.parameters['title']}"),
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () {
+  //             Navigator.pop(context);
+  //           },
+  //           child: const Text("OK"),
+  //         ),
+  //       ],
+  //     );
+  //   },
+  // );
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        contentPadding: const EdgeInsets.all(20), // 알림창의 내용(padding) 크기 조절
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
+        ),
+        backgroundColor: const Color.fromARGB(232, 255, 255, 255),
+
+        content: SizedBox(
+          width: 307,
+          //height: ,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                      width: 97,
+                      decoration: const BoxDecoration(
+                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+                      ),
+                      child: const Text(
+                        '  상황',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF384252),
+                        ),
+                      )),
+                  const SizedBox(
+                    width: 210,
+                    child: Text(
+                      "I'm in a payphone trying to call home all of my changes I spent on you",
+                      //"${controller.parameters['situation']}",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF373737),
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 31,
+              ),
+              Row(
+                children: [
+                  Container(
+                      width: 97,
+                      decoration: const BoxDecoration(
+                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+                      ),
+                      child: const Text(
+                        '  장르',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF384252),
+                        ),
+                      )),
+                  const SizedBox(
+                    width: 210,
+                    child: Text(
+                      '생존, 공포',
+                      //"${controller.parameters['genre']}",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF373737),
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 31,
+              ),
+              Row(
+                children: [
+                  Container(
+                      width: 97,
+                      decoration: const BoxDecoration(
+                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+                      ),
+                      child: const Text(
+                        '  주인공',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF384252),
+                        ),
+                      )),
+                  const SizedBox(
+                    width: 210,
+                    child: Text(
+                      '생존자1',
+
+                      //"${controller.parameters['name']}",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF373737),
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 31,
+              ),
+              Row(
+                children: [
+                  Container(
+                      width: 97,
+                      decoration: const BoxDecoration(
+                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+                      ),
+                      child: const Text(
+                        '  대화 상대',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF384252),
+                        ),
+                      )),
+                  const SizedBox(
+                    width: 210,
+                    child: Text(
+                      '생존자2',
+                      //"${controller.parameters['character']}",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF373737),
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }

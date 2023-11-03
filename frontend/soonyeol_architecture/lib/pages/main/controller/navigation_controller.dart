@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
-import 'package:soonyeol_architecture/pages/scenario/view/component/scenario_choose_page.dart';
-import 'package:soonyeol_architecture/pages/scenario/view/scenario_main_view_page.dart';
-import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
+import 'package:soonyeol_architecture/pages/situation/controller/situation_main_controller.dart';
+import 'package:soonyeol_architecture/pages/situation/view/situation_main_view_page.dart';
 
 class NavigationController extends GetxController {
   RxInt pageIndex = 0.obs;
 
   void selectTab(int index) async {
+    if (index == 1) {
+      SituationMainController.instance.getSituationList();
+    }
     pageIndex.value = index;
     update();
   }
@@ -17,7 +19,7 @@ class NavigationController extends GetxController {
   static NavigationController get instance => Get.find<NavigationController>();
   final List<Widget> bodyContent = [
     const MainViewPage(),
-    const ScenarioMainPage(),
+    const SituationMainPage(),
     const MyInfoPage(),
   ];
 }

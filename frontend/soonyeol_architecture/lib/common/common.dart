@@ -5,7 +5,8 @@ class Common extends GetxService {
   static Common get instance => Get.find<Common>();
   static const bool isDev = true;
   static Logger logger = Logger(filter: MyFilter());
-  static const String baseUrl = "https://kq7a0ulv2i.execute-api.ap-northeast-2.amazonaws.com/";
+  static const String userServiceUrl = "https://kq7a0ulv2i.execute-api.ap-northeast-2.amazonaws.com/";
+  static const String communityServiceUrl = "https://93yov3lyc5.execute-api.ap-northeast-2.amazonaws.com/";
   static const String authbaseUrl = "https://localhost:8003/";
   static const String websocketUrl = "wss://h78bsknjuf.execute-api.ap-northeast-2.amazonaws.com/dev";
   // static const String userServiceUrl="https://kq7a0ulv2i.execute-api.ap-northeast-2.amazonaws.com/";

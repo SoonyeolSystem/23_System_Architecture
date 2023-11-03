@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../restAPI/models/Conversation.dart';
 
 class MainViewController extends GetxController {
@@ -9,7 +10,7 @@ class MainViewController extends GetxController {
   //   const MainViewPage(),
   //   const ConversationMainPage(),
   //   const MyInfoPage(),S
-  // ];scenario
+  // ];situation
 
   @override
   void onInit() async {
@@ -28,7 +29,7 @@ class MainViewController extends GetxController {
 
     List<Map<String, dynamic>> fakeJsonData = [
       {
-        "scenarioname": "사막에서 살아남기",
+        "scenarioname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
         "likeCount": 32,
         "views": 123,
         "isLike": true,
@@ -37,7 +38,7 @@ class MainViewController extends GetxController {
         "character": ["생존자1", "생존자2"],
         "maincharacter": "생존자1",
         "userName": "Miso",
-        "conversation": ["Oh my god! Where are we?... ", "I don't know... "],
+        "conversation": ["Oh my god! Where are we? There's nothing except desert ", "I don't know... "],
         "saved_time": DateTime.now()
       },
       {
@@ -116,7 +117,7 @@ class MainViewController extends GetxController {
         "maincharacter": "생존자3",
         "userName": "SOjeong",
         "conversation": ["Hey thanos! You'd better... ", "I don't know... "],
-        "saved_time": DateTime.now()
+        "saved_time": DateTime(2023, 10, 31, 2)
       },
       {
         "scenarioname": "사막에서 살아남기8",
@@ -158,9 +159,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
     ];
-    List<Conversation> fakeConversations = fakeJsonData
-        .map((jsonData) => Conversation.fromJson(jsonData))
-        .toList();
+    List<Conversation> fakeConversations = fakeJsonData.map((jsonData) => Conversation.fromJson(jsonData)).toList();
     conversationList.value = fakeConversations;
     conversationList.refresh();
   }
