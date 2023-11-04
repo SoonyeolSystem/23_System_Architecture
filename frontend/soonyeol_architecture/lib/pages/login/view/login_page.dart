@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userIdController = TextEditingController();
+    final loginIdController = TextEditingController();
     final passwordController = TextEditingController();
 
     return Scaffold(
@@ -36,7 +36,8 @@ class LoginPage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   leading: InkWell(
                     onTap: () {
-                      Get.offAllNamed(RouteViewPage.url);
+                      //Get.offAllNamed(RouteViewPage.url);
+                      Get.back();
                     },
                     child: const Icon(
                       Icons.arrow_back_ios,
@@ -66,7 +67,8 @@ class LoginPage extends StatelessWidget {
                       padding: EdgeInsets.only(left: 45.0, top: 30.0),
                       child: Text(
                         'ID',
-                        style: TextStyle(fontSize: 22, color: Color(0xFF888888)),
+                        style:
+                            TextStyle(fontSize: 22, color: Color(0xFF888888)),
                       ),
                     ),
                   ),
@@ -81,7 +83,7 @@ class LoginPage extends StatelessWidget {
                       color: const Color(0xFFF3F8F5),
                     ),
                     child: TextFormField(
-                      controller: userIdController,
+                      controller: loginIdController,
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -106,7 +108,8 @@ class LoginPage extends StatelessWidget {
                       padding: EdgeInsets.only(left: 45.0, top: 40.0),
                       child: Text(
                         'Password',
-                        style: TextStyle(fontSize: 22, color: Color(0xFF888888)),
+                        style:
+                            TextStyle(fontSize: 22, color: Color(0xFF888888)),
                       ),
                     ),
                   ),
@@ -139,11 +142,11 @@ class LoginPage extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     onPressed: () async {
-                      String userId = userIdController.text;
+                      String loginId = loginIdController.text;
                       String password = passwordController.text;
 
                       ApiResponse<LoginResponse> response =
-                          await ApiService.instance.login(userId, password);
+                          await ApiService.instance.login(loginId, password);
 
                       if (response.statusCode == 200) {
                         // 로그인 성공
@@ -152,8 +155,9 @@ class LoginPage extends StatelessWidget {
                         Get.snackbar("success", "로그인에 성공하였습니다.");
                       } else if (response.statusCode == 400) {
                         // ID가 존재하지 않음
-                        Get.snackbar("ID/Password not Found", "ID/비밀번호가 존재하지 않습니다.");
-                      } else{
+                        Get.snackbar(
+                            "ID/Password not Found", "ID/비밀번호가 존재하지 않습니다.");
+                      } else {
                         // 기타 오류
                         Get.snackbar(
                             "Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
@@ -184,7 +188,8 @@ class LoginPage extends StatelessWidget {
                           },
                           child: const Text(
                             '회원가입',
-                            style: TextStyle(fontSize: 18, color: Color(0xFF888888)),
+                            style: TextStyle(
+                                fontSize: 18, color: Color(0xFF888888)),
                           ),
                         )),
                   ),

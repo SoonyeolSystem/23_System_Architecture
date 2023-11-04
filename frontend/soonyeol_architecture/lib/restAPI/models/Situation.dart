@@ -1,36 +1,32 @@
-class Conversation {
+class Situation {
   String? situationname; // 시나리오 이름
-  int? likeCount; // 좋아요 수
+  int? bookmarkcount; // 즐겨찾기(별표) 수
   int? views; // 조회수
-  bool? isLike; // 좋아요 여부
+  bool? isbookmark; // 즐겨찾기 여부
   String? stiuation; //상황
   List<String>? genre; //장르
   List<String>? character; //등장인물
   String? maincharacter; //주인공
-  String? userName; //대화 유저
-  String? headScript; //대화내용
-  DateTime? savedTime; //대화시간
-  bool? endStory;
+  String? situationid; //상황 id
+  String? userName;
 
-  Conversation({
+  Situation({
     this.situationname,
-    this.likeCount,
+    this.bookmarkcount,
     this.views,
-    this.isLike,
+    this.isbookmark,
     this.stiuation,
     this.genre,
     this.character,
     this.maincharacter,
     this.userName,
-    this.headScript,
-    this.savedTime,
   });
 
-  Conversation.fromJson(Map<String, dynamic> json) {
+  Situation.fromJson(Map<String, dynamic> json) {
     situationname = json['title'];
-    likeCount = json['like'];
-    views = json['view'];
-    isLike = json['islike'];
+    bookmarkcount = json['like'];
+    views = json['play'];
+    isbookmark = json['islike'];
     stiuation = json['stiuation'];
     if (json['genre'] != null) {
       genre = json['genre'].split(',');
@@ -38,25 +34,23 @@ class Conversation {
     if (json['character'] != null) {
       character = json['character'].split(',');
     }
-    maincharacter = json['maincharacter'];
+    maincharacter = json['name'];
+    situationid = json['situationid'];
     userName = json['userName'];
-    headScript = json['conversation'].cast<String>();
-    savedTime = json['saved_time'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['situationname'] = situationname;
-    data['likeCount'] = likeCount;
-    data['views'] = views;
-    data['isLike'] = isLike;
+    data['title'] = situationname;
+    data['like'] = bookmarkcount;
+    data['play'] = views;
+    data['islike'] = isbookmark;
     data['stiuation'] = stiuation;
     data['genre'] = genre;
     data['character'] = character;
-    data['maincharacter'] = maincharacter;
+    data['name'] = maincharacter;
+    data['situationid'] = situationid;
     data['userName'] = userName;
-    data['conversation'] = headScript;
-    data['saved_time'] = savedTime;
 
     return data;
   }

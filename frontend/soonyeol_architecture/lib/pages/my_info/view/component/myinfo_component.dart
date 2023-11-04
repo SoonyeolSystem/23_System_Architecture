@@ -1,10 +1,10 @@
-import 'dart:io';
-import 'package:intl/intl.dart';
+//import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
+
 import '../../../../restAPI/models/MyInfo.dart';
 
 class InfoViewComponent extends StatelessWidget {
@@ -26,83 +26,83 @@ class InfoViewComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            "${model.scenarioName}",
-                            style: const TextStyle(fontSize: 16),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(width: 10),
-                          for (int i = 0; i < model.genre!.length; i++)
-                            Row(
-                              children: [
-                                Text(
-                                  "#",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: model.processivity == 0
-                                        ? Color(0xFF33C26C)
-                                        : Color.fromARGB(255, 255, 0, 0),
-                                  ),
-                                ),
-                                Text(
-                                  model.genre![i],
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF808080),
-                                  ),
-                                ),
-                              ],
-                            ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
                       SizedBox(
-                        width: 300,
-                        child: Row(
+                        width: lenSituation(model.situationName!),
+                        //width: 250,
+                        child: Text(
+                          "${model.situationName}",
+                          style: const TextStyle(fontSize: 16),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      for (int i = 0; i < model.genre!.length; i++)
+                        Row(
                           children: [
-                            Expanded(
-                              child: Text(
-                                '${model.lastTalking}',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: const Color.fromARGB(137, 50, 50, 50),
-                                  fontWeight: FontWeight.w200,
-                                ),
-                                textAlign: TextAlign.left,
-                                overflow: TextOverflow.ellipsis,
+                            Text(
+                              "#",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: model.processivity == 0 ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
+                              ),
+                            ),
+                            Text(
+                              model.genre![i],
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFF808080),
                               ),
                             ),
                           ],
                         ),
-                      )
-                    ]),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    width: 300,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            '${model.lastTalking}',
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(137, 50, 50, 50),
+                              fontWeight: FontWeight.w200,
+                            ),
+                            textAlign: TextAlign.left,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ]),
               ),
               const Spacer(),
               Column(
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IconButton(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       icon: const Icon(Icons.close),
-                      color: Color.fromARGB(255, 195, 195, 195),
+                      color: const Color.fromARGB(255, 195, 195, 195),
                       iconSize: 19,
                       onPressed: () {
                         showDefaultDialog();
                       }),
                   Text(
                     savedTime(model.savedTime!),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
                       color: Color(0xFF808080),
                       fontWeight: FontWeight.w100,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                 ],
               )
             ],
@@ -117,8 +117,8 @@ void showDefaultDialog() {
   Get.defaultDialog(
     title: '',
     content: const Text('정말 삭제하시겠습니까?\n'),
-    contentPadding: EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
-    buttonColor: Color(0xFF33C26C),
+    contentPadding: const EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
+    buttonColor: const Color(0xFF33C26C),
     textConfirm: '삭제',
     confirmTextColor: Colors.white,
     onConfirm: () {
@@ -134,8 +134,8 @@ void showSnackBar() {
   Get.snackbar('', '',
       maxWidth: Common.getWidth,
       titleText: Container(),
-      messageText: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0),
+      messageText: const Padding(
+        padding: EdgeInsets.only(bottom: 8.0),
         child: Text(
           '시나리오가 삭제되었습니다.',
           style: TextStyle(color: Colors.white),
@@ -163,10 +163,18 @@ String savedTime(DateTime savedTime) {
       return '${difference ~/ 60}시간 전';
     } else {
       if (difference < 1440) {
-        return DateFormat.Hm().format(savedTime).toString();
+        return DateFormat('h:mm').format(savedTime);
       } else {
-        return DateFormat('mm/dd').format(savedTime).toString();
+        return DateFormat('MM/dd').format(savedTime);
       }
     }
+  }
+}
+
+double lenSituation(String situationName) {
+  if (situationName.length < 20) {
+    return (situationName.length * 14).toDouble();
+  } else {
+    return 250.0;
   }
 }

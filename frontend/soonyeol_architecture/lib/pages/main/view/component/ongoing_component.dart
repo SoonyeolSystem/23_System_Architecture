@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 class OngoingComponent extends StatelessWidget {
   final Conversation model;
@@ -29,10 +28,7 @@ class OngoingComponent extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromARGB(131, 205, 206, 209),
-                        Color.fromARGB(255, 215, 224, 230)
-                      ],
+                      colors: [Color.fromARGB(131, 205, 206, 209), Color.fromARGB(255, 215, 224, 230)],
                       //color: Color.fromARGB(255, 233, 236, 239)
                     ),
                   ),
@@ -55,13 +51,14 @@ class OngoingComponent extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "${model.scenarioname}",
+                                "${model.situationname}",
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Color.fromARGB(255, 43, 43, 43),
                                   fontWeight: FontWeight.w600,
                                 ),
                                 textAlign: TextAlign.left,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               SizedBox(height: 15),
                               Text(

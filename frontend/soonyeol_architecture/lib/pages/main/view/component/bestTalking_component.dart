@@ -1,17 +1,17 @@
 import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/models/Scenario.dart';
 
 int index = 1;
 
 class BestTalkingComponent extends StatelessWidget {
   final Conversation model;
-  BestTalkingComponent({Key? key, required this.model}) : super(key: key);
+  const BestTalkingComponent({Key? key, required this.model}) : super(key: key);
   static const List<Color> avatarColors = [
     Color(0xFFE3F4F9),
     Color(0xFFE3F9E7),
@@ -25,7 +25,7 @@ class BestTalkingComponent extends StatelessWidget {
     int colorIndex = Random().nextInt(3);
     Color selectedColor = avatarColors[colorIndex];
 
-    return Container(
+    return SizedBox(
       width: 407,
       height: 88,
       child: Material(
@@ -36,24 +36,25 @@ class BestTalkingComponent extends StatelessWidget {
           child: Row(
             children: [
               rank(),
-              SizedBox(height: 13),
+              const SizedBox(height: 13),
               Padding(
-                padding: EdgeInsets.only(left: 10.0),
+                padding: const EdgeInsets.only(left: 10.0),
                 child: CircleAvatar(
                   backgroundColor: selectedColor,
-                  child: Icon(
+                  child: const Icon(
                     CupertinoIcons.person_fill,
                     size: 39,
                     color: Color.fromARGB(255, 148, 148, 148),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 23,
               ),
-              Container(
+              SizedBox(
+                width: 195,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Row(
                     children: [
                       Column(
@@ -61,36 +62,38 @@ class BestTalkingComponent extends StatelessWidget {
                         children: [
                           Text(
                             '${model.userName}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
                             textAlign: TextAlign.left,
                           ),
-                          SizedBox(height: 7),
-                          Text(
-                            '${model.scenarioname}',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
+                          const SizedBox(height: 7),
+                          SizedBox(
+                            width: 180,
+                            child: Text(
+                              '${model.situationname}',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black54,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.left,
                             ),
-                            textAlign: TextAlign.left,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
                     ],
                   ),
                 ),
-                width: 195,
               ),
               Icon(
                 model.isLike == true ? Icons.favorite : Icons.favorite_border,
                 size: 24,
-                color: Color.fromARGB(255, 229, 91, 86),
+                color: const Color.fromARGB(255, 242, 96, 108), //Color.fromARGB(255, 229, 91, 86),
               ),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               Text(
                 '${model.likeCount}',
                 style: const TextStyle(fontSize: 14, color: Color(0xFF434343)),
@@ -103,29 +106,31 @@ class BestTalkingComponent extends StatelessWidget {
   }
 
   Widget rank() {
-    double rank_width = 25;
+    double rankWidth = 25;
     if (index == 10) {
-      rank_width = 19;
+      rankWidth = 19;
     }
 
     Widget rankWidget = Row(
       children: [
-        SizedBox(width: rank_width),
+        SizedBox(width: rankWidth),
         Text(
           '$index',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
             color: Color.fromARGB(255, 68, 68, 68),
             fontWeight: FontWeight.w900,
           ),
         ),
-        SizedBox(width: rank_width),
+        SizedBox(width: rankWidth),
       ],
     );
-  if(index<10)
-    index++;
-  else index=1; 
-  // 다음 위젯을 위해 인덱스 증가
+    if (index < 10) {
+      index++;
+    } else {
+      index = 1;
+    }
+    // 다음 위젯을 위해 인덱스 증가
     return rankWidget;
   }
 }
