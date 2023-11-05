@@ -16,6 +16,10 @@ class Common extends GetxService {
     Common.logger.d('$runtimeType init!');
     return this;
   }
+
+  DateTime epochTimeToDateTime(int epcohTime) {
+    return DateTime.fromMillisecondsSinceEpoch(epcohTime * 1000);
+  }
 }
 
 class MyFilter extends LogFilter {

@@ -9,6 +9,10 @@ class Talking {
     this.isMe,
   });
 
+  void changeScript(String text) {
+    script = text;
+  }
+
   // JSON serialization method
   Talking.fromJson(Map<String, dynamic> json) {
     character = json['name'];

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
@@ -17,6 +18,8 @@ class TalkingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
+    bool isLike = true;
+
     if (Get.arguments != null) {
       controller.passParameter(Get.arguments);
     }
@@ -36,7 +39,6 @@ class TalkingViewPage extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.fill,
               image: AssetImage('assets/images/talking2.jpg'),
-              //image: AssetImage('assets/images/talking.jpg'),
             ),
           ),
           child: Column(
@@ -47,22 +49,42 @@ class TalkingViewPage extends StatelessWidget {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${controller.parameters['title']}',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
+                    SizedBox(
+                      width: 377,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Text(
+                              '${controller.parameters['title']}',
+                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.clip,
+                            ),
+                          ),
+
+                          const SizedBox(width: 25), // Add some spacing between text and icon
+                          InkWell(
+                            onTap: () {
+                              // Use Builder to get the context of the current Scaffold
+                              showInformation(context, controller);
+                            },
+                            child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
+                          ),
+                        ],
                       ),
-                      overflow: TextOverflow.clip,
                     ),
-                    const SizedBox(width: 30), // Add some spacing between text and icon
                     InkWell(
                       onTap: () {
-                        // Use Builder to get the context of the current Scaffold
-                        showInformation(context, controller);
+                        //model.isLike= !model.isLike!;
                       },
-                      child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
-                    ),
+                      child: Icon(
+                        isLike == true ? Icons.favorite : CupertinoIcons.heart,
+                        size: 33,
+                        color: isLike ?? false ? const Color.fromARGB(255, 242, 96, 108) : Colors.white,
+                      ),
+                    )
                   ],
                 ),
                 backgroundColor: Colors.transparent,
@@ -78,7 +100,7 @@ class TalkingViewPage extends StatelessWidget {
                 ),
               ),
 
-              Obx(() => Text(controller.speechText.value, style: const TextStyle(fontSize: 20, color: Colors.white))),
+              //Obx(() => Text(controller.speechText.value, style: const TextStyle(fontSize: 20, color: Colors.white))),
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
@@ -297,6 +319,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
           borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
         ),
         backgroundColor: const Color.fromARGB(232, 255, 255, 255),
+        alignment: Alignment.lerp(Alignment.topCenter, Alignment.bottomCenter, 0.09),
 
         content: SizedBox(
           width: 307,
@@ -323,7 +346,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                   const SizedBox(
                     width: 210,
                     child: Text(
-                      "I'm in a payphone trying to call home all of my changes I spent on you",
+                      "I'm at a payphone trying to call home All of my change I spent on you Where have the times gone baby, it's all wrong where are the plans we made for two ",
                       //"${controller.parameters['situation']}",
                       style: TextStyle(
                         fontSize: 16,
@@ -388,7 +411,6 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                     width: 210,
                     child: Text(
                       '생존자1',
-
                       //"${controller.parameters['name']}",
                       style: TextStyle(
                         fontSize: 16,

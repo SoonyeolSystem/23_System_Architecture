@@ -300,14 +300,14 @@ class MyInfoPage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 40.0, right: 40),
                 child: Obx(
                   () => Column(children: [
-                    for (int index = 0; index < controller.infoList.length; index++)
+                    for (int index = 0; index < controller.myConversation.length; index++)
                       Column(
                         children: [
-                          if (controller.infoList[index].processivity == 0)
+                          if (controller.myConversation[index].endStory == false)
                             InfoViewComponent(
-                              model: controller.infoList[index],
+                              model: controller.myConversation[index],
                             ),
-                          if (controller.infoList[index].processivity == 0)
+                          if (controller.myConversation[index].endStory == false)
                             const Divider(
                               height: 1,
                               thickness: 1,
@@ -348,11 +348,11 @@ class MyInfoPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 40.0, right: 40),
                 child: Obx(() => Column(children: [
-                      for (int index = 0; index < controller.infoList.length; index++)
+                      for (int index = 0; index < controller.myConversation.length; index++)
                         Column(
                           children: [
-                            if (controller.infoList[index].processivity == 1) InfoViewComponent(model: controller.infoList[index]),
-                            if (controller.infoList[index].processivity == 1)
+                            if (controller.myConversation[index].endStory == true) InfoViewComponent(model: controller.myConversation[index]),
+                            if (controller.myConversation[index].endStory == true)
                               const Divider(
                                 height: 1,
                                 thickness: 1,

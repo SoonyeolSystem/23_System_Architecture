@@ -11,8 +11,9 @@ class UserService extends GetxService {
   Future<UserService> init() async {
     Common.logger.d('$runtimeType init!');
 
-                        Common.logger.d('User ID: ${userId}');
-Common.logger.d('Nickname: ${nickname}');
+    Common.logger.d('User ID: ${userId}');
+    Common.logger.d('Nickname: ${nickname}');
     return this;
   }
+  
 }
