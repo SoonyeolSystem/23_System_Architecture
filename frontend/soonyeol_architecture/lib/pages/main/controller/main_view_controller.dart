@@ -29,7 +29,7 @@ class MainViewController extends GetxController {
 
     List<Map<String, dynamic>> fakeJsonData = [
       {
-        "scenarioname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
+        "situationname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
         "likeCount": 32,
         "views": 123,
         "isLike": true,
@@ -38,11 +38,11 @@ class MainViewController extends GetxController {
         "character": ["생존자1", "생존자2"],
         "maincharacter": "생존자1",
         "userName": "Miso",
-        "conversation": ["Oh my god! Where are we?... ", "I don't know... "],
+        "conversation": ["Oh my god! Where are we? There's nothing except desert ", "I don't know... "],
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기2",
+        "situationname": "사막에서 살아남기2",
         "likeCount": 31,
         "views": 10,
         "isLike": false,
@@ -55,7 +55,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기3",
+        "situationname": "사막에서 살아남기3",
         "likeCount": 31,
         "views": 10,
         "isLike": true,
@@ -68,7 +68,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기4",
+        "situationname": "사막에서 살아남기4",
         "likeCount": 31,
         "views": 10,
         "isLike": false,
@@ -81,7 +81,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기5",
+        "situationname": "사막에서 살아남기5",
         "likeCount": 31,
         "views": 10,
         "isLike": false,
@@ -94,7 +94,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기6",
+        "situationname": "사막에서 살아남기6",
         "likeCount": 31,
         "views": 10,
         "isLike": false,
@@ -107,7 +107,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기7",
+        "situationname": "사막에서 살아남기7",
         "likeCount": 31,
         "views": 10,
         "isLike": true,
@@ -120,7 +120,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime(2023, 10, 31, 2)
       },
       {
-        "scenarioname": "사막에서 살아남기8",
+        "situationname": "사막에서 살아남기8",
         "likeCount": 31,
         "views": 10,
         "isLike": false,
@@ -133,7 +133,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기9",
+        "situationname": "사막에서 살아남기9",
         "likeCount": 31,
         "views": 10,
         "isLike": false,
@@ -146,7 +146,7 @@ class MainViewController extends GetxController {
         "saved_time": DateTime.now()
       },
       {
-        "scenarioname": "사막에서 살아남기10",
+        "situationname": "사막에서 살아남기10",
         "likeCount": 31,
         "views": 10,
         "isLike": false,

@@ -1,5 +1,5 @@
 class Situation {
-  String? scenarioname; // 시나리오 이름
+  String? situationname; // 시나리오 이름
   int? bookmarkcount; // 즐겨찾기(별표) 수
   int? views; // 조회수
   bool? isbookmark; // 즐겨찾기 여부
@@ -8,9 +8,10 @@ class Situation {
   List<String>? character; //등장인물
   String? maincharacter; //주인공
   String? situationid; //상황 id
+  String? userName;
 
   Situation({
-    this.scenarioname,
+    this.situationname,
     this.bookmarkcount,
     this.views,
     this.isbookmark,
@@ -18,10 +19,11 @@ class Situation {
     this.genre,
     this.character,
     this.maincharacter,
+    this.userName,
   });
 
   Situation.fromJson(Map<String, dynamic> json) {
-    scenarioname = json['title'];
+    situationname = json['title'];
     bookmarkcount = json['like'];
     views = json['play'];
     isbookmark = json['islike'];
@@ -34,11 +36,12 @@ class Situation {
     }
     maincharacter = json['name'];
     situationid = json['situationid'];
+    userName = json['userName'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['title'] = scenarioname;
+    data['title'] = situationname;
     data['like'] = bookmarkcount;
     data['play'] = views;
     data['islike'] = isbookmark;
@@ -47,6 +50,7 @@ class Situation {
     data['character'] = character;
     data['name'] = maincharacter;
     data['situationid'] = situationid;
+    data['userName'] = userName;
 
     return data;
   }

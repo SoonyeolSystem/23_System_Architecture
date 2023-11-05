@@ -6,7 +6,8 @@ import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
 
 class SituationMainController extends GetxController {
-  static SituationMainController get instance => Get.find<SituationMainController>();
+  static SituationMainController get instance =>
+      Get.find<SituationMainController>();
 
   Future<void> postBookmarkSituation() async {
     situation.value.isbookmark = !situation.value.isbookmark!;
@@ -14,7 +15,8 @@ class SituationMainController extends GetxController {
   }
 
   Future<void> getSituationList() async {
-    ApiResponse<SituationListResponse> response = await ApiService.instance.getSituationList();
+    ApiResponse<SituationListResponse> response =
+        await ApiService.instance.getSituationList();
     if (response.result) {
       situationList.value = response.value!.situationList!;
     }
@@ -22,7 +24,7 @@ class SituationMainController extends GetxController {
 
     // List<Map<String, dynamic>> fakeJsonData = [
     //   {
-    //     "scenarioname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
+    //     "situationname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
     //     "bookmarkcount": 32,
     //     "views": 123,
     //     "isbookmark": true,
@@ -32,7 +34,7 @@ class SituationMainController extends GetxController {
     //     "maincharacter": "생존자1"
     //   },
     //   {
-    //     "scenarioname": "무지막지하게 추운 겨울날 스타벅스 들어가서 얼죽아 자랑하며 주문하기",
+    //     "situationname": "무지막지하게 추운 겨울날 스타벅스 들어가서 얼죽아 자랑하며 주문하기",
     //     "bookmarkcount": 31,
     //     "views": 10,
     //     "isbookmark": false,
@@ -42,7 +44,7 @@ class SituationMainController extends GetxController {
     //     "maincharacter": "생존자3"
     //   },
     //   {
-    //     "scenarioname": "사막에서 살아남기3",
+    //     "situationname": "사막에서 살아남기3",
     //     "bookmarkcount": 32,
     //     "views": 123,
     //     "isbookmark": true,
@@ -52,7 +54,7 @@ class SituationMainController extends GetxController {
     //     "maincharacter": "생존자1"
     //   },
     //   {
-    //     "scenarioname": "사막에서 살아남기4",
+    //     "situationname": "사막에서 살아남기4",
     //     "bookmarkcount": 32,
     //     "views": 123,
     //     "isbookmark": true,
@@ -62,7 +64,7 @@ class SituationMainController extends GetxController {
     //     "maincharacter": "생존자1"
     //   },
     //   {
-    //     "scenarioname": "사막에서 살아남기",
+    //     "situationname": "사막에서 살아남기",
     //     "bookmarkcount": 32,
     //     "views": 123,
     //     "isbookmark": true,

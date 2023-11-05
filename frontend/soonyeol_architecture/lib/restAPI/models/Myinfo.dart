@@ -1,12 +1,12 @@
 class MyInfo {
-  String? scenarioName;
+  String? situationName;
   List<String>? genre;
   int? processivity;
   String? lastTalking;
   DateTime? savedTime;
 
   MyInfo({
-    this.scenarioName,
+    this.situationName,
     this.genre,
     this.processivity,
     this.lastTalking,
@@ -15,7 +15,7 @@ class MyInfo {
 
   // JSON serialization method
   MyInfo.fromJson(Map<String, dynamic> json) {
-    scenarioName = json['scenario_name'];
+    situationName = json['situation_name'];
     genre = json['genre'].cast<String>();
     processivity = json['progress'];
     lastTalking = json['last_talking'];
@@ -25,7 +25,7 @@ class MyInfo {
   // JSON serialization method
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['scenario_name'] = scenarioName;
+    data['situation_name'] = situationName;
     data['genre'] = genre;
     data['progress'] = processivity;
     data['last_talking'] = lastTalking;

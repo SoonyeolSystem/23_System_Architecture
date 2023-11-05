@@ -27,7 +27,7 @@ class ConversationComponent extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundColor: Color(0xFFE3F4F9),
                       child: Icon(
                         CupertinoIcons.person_fill,
@@ -35,36 +35,29 @@ class ConversationComponent extends StatelessWidget {
                         color: Color.fromARGB(255, 148, 148, 148),
                       ),
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            SizedBox(height: 9),
                             Text(
                               "${model.userName}",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
                               textAlign: TextAlign.left,
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Text(
                               savedTime(model.savedTime!),
-                              style: const TextStyle(
-                                  fontSize: 12, color: Color(0xFF808080)),
+                              style: const TextStyle(fontSize: 12, color: Color(0xFF808080)),
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
-                          '${model.conversation![0]}',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w500),
+                          model.headScript!,
+                          style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
                           textAlign: TextAlign.left,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -78,25 +71,21 @@ class ConversationComponent extends StatelessWidget {
                     Row(
                       children: [
                         Icon(
-                          model.isLike == true
-                              ? Icons.favorite
-                              : Icons.favorite_border,
+                          model.isLike == true ? Icons.favorite : Icons.favorite_border,
                           size: 22,
-                          color: Color.fromARGB(255, 229, 91, 86),
+                          color: const Color.fromARGB(255, 242, 96, 108), //const Color.fromARGB(255, 229, 91, 86),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Text(
                           '${model.likeCount}',
-                          style: const TextStyle(
-                              fontSize: 14, color: Color(0xFF434343)),
+                          style: const TextStyle(fontSize: 14, color: Color(0xFF434343)),
                         ),
                       ],
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 3),
                     Text(
                       "조회수 ${model.views}회",
-                      style: const TextStyle(
-                          fontSize: 14, color: Color(0xFF434343)),
+                      style: const TextStyle(fontSize: 14, color: Color(0xFF434343)),
                     ),
                   ],
                 ),

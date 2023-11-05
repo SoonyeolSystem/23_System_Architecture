@@ -36,7 +36,7 @@ class MyInfoPage extends StatelessWidget {
                         padding: EdgeInsets.only(left: Common.getWidth * 0.05, top: 25.0, bottom: 35),
                         child: Text(
                           '${controller.userName.value} 님의 정보',
-                          style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w500, color: Colors.black),
+                          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
                         ),
                       ),
                     ),

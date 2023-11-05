@@ -30,15 +30,15 @@ class InfoViewComponent extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: lenSituation(model.scenarioName!),
+                        width: lenSituation(model.situationName!),
                         //width: 250,
                         child: Text(
-                          "${model.scenarioName}",
+                          "${model.situationName}",
                           style: const TextStyle(fontSize: 16),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       for (int i = 0; i < model.genre!.length; i++)
                         Row(
                           children: [
@@ -46,7 +46,7 @@ class InfoViewComponent extends StatelessWidget {
                               "#",
                               style: TextStyle(
                                 fontSize: 12,
-                                color: model.processivity == 0 ? Color(0xFF33C26C) : Color.fromARGB(255, 255, 0, 0),
+                                color: model.processivity == 0 ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
                               ),
                             ),
                             Text(
@@ -68,9 +68,9 @@ class InfoViewComponent extends StatelessWidget {
                         Expanded(
                           child: Text(
                             '${model.lastTalking}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14,
-                              color: const Color.fromARGB(137, 50, 50, 50),
+                              color: Color.fromARGB(137, 50, 50, 50),
                               fontWeight: FontWeight.w200,
                             ),
                             textAlign: TextAlign.left,
@@ -87,22 +87,22 @@ class InfoViewComponent extends StatelessWidget {
                 //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IconButton(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       icon: const Icon(Icons.close),
-                      color: Color.fromARGB(255, 195, 195, 195),
+                      color: const Color.fromARGB(255, 195, 195, 195),
                       iconSize: 19,
                       onPressed: () {
                         showDefaultDialog();
                       }),
                   Text(
                     savedTime(model.savedTime!),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
                       color: Color(0xFF808080),
                       fontWeight: FontWeight.w100,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                 ],
               )
             ],
@@ -117,8 +117,8 @@ void showDefaultDialog() {
   Get.defaultDialog(
     title: '',
     content: const Text('정말 삭제하시겠습니까?\n'),
-    contentPadding: EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
-    buttonColor: Color(0xFF33C26C),
+    contentPadding: const EdgeInsets.only(top: 20, bottom: 30, left: 10, right: 10),
+    buttonColor: const Color(0xFF33C26C),
     textConfirm: '삭제',
     confirmTextColor: Colors.white,
     onConfirm: () {
@@ -134,8 +134,8 @@ void showSnackBar() {
   Get.snackbar('', '',
       maxWidth: Common.getWidth,
       titleText: Container(),
-      messageText: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0),
+      messageText: const Padding(
+        padding: EdgeInsets.only(bottom: 8.0),
         child: Text(
           '시나리오가 삭제되었습니다.',
           style: TextStyle(color: Colors.white),
@@ -171,9 +171,10 @@ String savedTime(DateTime savedTime) {
   }
 }
 
-double lenSituation(String scenarioName) {
-  if (scenarioName.length < 20) {
-    return (scenarioName.length * 14).toDouble();
-  } else
+double lenSituation(String situationName) {
+  if (situationName.length < 20) {
+    return (situationName.length * 14).toDouble();
+  } else {
     return 250.0;
+  }
 }

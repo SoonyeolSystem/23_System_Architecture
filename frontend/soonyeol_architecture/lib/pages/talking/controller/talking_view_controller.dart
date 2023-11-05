@@ -55,7 +55,7 @@ class TalkingViewController extends GetxController {
       if (available) {
         isListening.value = true;
         speechToText.listen(onResult: (val) {
-          speechText.value = val.recognizedWords;
+        speechText.value = val.recognizedWords;
         });
       }
     } else {
