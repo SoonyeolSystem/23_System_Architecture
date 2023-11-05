@@ -22,7 +22,7 @@ class SituationMainPage extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 20, top: 28),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,19 +49,24 @@ class SituationMainPage extends StatelessWidget {
                 ),
                 Obx(
                   () => (controller.situationList.isEmpty)
-                      ? const CircularProgressIndicator(color: Color(0xFF33C26C))
+                      ? const CircularProgressIndicator(
+                          color: Color(0xFF33C26C))
                       : Column(
                           children: [
-                            for (int index = 0; index < controller.situationList.length; index++)
+                            for (int index = 0;
+                                index < controller.situationList.length;
+                                index++)
                               (index == 0)
                                   ? const SizedBox(height: 20)
                                   : Column(
                                       children: [
                                         SituationComponent(
-                                          model: controller.situationList.value[index],
+                                          model: controller
+                                              .situationList.value[index],
                                         ),
                                         const Padding(
-                                          padding: EdgeInsets.only(bottom: 10, top: 15),
+                                          padding: EdgeInsets.only(
+                                              bottom: 10, top: 15),
                                           child: Divider(
                                             height: 1,
                                             thickness: 1,
