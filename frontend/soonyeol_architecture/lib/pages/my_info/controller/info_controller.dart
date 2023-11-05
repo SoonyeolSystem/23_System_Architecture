@@ -12,11 +12,10 @@ class MyInfoViewController extends GetxController {
   void onInit() async {
     super.onInit();
     await getInfoList();
-
   }
 
   Future<void> getInfoList() async {
-    ApiResponse<ConversationListResponse> response = await ApiService.instance.getConversationListByUserID(UserService.instance.userID);
+    ApiResponse<ConversationListResponse> response = await ApiService.instance.getConversationListByUserID(UserService.instance.userId);
     if (response.result) {
       myConversation.value = response.value!.conversationList!;
     }
