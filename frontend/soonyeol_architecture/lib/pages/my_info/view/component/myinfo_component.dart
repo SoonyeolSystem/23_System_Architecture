@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/common/service_response.dart';
+import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
+import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 class InfoViewComponent extends StatelessWidget {
@@ -86,7 +89,7 @@ class InfoViewComponent extends StatelessWidget {
                       color: const Color.fromARGB(255, 195, 195, 195),
                       iconSize: 19,
                       onPressed: () {
-                        showDefaultDialog();
+                        showDefaultDialog(model.conversationID!);
                       }),
                   Text(
                     model.epcohTime == null ? "알 수 없음" : savedTime(Common.instance.epochTimeToDateTime(model.epcohTime!)),
@@ -107,7 +110,7 @@ class InfoViewComponent extends StatelessWidget {
   }
 }
 
-void showDefaultDialog() {
+void showDefaultDialog(String conversationID) {
   Get.defaultDialog(
     title: '',
     content: const Text('정말 삭제하시겠습니까?\n'),
@@ -117,22 +120,27 @@ void showDefaultDialog() {
     confirmTextColor: Colors.white,
     onConfirm: () {
       Get.back();
-      showSnackBar();
+      showSnackBar(conversationID);
     },
     textCancel: '취소',
     onCancel: Get.back,
   );
 }
 
-void showSnackBar() {
+void showSnackBar(String conversationID) async {
+  ApiResponse<String> response = await ApiService.instance.deleteConversationByID(conversationID);
+
+  if (response.result) {
+    await MyInfoViewController.instance.getInfoList();
+  }
   Get.snackbar('', '',
       maxWidth: Common.getWidth,
       titleText: Container(),
-      messageText: const Padding(
-        padding: EdgeInsets.only(bottom: 8.0),
+      messageText: Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
         child: Text(
-          '시나리오가 삭제되었습니다.',
-          style: TextStyle(color: Colors.white),
+          response.result ? '해당 대화가 삭제되었습니다.' : '대화 삭제에 오류가 발생하였습니다.',
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       colorText: Colors.white,

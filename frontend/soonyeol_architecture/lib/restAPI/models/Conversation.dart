@@ -11,6 +11,8 @@ class Conversation {
   String? headScript; //대화내용
   int? epcohTime; //대화시간
   bool? endStory;
+  String? situationID;
+  String? conversationID;
 
   Conversation({
     this.situationname,
@@ -24,6 +26,9 @@ class Conversation {
     this.userName,
     this.headScript,
     this.epcohTime,
+    this.endStory,
+    this.situationID,
+    this.conversationID,
   });
 
   Conversation.fromJson(Map<String, dynamic> json) {
@@ -43,6 +48,8 @@ class Conversation {
     headScript = json['headScript'];
     epcohTime = json['timestamp'];
     endStory = json['end_story'].toLowerCase() != 'false';
+    situationID = json['situationid'];
+    conversationID = json['conversationid'];
   }
 
   Map<String, dynamic> toJson() {
@@ -59,6 +66,8 @@ class Conversation {
     data['conversation'] = headScript;
     data['timestamp'] = epcohTime;
     data['end_story'] = endStory;
+    data['situationid'] = situationID;
+    data['conversationid'] = conversationID;
     return data;
   }
 }

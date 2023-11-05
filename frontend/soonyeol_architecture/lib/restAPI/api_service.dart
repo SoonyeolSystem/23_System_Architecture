@@ -25,9 +25,27 @@ class ApiService extends GetxService {
     return this;
   }
 
+  Future<ApiResponse<String>> deleteConversationByID(String id) async {
+    try {
+      var response = await communityDio.delete('/user/conversation/$id');
+      print(response);
+      return ApiResponse<String>(result: response.isSuccessful, value: response.data['message']);
+    } on DioError catch (e) {
+      Common.logger.d(e);
+      try {
+        return ApiResponse<String>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.");
+      } catch (e) {
+        return ApiResponse<String>(result: false, errorMsg: "오류가 발생했습니다.");
+      }
+    } catch (e) {
+      Common.logger.d(e);
+      return ApiResponse<String>(result: false, errorMsg: "오류가 발생했습니다.");
+    }
+  }
+
   Future<ApiResponse<ConversationListResponse>> getConversationListByUserID(String userID) async {
     try {
-      var response = await communityDio.get('/user/$userID');
+      var response = await communityDio.get('/user/conversation/$userID');
       ConversationListResponse getConversationListResponse = ConversationListResponse.fromJson(response.data);
       return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getConversationListResponse);
     } on DioError catch (e) {
