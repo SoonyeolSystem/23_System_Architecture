@@ -8,7 +8,6 @@ import 'package:soonyeol_architecture/restAPI/response/script_response.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-
 import '../../../restAPI/models/Talking.dart';
 
 class TalkingViewController extends GetxController {
@@ -16,7 +15,7 @@ class TalkingViewController extends GetxController {
 
   late final WebSocketChannel? channel;
   var isListening = false.obs;
-  var speechText = 'press the Mic button  and start speaking'.obs;
+  var speechText = ''.obs;
   late SpeechToText speechToText;
 
   FlutterTts tts = FlutterTts();
@@ -53,10 +52,21 @@ class TalkingViewController extends GetxController {
         onError: (val) {},
       );
       if (available) {
+        
         isListening.value = true;
+        speechText.value = '';
+        Talking newTalking = Talking(character:  Get.arguments['name'],
+          script: speechText.value,
+          isMe: "1",);
+         talkingList.add(newTalking);
+        scrollcontroller.value.animateTo(scrollcontroller.value.position.maxScrollExtent, duration: const Duration(milliseconds: 10), curve: Curves.ease);
         speechToText.listen(onResult: (val) {
         speechText.value = val.recognizedWords;
+        talkingList.last.script = val.recognizedWords;
+        talkingList.refresh();
+        
         });
+        
       }
     } else {
       isLoaded.value = true;
