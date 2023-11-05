@@ -109,7 +109,7 @@ class MainViewPage extends StatelessWidget {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(10),
                               onTap: () {
-                                if(userService.isLogin == false){
+                                if (userService.isLogin == false) {
                                   Get.toNamed(LoginPage.url);
                                   return;
                                 }
@@ -162,108 +162,104 @@ class MainViewPage extends StatelessWidget {
                     //공간 띄우기
                     const SizedBox(height: 40),
                     //이어서 대화하기
-                    Obx(
-                      () => Row(
-                        // crossAxisAlignment:
-                        //     CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(width: 25),
-                          const Text('이어서 대화하기', style: TextStyle(fontSize: 23, color: Color.fromARGB(255, 90, 90, 90), fontWeight: FontWeight.w600)),
-                          const SizedBox(width: 240),
-                          if (userService.isLogin == true  && MyInfoViewController.instance.myConversation.isNotEmpty)
-                            TextButton(
-                              onPressed: () async {
-                                //Get.to(() => MyInfoPage());
-                                final controller = NavigationController.instance;
-                                controller.selectTab(2);
-                                final controller2 = MyInfoViewController.instance;
-                                await Future.delayed(const Duration(milliseconds: 50));
+                    Row(
+                      // crossAxisAlignment:
+                      //     CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(width: 25),
+                        const Text('이어서 대화하기', style: TextStyle(fontSize: 23, color: Color.fromARGB(255, 90, 90, 90), fontWeight: FontWeight.w600)),
+                        const SizedBox(width: 240),
+                        if (userService.isLogin == true)
+                          Obx(() => (MyInfoViewController.instance.myConversation.isNotEmpty)
+                              ? TextButton(
+                                  onPressed: () async {
+                                    //Get.to(() => MyInfoPage());
+                                    final controller = NavigationController.instance;
+                                    controller.selectTab(2);
+                                    final controller2 = MyInfoViewController.instance;
+                                    await Future.delayed(const Duration(milliseconds: 50));
 
-                                controller2.scrollcontroller.value.animateTo(537.0, duration: const Duration(milliseconds: 500), curve: Curves.ease);
-                              },
-                              child: const Text(
-                                '전체보기',
-                                style: TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                            ),
-                        ],
-                      ),
+                                    controller2.scrollcontroller.value.animateTo(537.0, duration: const Duration(milliseconds: 500), curve: Curves.ease);
+                                  },
+                                  child: const Text(
+                                    '전체보기',
+                                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                                  ),
+                                )
+                              : const SizedBox())
+                      ],
                     ),
                   ],
                 )),
-            Obx(
-              () => Column(children: [
-                if (userService.isLogin == false)
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      const Text(
-                        '로그인 후 \n 이어서 대화해보세요!',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      TextButton(
-                        onPressed: () async {
-                          Get.toNamed(LoginPage.url);
-                        },
-                        child: const Text(
-                          '로그인 하기 >',
-                          style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                    ],
-                  )
-                else if (MyInfoViewController.instance.myConversation.isNotEmpty)
-                  SizedBox(
-                    height: 150,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        for (int index = 0; index < MyInfoViewController.instance.myConversation.length; index++)
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (index == 0)
-                                const SizedBox(
-                                  width: 40,
-                                ),
-                              OngoingComponent(model: MyInfoViewController.instance.myConversation[index]),
-                            ],
-                          )
-                      ],
-                    ),
-                  )
-                else
-                  Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      const Text('아직 진행 중인 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      TextButton(
-                        onPressed: () async {
-                          final controller = NavigationController.instance;
-                          controller.selectTab(1);
-                        },
-                        child: const Text(
-                          '대화 시작하기 >',
-                          style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                    ],
+            if (userService.isLogin == false)
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 15,
                   ),
-              ]),
-            ),
+                  const Text(
+                    '로그인 후 \n 이어서 대화해보세요!',
+                    style: TextStyle(fontSize: 15, color: Colors.grey),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      Get.toNamed(LoginPage.url);
+                    },
+                    child: const Text(
+                      '로그인 하기 >',
+                      style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                ],
+              )
+            else
+              Obx(() => (MyInfoViewController.instance.myConversation.isNotEmpty)
+                  ? SizedBox(
+                      height: 150,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          for (int index = 0; index < MyInfoViewController.instance.myConversation.length; index++)
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (index == 0)
+                                  const SizedBox(
+                                    width: 40,
+                                  ),
+                                OngoingComponent(model: MyInfoViewController.instance.myConversation[index]),
+                              ],
+                            )
+                        ],
+                      ),
+                    )
+                  : Column(
+                      children: [
+                        const SizedBox(height: 20),
+                        const Text('아직 진행 중인 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            final controller = NavigationController.instance;
+                            controller.selectTab(1);
+                          },
+                          child: const Text(
+                            '대화 시작하기 >',
+                            style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                      ],
+                    )),
             const SizedBox(
               height: 35,
             ),
