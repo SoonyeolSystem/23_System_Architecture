@@ -19,8 +19,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginIdController = TextEditingController();
     final passwordController = TextEditingController();
-    final UserService userService = Get.find<UserService>();
-    // UserService userService = UserService.instance;
+    // final UserService userService = Get.find<UserService>();
+    final userService = UserService.instance;
 
     return Scaffold(
       body: SingleChildScrollView(
