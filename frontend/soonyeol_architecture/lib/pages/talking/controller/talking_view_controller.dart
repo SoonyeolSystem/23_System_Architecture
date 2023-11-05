@@ -61,10 +61,11 @@ class TalkingViewController extends GetxController {
           script: speechText.value,
           isMe: "1",);
          talkingList.add(newTalking);
-        scrollcontroller.value.animateTo(scrollcontroller.value.position.maxScrollExtent, duration: const Duration(milliseconds: 10), curve: Curves.ease);
+        //scrollcontroller.value.animateTo(scrollcontroller.value.position.maxScrollExtent, duration: const Duration(milliseconds: 10), curve: Curves.ease);
         speechToText.listen(onResult: (val) {
+  
         speechText.value = val.recognizedWords;
-        talkingList.last.script = val.recognizedWords;
+        talkingList.last.changeScript(val.recognizedWords);
         talkingList.refresh();
         
         });
