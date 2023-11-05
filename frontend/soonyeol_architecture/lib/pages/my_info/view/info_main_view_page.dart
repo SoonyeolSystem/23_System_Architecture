@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/component/myinfo_component.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 import '../../../../common/common.dart';
 
@@ -16,6 +17,8 @@ class MyInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MyInfoViewController.instance;
+    final UserService userService = Get.find<UserService>();
+
     return Center(
         child: SizedBox(
       width: Common.getWidth,
@@ -35,7 +38,7 @@ class MyInfoPage extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(left: Common.getWidth * 0.05, top: 25.0, bottom: 35),
                         child: Text(
-                          '${controller.userName.value} 님의 정보',
+                          '${UserService.instance.nickname} 님의 정보',
                           style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
                         ),
                       ),
@@ -43,6 +46,11 @@ class MyInfoPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Get.offAllNamed('/route');
+                        userService.userId= '';
+                        userService.nickname= '';
+                        userService.isLogin = false;
+                        Get.snackbar('User ID: ${userService.userId}', 'Nickname: ${userService.nickname}');
+
                       },
                       child: Row(
                         children: [

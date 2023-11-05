@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_custom_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../common/common.dart';
@@ -14,7 +16,7 @@ class TalkingCustomPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingCustomViewController());
-
+    UserService userService = UserService.instance;
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -37,7 +39,10 @@ class TalkingCustomPage extends StatelessWidget {
                           centerTitle: true,
                           title: const Text(
                             '시나리오 커스텀',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 23),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 23),
                           ),
                           backgroundColor: Colors.transparent,
                           leading: InkWell(
@@ -64,7 +69,8 @@ class TalkingCustomPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, // 컨텐츠 가운데 정렬
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start, // 컨텐츠 가운데 정렬
                         children: [
                           const Text(
                             '제목',
@@ -190,7 +196,8 @@ class TalkingCustomPage extends StatelessWidget {
                             ),
                             backgroundColor: const Color(0xFF434343),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
+                              borderRadius: BorderRadius.circular(
+                                  10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
                             ),
                           ),
                           onPressed: () {},
@@ -208,7 +215,8 @@ class TalkingCustomPage extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF2E7649),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
+                              borderRadius: BorderRadius.circular(
+                                  10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
                             ),
                           ),
                           onPressed: () {},
@@ -227,15 +235,19 @@ class TalkingCustomPage extends StatelessWidget {
                       height: 60,
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.toNamed(TalkingViewPage.url, arguments: {
-                            'situationid': const Uuid().v4(),
-                            'conversationid': const Uuid().v4(),
-                            'situation': controller.situationC.text,
-                            'genre': controller.genreC.text,
-                            'name': controller.nameC.text,
-                            'character': controller.characterC.text,
-                            'title': controller.titleC.text,
-                          });
+                          if (userService.isLogin == false) {
+                            Get.toNamed(LoginPage.url);
+                          } else {
+                            Get.toNamed(TalkingViewPage.url, arguments: {
+                              'situationid': const Uuid().v4(),
+                              'conversationid': const Uuid().v4(),
+                              'situation': controller.situationC.text,
+                              'genre': controller.genreC.text,
+                              'name': controller.nameC.text,
+                              'character': controller.characterC.text,
+                              'title': controller.titleC.text,
+                            });
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF33C26C),

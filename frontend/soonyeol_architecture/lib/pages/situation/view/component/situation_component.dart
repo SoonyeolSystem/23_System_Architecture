@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/situation/view/component/conversation_component.dart';
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 import '../../controller/situation_main_controller.dart';
 
@@ -15,6 +19,7 @@ class SituationComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
     final controller_ = SituationMainController.instance;
+    UserService userService = UserService.instance;
     return InkWell(
       onTap: () {
         showModalBottomSheet(
@@ -301,7 +306,12 @@ class SituationComponent extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(right: 10, bottom: 5),
                                       child: ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () async{
+                                          if(userService.isLogin==false){
+                                            Get.toNamed(LoginPage.url);
+
+                                          }
+                                        },
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty.all(const Color(0xFF33C26C)),
                                           padding: MaterialStateProperty.all(

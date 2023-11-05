@@ -8,6 +8,7 @@ class MyInfoViewController extends GetxController {
   void onInit() async {
     super.onInit();
     await getInfoList();
+
   }
 
   Future<void> getInfoList() async {
@@ -61,7 +62,7 @@ class MyInfoViewController extends GetxController {
   RxInt speakingCount = 7.obs;
   RxDouble talkingScore = 7.8.obs;
   RxInt completeSituation = 3.obs;
-  RxString userName = '홍길동'.obs;
+  // RxString nickname= "".obs;
 
   Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }

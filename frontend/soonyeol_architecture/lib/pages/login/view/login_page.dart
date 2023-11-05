@@ -6,6 +6,7 @@ import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/response/login_response.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 import '../../../../common/common.dart';
 
@@ -18,6 +19,8 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginIdController = TextEditingController();
     final passwordController = TextEditingController();
+    final UserService userService = Get.find<UserService>();
+    // UserService userService = UserService.instance;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -153,12 +156,19 @@ class LoginPage extends StatelessWidget {
                         Get.offAllNamed(MainViewPage.url);
 
                         Get.snackbar("success", "로그인에 성공하였습니다.");
+                        userService.userId=response.userId!;
+                        userService.nickname = response.nickname!;
+                        userService.isLogin = true;
+                        Get.snackbar('User ID: ${userService.userId}', 'Nickname: ${userService.nickname}');
+
+                        Common.logger.d('User ID: ${userService.userId}');
+Common.logger.d('Nickname: ${userService.nickname}');
                       } else if (response.statusCode == 400) {
                         // ID가 존재하지 않음
                         Get.snackbar(
                             "ID/Password not Found", "ID/비밀번호가 존재하지 않습니다.");
                       } else {
-                        // 기타 오류
+                        // 기타 오류   
                         Get.snackbar(
                             "Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
                       }

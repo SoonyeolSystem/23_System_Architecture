@@ -8,6 +8,7 @@ import 'package:soonyeol_architecture/pages/main/view/component/ongoing_componen
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 import '../../../../common/common.dart';
 
 class MainViewPage extends StatelessWidget {
@@ -18,8 +19,7 @@ class MainViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
-    bool isLogined = true;
-
+    UserService userService = UserService.instance;
     return SizedBox(
       width: Common.getWidth,
       //height: Common.getHeight,
@@ -120,7 +120,10 @@ class MainViewPage extends StatelessWidget {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(10),
                               onTap: () {
-                                // 버튼이 클릭되었을 때 실행되는 코드
+                                if(userService.isLogin == false){
+                                  Get.toNamed(LoginPage.url);
+                                  return;
+                                }
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -191,7 +194,7 @@ class MainViewPage extends StatelessWidget {
                                 color: Color.fromARGB(255, 90, 90, 90),
                                 fontWeight: FontWeight.w600)),
                         const SizedBox(width: 240),
-                        if (isLogined == true &&
+                        if (userService.isLogin == true &&
                             controller.conversationList.length > 0)
                           TextButton(
                             onPressed: () async {
@@ -216,7 +219,7 @@ class MainViewPage extends StatelessWidget {
                     ),
                   ],
                 )),
-            if (isLogined == false)
+            if (userService.isLogin == false)
               Column(
                 children: [
                   SizedBox(
