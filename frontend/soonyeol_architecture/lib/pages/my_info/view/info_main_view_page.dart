@@ -46,7 +46,7 @@ class MyInfoPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Get.offAllNamed('/route');
-                        UserService.instance.logout;
+                        UserService.instance.logout();
                         Get.snackbar('User ID: ${UserService.instance.userId}', 'Nickname: ${UserService.instance.nickname}');
 
                       },
