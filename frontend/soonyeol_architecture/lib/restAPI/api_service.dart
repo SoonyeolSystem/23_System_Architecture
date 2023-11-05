@@ -6,6 +6,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/dio_extension.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
+import 'package:soonyeol_architecture/restAPI/response/get_conversation_list_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/login_response.dart';
@@ -22,6 +23,24 @@ class ApiService extends GetxService {
       userDio.interceptors.add(PrettyDioLogger());
     }
     return this;
+  }
+
+  Future<ApiResponse<ConversationListResponse>> getConversationListByUserID(String userID) async {
+    try {
+      var response = await communityDio.get('/user/$userID');
+      ConversationListResponse getConversationListResponse = ConversationListResponse.fromJson(response.data);
+      return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getConversationListResponse);
+    } on DioError catch (e) {
+      Common.logger.d(e);
+      try {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.");
+      } catch (e) {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+      }
+    } catch (e) {
+      Common.logger.d(e);
+      return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+    }
   }
 
   Future<ApiResponse<SituationListResponse>> getSituationList() async {

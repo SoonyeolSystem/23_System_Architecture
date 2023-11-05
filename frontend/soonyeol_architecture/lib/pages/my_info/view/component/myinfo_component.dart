@@ -4,17 +4,15 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
-
-import '../../../../restAPI/models/MyInfo.dart';
+import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 class InfoViewComponent extends StatelessWidget {
-  final MyInfo model;
+  final Conversation model;
   const InfoViewComponent({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
     //final controller = TalkingViewController.instance;
-    Common.logger.i(model.genre);
     return InkWell(
       onTap: () {
         Get.toNamed(TalkingViewPage.url);
@@ -29,14 +27,10 @@ class InfoViewComponent extends StatelessWidget {
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Row(
                     children: [
-                      SizedBox(
-                        width: lenSituation(model.situationName!),
-                        //width: 250,
-                        child: Text(
-                          "${model.situationName}",
-                          style: const TextStyle(fontSize: 16),
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      Text(
+                        model.situationname ?? "알 수 없음",
+                        style: const TextStyle(fontSize: 16),
+                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(width: 5),
                       for (int i = 0; i < model.genre!.length; i++)
@@ -46,7 +40,7 @@ class InfoViewComponent extends StatelessWidget {
                               "#",
                               style: TextStyle(
                                 fontSize: 12,
-                                color: model.processivity == 0 ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
+                                color: model.endStory == true ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
                               ),
                             ),
                             Text(
@@ -67,7 +61,7 @@ class InfoViewComponent extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            '${model.lastTalking}',
+                            model.headScript ?? "알 수 없음",
                             style: const TextStyle(
                               fontSize: 14,
                               color: Color.fromARGB(137, 50, 50, 50),
@@ -95,7 +89,7 @@ class InfoViewComponent extends StatelessWidget {
                         showDefaultDialog();
                       }),
                   Text(
-                    savedTime(model.savedTime!),
+                    model.epcohTime == null ? "알 수 없음" : savedTime(Common.instance.epochTimeToDateTime(model.epcohTime!)),
                     style: const TextStyle(
                       fontSize: 12,
                       color: Color(0xFF808080),

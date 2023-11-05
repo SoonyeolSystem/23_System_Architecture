@@ -9,7 +9,7 @@ class Conversation {
   String? maincharacter; //주인공
   String? userName; //대화 유저
   String? headScript; //대화내용
-  DateTime? savedTime; //대화시간
+  int? epcohTime; //대화시간
   bool? endStory;
 
   Conversation({
@@ -23,7 +23,7 @@ class Conversation {
     this.maincharacter,
     this.userName,
     this.headScript,
-    this.savedTime,
+    this.epcohTime,
   });
 
   Conversation.fromJson(Map<String, dynamic> json) {
@@ -38,10 +38,11 @@ class Conversation {
     if (json['character'] != null) {
       character = json['character'].split(',');
     }
-    maincharacter = json['maincharacter'];
+    maincharacter = json['name'];
     userName = json['userName'];
-    headScript = json['conversation'].cast<String>();
-    savedTime = json['saved_time'];
+    headScript = json['headScript'];
+    epcohTime = json['timestamp'];
+    endStory = json['end_story'].toLowerCase() != 'false';
   }
 
   Map<String, dynamic> toJson() {
@@ -53,11 +54,11 @@ class Conversation {
     data['stiuation'] = stiuation;
     data['genre'] = genre;
     data['character'] = character;
-    data['maincharacter'] = maincharacter;
+    data['name'] = maincharacter;
     data['userName'] = userName;
     data['conversation'] = headScript;
-    data['saved_time'] = savedTime;
-
+    data['timestamp'] = epcohTime;
+    data['end_story'] = endStory;
     return data;
   }
 }
