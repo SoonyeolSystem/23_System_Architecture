@@ -19,7 +19,7 @@ class MainViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
-    UserService userService = UserService.instance;
+    final userService = UserService.instance;
     return SizedBox(
       width: Common.getWidth,
       //height: Common.getHeight,
@@ -109,7 +109,7 @@ class MainViewPage extends StatelessWidget {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(10),
                               onTap: () {
-                                if (userService.isLogin == false) {
+                                if (userService.isLogin() == false) {
                                   Get.toNamed(LoginPage.url);
                                   return;
                                 }
@@ -169,7 +169,7 @@ class MainViewPage extends StatelessWidget {
                         const SizedBox(width: 25),
                         const Text('이어서 대화하기', style: TextStyle(fontSize: 23, color: Color.fromARGB(255, 90, 90, 90), fontWeight: FontWeight.w600)),
                         const SizedBox(width: 240),
-                        if (userService.isLogin == true)
+                        if (userService.isLogin() == true)
                           Obx(() => (MyInfoViewController.instance.myConversation.isNotEmpty)
                               ? TextButton(
                                   onPressed: () async {
@@ -191,7 +191,7 @@ class MainViewPage extends StatelessWidget {
                     ),
                   ],
                 )),
-            if (userService.isLogin == false)
+            if (userService.isLogin() == false)
               Column(
                 children: [
                   const SizedBox(

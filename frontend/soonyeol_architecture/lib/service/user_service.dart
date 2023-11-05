@@ -8,11 +8,8 @@ import 'package:soonyeol_architecture/restAPI/response/login_response.dart';
 class UserService extends GetxService {
   static UserService get instance => Get.find<UserService>();
 
-  bool logining = false;
-  // bool isLogin = false;
   String userId = '';
   String nickname = '';
-  bool isLogin=false;
   Future<UserService> init() async {
     Common.logger.d('$runtimeType init!');
 
@@ -21,7 +18,7 @@ class UserService extends GetxService {
     return this;
   }
 
-  Future<bool> login(String loginId, String password) async {
+  Future<void> login(String loginId, String password) async {
     ApiResponse<LoginResponse> response =
                           await ApiService.instance.login(loginId, password);
 
@@ -45,9 +42,18 @@ Common.logger.d('Nickname: ${nickname}');
                         Get.snackbar(
                             "Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
                       }
-                          return false;
   }
-  //  Future<bool> isLogin() async {
+   bool isLogin() {
+    if(userId!=''&&nickname!=''){
+      return true;
+    }
+    else{
+      return false;
+    }
 
-  //  }
+   }
+    void logout() {
+     userId='';
+     nickname='';
+   }
 }

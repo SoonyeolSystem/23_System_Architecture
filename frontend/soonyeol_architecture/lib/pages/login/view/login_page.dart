@@ -147,31 +147,11 @@ class LoginPage extends StatelessWidget {
                     onPressed: () async {
                       String loginId = loginIdController.text;
                       String password = passwordController.text;
-                      UserService.instance.login(loginId, password);
-//                       ApiResponse<LoginResponse> response =
-//                           await ApiService.instance.login(loginId, password);
 
-//                       if (response.statusCode == 200) {
-//                         // 로그인 성공
-//                         Get.offAllNamed(MainViewPage.url);
-
-//                         Get.snackbar("success", "로그인에 성공하였습니다.");
-//                         userService.userId=response.userId!;
-//                         userService.nickname = response.nickname!;
-//                         userService.isLogin = true;
-//                         Get.snackbar('User ID: ${userService.userId}', 'Nickname: ${userService.nickname}');
-
-//                         Common.logger.d('User ID: ${userService.userId}');
-// Common.logger.d('Nickname: ${userService.nickname}');
-//                       } else if (response.statusCode == 400) {
-//                         // ID가 존재하지 않음
-//                         Get.snackbar(
-//                             "ID/Password not Found", "ID/비밀번호가 존재하지 않습니다.");
-//                       } else {
-//                         // 기타 오류   
-//                         Get.snackbar(
-//                             "Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
-//                       }
+                      //로그인
+                      userService.login(loginId, password);
+                      // UserService.instance.isLogin();
+//                       
                     },
                     style: ElevatedButton.styleFrom(
                       // backgroundColor: Colors.blue,

@@ -17,7 +17,7 @@ class MyInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MyInfoViewController.instance;
-    final UserService userService = Get.find<UserService>();
+    // final UserService userService = Get.find<UserService>();
 
     return Center(
         child: SizedBox(
@@ -46,10 +46,8 @@ class MyInfoPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Get.offAllNamed('/route');
-                        userService.userId= '';
-                        userService.nickname= '';
-                        userService.isLogin = false;
-                        Get.snackbar('User ID: ${userService.userId}', 'Nickname: ${userService.nickname}');
+                        UserService.instance.logout;
+                        Get.snackbar('User ID: ${UserService.instance.userId}', 'Nickname: ${UserService.instance.nickname}');
 
                       },
                       child: Row(

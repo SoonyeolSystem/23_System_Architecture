@@ -16,7 +16,7 @@ class TalkingCustomPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingCustomViewController());
-    UserService userService = UserService.instance;
+    final userService = UserService.instance;
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -219,7 +219,11 @@ class TalkingCustomPage extends StatelessWidget {
                                   10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                          if (userService.isLogin() == false) {
+                            Get.toNamed(LoginPage.url);
+                          }
+                          },
                           child: const Text(
                             '내가 했던\n시나리오',
                             style: TextStyle(fontSize: 23, color: Colors.white),
@@ -235,7 +239,7 @@ class TalkingCustomPage extends StatelessWidget {
                       height: 60,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (userService.isLogin == false) {
+                          if (userService.isLogin() == false) {
                             Get.toNamed(LoginPage.url);
                           } else {
                             Get.toNamed(TalkingViewPage.url, arguments: {
