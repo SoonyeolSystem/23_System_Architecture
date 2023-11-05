@@ -12,7 +12,6 @@ class MyInfoViewController extends GetxController {
   void onInit() async {
     super.onInit();
     await getInfoList();
-
   }
 
   Future<void> getInfoList() async {
