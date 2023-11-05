@@ -6,7 +6,7 @@ class UserService extends GetxService {
 
   bool logining = false;
 
-  String userID = '';
+  String userID = '}';
   Future<UserService> init() async {
     Common.logger.d('$runtimeType init!');
 

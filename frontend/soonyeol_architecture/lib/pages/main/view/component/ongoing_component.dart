@@ -12,7 +12,7 @@ class OngoingComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
     return Container(
-      padding: EdgeInsets.only(right: 15),
+      padding: const EdgeInsets.only(right: 15),
       width: 175,
       height: 153,
       child: Material(
@@ -25,7 +25,7 @@ class OngoingComponent extends StatelessWidget {
               child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [Color.fromARGB(131, 205, 206, 209), Color.fromARGB(255, 215, 224, 230)],
@@ -35,8 +35,8 @@ class OngoingComponent extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(height: 13),
-                      Padding(
+                      const SizedBox(height: 13),
+                      const Padding(
                         padding: EdgeInsets.only(right: 100.0),
                         child: Icon(
                           Icons.chat,
@@ -44,15 +44,15 @@ class OngoingComponent extends StatelessWidget {
                           color: Color.fromARGB(255, 90, 144, 219),
                         ),
                       ),
-                      SizedBox(height: 13),
+                      const SizedBox(height: 13),
                       Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "${model.situationname}",
-                                style: TextStyle(
+                                model.situationname ?? "알 수 없음",
+                                style: const TextStyle(
                                   fontSize: 14,
                                   color: Color.fromARGB(255, 43, 43, 43),
                                   fontWeight: FontWeight.w600,
@@ -60,10 +60,10 @@ class OngoingComponent extends StatelessWidget {
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 15),
+                              const SizedBox(height: 15),
                               Text(
-                                '마지막 대화: \nWhere am I? I want to drink water.',
-                                style: TextStyle(
+                                '마지막 대화: \n${model.headScript}}',
+                                style: const TextStyle(
                                   fontSize: 13,
                                   color: Colors.black54,
                                 ),

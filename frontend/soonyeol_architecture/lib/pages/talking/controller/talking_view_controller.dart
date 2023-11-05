@@ -40,7 +40,9 @@ class TalkingViewController extends GetxController {
 
   @override
   void onClose() {
-    channel?.sink.close();
+    if (channel != null) {
+      channel?.sink.close();
+    }
     tts.stop();
     super.onClose();
   }
