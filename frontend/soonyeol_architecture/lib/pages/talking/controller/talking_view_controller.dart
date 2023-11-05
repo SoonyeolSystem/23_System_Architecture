@@ -41,7 +41,9 @@ class TalkingViewController extends GetxController {
 
   @override
   void onClose() {
-    channel?.sink.close();
+    if (channel != null) {
+      channel?.sink.close();
+    }
     tts.stop();
     super.onClose();
   }
@@ -55,7 +57,7 @@ class TalkingViewController extends GetxController {
       if (available) {
         isListening.value = true;
         speechToText.listen(onResult: (val) {
-        speechText.value = val.recognizedWords;
+          speechText.value = val.recognizedWords;
         });
       }
     } else {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../restAPI/models/Conversation.dart';
+import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 class MainViewController extends GetxController {
   static MainViewController get instance => Get.find<MainViewController>();
@@ -26,7 +25,6 @@ class MainViewController extends GetxController {
     //   ConversationList.value = ConversationList.value.toList();
     // }
     // ConversationList.refresh();
-
     List<Map<String, dynamic>> fakeJsonData = [
       {
         "situationname": "비행기 난파 후 아무도 없는 사막에서 살아남기",
@@ -170,12 +168,11 @@ class MainViewController extends GetxController {
       },
     ];
     List<Conversation> fakeConversations = fakeJsonData.map((jsonData) => Conversation.fromJson(jsonData)).toList();
-    conversationList.value = fakeConversations;
-    conversationList.refresh();
+    bestConversationList.value = fakeConversations;
+    bestConversationList.refresh();
   }
 
-  RxList<Conversation> conversationList = <Conversation>[].obs;
-  Rx<Conversation> conversation = Conversation().obs;
+  RxList<Conversation> bestConversationList = <Conversation>[].obs;
 
   RxInt bookmarkCount = 5.obs;
 

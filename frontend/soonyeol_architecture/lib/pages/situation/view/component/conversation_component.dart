@@ -85,7 +85,7 @@ class ConversationComponent extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      "조회수 ${model.views}회",
+                      "조회수 ${model.views ?? '?'}회",
                       style: const TextStyle(fontSize: 14, color: Color(0xFF434343)),
                     ),
                   ],

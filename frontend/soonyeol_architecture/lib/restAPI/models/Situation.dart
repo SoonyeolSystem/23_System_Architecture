@@ -24,7 +24,7 @@ class Situation {
 
   Situation.fromJson(Map<String, dynamic> json) {
     situationname = json['title'];
-    bookmarkcount = json['like'];
+    bookmarkcount = json['bookmarkCnt'];
     views = json['play'];
     isbookmark = json['islike'];
     stiuation = json['stiuation'];
@@ -42,7 +42,7 @@ class Situation {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['title'] = situationname;
-    data['like'] = bookmarkcount;
+    data['bookmarkCnt'] = bookmarkcount;
     data['play'] = views;
     data['islike'] = isbookmark;
     data['stiuation'] = stiuation;
