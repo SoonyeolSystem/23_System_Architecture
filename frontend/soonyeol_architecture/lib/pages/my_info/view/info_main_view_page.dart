@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/component/myinfo_component.dart';
 
@@ -288,27 +289,50 @@ class MyInfoPage extends StatelessWidget {
                 ],
               ),
               ////진행중인 시나리오
-              Padding(
-                padding: const EdgeInsets.only(left: 40.0, right: 40),
-                child: Obx(
-                  () => Column(children: [
-                    for (int index = 0; index < controller.infoList.length; index++)
-                      Column(
-                        children: [
-                          if (controller.infoList[index].processivity == 0)
-                            InfoViewComponent(
-                              model: controller.infoList[index],
-                            ),
-                          if (controller.infoList[index].processivity == 0)
-                            const Divider(
-                              height: 1,
-                              thickness: 1,
-                            ),
-                        ],
+              if (controller.infoList.isEmpty)
+                Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    const Text('아직 진행 중인 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        final controller = NavigationController.instance;
+                        controller.selectTab(1);
+                      },
+                      child: const Text(
+                        '대화 시작하기 >',
+                        style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
                       ),
-                  ]),
+                    ),
+                    //const SizedBox(height: 20),
+                  ],
+                )
+              else
+                Padding(
+                  padding: const EdgeInsets.only(left: 40.0, right: 40),
+                  child: Obx(
+                    () => Column(children: [
+                      for (int index = 0; index < controller.infoList.length; index++)
+                        Column(
+                          children: [
+                            if (controller.infoList[index].processivity == 0)
+                              InfoViewComponent(
+                                model: controller.infoList[index],
+                              ),
+                            if (controller.infoList[index].processivity == 0)
+                              const Divider(
+                                height: 1,
+                                thickness: 1,
+                              ),
+                          ],
+                        ),
+                    ]),
+                  ),
                 ),
-              ),
+
               const SizedBox(height: 22),
               Row(
                 children: [
@@ -337,23 +361,33 @@ class MyInfoPage extends StatelessWidget {
                 ],
               ),
               //완료된 시나리오
-              Padding(
-                padding: const EdgeInsets.only(left: 40.0, right: 40),
-                child: Obx(() => Column(children: [
-                      for (int index = 0; index < controller.infoList.length; index++)
-                        Column(
-                          children: [
-                            if (controller.infoList[index].processivity == 1) InfoViewComponent(model: controller.infoList[index]),
-                            if (controller.infoList[index].processivity == 1)
-                              const Divider(
-                                height: 1,
-                                thickness: 1,
-                              ),
-                          ],
-                        ),
-                    ])),
+              if (controller.infoList.isEmpty)
+                const Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Text('아직 완료된 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
+                  ],
+                )
+              else
+                Padding(
+                  padding: const EdgeInsets.only(left: 40.0, right: 40),
+                  child: Obx(() => Column(children: [
+                        for (int index = 0; index < controller.infoList.length; index++)
+                          Column(
+                            children: [
+                              if (controller.infoList[index].processivity == 1) InfoViewComponent(model: controller.infoList[index]),
+                              if (controller.infoList[index].processivity == 1)
+                                const Divider(
+                                  height: 1,
+                                  thickness: 1,
+                                ),
+                            ],
+                          ),
+                      ])),
+                ),
+              const SizedBox(
+                height: 50,
               ),
-              const SizedBox(height: 80),
             ]),
       ),
     ));
