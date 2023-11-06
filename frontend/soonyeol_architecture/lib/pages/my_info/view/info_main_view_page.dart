@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/component/myinfo_component.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 import '../../../../common/common.dart';
 
@@ -17,6 +18,8 @@ class MyInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MyInfoViewController.instance;
+    // final UserService userService = Get.find<UserService>();
+
     return Center(
         child: SizedBox(
       width: Common.getWidth,
@@ -36,7 +39,7 @@ class MyInfoPage extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(left: Common.getWidth * 0.05, top: 25.0, bottom: 35),
                         child: Text(
-                          '${controller.userName.value} 님의 정보',
+                          '${UserService.instance.nickname} 님의 정보',
                           style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
                         ),
                       ),
@@ -44,6 +47,8 @@ class MyInfoPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Get.offAllNamed('/route');
+                        UserService.instance.logout();
+                        Get.snackbar('User ID: ${UserService.instance.userId}', 'Nickname: ${UserService.instance.nickname}');
                       },
                       child: Row(
                         children: [
@@ -289,7 +294,7 @@ class MyInfoPage extends StatelessWidget {
                 ],
               ),
               ////진행중인 시나리오
-              if (controller.infoList.isEmpty)
+              if (controller.myConversation.isEmpty)
                 Column(
                   children: [
                     const SizedBox(height: 20),
@@ -298,40 +303,36 @@ class MyInfoPage extends StatelessWidget {
                       height: 25,
                     ),
                     TextButton(
-                      onPressed: () async {
-                        final controller = NavigationController.instance;
-                        controller.selectTab(1);
-                      },
-                      child: const Text(
-                        '대화 시작하기 >',
-                        style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
-                      ),
-                    ),
+                        onPressed: () async {
+                          final controller = NavigationController.instance;
+                          controller.selectTab(1);
+                        },
+                        child: const Text(
+                          '대화 시작하기 >',
+                          style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
+                        ))
                     //const SizedBox(height: 20),
                   ],
                 )
               else
                 Padding(
-                  padding: const EdgeInsets.only(left: 40.0, right: 40),
-                  child: Obx(
-                    () => Column(children: [
-                      for (int index = 0; index < controller.infoList.length; index++)
-                        Column(
-                          children: [
-                            if (controller.infoList[index].processivity == 0)
-                              InfoViewComponent(
-                                model: controller.infoList[index],
-                              ),
-                            if (controller.infoList[index].processivity == 0)
-                              const Divider(
-                                height: 1,
-                                thickness: 1,
-                              ),
-                          ],
-                        ),
-                    ]),
-                  ),
-                ),
+                    padding: const EdgeInsets.only(left: 40.0, right: 40),
+                    child: Obx(() => Column(children: [
+                          for (int index = 0; index < controller.myConversation.length; index++)
+                            Column(
+                              children: [
+                                if (controller.myConversation[index].endStory == false)
+                                  InfoViewComponent(
+                                    model: controller.myConversation[index],
+                                  ),
+                                if (controller.myConversation[index].endStory == false)
+                                  const Divider(
+                                    height: 1,
+                                    thickness: 1,
+                                  ),
+                              ],
+                            ),
+                        ]))),
 
               const SizedBox(height: 22),
               Row(
@@ -361,7 +362,7 @@ class MyInfoPage extends StatelessWidget {
                 ],
               ),
               //완료된 시나리오
-              if (controller.infoList.isEmpty)
+              if (controller.myConversation.isEmpty)
                 const Column(
                   children: [
                     SizedBox(height: 20),
@@ -372,11 +373,11 @@ class MyInfoPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 40.0, right: 40),
                   child: Obx(() => Column(children: [
-                        for (int index = 0; index < controller.infoList.length; index++)
+                        for (int index = 0; index < controller.myConversation.length; index++)
                           Column(
                             children: [
-                              if (controller.infoList[index].processivity == 1) InfoViewComponent(model: controller.infoList[index]),
-                              if (controller.infoList[index].processivity == 1)
+                              if (controller.myConversation[index].endStory == true) InfoViewComponent(model: controller.myConversation[index]),
+                              if (controller.myConversation[index].endStory == true)
                                 const Divider(
                                   height: 1,
                                   thickness: 1,

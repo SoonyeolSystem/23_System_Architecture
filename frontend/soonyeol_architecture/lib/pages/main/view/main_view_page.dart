@@ -7,6 +7,7 @@ import 'package:soonyeol_architecture/pages/main/view/component/bestTalking_comp
 import 'package:soonyeol_architecture/pages/main/view/component/ongoing_component.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 import '../../../../common/common.dart';
 
@@ -18,8 +19,7 @@ class MainViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
-    bool isLogined = false;
-
+    final userService = UserService.instance;
     return SizedBox(
       width: Common.getWidth,
       //height: Common.getHeight,
@@ -109,7 +109,10 @@ class MainViewPage extends StatelessWidget {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(10),
                               onTap: () {
-                                // 버튼이 클릭되었을 때 실행되는 코드
+                                if (userService.isLogin() == false) {
+                                  Get.toNamed(LoginPage.url);
+                                  return;
+                                }
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -166,27 +169,29 @@ class MainViewPage extends StatelessWidget {
                         const SizedBox(width: 25),
                         const Text('이어서 대화하기', style: TextStyle(fontSize: 23, color: Color.fromARGB(255, 90, 90, 90), fontWeight: FontWeight.w600)),
                         const SizedBox(width: 240),
-                        if (isLogined == true && controller.conversationList.isNotEmpty)
-                          TextButton(
-                            onPressed: () async {
-                              //Get.to(() => MyInfoPage());
-                              final controller = NavigationController.instance;
-                              controller.selectTab(2);
-                              final controller2 = MyInfoViewController.instance;
-                              await Future.delayed(const Duration(milliseconds: 50));
+                        if (userService.isLogin() == true)
+                          Obx(() => (MyInfoViewController.instance.myConversation.isNotEmpty)
+                              ? TextButton(
+                                  onPressed: () async {
+                                    //Get.to(() => MyInfoPage());
+                                    final controller = NavigationController.instance;
+                                    controller.selectTab(2);
+                                    final controller2 = MyInfoViewController.instance;
+                                    await Future.delayed(const Duration(milliseconds: 50));
 
-                              controller2.scrollcontroller.value.animateTo(537.0, duration: const Duration(milliseconds: 500), curve: Curves.ease);
-                            },
-                            child: const Text(
-                              '전체보기',
-                              style: TextStyle(fontSize: 14, color: Colors.grey),
-                            ),
-                          ),
+                                    controller2.scrollcontroller.value.animateTo(537.0, duration: const Duration(milliseconds: 500), curve: Curves.ease);
+                                  },
+                                  child: const Text(
+                                    '전체보기',
+                                    style: TextStyle(fontSize: 14, color: Colors.grey),
+                                  ),
+                                )
+                              : const SizedBox())
                       ],
                     ),
                   ],
                 )),
-            if (isLogined == false)
+            if (userService.isLogin() == false)
               Column(
                 children: [
                   const SizedBox(
@@ -214,47 +219,47 @@ class MainViewPage extends StatelessWidget {
                   ),
                 ],
               )
-            else if (controller.conversationList.isNotEmpty)
-              SizedBox(
-                height: 150,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    for (int index = 0; index < controller.conversationList.length; index++)
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (index == 0)
-                            const SizedBox(
-                              width: 40,
-                            ),
-                          OngoingComponent(model: controller.conversationList[index]),
-                        ],
-                      )
-                  ],
-                ),
-              )
             else
-              Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const Text('아직 진행 중인 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      final controller = NavigationController.instance;
-                      controller.selectTab(1);
-                    },
-                    child: const Text(
-                      '대화 시작하기 >',
-                      style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              ),
+              Obx(() => (MyInfoViewController.instance.myConversation.isNotEmpty)
+                  ? SizedBox(
+                      height: 150,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          for (int index = 0; index < MyInfoViewController.instance.myConversation.length; index++)
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (index == 0)
+                                  const SizedBox(
+                                    width: 40,
+                                  ),
+                                OngoingComponent(model: MyInfoViewController.instance.myConversation[index]),
+                              ],
+                            )
+                        ],
+                      ),
+                    )
+                  : Column(
+                      children: [
+                        const SizedBox(height: 20),
+                        const Text('아직 진행 중인 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            final controller = NavigationController.instance;
+                            controller.selectTab(1);
+                          },
+                          child: const Text(
+                            '대화 시작하기 >',
+                            style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                      ],
+                    )),
             const SizedBox(
               height: 35,
             ),
@@ -282,12 +287,12 @@ class MainViewPage extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      for (int index = 0; index < controller.conversationList.length; index++)
+                      for (int index = 0; index < controller.bestConversationList.length; index++)
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             BestTalkingComponent(
-                              model: controller.conversationList[index],
+                              model: controller.bestConversationList[index],
                             ),
                             if (index < 9)
                               const Padding(

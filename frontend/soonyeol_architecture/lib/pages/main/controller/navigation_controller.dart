@@ -11,7 +11,7 @@ class NavigationController extends GetxController {
   void selectTab(int index) async {
     if (index == 1) {
       SituationMainController.instance.getSituationList();
-    }
+    } else if (index == 2) {}
     pageIndex.value = index;
     update();
   }

@@ -5,6 +5,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/title.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
+import 'package:soonyeol_architecture/restAPI/models/User.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
+
+import '../../login/view/login_page.dart';
 
 class Navigation extends StatelessWidget {
   const Navigation({super.key});
@@ -14,6 +18,7 @@ class Navigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -87,7 +92,13 @@ class Navigation extends StatelessWidget {
     return InkWell(
         splashColor: Colors.transparent,
         onTap: () {
-          controller.selectTab(index);
+          if(index==2&&UserService.instance.isLogin()==false){
+           Get.toNamed(LoginPage.url);
+Get.snackbar(
+                            "ID/Password not Found", "${UserService.instance.isLogin()}");
+          }else{
+              controller.selectTab(index);
+          }
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
