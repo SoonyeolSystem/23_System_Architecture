@@ -8,6 +8,9 @@ class LoginController extends GetxController{
 
   Future<void> login(String loginId, String password) async {
     //Loading
+      if (isLoading.value) {
+    return; // 이미 로딩 중이면 true를 반환
+  }
     isLoading.value = true;
 
     await UserService.instance.login(loginId, password);

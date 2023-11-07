@@ -23,17 +23,9 @@ class UserService extends GetxService {
   }
 
   Future<void> login(String loginId, String password) async {
-  if (isLoading) {
-    return; // 이미 로딩 중이면 true를 반환
-  }
-
-  isLoading = true; // 로딩 시작
-    isResponseBlocked = true; // 다른 리스폰스 막음
 
   ApiResponse<LoginResponse> response =
       await ApiService.instance.login(loginId, password);
-
-  isLoading = false; // 로딩 종료
 
   if (response.statusCode == 200) {
     // 로그인 성공
@@ -53,8 +45,6 @@ class UserService extends GetxService {
     // 기타 오류
     Get.snackbar("Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
   }
-
-  isResponseBlocked = false; // 다른 리스폰스 허용
 }
 
 
