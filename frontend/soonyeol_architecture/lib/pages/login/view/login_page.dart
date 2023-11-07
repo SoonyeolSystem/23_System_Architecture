@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
+import 'package:soonyeol_architecture/pages/login/controller/login_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
@@ -148,10 +149,10 @@ class LoginPage extends StatelessWidget {
                       String loginId = loginIdController.text;
                       String password = passwordController.text;
 
-                      //로그인
-                      userService.login(loginId, password);
-                      // UserService.instance.isLogin();
-//                       
+                      // 로그인 함수를 호출하고 반환값을 받음
+UserService.instance.login(loginId, password);
+
+
                     },
                     style: ElevatedButton.styleFrom(
                       // backgroundColor: Colors.blue,
@@ -159,11 +160,11 @@ class LoginPage extends StatelessWidget {
                       minimumSize: const Size(420, 60),
                     ),
                     child: const Text(
-                      'Login',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
+                            'Login',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
                   ),
                 ),
                 Material(
