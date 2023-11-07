@@ -20,9 +20,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginIdController = TextEditingController();
     final passwordController = TextEditingController();
-    // final UserService userService = Get.find<UserService>();
-    final userService = UserService.instance;
-
+Get.put(LoginController());
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -148,23 +146,35 @@ class LoginPage extends StatelessWidget {
                     onPressed: () async {
                       String loginId = loginIdController.text;
                       String password = passwordController.text;
+                      LoginController.instance.login(loginId, password);
 
-                      // 로그인 함수를 호출하고 반환값을 받음
-UserService.instance.login(loginId, password);
-
-
+                      // 로그인 함수를 호출
+                      // UserService.instance.login(loginId, password);
                     },
                     style: ElevatedButton.styleFrom(
                       // backgroundColor: Colors.blue,
                       backgroundColor: const Color(0xFF33C26C),
                       minimumSize: const Size(420, 60),
                     ),
-                    child: const Text(
-                            'Login',
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
+                    child: Obx(
+                      () => SizedBox(
+
+                        child: LoginController.instance.isLoading.value
+                            ? const SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              )
+                            : const Text(
+                                'Login',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                      ),
+                    ),
                   ),
                 ),
                 Material(
