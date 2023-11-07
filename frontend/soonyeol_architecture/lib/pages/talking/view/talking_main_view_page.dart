@@ -8,6 +8,8 @@ import 'package:soonyeol_architecture/pages/talking/controller/talking_view_cont
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
 
+bool isLike = false;
+
 class TalkingViewPage extends StatelessWidget {
   const TalkingViewPage({
     super.key,
@@ -18,7 +20,6 @@ class TalkingViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TalkingViewController());
-    bool isLike = true;
 
     if (Get.arguments != null) {
       controller.passParameter(Get.arguments);
@@ -75,16 +76,16 @@ class TalkingViewPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        //model.isLike= !model.isLike!;
-                      },
-                      child: Icon(
-                        isLike == true ? Icons.favorite : CupertinoIcons.heart,
-                        size: 33,
-                        color: isLike ?? false ? const Color.fromARGB(255, 242, 96, 108) : Colors.white,
-                      ),
-                    )
+                    // InkWell(
+                    //   onTap: () {
+                    //     //model.isLike= !model.isLike!;
+                    //   },
+                    //   child: Icon(
+                    //     isLike == true ? Icons.favorite : CupertinoIcons.heart,
+                    //     size: 33,
+                    //     color: isLike ?? false ? const Color.fromARGB(255, 242, 96, 108) : Colors.white,
+                    //   ),
+                    // )
                   ],
                 ),
                 backgroundColor: Colors.transparent,
@@ -250,6 +251,19 @@ void showCustomAlertDialog(BuildContext context) {
                 children: [
                   TextButton(
                     onPressed: () {
+                      Get.toNamed(TalkingResultPage.url);
+                    },
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
+                      backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF33C26C)),
+                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
+                      ),
+                    ),
+                    child: const Text('대화 결과 보기', style: TextStyle(color: Colors.white, fontSize: 14)),
+                  ),
+                  TextButton(
+                    onPressed: () {
                       Get.offAllNamed(Navigation.url);
                       // 홈으로 돌아가기 동작 수행
                     },
@@ -268,19 +282,6 @@ void showCustomAlertDialog(BuildContext context) {
                       style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Get.toNamed(TalkingResultPage.url);
-                    },
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF33C26C)),
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
-                      ),
-                    ),
-                    child: const Text('대화 결과 보기', style: TextStyle(color: Colors.white, fontSize: 14)),
-                  ),
                 ],
               ),
             ],
@@ -292,24 +293,6 @@ void showCustomAlertDialog(BuildContext context) {
 }
 
 void showInformation(BuildContext context, TalkingViewController controller) {
-  // showDialog(
-  //   context: context,
-  //   builder: (BuildContext context) {
-  //     // Create and return your info dialog here
-  //     return AlertDialog(
-  //       content: Text("상황\n ${controller.parameters['title']}"),
-  //       actions: [
-  //         TextButton(
-  //           onPressed: () {
-  //             Navigator.pop(context);
-  //           },
-  //           child: const Text("OK"),
-  //         ),
-  //       ],
-  //     );
-  //   },
-  // );
-
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -327,6 +310,26 @@ void showInformation(BuildContext context, TalkingViewController controller) {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Row(children: [
+                SizedBox(
+                  width: 270,
+                  child: Text(
+                    "${controller.parameters['title']}",
+                    style: const TextStyle(fontSize: 20, color: Color(0xFF384252), fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    //model.isLike= !model.isLike!;
+                  },
+                  child: Icon(isLike == true ? Icons.favorite : CupertinoIcons.heart,
+                      size: 33, color: isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
+                )
+              ]),
+              const SizedBox(
+                height: 50,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
