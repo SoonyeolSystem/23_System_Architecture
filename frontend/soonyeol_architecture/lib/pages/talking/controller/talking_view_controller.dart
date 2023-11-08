@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/common/service_response.dart';
+import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/response/script_response.dart';
+import 'package:soonyeol_architecture/restAPI/response/talking_response.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
+
 import '../../../restAPI/models/Talking.dart';
 
 class TalkingViewController extends GetxController {
@@ -21,14 +25,29 @@ class TalkingViewController extends GetxController {
   FlutterTts tts = FlutterTts();
   final TextEditingController con = TextEditingController();
 
-  Map<String, String> parameters = {};
+  RxMap parameters = {'situationid': ""}.obs;
   RxBool isLoaded = false.obs;
 
-  void passParameter(Map<String, String> parameters) {
-    this.parameters = parameters;
+  void passParameter(Map parameters) async {
+    isLoaded.value = true;
+    this.parameters.value = parameters;
+    this.parameters.refresh();
+    if (parameters['situationid'] == "") {
+      return;
+    }
+
+    if ('true'.compareTo(parameters['new']) != 0) {
+      ApiResponse<TalkingResponse> response = await ApiService.instance.getTalkingListByConID(parameters['conversationid']);
+      if (response.result) {
+        talkingList.value = response.value!.scriptHistory;
+        talkingList.refresh();
+      }
+    }
     channel = WebSocketChannel.connect(Uri.parse(
-        '${'${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}'}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userId}}&conversationid=${parameters['conversationid']}&title=${parameters['title']}'));
+        '${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userId}&conversationid=${parameters['conversationid']}&title=${parameters['title']}'));
+
     receiveMessage();
+    isLoaded.value = false;
   }
 
   @override
@@ -54,22 +73,22 @@ class TalkingViewController extends GetxController {
         onError: (val) {},
       );
       if (available) {
-        
         isListening.value = true;
         speechText.value = '';
-        Talking newTalking = Talking(character:  Get.arguments['name'],
+        Talking newTalking = Talking(
+          character: Get.arguments['name'],
           script: speechText.value,
-          isMe: "1",);
-         talkingList.add(newTalking);
-        //scrollcontroller.value.animateTo(scrollcontroller.value.position.maxScrollExtent, duration: const Duration(milliseconds: 10), curve: Curves.ease);
-        speechToText.listen(onResult: (val) {
-  
-        speechText.value = val.recognizedWords;
-        talkingList.last.changeScript(val.recognizedWords);
+          isMe: "1",
+        );
+        talkingList.add(newTalking);
         talkingList.refresh();
-        
+
+        speechToText.listen(onResult: (val) {
+          scrollcontroller.value.animateTo(scrollcontroller.value.position.maxScrollExtent, duration: const Duration(milliseconds: 10), curve: Curves.ease);
+          speechText.value = val.recognizedWords;
+          talkingList.last.changeScript(val.recognizedWords);
+          talkingList.refresh();
         });
-        
       }
     } else {
       isLoaded.value = true;

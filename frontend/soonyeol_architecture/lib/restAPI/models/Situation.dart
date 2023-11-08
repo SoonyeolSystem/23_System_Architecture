@@ -3,7 +3,7 @@ class Situation {
   int? bookmarkcount; // 즐겨찾기(별표) 수
   int? views; // 조회수
   bool? isbookmark; // 즐겨찾기 여부
-  String? stiuation; //상황
+  String? situation; //상황
   List<String>? genre; //장르
   List<String>? character; //등장인물
   String? maincharacter; //주인공
@@ -15,7 +15,7 @@ class Situation {
     this.bookmarkcount,
     this.views,
     this.isbookmark,
-    this.stiuation,
+    this.situation,
     this.genre,
     this.character,
     this.maincharacter,
@@ -27,7 +27,7 @@ class Situation {
     bookmarkcount = json['bookmarkCnt'];
     views = json['play'];
     isbookmark = json['islike'];
-    stiuation = json['stiuation'];
+    situation = json['situation'];
     if (json['genre'] != null) {
       genre = json['genre'].split(',');
     }
@@ -45,7 +45,7 @@ class Situation {
     data['bookmarkCnt'] = bookmarkcount;
     data['play'] = views;
     data['islike'] = isbookmark;
-    data['stiuation'] = stiuation;
+    data['situation'] = situation;
     data['genre'] = genre;
     data['character'] = character;
     data['name'] = maincharacter;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 class OngoingComponent extends StatelessWidget {
@@ -20,7 +19,7 @@ class OngoingComponent extends StatelessWidget {
           child: InkWell(
               borderRadius: BorderRadius.circular(10),
               onTap: () {
-                Get.toNamed(TalkingViewPage.url);
+                MoveService.instance.moveTalkingPageByConversation(model, true);
               },
               child: Container(
                   decoration: BoxDecoration(
@@ -33,11 +32,11 @@ class OngoingComponent extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 13),
+                      const SizedBox(height: 18),
                       const Padding(
-                        padding: EdgeInsets.only(right: 100.0),
+                        padding: EdgeInsets.only(left: 15.0),
                         child: Icon(
                           Icons.chat,
                           size: 35,
@@ -46,7 +45,7 @@ class OngoingComponent extends StatelessWidget {
                       ),
                       const SizedBox(height: 13),
                       Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 15),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -62,7 +61,7 @@ class OngoingComponent extends StatelessWidget {
                               ),
                               const SizedBox(height: 15),
                               Text(
-                                '마지막 대화: \n${model.headScript}}',
+                                '마지막 대화: \n${model.headScript}',
                                 style: const TextStyle(
                                   fontSize: 13,
                                   color: Colors.black54,
