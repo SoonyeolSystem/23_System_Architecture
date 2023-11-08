@@ -36,7 +36,7 @@ class TalkingViewController extends GetxController {
       return;
     }
 
-    if (parameters['new'] ?? "" != 'true') {
+    if ('true'.compareTo(parameters['new']) != 0) {
       ApiResponse<TalkingResponse> response = await ApiService.instance.getTalkingListByConID(parameters['conversationid']);
       if (response.result) {
         talkingList.value = response.value!.scriptHistory;

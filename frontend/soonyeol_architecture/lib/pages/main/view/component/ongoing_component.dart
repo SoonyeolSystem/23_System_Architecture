@@ -61,7 +61,7 @@ class OngoingComponent extends StatelessWidget {
                               ),
                               const SizedBox(height: 15),
                               Text(
-                                '마지막 대화: \n${model.headScript}}',
+                                '마지막 대화: \n${model.headScript}',
                                 style: const TextStyle(
                                   fontSize: 13,
                                   color: Colors.black54,

@@ -22,6 +22,7 @@ class MoveService extends GetxService {
       'name': model.maincharacter ?? "",
       'character': (model.character ?? []).join(','),
       'title': model.situationname ?? "",
+      'new': 'false'
     };
 
     Get.toNamed(TalkingViewPage.url, arguments: arguments);
@@ -36,6 +37,7 @@ class MoveService extends GetxService {
       'name': model.maincharacter ?? "",
       'character': (model.character ?? []).join(','),
       'title': model.situationname ?? "",
+      'new': 'false'
     };
     Get.toNamed(TalkingViewPage.url, arguments: arguments);
   }
