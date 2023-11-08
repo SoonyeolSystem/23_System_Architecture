@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/situation/view/component/conversation_component.dart';
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
-import 'package:soonyeol_architecture/service/user_service.dart';
 
 import '../../controller/situation_main_controller.dart';
 
@@ -26,6 +23,7 @@ class SituationComponent extends StatelessWidget {
                   child: Container(
                 color: Colors.white,
                 width: Common.getWidth,
+                //height: double.infinity,
                 child: Column(
                   children: [
                     AppBar(
@@ -371,7 +369,7 @@ class SituationComponent extends StatelessWidget {
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ));

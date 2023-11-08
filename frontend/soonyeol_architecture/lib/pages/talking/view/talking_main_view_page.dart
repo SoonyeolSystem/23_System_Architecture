@@ -76,16 +76,6 @@ class TalkingViewPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    // InkWell(
-                    //   onTap: () {
-                    //     //model.isLike= !model.isLike!;
-                    //   },
-                    //   child: Icon(
-                    //     isLike == true ? Icons.favorite : CupertinoIcons.heart,
-                    //     size: 33,
-                    //     color: isLike ?? false ? const Color.fromARGB(255, 242, 96, 108) : Colors.white,
-                    //   ),
-                    // )
                   ],
                 ),
                 backgroundColor: Colors.transparent,
@@ -134,35 +124,6 @@ class TalkingViewPage extends StatelessWidget {
                 ],
               )),
 
-              //floatingActionButton: FloatingActionButton(onPressed: () {}),
-              //const SizedBox(
-              //  height: 80,
-              //child: Icon(Icons.mic, size: 40, color: Colors.white)),
-              // Material(
-              //    child: InkWell(
-              //     customBorder: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(50),
-              //       ),
-              //     highlightColor: Colors.white.withOpacity(0.5),
-              //     child: const Padding(
-              //       padding: EdgeInsets.all(13.0),
-              //       child: SizedBox(
-              //         height: 43,
-              //         width: 35,
-              //         child: FittedBox(
-              //           fit: BoxFit.fill,
-              //           child: Icon(
-              //             Icons.mic,
-              //             size: 40,
-              //             color: Colors.white,
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //     onTap: () {print("mic");},
-
-              //   ),
-              // ),
               Obx(() => controller.isListening.value
                   ? Padding(
                       padding: const EdgeInsets.only(bottom: 28.0),
@@ -315,7 +276,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                   width: 270,
                   child: Text(
                     "${controller.parameters['title']}",
-                    style: const TextStyle(fontSize: 20, color: Color(0xFF384252), fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 21, color: Color(0xFF384252), fontWeight: FontWeight.bold),
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -328,7 +289,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                 )
               ]),
               const SizedBox(
-                height: 50,
+                height: 40,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -346,12 +307,11 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                           color: Color(0xFF384252),
                         ),
                       )),
-                  const SizedBox(
+                  SizedBox(
                     width: 210,
                     child: Text(
-                      "I'm at a payphone trying to call home All of my change I spent on you Where have the times gone baby, it's all wrong where are the plans we made for two ",
-                      //"${controller.parameters['situation']}",
-                      style: TextStyle(
+                      "${controller.parameters['situation']}",
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Color(0xFF373737),
                       ),
@@ -378,12 +338,11 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                           color: Color(0xFF384252),
                         ),
                       )),
-                  const SizedBox(
+                  SizedBox(
                     width: 210,
                     child: Text(
-                      '생존, 공포',
-                      //"${controller.parameters['genre']}",
-                      style: TextStyle(
+                      "${controller.parameters['genre']}",
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Color(0xFF373737),
                       ),
@@ -410,12 +369,11 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                           color: Color(0xFF384252),
                         ),
                       )),
-                  const SizedBox(
+                  SizedBox(
                     width: 210,
                     child: Text(
-                      '생존자1',
-                      //"${controller.parameters['name']}",
-                      style: TextStyle(
+                      "${controller.parameters['name']}",
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Color(0xFF373737),
                       ),
@@ -442,12 +400,12 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                           color: Color(0xFF384252),
                         ),
                       )),
-                  const SizedBox(
+                  SizedBox(
                     width: 210,
                     child: Text(
-                      '생존자2',
-                      //"${controller.parameters['character']}",
-                      style: TextStyle(
+                      //'생존자2',
+                      "${controller.parameters['character']}",
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Color(0xFF373737),
                       ),
