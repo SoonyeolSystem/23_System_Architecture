@@ -147,9 +147,6 @@ Get.put(LoginController());
                       String loginId = loginIdController.text;
                       String password = passwordController.text;
                       LoginController.instance.login(loginId, password);
-
-                      // 로그인 함수를 호출
-                      // UserService.instance.login(loginId, password);
                     },
                     style: ElevatedButton.styleFrom(
                       // backgroundColor: Colors.blue,
