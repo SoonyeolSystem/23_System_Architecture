@@ -104,7 +104,6 @@ class TalkingViewPage extends StatelessWidget {
               Expanded(
                   child: CustomScrollView(
                 controller: controller.scrollcontroller.value,
-                physics: const BouncingScrollPhysics(),
                 slivers: [
                   Obx(
                     () => SliverList(
