@@ -149,13 +149,13 @@ class TalkingViewPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 child: SizedBox(
                   height: 42,
-                  width: 35,
+                  width: 42,
                   child: controller.isLoaded.value
-                      ? const SizedBox(
-                          height: 35,
-                          width: 35,
-                          child: CircularProgressIndicator(
+                      ? Transform.scale(
+                          scale: 0.9,
+                          child: const CircularProgressIndicator(
                             color: Colors.white,
+                            strokeWidth: 5,
                           ),
                         )
                       : const FittedBox(

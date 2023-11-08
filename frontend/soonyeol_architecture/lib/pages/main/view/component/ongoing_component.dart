@@ -32,11 +32,11 @@ class OngoingComponent extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 13),
+                      const SizedBox(height: 18),
                       const Padding(
-                        padding: EdgeInsets.only(right: 100.0),
+                        padding: EdgeInsets.only(left: 15.0),
                         child: Icon(
                           Icons.chat,
                           size: 35,
@@ -45,7 +45,7 @@ class OngoingComponent extends StatelessWidget {
                       ),
                       const SizedBox(height: 13),
                       Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 15),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
