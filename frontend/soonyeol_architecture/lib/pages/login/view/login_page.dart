@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
+import 'package:soonyeol_architecture/pages/login/controller/login_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
@@ -19,9 +20,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginIdController = TextEditingController();
     final passwordController = TextEditingController();
-    final UserService userService = Get.find<UserService>();
-    // UserService userService = UserService.instance;
-
+Get.put(LoginController());
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -147,41 +146,33 @@ class LoginPage extends StatelessWidget {
                     onPressed: () async {
                       String loginId = loginIdController.text;
                       String password = passwordController.text;
+                      LoginController.instance.login(loginId, password);
 
-                      ApiResponse<LoginResponse> response =
-                          await ApiService.instance.login(loginId, password);
-
-                      if (response.statusCode == 200) {
-                        // 로그인 성공
-                        Get.offAllNamed(MainViewPage.url);
-
-                        Get.snackbar("success", "로그인에 성공하였습니다.");
-                        userService.userId=response.userId!;
-                        userService.nickname = response.nickname!;
-                        userService.isLogin = true;
-                        Get.snackbar('User ID: ${userService.userId}', 'Nickname: ${userService.nickname}');
-
-                        Common.logger.d('User ID: ${userService.userId}');
-Common.logger.d('Nickname: ${userService.nickname}');
-                      } else if (response.statusCode == 400) {
-                        // ID가 존재하지 않음
-                        Get.snackbar(
-                            "ID/Password not Found", "ID/비밀번호가 존재하지 않습니다.");
-                      } else {
-                        // 기타 오류   
-                        Get.snackbar(
-                            "Error", response.errorMsg ?? "알 수 없는 오류가 발생했습니다.");
-                      }
+                      // 로그인 함수를 호출
+                      // UserService.instance.login(loginId, password);
                     },
                     style: ElevatedButton.styleFrom(
                       // backgroundColor: Colors.blue,
                       backgroundColor: const Color(0xFF33C26C),
                       minimumSize: const Size(420, 60),
                     ),
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(
-                        fontSize: 20,
+                    child: Obx(
+                      () => SizedBox(
+
+                        child: LoginController.instance.isLoading.value
+                            ? const SizedBox(
+                                height: 30,
+                                width: 30,
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              )
+                            : const Text(
+                                'Login',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
                       ),
                     ),
                   ),

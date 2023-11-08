@@ -88,14 +88,14 @@ class Navigation extends StatelessWidget {
       required List<IconData> icon,
       required String text}) {
     final controller = NavigationController.instance;
-    UserService userService = UserService.instance;
 
     return InkWell(
         splashColor: Colors.transparent,
         onTap: () {
-          if(index==2&&userService.isLogin==false){
+          if(index==2&&UserService.instance.isLogin()==false){
            Get.toNamed(LoginPage.url);
-
+Get.snackbar(
+                            "ID/Password not Found", "${UserService.instance.isLogin()}");
           }else{
               controller.selectTab(index);
           }
