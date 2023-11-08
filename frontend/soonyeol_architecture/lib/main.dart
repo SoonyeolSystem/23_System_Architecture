@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
@@ -39,4 +40,5 @@ Future<void> initServices() async {
   await Get.putAsync(() => Common().init());
   await Get.putAsync(() => ApiService().init());
   await Get.putAsync(() => UserService().init());
+  await Get.putAsync(() => MoveService().init());
 }

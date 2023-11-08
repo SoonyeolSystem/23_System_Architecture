@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/common/move/moveService.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/situation/view/component/conversation_component.dart';
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
@@ -226,7 +227,7 @@ class SituationComponent extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 15.0),
                                     child: Text(
-                                      "${model.stiuation}",
+                                      "${model.situation}",
                                       style: const TextStyle(fontSize: 16, color: Color(0xFF000000), fontWeight: FontWeight.w500),
                                     ),
                                   ),
@@ -301,7 +302,13 @@ class SituationComponent extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(right: 10, bottom: 5),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    if (!UserService.instance.isLogin()) {
+                                      Get.toNamed(LoginPage.url);
+                                      return;
+                                    }
+                                    MoveService.instance.moveTalkingPageBySituation(model);
+                                  },
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(const Color(0xFF33C26C)),
                                     padding: MaterialStateProperty.all(

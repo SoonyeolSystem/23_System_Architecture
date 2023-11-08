@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
@@ -18,7 +18,7 @@ class InfoViewComponent extends StatelessWidget {
     //final controller = TalkingViewController.instance;
     return InkWell(
       onTap: () {
-        Get.toNamed(TalkingViewPage.url);
+        MoveService.instance.moveTalkingPageByConversation(model, true);
       },
       child: Column(children: [
         Container(

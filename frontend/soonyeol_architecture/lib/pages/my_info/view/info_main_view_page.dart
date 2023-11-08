@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
+import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/component/myinfo_component.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
@@ -52,7 +53,7 @@ class MyInfoPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.offAllNamed('/route');
+                        Get.offAllNamed(Navigation.url);
                         UserService.instance.logout();
                         Get.snackbar('User ID: ${UserService.instance.userId}',
                             'Nickname: ${UserService.instance.nickname}');
