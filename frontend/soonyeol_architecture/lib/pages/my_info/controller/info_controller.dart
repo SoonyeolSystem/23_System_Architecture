@@ -20,6 +20,7 @@ class MyInfoViewController extends GetxController {
       myConversation.value = response.value!.conversationList!;
     }
     myConversation.refresh();
+
     // List<Map<String, dynamic>> fakeJsonData = [
     //   {
     //     "situation_name": "비행기 난파 후 아무도 없는 사막에서 살아남기",

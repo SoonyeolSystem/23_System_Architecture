@@ -3,7 +3,7 @@ class Conversation {
   int? likeCount; // 좋아요 수
   int? views; // 조회수
   bool? isLike; // 좋아요 여부
-  String? stiuation; //상황
+  String? situation; //상황
   List<String>? genre; //장르
   List<String>? character; //등장인물
   String? maincharacter; //주인공
@@ -19,7 +19,7 @@ class Conversation {
     this.likeCount,
     this.views,
     this.isLike,
-    this.stiuation,
+    this.situation,
     this.genre,
     this.character,
     this.maincharacter,
@@ -36,7 +36,7 @@ class Conversation {
     likeCount = json['like'];
     views = json['view'];
     isLike = json['islike'];
-    stiuation = json['stiuation'];
+    situation = json['situation'];
     if (json['genre'] != null) {
       genre = json['genre'].split(',');
     }
@@ -58,7 +58,7 @@ class Conversation {
     data['likeCount'] = likeCount;
     data['views'] = views;
     data['isLike'] = isLike;
-    data['stiuation'] = stiuation;
+    data['situation'] = situation;
     data['genre'] = genre;
     data['character'] = character;
     data['name'] = maincharacter;

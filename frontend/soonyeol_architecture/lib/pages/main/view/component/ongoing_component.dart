@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 class OngoingComponent extends StatelessWidget {
@@ -20,7 +19,7 @@ class OngoingComponent extends StatelessWidget {
           child: InkWell(
               borderRadius: BorderRadius.circular(10),
               onTap: () {
-                Get.toNamed(TalkingViewPage.url);
+                MoveService.instance.moveTalkingPageByConversation(model, true);
               },
               child: Container(
                   decoration: BoxDecoration(

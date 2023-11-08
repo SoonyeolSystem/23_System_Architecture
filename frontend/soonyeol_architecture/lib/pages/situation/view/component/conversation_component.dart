@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 class ConversationComponent extends StatelessWidget {
@@ -17,7 +16,7 @@ class ConversationComponent extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Get.toNamed(TalkingViewPage.url);
+        MoveService.instance.moveTalkingPageByConversation(model, false);
       },
       child: Column(
         children: [
