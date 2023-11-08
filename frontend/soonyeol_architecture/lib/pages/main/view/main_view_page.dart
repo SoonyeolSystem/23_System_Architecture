@@ -272,43 +272,47 @@ class MainViewPage extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            Column(
-              children: [
-                Container(
-                  width: 410,
-                  height: 892.2,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromARGB(70, 221, 225, 227),
-                    border: Border.all(
-                      color: const Color.fromARGB(255, 238, 238, 238),
-                      width: 1.4,
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      for (int index = 0; index < controller.bestConversationList.length; index++)
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            BestTalkingComponent(
-                              model: controller.bestConversationList[index],
+            Obx(
+              () => controller.bestConversationList.isEmpty
+                  ? const CircularProgressIndicator(color: Color(0xFF33C26C))
+                  : Column(
+                      children: [
+                        Container(
+                          width: 410,
+                          height: 892.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color.fromARGB(70, 221, 225, 227),
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 238, 238, 238),
+                              width: 1.4,
                             ),
-                            if (index < 9)
-                              const Padding(
-                                padding: EdgeInsets.only(left: 20, right: 20),
-                                child: Divider(
-                                  height: 1,
-                                  thickness: 0.7,
-                                  color: Colors.black26,
+                          ),
+                          child: Column(
+                            children: [
+                              for (int index = 0; index < controller.bestConversationList.length; index++)
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    BestTalkingComponent(
+                                      model: controller.bestConversationList[index],
+                                    ),
+                                    if (index < 9)
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 20, right: 20),
+                                        child: Divider(
+                                          height: 1,
+                                          thickness: 0.7,
+                                          color: Colors.black26,
+                                        ),
+                                      ),
+                                  ],
                                 ),
-                              ),
-                          ],
+                            ],
+                          ),
                         ),
-                    ],
-                  ),
-                ),
-              ],
+                      ],
+                    ),
             ),
             const SizedBox(
               height: 20,

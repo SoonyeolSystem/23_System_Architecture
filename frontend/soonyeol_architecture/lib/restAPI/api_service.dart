@@ -26,6 +26,24 @@ class ApiService extends GetxService {
     return this;
   }
 
+  Future<ApiResponse<ConversationListResponse>> getBestConversation() async {
+    try {
+      var response = await communityDio.get('/community/bestconversation');
+      ConversationListResponse getConversationListResponse = ConversationListResponse.fromJson(response.data);
+      return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getConversationListResponse);
+    } on DioError catch (e) {
+      Common.logger.d(e);
+      try {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.");
+      } catch (e) {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+      }
+    } catch (e) {
+      Common.logger.d(e);
+      return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+    }
+  }
+
   Future<ApiResponse<TalkingResponse>> getTalkingListByConID(String Conversationid) async {
     try {
       var response = await communityDio.get('/community/talking/$Conversationid');
