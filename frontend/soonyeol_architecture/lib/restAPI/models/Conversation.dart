@@ -13,6 +13,7 @@ class Conversation {
   bool? endStory;
   String? situationID;
   String? conversationID;
+  int? like;
 
   Conversation({
     this.situationname,
@@ -29,6 +30,7 @@ class Conversation {
     this.endStory,
     this.situationID,
     this.conversationID,
+    this.like
   });
 
   Conversation.fromJson(Map<String, dynamic> json) {
@@ -50,6 +52,7 @@ class Conversation {
     endStory = json['end_story'].toLowerCase() != 'false';
     situationID = json['situationid'];
     conversationID = json['conversationid'];
+    like=json['like'];
   }
 
   Map<String, dynamic> toJson() {
@@ -68,6 +71,7 @@ class Conversation {
     data['end_story'] = endStory;
     data['situationid'] = situationID;
     data['conversationid'] = conversationID;
+    data['like'] = like;
     return data;
   }
 }

@@ -42,7 +42,7 @@ class SituationComponent extends StatelessWidget {
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Text(
-                                  '${model.situationname}',
+                                  '${model.title}',
                                   style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 23),
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.clip,
@@ -75,30 +75,45 @@ class SituationComponent extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    Text('${model.userName}', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                    Text('${model.name}', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                                     const SizedBox(height: 7),
                                     Row(
                                       children: [
-                                        for (int i = 0; i < model.genre!.length; i++)
-                                          Row(
-                                            children: [
-                                              const Text(
-                                                "#",
-                                                style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Color(0xFF33C26C),
-                                                ),
-                                              ),
-                                              Text(
-                                                model.genre![i],
-                                                style: const TextStyle(
-                                                  fontSize: 15,
-                                                  color: Color(0xFF808080),
-                                                ),
-                                              ),
-                                              const SizedBox(width: 5),
-                                            ],
-                                          ),
+                                        const Text(
+                              "#",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFF33C26C),
+                              ),
+                            ),
+                            Text(
+                              "${model.genre}",
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFF808080),
+                              ),
+                            ),
+                            const SizedBox(width: 5)
+                                        // for (int i = 0; i < model.genre!.length; i++)
+                                        //   Row(
+                                        //     children: [
+                                        //       const Text(
+                                        //         "#",
+                                        //         style: TextStyle(
+                                        //           fontSize: 15,
+                                        //           color: Color(0xFF33C26C),
+                                        //         ),
+                                        //       ),
+                                        //       Text(
+                                        //         model.genre![i],
+                                        //         style: const TextStyle(
+                                        //           fontSize: 15,
+                                        //           color: Color(0xFF808080),
+                                        //         ),
+                                        //       ),
+                                        //       const SizedBox(width: 5),
+                                        //     ],
+                                        //   ),
                                       ],
                                     ),
                                   ]),
@@ -150,10 +165,10 @@ class SituationComponent extends StatelessWidget {
                                             onTap: () {
                                               // Toggle the bookmark status here (change the value of model.isbookmark)
                                               // For example, you can do:
-                                              model.isbookmark = !model.isbookmark!;
+                                              // model.like = !model.like!;
                                             },
                                             child: Icon(
-                                              model.isbookmark == true ? CupertinoIcons.star_fill : CupertinoIcons.star,
+                                              model.like == 1 ? CupertinoIcons.star_fill : CupertinoIcons.star,
                                               size: 22,
                                               //color: model.isbookmark == true ? Colors.yellow : const Color(0xFF434343),
                                               color: Colors.yellow,
@@ -183,14 +198,14 @@ class SituationComponent extends StatelessWidget {
                                           //       )),
                                           // SizedBox(width: 3),
                                           Text(
-                                            "${model.bookmarkcount}",
+                                            "${model.likeCount}",
                                             style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500),
                                           ),
                                         ],
                                       ),
                                       const SizedBox(height: 3),
                                       Text(
-                                        "플레이 수 ${model.views ?? "0"}회",
+                                        "플레이 수 ${model.play ?? "0"}회",
                                         style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500),
                                       ),
                                     ],
@@ -244,19 +259,24 @@ class SituationComponent extends StatelessWidget {
                                     const SizedBox(height: 10),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 15.0),
-                                      child: Row(
-                                        children: [
-                                          for (int i = 0; i < model.genre!.length; i++)
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  "${model.genre![i]}${i < model.genre!.length - 1 ? ', ' : ''}",
+                                      child: 
+                                      // Row(
+                                      //   children: [
+                                      //     for (int i = 0; i < model.genre!.length; i++)
+                                      //       Row(
+                                      //         children: [
+                                      //           Text(
+                                      //             "${model.genre![i]}${i < model.genre!.length - 1 ? ', ' : ''}",
+                                      //             style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                      //           ),
+                                      //         ],
+                                      //       ),
+                                      //   ],
+                                      // ),
+                                      Text(
+                                                  "${model.genre}",
                                                   style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
                                                 ),
-                                              ],
-                                            ),
-                                        ],
-                                      ),
                                     ),
                                     const SizedBox(height: 23),
                                     const Padding(
@@ -269,19 +289,24 @@ class SituationComponent extends StatelessWidget {
                                     const SizedBox(height: 10),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 15.0),
-                                      child: Row(
-                                        children: [
-                                          for (int i = 0; i < model.character!.length; i++)
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  "${model.character![i]}${i < model.character!.length - 1 ? ', ' : ''}",
+                                      child: 
+                                      // Row(
+                                      //   children: [
+                                      //     for (int i = 0; i < model.character!.length; i++)
+                                      //       Row(
+                                      //         children: [
+                                      //           Text(
+                                      //             "${model.character![i]}${i < model.character!.length - 1 ? ', ' : ''}",
+                                      //             style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                      //           ),
+                                      //         ],
+                                      //       ),
+                                      //   ],
+                                      // ),
+                                      Text(
+                                                  "${model.character}",
                                                   style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
                                                 ),
-                                              ],
-                                            ),
-                                        ],
-                                      ),
                                     ),
                                     const SizedBox(height: 23),
                                     const Padding(
@@ -295,7 +320,7 @@ class SituationComponent extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 15.0),
                                       child: Text(
-                                        "${model.maincharacter}",
+                                        "${model.name}",
                                         style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
                                       ),
                                     )
@@ -397,15 +422,12 @@ class SituationComponent extends StatelessWidget {
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   SizedBox(
                     width: 330,
-                    child: Text("${model.situationname}", style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
+                    child: Text("${model.title}", style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
                   ),
                   const SizedBox(height: 7),
                   Row(
                     children: [
-                      for (int i = 0; i < model.genre!.length; i++)
-                        Row(
-                          children: [
-                            const Text(
+                      const Text(
                               "#",
                               style: TextStyle(
                                 fontSize: 12,
@@ -413,15 +435,33 @@ class SituationComponent extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              model.genre![i],
+                              "${model.genre}",
                               style: const TextStyle(
                                 fontSize: 12,
                                 color: Color(0xFF808080),
                               ),
                             ),
                             const SizedBox(width: 5)
-                          ],
-                        ),
+                      // for (int i = 0; i < model.genre!.length; i++)
+                      //   Row(
+                      //     children: [
+                      //       const Text(
+                      //         "#",
+                      //         style: TextStyle(
+                      //           fontSize: 12,
+                      //           color: Color(0xFF33C26C),
+                      //         ),
+                      //       ),
+                      //       Text(
+                      //         model.genre![i],
+                      //         style: const TextStyle(
+                      //           fontSize: 12,
+                      //           color: Color(0xFF808080),
+                      //         ),
+                      //       ),
+                      //       const SizedBox(width: 5)
+                      //     ],
+                      //   ),
                     ],
                   )
                 ]),
@@ -433,14 +473,19 @@ class SituationComponent extends StatelessWidget {
                   Row(
                     children: [
                       const SizedBox(height: 3),
-                      Icon(model.isbookmark == true ? CupertinoIcons.star_fill : CupertinoIcons.star,
-                          size: 15, color: model.isbookmark ?? false ? Colors.yellow : const Color(0xFF434343)),
-                      const SizedBox(width: 3),
-                      Text("${model.bookmarkcount}", style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
+                      Icon(
+  model.like == 1
+      ? CupertinoIcons.star_fill
+      : CupertinoIcons.star,
+  size: 15,
+  color: model.like == 1 ? Colors.yellow : const Color(0xFF434343),
+)
+,const SizedBox(width: 3),
+                      Text("${model.likeCount}", style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
                     ],
                   ),
                   const SizedBox(height: 5),
-                  Text("플레이 수 ${model.views}회", style: const TextStyle(fontSize: 13, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
+                  Text("플레이 수 ${model.play}회", style: const TextStyle(fontSize: 13, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
                 ]),
               ),
             ],

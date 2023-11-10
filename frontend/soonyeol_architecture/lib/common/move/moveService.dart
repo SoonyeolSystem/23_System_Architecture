@@ -15,13 +15,13 @@ class MoveService extends GetxService {
 
   void moveTalkingPageBySituation(Situation model) {
     Map<String, String> arguments = {
-      'situationid': model.situationid ?? "",
+      'situationid': model.situationId ?? "",
       'conversationid': const Uuid().v4(),
       'situation': model.situation ?? "",
-      'genre': (model.genre ?? []).join(','),
-      'name': model.maincharacter ?? "",
-      'character': (model.character ?? []).join(','),
-      'title': model.situationname ?? "",
+      'genre': model.genre ?? "",
+      'name': model.name ?? "",
+      'character': model.character ?? "",
+      'title': model.title ?? "",
       'new': 'false'
     };
 
