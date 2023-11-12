@@ -15,7 +15,6 @@ class MyInfoPage extends StatelessWidget {
   const MyInfoPage({super.key});
 
   static const String url = '/info';
-
   @override
   Widget build(BuildContext context) {
     final controller = MyInfoViewController.instance;
@@ -38,16 +37,10 @@ class MyInfoPage extends StatelessWidget {
                     Container(
                       alignment: Alignment.topLeft,
                       child: Padding(
-                        padding: EdgeInsets.only(
-                            left: Common.getWidth * 0.05,
-                            top: 25.0,
-                            bottom: 35),
+                        padding: EdgeInsets.only(left: Common.getWidth * 0.05, top: 25.0, bottom: 35),
                         child: Text(
                           '${UserService.instance.nickname} 님의 정보',
-                          style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
+                          style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black),
                         ),
                       ),
                     ),
@@ -55,23 +48,18 @@ class MyInfoPage extends StatelessWidget {
                       onTap: () {
                         Get.offAllNamed(Navigation.url);
                         UserService.instance.logout();
-                        Get.snackbar('User ID: ${UserService.instance.userId}',
-                            'Nickname: ${UserService.instance.nickname}');
+                        Get.snackbar('User ID: ${UserService.instance.userId}', 'Nickname: ${UserService.instance.nickname}');
                       },
                       child: Row(
                         children: [
                           const Text(
                             '로그아웃',
-                            style: TextStyle(
-                                fontSize: 15, color: Color(0xFF888888)),
+                            style: TextStyle(fontSize: 15, color: Color(0xFF888888)),
                           ),
                           Transform.rotate(
                             angle: math.pi,
                             child: Container(
-                              margin: EdgeInsets.only(
-                                  left: Common.getWidth * 0.085,
-                                  right: 5,
-                                  bottom: 2),
+                              margin: EdgeInsets.only(left: Common.getWidth * 0.085, right: 5, bottom: 2),
                               child: const Icon(
                                 Iconsax.logout,
                                 size: 20,
@@ -89,8 +77,7 @@ class MyInfoPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin:
-                        const EdgeInsets.only(left: 25, right: 0, bottom: 15),
+                    margin: const EdgeInsets.only(left: 25, right: 0, bottom: 15),
                     height: 180,
                     width: 170,
                     decoration: const BoxDecoration(
@@ -112,9 +99,7 @@ class MyInfoPage extends StatelessWidget {
                         const SizedBox(height: 15),
                         const Text(
                           '총 학습 시간',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 102, 102, 103)),
+                          style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 102, 102, 103)),
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -122,16 +107,11 @@ class MyInfoPage extends StatelessWidget {
                           children: [
                             Text(
                               controller.speakingTime.value.toString(),
-                              style: const TextStyle(
-                                  fontSize: 24,
-                                  color: Color(0xFF384252),
-                                  fontWeight: FontWeight.w900),
+                              style: const TextStyle(fontSize: 24, color: Color(0xFF384252), fontWeight: FontWeight.w900),
                             ),
                             const Text(
                               '분',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Color.fromARGB(255, 102, 102, 103)),
+                              style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 102, 102, 103)),
                             ),
                           ],
                         ),
@@ -139,8 +119,7 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin:
-                        const EdgeInsets.only(left: 0, right: 25, bottom: 15),
+                    margin: const EdgeInsets.only(left: 0, right: 25, bottom: 15),
                     height: 180,
                     width: 170,
                     decoration: const BoxDecoration(
@@ -159,9 +138,7 @@ class MyInfoPage extends StatelessWidget {
                         const SizedBox(height: 15),
                         const Text(
                           '총 말한 문장',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 102, 102, 103)),
+                          style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 102, 102, 103)),
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -169,16 +146,11 @@ class MyInfoPage extends StatelessWidget {
                           children: [
                             Text(
                               controller.speakingCount.value.toString(),
-                              style: const TextStyle(
-                                  fontSize: 24,
-                                  color: Color(0xFF384252),
-                                  fontWeight: FontWeight.w900),
+                              style: const TextStyle(fontSize: 24, color: Color(0xFF384252), fontWeight: FontWeight.w900),
                             ),
                             const Text(
                               '개',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Color.fromARGB(255, 102, 102, 103)),
+                              style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 102, 102, 103)),
                             ),
                           ],
                         ),
@@ -211,9 +183,7 @@ class MyInfoPage extends StatelessWidget {
                         const SizedBox(height: 15),
                         const Text(
                           '대화 평균 점수',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 102, 102, 103)),
+                          style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 102, 102, 103)),
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -221,16 +191,11 @@ class MyInfoPage extends StatelessWidget {
                           children: [
                             Text(
                               controller.talkingScore.value.toString(),
-                              style: const TextStyle(
-                                  fontSize: 24,
-                                  color: Color(0xFF384252),
-                                  fontWeight: FontWeight.w900),
+                              style: const TextStyle(fontSize: 24, color: Color(0xFF384252), fontWeight: FontWeight.w900),
                             ),
                             const Text(
                               '점',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Color.fromARGB(255, 102, 102, 103)),
+                              style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 102, 102, 103)),
                             ),
                           ],
                         ),
@@ -238,8 +203,7 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin:
-                        const EdgeInsets.only(left: 0, right: 25, bottom: 40),
+                    margin: const EdgeInsets.only(left: 0, right: 25, bottom: 40),
                     height: 180,
                     width: 170,
                     decoration: const BoxDecoration(
@@ -258,9 +222,7 @@ class MyInfoPage extends StatelessWidget {
                         const SizedBox(height: 10),
                         const Text(
                           '완료한 시나리오',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 102, 102, 103)),
+                          style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 102, 102, 103)),
                         ),
                         const SizedBox(height: 10),
                         Row(
@@ -268,16 +230,11 @@ class MyInfoPage extends StatelessWidget {
                           children: [
                             Text(
                               controller.completeSituation.value.toString(),
-                              style: const TextStyle(
-                                  fontSize: 24,
-                                  color: Color(0xFF384252),
-                                  fontWeight: FontWeight.w900),
+                              style: const TextStyle(fontSize: 24, color: Color(0xFF384252), fontWeight: FontWeight.w900),
                             ),
                             const Text(
                               '개',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Color.fromARGB(255, 102, 102, 103)),
+                              style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 102, 102, 103)),
                             ),
                           ],
                         ),
@@ -290,37 +247,29 @@ class MyInfoPage extends StatelessWidget {
                 width: double.infinity, //가로 꽉 차게 설정
                 height: 15,
                 child: DecoratedBox(
-                  decoration:
-                      BoxDecoration(color: Color.fromARGB(255, 242, 242, 242)),
+                  decoration: BoxDecoration(color: Color.fromARGB(255, 242, 242, 242)),
                 ),
               ),
               Container(
                 //key: ongoingKey,
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(
-                      left: Common.getWidth * 0.05, top: 25.0, bottom: 30),
+                  padding: EdgeInsets.only(left: Common.getWidth * 0.05, top: 25.0, bottom: 30),
                   child: const Text(
                     '지난 나의 대화',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black),
                   ),
                 ),
               ),
               Container(
-                  margin: EdgeInsets.only(
-                      left: Common.getWidth * 0.07,
-                      right: Common.getWidth * 0.07),
+                  margin: EdgeInsets.only(left: Common.getWidth * 0.07, right: Common.getWidth * 0.07),
                   height: 1.0,
                   width: double.infinity,
                   color: const Color.fromARGB(255, 209, 209, 209)),
               Row(
                 children: [
                   Container(
-                    margin:
-                        EdgeInsets.only(left: Common.getWidth * 0.085, top: 10),
+                    margin: EdgeInsets.only(left: Common.getWidth * 0.085, top: 10),
                     height: 10,
                     width: 10,
                     decoration: const BoxDecoration(
@@ -332,8 +281,7 @@ class MyInfoPage extends StatelessWidget {
                     //margin: EdgeInsets.only(bottom: 30),
                     alignment: Alignment.centerLeft,
                     child: const Padding(
-                      padding:
-                          EdgeInsets.only(left: 10.0, top: 15.0, bottom: 10),
+                      padding: EdgeInsets.only(left: 10.0, top: 15.0, bottom: 10),
                       child: Text(
                         '진행중',
                         style: TextStyle(
@@ -346,60 +294,52 @@ class MyInfoPage extends StatelessWidget {
                 ],
               ),
               ////진행중인 시나리오
-              if (controller.myConversation.isEmpty)
-                Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    const Text('아직 진행 중인 대화가 없어요.',
-                        style: TextStyle(fontSize: 15, color: Colors.grey)),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    TextButton(
-                        onPressed: () async {
-                          final controller = NavigationController.instance;
-                          controller.selectTab(1);
-                        },
-                        child: const Text(
-                          '대화 시작하기 >',
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Color(0xFF33C26C),
-                              fontWeight: FontWeight.w700),
-                        ))
-                    //const SizedBox(height: 20),
-                  ],
-                )
-              else
-                Padding(
-                    padding: const EdgeInsets.only(left: 40.0, right: 40),
-                    child: Obx(() => Column(children: [
-                          for (int index = 0;
-                              index < controller.myConversation.length;
-                              index++)
-                            Column(
-                              children: [
-                                if (controller.myConversation[index].endStory ==
-                                    false)
-                                  InfoViewComponent(
-                                    model: controller.myConversation[index],
-                                  ),
-                                if (controller.myConversation[index].endStory ==
-                                    false)
-                                  const Divider(
-                                    height: 1,
-                                    thickness: 1,
-                                  ),
-                              ],
-                            ),
-                        ]))),
+              Obx(
+                () => (!numNotEndList(controller))
+                    ? Column(
+                        children: [
+                          const SizedBox(height: 20),
+                          const Text('아직 진행 중인 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          TextButton(
+                              onPressed: () async {
+                                final controller = NavigationController.instance;
+                                controller.selectTab(1);
+                              },
+                              child: const Text(
+                                '대화 시작하기 >',
+                                style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
+                              ))
+                          //const SizedBox(height: 20),
+                        ],
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 40.0, right: 40),
+                        child: Obx(() => Column(children: [
+                              for (int index = 0; index < controller.myConversation.length; index++)
+                                Column(
+                                  children: [
+                                    if (controller.myConversation[index].endStory == false)
+                                      InfoViewComponent(
+                                        model: controller.myConversation[index],
+                                      ),
+                                    if (controller.myConversation[index].endStory == false)
+                                      const Divider(
+                                        height: 1,
+                                        thickness: 1,
+                                      ),
+                                  ],
+                                ),
+                            ]))),
+              ),
 
               const SizedBox(height: 22),
               Row(
                 children: [
                   Container(
-                    margin:
-                        EdgeInsets.only(left: Common.getWidth * 0.085, top: 5),
+                    margin: EdgeInsets.only(left: Common.getWidth * 0.085, top: 5),
                     height: 10,
                     width: 10,
                     decoration: const BoxDecoration(
@@ -410,8 +350,7 @@ class MyInfoPage extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: const Padding(
-                      padding:
-                          EdgeInsets.only(left: 10.0, top: 15.0, bottom: 10),
+                      padding: EdgeInsets.only(left: 10.0, top: 15.0, bottom: 10),
                       child: Text(
                         '완료',
                         style: TextStyle(
@@ -424,42 +363,64 @@ class MyInfoPage extends StatelessWidget {
                 ],
               ),
               //완료된 시나리오
-              if (controller.myConversation.isEmpty)
-                Column(
-                  children: [
-                    SizedBox(height: 20),
-                    Text('아직 완료된 대화가 없어요.',
-                        style: TextStyle(fontSize: 15, color: Colors.grey)),
-                  ],
-                )
-              else
-                Padding(
-                  padding: const EdgeInsets.only(left: 40.0, right: 40),
-                  child: Obx(() => Column(children: [
-                        for (int index = 0;
-                            index < controller.myConversation.length;
-                            index++)
-                          Column(
-                            children: [
-                              if (controller.myConversation[index].endStory ==
-                                  true)
-                                InfoViewComponent(
-                                    model: controller.myConversation[index]),
-                              if (controller.myConversation[index].endStory ==
-                                  true)
-                                const Divider(
-                                  height: 1,
-                                  thickness: 1,
+              Obx(
+                () => (!numEndList(controller))
+                    ? const Column(
+                        children: [
+                          SizedBox(height: 20),
+                          Text('아직 완료된 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
+                        ],
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 40.0, right: 40),
+                        child: Obx(() => Column(children: [
+                              for (int index = 0; index < controller.myConversation.length; index++)
+                                Column(
+                                  children: [
+                                    if (controller.myConversation[index].endStory == true) InfoViewComponent(model: controller.myConversation[index]),
+                                    if (controller.myConversation[index].endStory == true)
+                                      const Divider(
+                                        height: 1,
+                                        thickness: 1,
+                                      ),
+                                  ],
                                 ),
-                            ],
-                          ),
-                      ])),
-                ),
+                            ])),
+                      ),
+              ),
               const SizedBox(
                 height: 50,
               ),
             ]),
       ),
     ));
+  }
+}
+
+bool numNotEndList(MyInfoViewController controller) {
+  int num = 0;
+  for (int index = 0; index < controller.myConversation.length; index++) {
+    if (controller.myConversation[index].endStory == false) {
+      num++;
+    }
+  }
+  if (num > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool numEndList(MyInfoViewController controller) {
+  int num = 0;
+  for (int index = 0; index < controller.myConversation.length; index++) {
+    if (controller.myConversation[index].endStory == true) {
+      num++;
+    }
+  }
+  if (num > 0) {
+    return true;
+  } else {
+    return false;
   }
 }

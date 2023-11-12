@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
+import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
+import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 
 import '../../../common/common.dart';
@@ -28,7 +31,7 @@ class TalkingResultPage extends StatelessWidget {
                     type: MaterialType.transparency,
                     child: Container(
                       alignment: Alignment.topLeft,
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.only(left: 40.0, top: 50.0),
                         child: Text(
                           '좋은 대화였어요!',
@@ -37,13 +40,13 @@ class TalkingResultPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   Container(
                     width: Common.getWidth - 100,
                     height: 300,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Color(0xFF434343),
+                      color: const Color(0xFF434343),
                     ),
                     alignment: Alignment.topLeft,
                     child: Material(
@@ -51,148 +54,104 @@ class TalkingResultPage extends StatelessWidget {
                       child: Column(children: [
                         Row(
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(left: 35.0, top: 30.0),
                               child: Text(
                                 '스피킹 평균 속도',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
-                              padding: EdgeInsets.only(top: 35.0),
+                              padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
                                 '${controller.speakingSpeed.value}',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Color(0xFF33C26C),
-                                    fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10, right: 48.0, top: 35.0),
-                              child: Text('s',
-                                  style: TextStyle(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10, right: 48.0, top: 35.0),
+                              child: Text('s', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
                         ),
                         Row(
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(left: 35.0, top: 35.0),
                               child: Text(
                                 '대화 나눈 횟수',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
-                              padding: EdgeInsets.only(top: 35.0),
+                              padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
                                 '${controller.speakingCount.value}',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Color(0xFF33C26C),
-                                    fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10.0, right: 40, top: 35.0),
-                              child: Text('회',
-                                  style: TextStyle(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10.0, right: 40, top: 35.0),
+                              child: Text('회', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
                         ),
                         Row(
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(left: 35.0, top: 35.0),
                               child: Text(
                                 '대화 나눈 시간',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
-                              padding: EdgeInsets.only(top: 35.0),
+                              padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
                                 '${controller.speakingTime.value}',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Color(0xFF33C26C),
-                                    fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10.0, right: 40, top: 35.0),
-                              child: Text('m',
-                                  style: TextStyle(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10.0, right: 40, top: 35.0),
+                              child: Text('m', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
                         ),
                         Row(
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(left: 35.0, top: 35.0),
                               child: Text(
                                 '토킹 점수',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Color(0xFF33C26C),
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
-                              padding: EdgeInsets.only(top: 35.0),
+                              padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
                                 '${controller.talkingScore.value}',
-                                style: TextStyle(
-                                    fontSize: 24,
-                                    color: Color(0xFF33C26C),
-                                    fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 10.0, right: 40, top: 35.0),
-                              child: Text('점',
-                                  style: TextStyle(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold)),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10.0, right: 40, top: 35.0),
+                              child: Text('점', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
@@ -204,7 +163,7 @@ class TalkingResultPage extends StatelessWidget {
                     type: MaterialType.transparency,
                     child: Container(
                       alignment: Alignment.topLeft,
-                      child: Padding(
+                      child: const Padding(
                         padding: EdgeInsets.only(left: 40.0, top: 50.0),
                         child: Text(
                           'GPT의 피드백',
@@ -213,12 +172,12 @@ class TalkingResultPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 40),
-                  Container(
+                  const SizedBox(height: 40),
+                  SizedBox(
                     width: Common.getWidth - 100,
                     height: 200,
                     // alignment: Alignment.center,
-                    child: SingleChildScrollView(
+                    child: const SingleChildScrollView(
                       // physics: const BouncingScrollPhysics(),
                       // controller: controller.scrollcontroller.value,
                       child: Text(
@@ -232,19 +191,35 @@ class TalkingResultPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: ElevatedButton(
-                      onPressed: () {
-                        showSnackBar();
+                      onPressed: () async {
+                        //showSnackBar();
+                        Get.offAllNamed(Navigation.url);
+                        MyInfoViewController.instance.getInfoList();
+
+                        final controller = NavigationController.instance;
+                        controller.selectTab(2);
+                        // final controller2 = MyInfoViewController.instance;
+                        // await Future.delayed(const Duration(milliseconds: 50));
+
+                        // // Accessing the actual ScrollController instance
+                        // final actualScrollController = controller2.scrollcontroller.value;
+
+                        // // Getting the maximum scroll extent
+                        // final maxScrollExtent = actualScrollController.position.maxScrollExtent;
+
+                        // // Animating to the bottom
+                        // actualScrollController.animateTo(maxScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.ease);
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        backgroundColor: Color(0xFF33C26C),
-                        minimumSize: Size(400, 60),
+                        //backgroundColor: Colors.blue,
+                        backgroundColor: const Color(0xFF33C26C),
+                        minimumSize: const Size(400, 60),
                       ),
-                      child: Text(
+                      child: const Text(
                         '대화 저장하기',
                         style: TextStyle(
                           fontSize: 20,
@@ -252,7 +227,7 @@ class TalkingResultPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 80),
+                  const SizedBox(height: 80),
                 ],
               ),
             ),
@@ -267,8 +242,8 @@ void showSnackBar() {
   Get.snackbar('', '',
       maxWidth: Common.getWidth,
       titleText: Container(),
-      messageText: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0),
+      messageText: const Padding(
+        padding: EdgeInsets.only(bottom: 8.0),
         child: Text(
           '대화가 저장되었습니다.',
           style: TextStyle(color: Colors.white),
