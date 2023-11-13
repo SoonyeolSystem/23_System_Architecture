@@ -9,6 +9,7 @@ import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_conversation_list_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_response.dart';
+import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/login_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/sign_up_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/talking_response.dart';
@@ -136,6 +137,35 @@ class ApiService extends GetxService {
       return ApiResponse<SituationResponse>(result: false, errorMsg: "오류가 발생했습니다.");
     }
   }
+  
+Future<ApiResponse<LikeResponse>> likeConversation(String conversationId, String userId) async {
+  try {
+    var response = await userDio.post(
+      '/user/like/conversation',
+      data: {
+        'conversationid': conversationId,
+        'userid': userId,
+      },
+    );
+
+    LikeResponse likeResponse = LikeResponse.fromJson(response.data);
+
+    return ApiResponse<LikeResponse>(
+      result: response.statusCode == 200,
+      value: likeResponse,
+    );
+  } on DioError catch (e) {
+    Common.logger.d(e);
+      try {
+        return ApiResponse<LikeResponse>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.", statusCode: e.response?.statusCode);
+      } catch (e) {
+        return ApiResponse<LikeResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+      }
+    } catch (e) {
+      Common.logger.d(e);
+      return ApiResponse<LikeResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+    }
+  }
 
   Future<ApiResponse<LoginResponse>> login(String loginId, String password) async {
     try {
@@ -192,5 +222,8 @@ class ApiService extends GetxService {
       Common.logger.d(e);
       return ApiResponse<SignUpResponse>(result: false, errorMsg: "오류가 발생했습니다.");
     }
+    
   }
+
+  
 }
