@@ -288,7 +288,7 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                 ),
                 InkWell(
                   onTap: () {
-                    //model.isLike= !model.isLike!;
+                    //model.isLike= !model.isLike;
                   },
                   child: Icon(isLike == true ? Icons.favorite : CupertinoIcons.heart,
                       size: 33, color: isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),

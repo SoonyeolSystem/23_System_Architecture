@@ -75,45 +75,25 @@ class SituationComponent extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    Text('${model.name}', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                    Text('${model.userId}', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                                     const SizedBox(height: 7),
                                     Row(
                                       children: [
                                         const Text(
-                              "#",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF33C26C),
-                              ),
-                            ),
-                            Text(
-                              "${model.genre}",
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF808080),
-                              ),
-                            ),
-                            const SizedBox(width: 5)
-                                        // for (int i = 0; i < model.genre!.length; i++)
-                                        //   Row(
-                                        //     children: [
-                                        //       const Text(
-                                        //         "#",
-                                        //         style: TextStyle(
-                                        //           fontSize: 15,
-                                        //           color: Color(0xFF33C26C),
-                                        //         ),
-                                        //       ),
-                                        //       Text(
-                                        //         model.genre![i],
-                                        //         style: const TextStyle(
-                                        //           fontSize: 15,
-                                        //           color: Color(0xFF808080),
-                                        //         ),
-                                        //       ),
-                                        //       const SizedBox(width: 5),
-                                        //     ],
-                                        //   ),
+                                          "#",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF33C26C),
+                                          ),
+                                        ),
+                                        Text(
+                                          "${model.genre}",
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF808080),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 5)
                                       ],
                                     ),
                                   ]),
@@ -130,37 +110,6 @@ class SituationComponent extends StatelessWidget {
                                       Row(
                                         children: [
                                           const SizedBox(height: 3),
-                                          // InkWell(
-                                          //   child: Icon(
-                                          //     model.isbookmark == true
-                                          //         ? Icons.star
-                                          //         : Icons.star_border,
-                                          //     size: 15,
-                                          //     color:
-                                          //         model.isbookmark == true
-                                          //             ? Colors.yellow
-                                          //             : Color(0xFF434343),
-                                          //   ),
-                                          //   onTap: () {
-                                          //     // Toggle the bookmark status
-                                          //     model.isbookmark =
-                                          //         !model.isbookmark!;
-                                          //     // You can also update the bookmark count here if needed
-
-                                          //     // Update the UI by calling `setState` to rebuild the widget
-                                          //     //setState(() {});
-                                          //   },
-                                          // ),
-                                          // Icon(
-                                          //   model.isbookmark == true
-                                          //       ? Icons.star
-                                          //       : Icons.star_border,
-                                          //   size: 15,
-                                          //   color: model.isbookmark == true
-                                          //       ? Colors.yellow
-                                          //       : Color(0xFF434343),
-                                          // ),
-                                          // SizedBox(width: 3),
                                           InkWell(
                                             onTap: () {
                                               // Toggle the bookmark status here (change the value of model.isbookmark)
@@ -175,28 +124,6 @@ class SituationComponent extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(width: 3),
-                                          // Obx(() => controller_.situation
-                                          //             .value.isbookmark ==
-                                          //         true
-                                          //     ? IconButton(
-                                          //         icon: const Icon(
-                                          //             Icons.star),
-                                          //         color: Colors.yellow,
-                                          //         iconSize: 15,
-                                          //         onPressed: () async {
-                                          //           await controller_
-                                          //               .postBookmarkSituation();
-                                          //         })
-                                          //     : IconButton(
-                                          //         icon: const Icon(
-                                          //             Icons.star_border),
-                                          //         iconSize: 15,
-                                          //         onPressed: () async {
-                                          //           await controller_
-                                          //               .postBookmarkSituation();
-                                          //         },
-                                          //       )),
-                                          // SizedBox(width: 3),
                                           Text(
                                             "${model.likeCount}",
                                             style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500),
@@ -228,128 +155,115 @@ class SituationComponent extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                            child: Column(
                               children: [
-                                Expanded(
-                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '상황',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child: Text(
-                                        "${model.situation}",
-                                        style: const TextStyle(fontSize: 16, color: Color(0xFF000000), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 23),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '장르',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child: 
-                                      // Row(
-                                      //   children: [
-                                      //     for (int i = 0; i < model.genre!.length; i++)
-                                      //       Row(
-                                      //         children: [
-                                      //           Text(
-                                      //             "${model.genre![i]}${i < model.genre!.length - 1 ? ', ' : ''}",
-                                      //             style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                      //           ),
-                                      //         ],
-                                      //       ),
-                                      //   ],
-                                      // ),
-                                      Text(
-                                                  "${model.genre}",
-                                                  style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                                ),
-                                    ),
-                                    const SizedBox(height: 23),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '등장인물',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child: 
-                                      // Row(
-                                      //   children: [
-                                      //     for (int i = 0; i < model.character!.length; i++)
-                                      //       Row(
-                                      //         children: [
-                                      //           Text(
-                                      //             "${model.character![i]}${i < model.character!.length - 1 ? ', ' : ''}",
-                                      //             style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                      //           ),
-                                      //         ],
-                                      //       ),
-                                      //   ],
-                                      // ),
-                                      Text(
-                                                  "${model.character}",
-                                                  style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                                ),
-                                    ),
-                                    const SizedBox(height: 23),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '주인공',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child: Text(
-                                        "${model.name}",
-                                        style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                      ),
-                                    )
-                                  ]),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                        child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '상황',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.situation}",
+                                            style: const TextStyle(fontSize: 16, color: Color(0xFF000000), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 23),
+                                      ],
+                                    ))
+                                  ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 10, bottom: 5),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      if (!UserService.instance.isLogin()) {
-                                        Get.toNamed(LoginPage.url);
-                                        return;
-                                      }
-                                      MoveService.instance.moveTalkingPageBySituation(model);
-                                    },
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(const Color(0xFF33C26C)),
-                                      padding: MaterialStateProperty.all(
-                                        const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '장르',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.genre}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '등장인물',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.character}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '주인공',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.name}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        )
+                                      ]),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10, bottom: 5),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          if (!UserService.instance.isLogin()) {
+                                            Get.toNamed(LoginPage.url);
+                                            return;
+                                          }
+                                          MoveService.instance.moveTalkingPageBySituation(model);
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all(const Color(0xFF33C26C)),
+                                          padding: MaterialStateProperty.all(
+                                            const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          '시작하기',
+                                          style: TextStyle(
+                                            fontSize: 22, // Text size remains the same
+                                            color: Colors.white,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                    child: const Text(
-                                      '시작하기',
-                                      style: TextStyle(
-                                        fontSize: 22, // Text size remains the same
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -428,20 +342,20 @@ class SituationComponent extends StatelessWidget {
                   Row(
                     children: [
                       const Text(
-                              "#",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF33C26C),
-                              ),
-                            ),
-                            Text(
-                              "${model.genre}",
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF808080),
-                              ),
-                            ),
-                            const SizedBox(width: 5)
+                        "#",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF33C26C),
+                        ),
+                      ),
+                      Text(
+                        "${model.genre}",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF808080),
+                        ),
+                      ),
+                      const SizedBox(width: 5)
                       // for (int i = 0; i < model.genre!.length; i++)
                       //   Row(
                       //     children: [
@@ -474,13 +388,11 @@ class SituationComponent extends StatelessWidget {
                     children: [
                       const SizedBox(height: 3),
                       Icon(
-  model.like == 1
-      ? CupertinoIcons.star_fill
-      : CupertinoIcons.star,
-  size: 15,
-  color: model.like == 1 ? Colors.yellow : const Color(0xFF434343),
-)
-,const SizedBox(width: 3),
+                        model.like == 1 ? CupertinoIcons.star_fill : CupertinoIcons.star,
+                        size: 15,
+                        color: model.like == 1 ? Colors.yellow : const Color(0xFF434343),
+                      ),
+                      const SizedBox(width: 3),
                       Text("${model.likeCount}", style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
                     ],
                   ),
