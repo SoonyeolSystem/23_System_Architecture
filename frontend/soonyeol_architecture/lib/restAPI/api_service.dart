@@ -13,6 +13,7 @@ import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/login_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/sign_up_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/talking_response.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 class ApiService extends GetxService {
   static ApiService get instance => Get.find();
@@ -29,7 +30,7 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<ConversationListResponse>> getBestConversation() async {
     try {
-      var response = await communityDio.get('/community/bestconversation');
+      var response = await communityDio.get('/community/bestconversation/${UserService.instance.userId}');
       ConversationListResponse getConversationListResponse = ConversationListResponse.fromJson(response.data);
       return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getConversationListResponse);
     } on DioError catch (e) {
@@ -101,7 +102,7 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<SituationListResponse>> getSituationList() async {
     try {
-      var response = await communityDio.get('/community/situationlist');
+      var response = await communityDio.get('/community/situationlist/${UserService.instance.userId}');
       SituationListResponse getClassRoomListResponse = SituationListResponse.fromJson(response.data);
       return ApiResponse<SituationListResponse>(result: response.isSuccessful, value: getClassRoomListResponse);
     } on DioError catch (e) {

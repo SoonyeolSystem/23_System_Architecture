@@ -9,7 +9,7 @@ import 'package:soonyeol_architecture/restAPI/response/login_response.dart';
 class UserService extends GetxService {
   static UserService get instance => Get.find<UserService>();
 
-  String userId = '';
+  String userId = 'null';
   String nickname = '';
   bool isLoading = false; // 로딩 상태를 나타내는 변수 추가
   bool isResponseBlocked = false; // 다른 리스폰스를 막는 변수 추가
@@ -47,7 +47,7 @@ class UserService extends GetxService {
   }
 
   bool isLogin() {
-    if (userId.isNotEmpty && nickname.isNotEmpty) {
+    if (userId == 'null' && nickname.isNotEmpty) {
       return true;
     } else {
       return false;
