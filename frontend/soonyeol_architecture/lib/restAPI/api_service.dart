@@ -100,7 +100,7 @@ class ApiService extends GetxService {
     }
   }
 
-  Future<ApiResponse<SituationListResponse>> getSituationList() async {
+  Future<ApiResponse<SituationListResponse>> getSituationList(String userID) async {
     try {
       var response = await communityDio.get('/community/situationlist/${UserService.instance.userId}');
       SituationListResponse getClassRoomListResponse = SituationListResponse.fromJson(response.data);
@@ -138,7 +138,7 @@ class ApiService extends GetxService {
       return ApiResponse<SituationResponse>(result: false, errorMsg: "오류가 발생했습니다.");
     }
   }
-  
+
 Future<ApiResponse<LikeResponse>> likeConversation(String conversationId, String userId) async {
   try {
     var response = await userDio.post(

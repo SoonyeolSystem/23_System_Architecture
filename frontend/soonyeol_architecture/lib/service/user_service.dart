@@ -47,7 +47,7 @@ class UserService extends GetxService {
   }
 
   bool isLogin() {
-    if (userId == 'null' && nickname.isNotEmpty) {
+    if (userId != 'null' && nickname.isNotEmpty) {
       return true;
     } else {
       return false;

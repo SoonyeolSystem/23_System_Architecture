@@ -5,6 +5,7 @@ import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 class SituationMainController extends GetxController {
   static SituationMainController get instance => Get.find<SituationMainController>();
@@ -15,7 +16,7 @@ class SituationMainController extends GetxController {
   }
 
   Future<void> getSituationList() async {
-    ApiResponse<SituationListResponse> response = await ApiService.instance.getSituationList();
+    ApiResponse<SituationListResponse> response = await ApiService.instance.getSituationList(UserService.instance.userId);
     if (response.result) {
       situationList.value = response.value!.situationList!;
     }
