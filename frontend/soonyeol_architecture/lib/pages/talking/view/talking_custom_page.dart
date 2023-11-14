@@ -232,17 +232,13 @@ class TalkingCustomPage extends StatelessWidget {
                       height: 60,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (userService.isLogin() == false) {
-                            Get.toNamed(LoginPage.url);
-                          } else {
-                            MoveService.instance.moveTalkingPageByNew(
-                              situation: controller.situationC.text,
-                              genre: controller.genreC.text,
-                              name: controller.nameC.text,
-                              character: controller.characterC.text,
-                              title: controller.titleC.text,
-                            );
-                          }
+                          MoveService.instance.moveTalkingPageByNew(
+                            situation: controller.situationC.text,
+                            genre: controller.genreC.text,
+                            name: controller.nameC.text,
+                            character: controller.characterC.text,
+                            title: controller.titleC.text,
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF33C26C),

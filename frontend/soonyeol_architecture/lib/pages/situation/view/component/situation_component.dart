@@ -77,55 +77,29 @@ class SituationComponent extends StatelessWidget {
                             Expanded(
                               child: Row(
                                 children: [
-                                  Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                    Text(UserService.instance.nickname, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                    const SizedBox(height: 7),
+                                    Row(
                                       children: [
-                                        Text('${model.name}',
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        const SizedBox(height: 7),
-                                        Row(
-                                          children: [
-                                            const Text(
-                                              "#",
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Color(0xFF33C26C),
-                                              ),
-                                            ),
-                                            Text(
-                                              "${model.genre}",
-                                              style: const TextStyle(
-                                                fontSize: 12,
-                                                color: Color(0xFF808080),
-                                              ),
-                                            ),
-                                            const SizedBox(width: 5)
-                                            // for (int i = 0; i < model.genre!.length; i++)
-                                            //   Row(
-                                            //     children: [
-                                            //       const Text(
-                                            //         "#",
-                                            //         style: TextStyle(
-                                            //           fontSize: 15,
-                                            //           color: Color(0xFF33C26C),
-                                            //         ),
-                                            //       ),
-                                            //       Text(
-                                            //         model.genre![i],
-                                            //         style: const TextStyle(
-                                            //           fontSize: 15,
-                                            //           color: Color(0xFF808080),
-                                            //         ),
-                                            //       ),
-                                            //       const SizedBox(width: 5),
-                                            //     ],
-                                            //   ),
-                                          ],
+                                        const Text(
+                                          "#",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF33C26C),
+                                          ),
                                         ),
-                                      ]),
+                                        Text(
+                                          "${model.genre}",
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF808080),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 5)
+                                      ],
+                                    ),
+                                  ]),
                                 ],
                               ),
                             ),
@@ -139,37 +113,6 @@ class SituationComponent extends StatelessWidget {
                                       Row(
                                         children: [
                                           const SizedBox(height: 3),
-                                          // InkWell(
-                                          //   child: Icon(
-                                          //     model.isbookmark == true
-                                          //         ? Icons.star
-                                          //         : Icons.star_border,
-                                          //     size: 15,
-                                          //     color:
-                                          //         model.isbookmark == true
-                                          //             ? Colors.yellow
-                                          //             : Color(0xFF434343),
-                                          //   ),
-                                          //   onTap: () {
-                                          //     // Toggle the bookmark status
-                                          //     model.isbookmark =
-                                          //         !model.isbookmark!;
-                                          //     // You can also update the bookmark count here if needed
-
-                                          //     // Update the UI by calling `setState` to rebuild the widget
-                                          //     //setState(() {});
-                                          //   },
-                                          // ),
-                                          // Icon(
-                                          //   model.isbookmark == true
-                                          //       ? Icons.star
-                                          //       : Icons.star_border,
-                                          //   size: 15,
-                                          //   color: model.isbookmark == true
-                                          //       ? Colors.yellow
-                                          //       : Color(0xFF434343),
-                                          // ),
-                                          // SizedBox(width: 3),
                                           InkWell(
                                             onTap: () {
                                               // Toggle the bookmark status here (change the value of model.isbookmark)
@@ -186,28 +129,6 @@ class SituationComponent extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(width: 3),
-                                          // Obx(() => controller_.situation
-                                          //             .value.isbookmark ==
-                                          //         true
-                                          //     ? IconButton(
-                                          //         icon: const Icon(
-                                          //             Icons.star),
-                                          //         color: Colors.yellow,
-                                          //         iconSize: 15,
-                                          //         onPressed: () async {
-                                          //           await controller_
-                                          //               .postBookmarkSituation();
-                                          //         })
-                                          //     : IconButton(
-                                          //         icon: const Icon(
-                                          //             Icons.star_border),
-                                          //         iconSize: 15,
-                                          //         onPressed: () async {
-                                          //           await controller_
-                                          //               .postBookmarkSituation();
-                                          //         },
-                                          //       )),
-                                          // SizedBox(width: 3),
                                           Text(
                                             "${model.likeCount}",
                                             style: const TextStyle(
