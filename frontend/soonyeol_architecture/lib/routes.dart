@@ -3,6 +3,7 @@ import 'package:soonyeol_architecture/pages/STT/view/stt_page.dart';
 import 'package:soonyeol_architecture/pages/TTS/tts.dart';
 import 'package:soonyeol_architecture/pages/dev_route/view/route_view_page.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
+import 'package:soonyeol_architecture/pages/main/view/like_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
@@ -24,6 +25,7 @@ class CustomRouter {
     GetPage(name: SignUpPage.url, page: () => const SignUpPage()),
     GetPage(name: MyInfoPage.url, page: () => const MyInfoPage()),
     GetPage(name: TTSPage.url, page: () => TTSPage()),
-    GetPage(name: STTPage.url, page: () => const STTPage())
+    GetPage(name: STTPage.url, page: () => const STTPage()),
+    GetPage(name: LikePage.url, page: () => const LikePage()),
   ];
 }

@@ -75,7 +75,7 @@ class SituationComponent extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    Text('${model.userId}', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                    Text(UserService.instance.nickname, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                                     const SizedBox(height: 7),
                                     Row(
                                       children: [
