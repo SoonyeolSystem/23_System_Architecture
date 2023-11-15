@@ -17,6 +17,7 @@ class MainViewPage extends StatelessWidget {
 
   static const String url = '/main';
 
+
   @override
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;

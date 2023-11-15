@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
+import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
+import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_custom_controller.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
@@ -194,7 +196,14 @@ class TalkingCustomPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10), // 원하는 둥근 모서리 반경을 여기에 지정합니다.
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.offAllNamed(Navigation.url, arguments: {"KEY":"2"});
+                            //MyInfoViewController.instance.getInfoList();
+                             final controller =
+                                        NavigationController.instance;
+                                    controller.selectTab(2);
+                          
+                          },
                           child: const Text(
                             '다른 사람이\n추천한\n시나리오',
                             style: TextStyle(fontSize: 23, color: Colors.white),
