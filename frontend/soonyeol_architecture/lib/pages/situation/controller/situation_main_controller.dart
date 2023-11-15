@@ -4,6 +4,7 @@ import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
+import 'package:soonyeol_architecture/restAPI/response/get_conversation_list_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
@@ -13,6 +14,16 @@ class SituationMainController extends GetxController {
   Future<void> postBookmarkSituation() async {
     // conversationList.value.isbookmark = !situation.value.isbookmark!;
     // situation.refresh();
+  }
+
+  Future<void> getCoversationBysit(String situationid) async {
+    conversationList.value = [];
+    conversationList.refresh();
+    ApiResponse<ConversationListResponse> response = await ApiService.instance.getConversationBySit(situationid);
+    if (response.result) {
+      conversationList.value = response.value!.conversationList!;
+    }
+    conversationList.refresh();
   }
 
   Future<void> getSituationList() async {

@@ -8,30 +8,29 @@ class Conversation {
   List<String>? character; //등장인물
   String? maincharacter; //주인공
   String? userName; //대화 유저
-  String? headScript; //대화내용
+  String? tailScript; //대화내용
   int? epcohTime; //대화시간
   bool? endStory;
   String? situationID;
   String? conversationID;
   int? like;
 
-  Conversation({
-    this.situationname,
-    this.likeCount,
-    this.views,
-    this.isLike,
-    this.situation,
-    this.genre,
-    this.character,
-    this.maincharacter,
-    this.userName,
-    this.headScript,
-    this.epcohTime,
-    this.endStory,
-    this.situationID,
-    this.conversationID,
-    this.like
-  });
+  Conversation(
+      {this.situationname,
+      this.likeCount,
+      this.views,
+      this.isLike,
+      this.situation,
+      this.genre,
+      this.character,
+      this.maincharacter,
+      this.userName,
+      this.tailScript,
+      this.epcohTime,
+      this.endStory,
+      this.situationID,
+      this.conversationID,
+      this.like});
 
   Conversation.fromJson(Map<String, dynamic> json) {
     situationname = json['title'];
@@ -47,12 +46,12 @@ class Conversation {
     }
     maincharacter = json['name'];
     userName = json['userName'];
-    headScript = json['headScript'];
+    tailScript = json['tailScript'];
     epcohTime = json['timestamp'];
     endStory = json['end_story'].toLowerCase() != 'false';
     situationID = json['situationid'];
     conversationID = json['conversationid'];
-    like=json['like'];
+    like = json['like'];
   }
 
   Map<String, dynamic> toJson() {
@@ -66,7 +65,7 @@ class Conversation {
     data['character'] = character;
     data['name'] = maincharacter;
     data['userName'] = userName;
-    data['conversation'] = headScript;
+    data['conversation'] = tailScript;
     data['timestamp'] = epcohTime;
     data['end_story'] = endStory;
     data['situationid'] = situationID;

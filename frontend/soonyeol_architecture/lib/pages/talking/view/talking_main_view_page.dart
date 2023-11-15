@@ -8,6 +8,7 @@ import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.d
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
+import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 bool isLike = false;
 
@@ -260,6 +261,8 @@ void showCustomAlertDialog(BuildContext context) {
 }
 
 void showInformation(BuildContext context, TalkingViewController controller) {
+      final Conversation model=Conversation();
+
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -288,10 +291,11 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                 ),
                 InkWell(
                   onTap: () {
+    TalkingViewController.instance.likeConversation();
                     //model.isLike= !model.isLike;
                   },
-                  child: Icon(isLike == true ? Icons.favorite : CupertinoIcons.heart,
-                      size: 33, color: isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
+                  child: Icon(model.isLike == true ? Icons.favorite : CupertinoIcons.heart,
+                      size: 33, color: model.isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
                 )
               ]),
               const SizedBox(

@@ -43,7 +43,7 @@ class InfoViewComponent extends StatelessWidget {
                               "#",
                               style: TextStyle(
                                 fontSize: 12,
-                                color: model.endStory == false ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
+                                color: model.endStory ?? false == false ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
                               ),
                             ),
                             Text(
@@ -64,7 +64,7 @@ class InfoViewComponent extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            model.headScript ?? "알 수 없음",
+                            model.tailScript ?? "알 수 없음",
                             style: const TextStyle(
                               fontSize: 14,
                               color: Color.fromARGB(137, 50, 50, 50),
