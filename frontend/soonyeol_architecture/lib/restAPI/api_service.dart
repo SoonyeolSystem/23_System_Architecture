@@ -28,6 +28,24 @@ class ApiService extends GetxService {
     return this;
   }
 
+  Future<ApiResponse<ConversationListResponse>> getConversationBySit(String situationID) async {
+    try {
+      var response = await communityDio.get('/community/conversation/bysit/$situationID');
+      ConversationListResponse getConversationListResponse = ConversationListResponse.fromJson(response.data);
+      return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getConversationListResponse);
+    } on DioError catch (e) {
+      Common.logger.d(e);
+      try {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.");
+      } catch (e) {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+      }
+    } catch (e) {
+      Common.logger.d(e);
+      return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+    }
+  }
+
   Future<ApiResponse<ConversationListResponse>> getBestConversation() async {
     try {
       var response = await communityDio.get('/community/bestconversation/${UserService.instance.userId}');
@@ -139,24 +157,24 @@ class ApiService extends GetxService {
     }
   }
 
-Future<ApiResponse<LikeResponse>> likeConversation(String conversationId, String userId) async {
-  try {
-    var response = await userDio.post(
-      '/user/like/conversation',
-      data: {
-        'conversationid': conversationId,
-        'userid': userId,
-      },
-    );
+  Future<ApiResponse<LikeResponse>> likeConversation(String conversationId, String userId) async {
+    try {
+      var response = await userDio.post(
+        '/user/like/conversation',
+        data: {
+          'conversationid': conversationId,
+          'userid': userId,
+        },
+      );
 
-    LikeResponse likeResponse = LikeResponse.fromJson(response.data);
+      LikeResponse likeResponse = LikeResponse.fromJson(response.data);
 
-    return ApiResponse<LikeResponse>(
-      result: response.statusCode == 200,
-      value: likeResponse,
-    );
-  } on DioError catch (e) {
-    Common.logger.d(e);
+      return ApiResponse<LikeResponse>(
+        result: response.statusCode == 200,
+        value: likeResponse,
+      );
+    } on DioError catch (e) {
+      Common.logger.d(e);
       try {
         return ApiResponse<LikeResponse>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.", statusCode: e.response?.statusCode);
       } catch (e) {
@@ -223,8 +241,5 @@ Future<ApiResponse<LikeResponse>> likeConversation(String conversationId, String
       Common.logger.d(e);
       return ApiResponse<SignUpResponse>(result: false, errorMsg: "오류가 발생했습니다.");
     }
-    
   }
-
-  
 }

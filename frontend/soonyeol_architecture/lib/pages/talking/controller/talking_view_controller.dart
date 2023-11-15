@@ -8,9 +8,6 @@ import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
-import 'package:soonyeol_architecture/restAPI/models/User.dart';
-import 'package:soonyeol_architecture/restAPI/response/get_conversation_list_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/script_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/talking_response.dart';
@@ -41,36 +38,30 @@ class TalkingViewController extends GetxController {
 //     }
 //     myConversation.refresh();
 
-
   Future<void> likeConversation() async {
     // if (parameters['conversationid'] != null && parameters['userid'] != null) {
-      // String conversationId = parameters['conversationid'];
-      // String userId = parameters['userid'];
+    // String conversationId = parameters['conversationid'];
+    // String userId = parameters['userid'];
 
-  Conversation conversation = Conversation();
-  String userId=UserService.instance.userId;
+    Conversation conversation = Conversation();
+    String userId = UserService.instance.userId;
     String conversationId = parameters['conversationid'];
-  // String userId = user.userId ?? "";
-        Common.logger.d('Conversation ID: $conversationId');
-        Common.logger.d('User ID: $userId');
+    // String userId = user.userId ?? "";
+    Common.logger.d('Conversation ID: $conversationId');
+    Common.logger.d('User ID: $userId');
 
-      ApiResponse<LikeResponse> likeResponse =
-          await ApiService.instance.likeConversation(conversationId, userId);
+    ApiResponse<LikeResponse> likeResponse = await ApiService.instance.likeConversation(conversationId, userId);
 
-      if (likeResponse.result) {
-        isLike = !isLike!;
-      } else {
-        
-      }
+    if (likeResponse.result) {
+      isLike = !isLike;
+    } else {}
     // }
   }
+
   void passParameter(Map parameters) async {
     isLoaded.value = true;
     this.parameters.value = parameters;
     this.parameters.refresh();
-    if (parameters['situationid'] == "") {
-      return;
-    }
 
     if ('true'.compareTo(parameters['new']) != 0) {
       ApiResponse<TalkingResponse> response = await ApiService.instance.getTalkingListByConID(parameters['conversationid']);

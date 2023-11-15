@@ -56,7 +56,7 @@ class ConversationComponent extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          model.headScript!,
+                          model.tailScript!,
                           style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
                           textAlign: TextAlign.left,
                           overflow: TextOverflow.ellipsis,
