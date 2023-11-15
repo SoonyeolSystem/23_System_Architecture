@@ -2,10 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/title.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
-import 'package:soonyeol_architecture/restAPI/models/User.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
 import '../../login/view/login_page.dart';
@@ -94,8 +92,6 @@ class Navigation extends StatelessWidget {
         onTap: () {
           if(index==2&&UserService.instance.isLogin()==false){
            Get.toNamed(LoginPage.url);
-Get.snackbar(
-                            "ID/Password not Found", "${UserService.instance.isLogin()}");
           }else{
               controller.selectTab(index);
           }

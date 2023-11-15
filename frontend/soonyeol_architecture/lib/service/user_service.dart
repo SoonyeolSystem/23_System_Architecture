@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
@@ -15,6 +16,11 @@ class UserService extends GetxService {
   bool isResponseBlocked = false; // 다른 리스폰스를 막는 변수 추가
 
   Future<UserService> init() async {
+    const storage = FlutterSecureStorage();
+
+    userId = await storage.read(key: 'userId') ?? 'null';
+    nickname = await storage.read(key: 'nickname') ?? '';
+
     Common.logger.d('$runtimeType init!');
 
     Common.logger.d('User ID: $userId');
@@ -34,6 +40,11 @@ class UserService extends GetxService {
 
       Get.snackbar("success", "로그인에 성공하였습니다.");
       Get.snackbar('User ID: $userId', 'Nickname: $nickname');
+
+      const storage = FlutterSecureStorage();
+
+      await storage.write(key: 'userId', value: userId);
+      await storage.write(key: 'nickname', value: nickname);
 
       Common.logger.d('User ID: $userId');
       Common.logger.d('Nickname: $nickname');

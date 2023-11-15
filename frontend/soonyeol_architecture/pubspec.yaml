@@ -54,6 +54,7 @@ dependencies:
   web_socket_channel: ^2.4.0
   music_visualizer: ^1.0.4
   uuid: ^4.1.0
+  flutter_secure_storage: ^9.0.0
   
  
 
