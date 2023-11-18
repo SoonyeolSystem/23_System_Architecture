@@ -4,23 +4,24 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
+import 'package:soonyeol_architecture/pages/situation/controller/situation_main_controller.dart';
 import 'package:soonyeol_architecture/pages/situation/view/component/conversation_component.dart';
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
-import '../../controller/situation_main_controller.dart';
+import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 
-class SituationComponent extends StatelessWidget {
+class LikeSituationComponent extends StatelessWidget {
   final Situation model;
-  const SituationComponent({super.key, required this.model});
+  const LikeSituationComponent({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
-    final controller = SituationMainController.instance;
+    final controller = MainViewController.instance;
+    final controller2 = SituationMainController.instance;
     return InkWell(
       onTap: () {
-        controller.getSituation(model.situationId ?? "");
-        controller.getCoversationBysit(model.situationId ?? "");
+        controller2.getCoversationBysit(model.situationId ?? "");
         showModalBottomSheet(
             isScrollControlled: true,
             context: context,
@@ -83,8 +84,7 @@ class SituationComponent extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                            "${controller.situation.value.userName}",
+                                        Text(UserService.instance.nickname,
                                             style: const TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold)),
@@ -379,13 +379,13 @@ class SituationComponent extends StatelessWidget {
                             () => Column(
                               children: [
                                 for (int index = 0;
-                                    index < controller.conversationList.length;
+                                    index < controller2.conversationList.length;
                                     index++)
                                   Column(
                                     children: [
                                       ConversationComponent(
                                         model:
-                                            controller.conversationList[index],
+                                            controller2.conversationList[index],
                                       ),
                                       const Padding(
                                         padding: EdgeInsets.only(

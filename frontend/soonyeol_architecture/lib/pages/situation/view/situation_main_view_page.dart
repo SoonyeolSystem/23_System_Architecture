@@ -62,9 +62,8 @@ class SituationMainPage extends StatelessWidget {
                                   children: [
                                     if (index == 0) const SizedBox(height: 20),
                                     SituationComponent(
-                                      model:
-                                          controller.situationList.value[index],
-                                    ),
+                                        model: controller
+                                            .situationList.value[index]),
                                     const Padding(
                                       padding:
                                           EdgeInsets.only(bottom: 10, top: 15),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:soonyeol_architecture/pages/situation/controller/situation_main_controller.dart';
-import 'package:soonyeol_architecture/pages/situation/view/component/situation_component.dart';
+import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
+import 'package:soonyeol_architecture/pages/main/view/component/likeSituationcomponent.dart';
 
 import '../../../common/common.dart';
 
@@ -12,7 +12,7 @@ class LikePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = SituationMainController.instance;
+    final controller = MainViewController.instance;
     return Scaffold(
       body: Align(
         alignment: Alignment.topCenter,
@@ -62,21 +62,27 @@ class LikePage extends StatelessWidget {
                     ),
                   ),
                   Obx(
-                    () => (controller.situationList.isEmpty)
-                        ? const CircularProgressIndicator(color: Color(0xFF33C26C))
+                    () => (controller.situationlikeList.isEmpty)
+                        ? const CircularProgressIndicator(
+                            color: Color(0xFF33C26C))
                         : Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Column(
                               children: [
-                                for (int index = 0; index < controller.situationList.length; index++)
+                                for (int index = 0;
+                                    index < controller.situationlikeList.length;
+                                    index++)
                                   Column(
                                     children: [
-                                      if (index == 0) const SizedBox(height: 20),
-                                      SituationComponent(
-                                        model: controller.situationList.value[index],
+                                      if (index == 0)
+                                        const SizedBox(height: 20),
+                                      LikeSituationComponent(
+                                        model: controller
+                                            .situationlikeList.value[index],
                                       ),
                                       const Padding(
-                                        padding: EdgeInsets.only(bottom: 10, top: 15),
+                                        padding: EdgeInsets.only(
+                                            bottom: 10, top: 15),
                                         child: Divider(
                                           height: 1,
                                           thickness: 1,

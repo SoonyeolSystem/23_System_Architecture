@@ -152,8 +152,7 @@ class ApiService extends GetxService {
   Future<ApiResponse<SituationListResponse>> getSituationList(
       String userID) async {
     try {
-      var response = await communityDio
-          .get('/community/situationlist/${UserService.instance.userId}');
+      var response = await communityDio.get('/community/situationlist/$userID');
       SituationListResponse getClassRoomListResponse =
           SituationListResponse.fromJson(response.data);
       return ApiResponse<SituationListResponse>(
@@ -175,10 +174,37 @@ class ApiService extends GetxService {
     }
   }
 
-  Future<ApiResponse<SituationResponse>> getSituation(int id) async {
+  Future<ApiResponse<SituationListResponse>> getLikeSituationlist(
+      String userID) async {
     try {
-      var response = await userDio.get(
-        '/situation/situation/$id',
+      var response =
+          await communityDio.get('/community/situation/like/$userID');
+      SituationListResponse getLikesituationResponse =
+          SituationListResponse.fromJson(response.data);
+      return ApiResponse<SituationListResponse>(
+          result: response.isSuccessful, value: getLikesituationResponse);
+    } on DioError catch (e) {
+      Common.logger.d(e);
+      try {
+        return ApiResponse<SituationListResponse>(
+            result: false,
+            errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.");
+      } catch (e) {
+        return ApiResponse<SituationListResponse>(
+            result: false, errorMsg: "오류가 발생했습니다.");
+      }
+    } catch (e) {
+      Common.logger.d(e);
+      return ApiResponse<SituationListResponse>(
+          result: false, errorMsg: "오류가 발생했습니다.");
+    }
+  }
+
+  Future<ApiResponse<SituationResponse>> getSituation(
+      String situationid) async {
+    try {
+      var response = await communityDio.get(
+        '/community/situation/$situationid,${UserService.instance.userId}',
         data: jsonEncode({}),
       );
       SituationResponse getClassRoomResponse =

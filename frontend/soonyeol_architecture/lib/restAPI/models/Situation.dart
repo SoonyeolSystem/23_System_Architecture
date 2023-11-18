@@ -70,6 +70,7 @@ class Situation {
   String? genre; // 장르
   String? name; // 이름
   String? title; // 제목
+  String? userName;
   int? likeCount; // 좋아요 수
 
   Situation({
@@ -83,6 +84,7 @@ class Situation {
     this.genre,
     this.name,
     this.title,
+    this.userName,
     this.likeCount,
   });
 
@@ -97,7 +99,8 @@ class Situation {
     genre = json['genre'];
     name = json['name'];
     title = json['title'];
-    likeCount = json['likecount'];
+    userName = json['userName'];
+    likeCount = json['like'];
   }
 
   Map<String, dynamic> toJson() {
@@ -112,7 +115,8 @@ class Situation {
     data['genre'] = genre;
     data['name'] = name;
     data['title'] = title;
-    data['likecount'] = likeCount;
+    data['userName'] = userName;
+    data['like'] = likeCount;
 
     return data;
   }
