@@ -457,11 +457,11 @@ class SituationComponent extends StatelessWidget {
                         children: [
                           const SizedBox(height: 3),
                           Icon(
-                            model.like == 1
+                            model.isLike == 1
                                 ? CupertinoIcons.star_fill
                                 : CupertinoIcons.star,
                             size: 15,
-                            color: model.like == 1
+                            color: model.isLike == 1
                                 ? Colors.yellow
                                 : const Color(0xFF434343),
                           ),
