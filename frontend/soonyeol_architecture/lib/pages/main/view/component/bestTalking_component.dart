@@ -6,11 +6,12 @@ import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
-int index = 1;
+//int index = 1;
 
 class BestTalkingComponent extends StatelessWidget {
   final Conversation model;
-  const BestTalkingComponent({Key? key, required this.model}) : super(key: key);
+  final int index;
+  const BestTalkingComponent({Key? key, required this.model, required this.index}) : super(key: key);
   static const List<Color> avatarColors = [
     Color(0xFFE3F4F9),
     Color(0xFFE3F9E7),
@@ -124,11 +125,11 @@ class BestTalkingComponent extends StatelessWidget {
         SizedBox(width: rankWidth),
       ],
     );
-    if (index < 10) {
-      index++;
-    } else {
-      index = 1;
-    }
+    // if (index < 10) {
+    //   index++;
+    // } else if (index == 10) {
+    //   index = 1;
+    // }
     // 다음 위젯을 위해 인덱스 증가
     return rankWidget;
   }
