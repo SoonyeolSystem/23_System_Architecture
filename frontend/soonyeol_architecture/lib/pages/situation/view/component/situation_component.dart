@@ -129,7 +129,7 @@ class SituationComponent extends StatelessWidget {
                                               // model.like = !model.like!;
                                             },
                                             child: Icon(
-                                              model.like == 1
+                                              model.isLike == 1
                                                   ? CupertinoIcons.star_fill
                                                   : CupertinoIcons.star,
                                               size: 22,
