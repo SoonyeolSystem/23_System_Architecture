@@ -55,11 +55,14 @@ class ConversationComponent extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          model.tailScript!,
-                          style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
-                          textAlign: TextAlign.left,
-                          overflow: TextOverflow.ellipsis,
+                        SizedBox(
+                          width: 280,
+                          child: Text(
+                            model.tailScript!,
+                            style: const TextStyle(fontSize: 16, color: Colors.black54, fontWeight: FontWeight.w500),
+                            textAlign: TextAlign.left,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ],
                     ),

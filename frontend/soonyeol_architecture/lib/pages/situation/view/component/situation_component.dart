@@ -156,128 +156,116 @@ class SituationComponent extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                            child: Column(
                               children: [
-                                Expanded(
-                                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '상황',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const Padding(
+                                            padding: EdgeInsets.only(left: 8.0),
+                                            child: Text(
+                                              '상황',
+                                              style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 15.0),
+                                            child: Text(
+                                              "${model.situation}",
+                                              style: const TextStyle(fontSize: 16, color: Color(0xFF000000), fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child: Text(
-                                        "${model.situation}",
-                                        style: const TextStyle(fontSize: 16, color: Color(0xFF000000), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 23),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '장르',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child:
-                                          // Row(
-                                          //   children: [
-                                          //     for (int i = 0; i < model.genre!.length; i++)
-                                          //       Row(
-                                          //         children: [
-                                          //           Text(
-                                          //             "${model.genre![i]}${i < model.genre!.length - 1 ? ', ' : ''}",
-                                          //             style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                          //           ),
-                                          //         ],
-                                          //       ),
-                                          //   ],
-                                          // ),
-                                          Text(
-                                        "${model.genre}",
-                                        style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 23),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '등장인물',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child:
-                                          // Row(
-                                          //   children: [
-                                          //     for (int i = 0; i < model.character!.length; i++)
-                                          //       Row(
-                                          //         children: [
-                                          //           Text(
-                                          //             "${model.character![i]}${i < model.character!.length - 1 ? ', ' : ''}",
-                                          //             style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                          //           ),
-                                          //         ],
-                                          //       ),
-                                          //   ],
-                                          // ),
-                                          Text(
-                                        "${model.character}",
-                                        style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 23),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
-                                        '주인공',
-                                        style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15.0),
-                                      child: Text(
-                                        "${model.name}",
-                                        style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
-                                      ),
-                                    )
-                                  ]),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 10, bottom: 5),
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      if (!UserService.instance.isLogin()) {
-                                        Get.toNamed(LoginPage.url);
-                                        return;
-                                      }
-                                      MoveService.instance.moveTalkingPageBySituation(model);
-                                    },
-                                    style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(const Color(0xFF33C26C)),
-                                      padding: MaterialStateProperty.all(
-                                        const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '장르',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.genre}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '등장인물',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.character}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '주인공',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.name}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        )
+                                      ]),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10, bottom: 5),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          if (!UserService.instance.isLogin()) {
+                                            Get.toNamed(LoginPage.url);
+                                            return;
+                                          }
+                                          MoveService.instance.moveTalkingPageBySituation(model);
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all(const Color(0xFF33C26C)),
+                                          padding: MaterialStateProperty.all(
+                                            const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          '시작하기',
+                                          style: TextStyle(
+                                            fontSize: 22, // Text size remains the same
+                                            color: Colors.white,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                    child: const Text(
-                                      '시작하기',
-                                      style: TextStyle(
-                                        fontSize: 22, // Text size remains the same
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
+                                  ],
                                 ),
                               ],
                             ),
