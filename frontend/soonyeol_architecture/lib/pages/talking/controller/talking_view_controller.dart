@@ -97,7 +97,6 @@ class TalkingViewController extends GetxController {
 
   void listen() async {
     if (!isListening.value && !isLoaded.value) {
-      
       bool available = await speechToText.initialize(
         onStatus: (val) {},
         onError: (val) {},
@@ -193,7 +192,7 @@ class TalkingViewController extends GetxController {
   RxInt speakingCount = 0.obs;
   RxDouble speakingTime = 2.4.obs;
   RxInt talkingScore = 80.obs;
-  RxList<int> checkTime = <int>[].obs; 
+  RxList<int> checkTime = <int>[].obs;
 
   Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }
