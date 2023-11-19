@@ -70,7 +70,7 @@ class TalkingViewPage extends StatelessWidget {
                           const SizedBox(width: 25), // Add some spacing between text and icon
                           InkWell(
                             onTap: () {
-                              showInformation(context, controller, controller.conversation.value.isLike!);
+                              showInformation(context);
                             },
                             child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
                           ),
@@ -259,7 +259,9 @@ void showCustomAlertDialog(BuildContext context) {
   );
 }
 
-void showInformation(BuildContext context, TalkingViewController controller, bool isLike) {
+void showInformation(BuildContext context) {
+  final controller = TalkingViewController.instance;
+  print(controller.conversation.value.isLike);
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -294,9 +296,6 @@ void showInformation(BuildContext context, TalkingViewController controller, boo
                 //       size: 33, color: isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
                 // )
                 Obx(() {
-                  // 값이 null이면 기본값 false로 설정
-                  bool isLike = controller.conversation.value.isLike ?? false;
-
                   return UserService.instance.isLogin() == false
                       ? IconButton(
                           onPressed: () {
@@ -306,14 +305,13 @@ void showInformation(BuildContext context, TalkingViewController controller, boo
                           iconSize: 33,
                           color: const Color(0xFF384252),
                         )
-                      : isLike == true
+                      : controller.conversation.value.isLike ?? false == true
                           ? IconButton(
                               icon: const Icon(Icons.favorite),
                               iconSize: 33,
                               color: const Color.fromARGB(255, 243, 106, 106),
                               onPressed: () async {
                                 controller.unlikeConversation(controller.parameters['conversationid'], UserService.instance.userId);
-                                print(isLike);
                               },
                             )
                           : IconButton(

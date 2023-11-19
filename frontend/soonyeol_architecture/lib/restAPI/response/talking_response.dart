@@ -5,9 +5,9 @@ class TalkingResponse {
 
   TalkingResponse({required this.scriptHistory});
 
-  TalkingResponse.fromJson(List json) {
+  TalkingResponse.fromJson(Map<String, dynamic> json) {
     scriptHistory = <Talking>[];
-    for (var v in json) {
+    for (var v in json['script_history']) {
       scriptHistory.add(Talking.fromJson(v));
     }
   }

@@ -31,6 +31,7 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<ConversationListResponse>> getConversationBySit(String situationID) async {
     try {
+      print('$situationID,${UserService.instance.userId}');
       var response = await communityDio.get('/community/conversation/bysit/$situationID,${UserService.instance.userId}');
       ConversationListResponse getConversationListResponse = ConversationListResponse.fromJson(response.data);
       return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getConversationListResponse);
@@ -68,6 +69,7 @@ class ApiService extends GetxService {
   Future<ApiResponse<TalkingResponse>> getTalkingListByConID(String id) async {
     try {
       var response = await communityDio.get('/community/talking/$id,${UserService.instance.userId}');
+      print(response.data);
       TalkingResponse getTalkingListResponse = TalkingResponse.fromJson(response.data);
 
       return ApiResponse<TalkingResponse>(result: response.isSuccessful, value: getTalkingListResponse);
