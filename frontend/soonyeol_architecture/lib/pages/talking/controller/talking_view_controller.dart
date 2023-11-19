@@ -5,10 +5,9 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
+import 'package:soonyeol_architecture/restAPI/response/get_conversation_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/script_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/talking_response.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
@@ -39,24 +38,32 @@ class TalkingViewController extends GetxController {
 //     }
 //     myConversation.refresh();
 
-  Future<void> likeConversation() async {
-    // if (parameters['conversationid'] != null && parameters['userid'] != null) {
-    // String conversationId = parameters['conversationid'];
-    // String userId = parameters['userid'];
+  // Future<void> likeConversation() async {
+  //   // if (parameters['conversationid'] != null && parameters['userid'] != null) {
+  //   // String conversationId = parameters['conversationid'];
+  //   // String userId = parameters['userid'];
 
-    Conversation conversation = Conversation();
-    String userId = UserService.instance.userId;
-    String conversationId = parameters['conversationid'];
-    // String userId = user.userId ?? "";
-    Common.logger.d('Conversation ID: $conversationId');
-    Common.logger.d('User ID: $userId');
+  //   Conversation conversation = Conversation();
+  //   String userId = UserService.instance.userId;
+  //   String conversationId = parameters['conversationid'];
+  //   // String userId = user.userId ?? "";
+  //   Common.logger.d('Conversation ID: $conversationId');
+  //   Common.logger.d('User ID: $userId');
 
-    ApiResponse<LikeResponse> likeResponse = await ApiService.instance.likeConversation(conversationId, userId);
+  //   ApiResponse<LikeResponse> likeResponse = await ApiService.instance.likeConversation(conversationId, userId);
 
-    if (likeResponse.result) {
-      isLike = !isLike;
-    } else {}
-    // }
+  //   if (likeResponse.result) {
+  //     isLike = !isLike;
+  //   } else {}
+  //
+  // }
+
+  Future<void> getConversationInfo(String conversationid) async {
+    ApiResponse<ConversationResponse> response = await ApiService.instance.getConversationInfo(conversationid);
+    if (response.result) {
+      conversation.value = response.value!.conversation!;
+    }
+    conversation.refresh();
   }
 
   void passParameter(Map parameters) async {
@@ -186,6 +193,8 @@ class TalkingViewController extends GetxController {
 
     await tts.speak(text);
   }
+
+  Rx<Conversation> conversation = Conversation().obs;
 
   RxList<Talking> talkingList = <Talking>[].obs;
   RxDouble speakingSpeed = 15.0.obs;

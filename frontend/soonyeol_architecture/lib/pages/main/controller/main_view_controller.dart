@@ -18,8 +18,7 @@ class MainViewController extends GetxController {
   }
 
   Future<void> getBestConversationList() async {
-    ApiResponse<ConversationListResponse> response =
-        await ApiService.instance.getBestConversation();
+    ApiResponse<ConversationListResponse> response = await ApiService.instance.getBestConversation();
     if (response.result) {
       bestConversationList.value = response.value!.conversationList!;
       bestConversationList.value = bestConversationList.value;
@@ -27,10 +26,24 @@ class MainViewController extends GetxController {
     bestConversationList.refresh();
   }
 
+<<<<<<< Updated upstream
+=======
+  Future<void> getLikeSituationlist() async {
+    ApiResponse<SituationListResponse> response = await ApiService.instance.getLikeSituationlist(UserService.instance.userId);
+    if (response.result) {
+      situationlikeList.value = response.value!.situationList!;
+    }
+    situationlikeList.refresh();
+  }
+
+  RxList<Situation> situationlikeList = <Situation>[].obs;
+>>>>>>> Stashed changes
   RxList<Conversation> bestConversationList = <Conversation>[].obs;
   RxList<Conversation> conversationList = <Conversation>[].obs;
 
-  RxInt bookmarkCount = 5.obs;
+  RxList<Conversation> ongoingConversationList = <Conversation>[].obs;
+
+  //RxInt bookmarkCount = 5.obs;
 
   Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }

@@ -11,13 +11,14 @@ import 'package:soonyeol_architecture/pages/situation/view/situation_main_view_p
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
+import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 // CustomRouter is used to define the routes
 class CustomRouter {
   static final routes = [
     GetPage(name: RouteViewPage.url, page: () => const RouteViewPage()),
     GetPage(name: Navigation.url, page: () => const Navigation()),
-    GetPage(name: TalkingViewPage.url, page: () => const TalkingViewPage()),
+    GetPage(name: TalkingViewPage.url, page: () => TalkingViewPage(model: Conversation())),
     GetPage(name: TalkingCustomPage.url, page: () => const TalkingCustomPage()),
     GetPage(name: TalkingResultPage.url, page: () => const TalkingResultPage()),
     GetPage(name: SituationMainPage.url, page: () => const SituationMainPage()),

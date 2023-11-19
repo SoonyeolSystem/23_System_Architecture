@@ -10,11 +10,11 @@ import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewp
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
-bool isLike = false;
-
 class TalkingViewPage extends StatelessWidget {
+  final Conversation model;
   const TalkingViewPage({
     super.key,
+    required this.model,
   });
 
   static const String url = '/talking';
@@ -70,8 +70,11 @@ class TalkingViewPage extends StatelessWidget {
                           const SizedBox(width: 25), // Add some spacing between text and icon
                           InkWell(
                             onTap: () {
-                              // Use Builder to get the context of the current Scaffold
-                              showInformation(context, controller);
+                              controller.getConversationInfo(model.conversationID ?? controller.parameters['conversationid']);
+                              //controller.getConversationInfo(model.conversationID ?? "");
+                              //showInformation(context, controller);
+                              showInformation(context, controller, model);
+                              print('model.conversationID: ${model.conversationID}');
                             },
                             child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
                           ),
@@ -260,9 +263,177 @@ void showCustomAlertDialog(BuildContext context) {
   );
 }
 
-void showInformation(BuildContext context, TalkingViewController controller) {
-      final Conversation model=Conversation();
+// void showInformation(BuildContext context, TalkingViewController controller) {
+//   //final Conversation model = Conversation();
 
+//   showDialog(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return AlertDialog(
+//         contentPadding: const EdgeInsets.all(20), // 알림창의 내용(padding) 크기 조절
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
+//         ),
+//         backgroundColor: const Color.fromARGB(232, 255, 255, 255),
+//         alignment: Alignment.lerp(Alignment.topCenter, Alignment.bottomCenter, 0.09),
+
+//         content: SizedBox(
+//           width: 307,
+//           //height: ,
+//           child: Column(
+//             mainAxisSize: MainAxisSize.min,
+//             children: [
+//               Row(children: [
+//                 SizedBox(
+//                   width: 270,
+//                   child: Text(
+//                     "${controller.parameters['title']}",
+//                     style: const TextStyle(fontSize: 21, color: Color(0xFF384252), fontWeight: FontWeight.bold),
+//                     textAlign: TextAlign.start,
+//                   ),
+//                 ),
+//                 InkWell(
+//                   onTap: () {
+//                     TalkingViewController.instance.likeConversation();
+//                     //model.isLike= !model.isLike;
+//                   },
+//                   child: Icon(model.isLike == true ? Icons.favorite : CupertinoIcons.heart,
+//                       size: 33, color: model.isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
+//                 )
+//               ]),
+//               const SizedBox(
+//                 height: 40,
+//               ),
+//               Row(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Container(
+//                       width: 97,
+//                       decoration: const BoxDecoration(
+//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+//                       ),
+//                       child: const Text(
+//                         '  상황',
+//                         style: TextStyle(
+//                           fontSize: 16,
+//                           fontWeight: FontWeight.bold,
+//                           color: Color(0xFF384252),
+//                         ),
+//                       )),
+//                   SizedBox(
+//                     width: 210,
+//                     child: Text(
+//                       "${controller.parameters['situation']}",
+//                       style: const TextStyle(
+//                         fontSize: 16,
+//                         color: Color(0xFF373737),
+//                       ),
+//                       textAlign: TextAlign.start,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               const SizedBox(
+//                 height: 31,
+//               ),
+//               Row(
+//                 children: [
+//                   Container(
+//                       width: 97,
+//                       decoration: const BoxDecoration(
+//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+//                       ),
+//                       child: const Text(
+//                         '  장르',
+//                         style: TextStyle(
+//                           fontSize: 16,
+//                           fontWeight: FontWeight.bold,
+//                           color: Color(0xFF384252),
+//                         ),
+//                       )),
+//                   SizedBox(
+//                     width: 210,
+//                     child: Text(
+//                       "${controller.parameters['genre']}",
+//                       style: const TextStyle(
+//                         fontSize: 16,
+//                         color: Color(0xFF373737),
+//                       ),
+//                       textAlign: TextAlign.start,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               const SizedBox(
+//                 height: 31,
+//               ),
+//               Row(
+//                 children: [
+//                   Container(
+//                       width: 97,
+//                       decoration: const BoxDecoration(
+//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+//                       ),
+//                       child: const Text(
+//                         '  주인공',
+//                         style: TextStyle(
+//                           fontSize: 16,
+//                           fontWeight: FontWeight.bold,
+//                           color: Color(0xFF384252),
+//                         ),
+//                       )),
+//                   SizedBox(
+//                     width: 210,
+//                     child: Text(
+//                       "${controller.parameters['name']}",
+//                       style: const TextStyle(
+//                         fontSize: 16,
+//                         color: Color(0xFF373737),
+//                       ),
+//                       textAlign: TextAlign.start,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               const SizedBox(
+//                 height: 31,
+//               ),
+//               Row(
+//                 children: [
+//                   Container(
+//                       width: 97,
+//                       decoration: const BoxDecoration(
+//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+//                       ),
+//                       child: const Text(
+//                         '  대화 상대',
+//                         style: TextStyle(
+//                           fontSize: 16,
+//                           fontWeight: FontWeight.bold,
+//                           color: Color(0xFF384252),
+//                         ),
+//                       )),
+//                   SizedBox(
+//                     width: 210,
+//                     child: Text(
+//                       "${controller.parameters['character']}",
+//                       style: const TextStyle(
+//                         fontSize: 16,
+//                         color: Color(0xFF373737),
+//                       ),
+//                       textAlign: TextAlign.start,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }
+void showInformation(BuildContext context, TalkingViewController controller, Conversation model) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -291,7 +462,6 @@ void showInformation(BuildContext context, TalkingViewController controller) {
                 ),
                 InkWell(
                   onTap: () {
-    TalkingViewController.instance.likeConversation();
                     //model.isLike= !model.isLike;
                   },
                   child: Icon(model.isLike == true ? Icons.favorite : CupertinoIcons.heart,

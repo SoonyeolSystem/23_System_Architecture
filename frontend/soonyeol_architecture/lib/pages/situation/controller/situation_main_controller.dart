@@ -11,8 +11,7 @@ import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
 class SituationMainController extends GetxController {
-  static SituationMainController get instance =>
-      Get.find<SituationMainController>();
+  static SituationMainController get instance => Get.find<SituationMainController>();
 
   Future<void> postBookmarkSituation() async {
     // conversationList.value.isbookmark = !situation.value.isbookmark!;
@@ -22,8 +21,7 @@ class SituationMainController extends GetxController {
   Future<void> getCoversationBysit(String situationid) async {
     conversationList.value = [];
     conversationList.refresh();
-    ApiResponse<ConversationListResponse> response =
-        await ApiService.instance.getConversationBySit(situationid);
+    ApiResponse<ConversationListResponse> response = await ApiService.instance.getConversationBySit(situationid);
     if (response.result) {
       conversationList.value = response.value!.conversationList!;
     }
@@ -31,8 +29,7 @@ class SituationMainController extends GetxController {
   }
 
   Future<void> getSituationList() async {
-    ApiResponse<SituationListResponse> response =
-        await ApiService.instance.getSituationList(UserService.instance.userId);
+    ApiResponse<SituationListResponse> response = await ApiService.instance.getSituationList(UserService.instance.userId);
     if (response.result) {
       situationList.value = response.value!.situationList!;
     }
@@ -40,8 +37,7 @@ class SituationMainController extends GetxController {
   }
 
   Future<void> getSituation(String situationid) async {
-    ApiResponse<SituationResponse> response =
-        await ApiService.instance.getSituation(situationid);
+    ApiResponse<SituationResponse> response = await ApiService.instance.getSituation(situationid);
     if (response.result) {
       situation.value = response.value!.situation!;
     }
