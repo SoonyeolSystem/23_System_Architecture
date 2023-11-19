@@ -257,15 +257,8 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<String>> unlikeSituation(String situationId, String userId) async {
     try {
-<<<<<<< Updated upstream
-      var response =
-          await userDio.delete('/like/situation/$situationId,$userId');
-      return ApiResponse<String>(
-          result: response.isSuccessful, value: response.data['message']);
-=======
-      var response = await communityDio.delete('/user/situation/$situationId,$userId');
+      var response = await userDio.delete('/like/situation/$situationId,$userId');
       return ApiResponse<String>(result: response.isSuccessful, value: response.data['message']);
->>>>>>> Stashed changes
     } on DioError catch (e) {
       Common.logger.d(e);
       try {
@@ -281,15 +274,8 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<String>> unlikeConversation(String conversationId, String userId) async {
     try {
-<<<<<<< Updated upstream
-      var response =
-          await userDio.delete('/like/conversation/$conversationId,$userId');
-      return ApiResponse<String>(
-          result: response.isSuccessful, value: response.data['message']);
-=======
-      var response = await communityDio.delete('/user/conversation/$conversationId,$userId');
+      var response = await userDio.delete('/like/conversation/$conversationId,$userId');
       return ApiResponse<String>(result: response.isSuccessful, value: response.data['message']);
->>>>>>> Stashed changes
     } on DioError catch (e) {
       Common.logger.d(e);
       try {

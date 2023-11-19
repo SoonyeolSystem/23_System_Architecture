@@ -8,13 +8,10 @@ import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.d
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
-import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
 class TalkingViewPage extends StatelessWidget {
-  final Conversation model;
   const TalkingViewPage({
     super.key,
-    required this.model,
   });
 
   static const String url = '/talking';
@@ -26,6 +23,8 @@ class TalkingViewPage extends StatelessWidget {
     if (Get.arguments != null) {
       controller.passParameter(Get.arguments);
     }
+    String conversationID = controller.parameters['conversationid'];
+    controller.getConversationInfo(conversationID);
     final List<Color> colors = [
       const Color.fromARGB(255, 240, 135, 135),
       const Color.fromARGB(255, 136, 241, 143),
@@ -70,11 +69,7 @@ class TalkingViewPage extends StatelessWidget {
                           const SizedBox(width: 25), // Add some spacing between text and icon
                           InkWell(
                             onTap: () {
-                              controller.getConversationInfo(model.conversationID ?? controller.parameters['conversationid']);
-                              //controller.getConversationInfo(model.conversationID ?? "");
-                              //showInformation(context, controller);
-                              showInformation(context, controller, model);
-                              print('model.conversationID: ${model.conversationID}');
+                              showInformation(context, controller, controller.conversation.value.isLike!);
                             },
                             child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
                           ),
@@ -263,21 +258,6 @@ void showCustomAlertDialog(BuildContext context) {
   );
 }
 
-// void showInformation(BuildContext context, TalkingViewController controller) {
-//   //final Conversation model = Conversation();
-
-//   showDialog(
-//     context: context,
-//     builder: (BuildContext context) {
-//       return AlertDialog(
-//         contentPadding: const EdgeInsets.all(20), // 알림창의 내용(padding) 크기 조절
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
-//         ),
-//         backgroundColor: const Color.fromARGB(232, 255, 255, 255),
-//         alignment: Alignment.lerp(Alignment.topCenter, Alignment.bottomCenter, 0.09),
-
-//         content: SizedBox(
 //           width: 307,
 //           //height: ,
 //           child: Column(
@@ -433,7 +413,7 @@ void showCustomAlertDialog(BuildContext context) {
 //     },
 //   );
 // }
-void showInformation(BuildContext context, TalkingViewController controller, Conversation model) {
+void showInformation(BuildContext context, TalkingViewController controller, bool isLike) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -464,8 +444,8 @@ void showInformation(BuildContext context, TalkingViewController controller, Con
                   onTap: () {
                     //model.isLike= !model.isLike;
                   },
-                  child: Icon(model.isLike == true ? Icons.favorite : CupertinoIcons.heart,
-                      size: 33, color: model.isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
+                  child: Icon(isLike == true ? Icons.favorite : CupertinoIcons.heart,
+                      size: 33, color: isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
                 )
               ]),
               const SizedBox(

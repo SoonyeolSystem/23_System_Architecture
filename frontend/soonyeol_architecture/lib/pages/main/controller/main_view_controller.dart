@@ -26,8 +26,6 @@ class MainViewController extends GetxController {
     bestConversationList.refresh();
   }
 
-<<<<<<< Updated upstream
-=======
   Future<void> getLikeSituationlist() async {
     ApiResponse<SituationListResponse> response = await ApiService.instance.getLikeSituationlist(UserService.instance.userId);
     if (response.result) {
@@ -37,7 +35,6 @@ class MainViewController extends GetxController {
   }
 
   RxList<Situation> situationlikeList = <Situation>[].obs;
->>>>>>> Stashed changes
   RxList<Conversation> bestConversationList = <Conversation>[].obs;
   RxList<Conversation> conversationList = <Conversation>[].obs;
 
