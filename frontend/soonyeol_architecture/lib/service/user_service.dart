@@ -66,7 +66,11 @@ class UserService extends GetxService {
   }
 
   void logout() {
-    userId = '';
+    userId = 'null';
     nickname = '';
+    const storage = FlutterSecureStorage();
+
+    storage.delete(key: 'userId');
+    storage.delete(key: 'nickname');
   }
 }

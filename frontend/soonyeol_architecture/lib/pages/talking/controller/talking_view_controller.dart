@@ -7,7 +7,6 @@ import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/response/get_conversation_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/script_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/talking_response.dart';
@@ -59,25 +58,28 @@ class TalkingViewController extends GetxController {
   //
   // }
 
-  Future<void> getConversationInfo(String conversationid) async {
-    ApiResponse<ConversationResponse> response = await ApiService.instance.getConversationInfo(conversationid);
-    if (response.result) {
-      conversation.value = response.value!.conversation!;
-    }
-    conversation.refresh();
-  }
-
   Future<void> likeConversation(String conversationId, String userId) async {
     ApiResponse<LikeResponse> response = await ApiService.instance.likeConversation(conversationId, userId);
     if (response.result) {
-      getConversationInfo(conversationId);
+      getTalkingListByConID(conversationId);
     } else {}
   }
 
   Future<void> unlikeConversation(String conversationId, String userId) async {
     ApiResponse<String> response = await ApiService.instance.unlikeConversation(conversationId, userId);
     if (response.result) {
-      getConversationInfo(conversationId);
+      getTalkingListByConID(conversationId);
+    }
+  }
+
+  Future<void> getTalkingListByConID(String conversationId) async {
+    ApiResponse<TalkingResponse> response = await ApiService.instance.getTalkingListByConID(conversationId);
+    if (response.result) {
+      talkingList.value = response.value!.scriptHistory;
+      talkingList.refresh();
+      conversation.value.isLike = response.value!.isLike;
+      conversation.value.likeCount = response.value!.likeCount;
+      conversation.refresh();
     }
   }
 
@@ -87,11 +89,7 @@ class TalkingViewController extends GetxController {
     this.parameters.refresh();
 
     if ('true'.compareTo(parameters['new']) != 0) {
-      ApiResponse<TalkingResponse> response = await ApiService.instance.getTalkingListByConID(parameters['conversationid']);
-      if (response.result) {
-        talkingList.value = response.value!.scriptHistory;
-        talkingList.refresh();
-      }
+      await getTalkingListByConID(parameters['conversationid']);
     }
     channel = WebSocketChannel.connect(Uri.parse(
         '${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userId}&conversationid=${parameters['conversationid']}&title=${parameters['title']}'));

@@ -7,7 +7,6 @@ import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/dio_extension.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_conversation_list_response.dart';
-import 'package:soonyeol_architecture/restAPI/response/get_conversation_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_situation_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
@@ -31,8 +30,10 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<ConversationListResponse>> getConversationBySit(String situationID) async {
     try {
-      print('$situationID,${UserService.instance.userId}');
-      var response = await communityDio.get('/community/conversation/bysit/$situationID,${UserService.instance.userId}');
+      var response = await communityDio.get(
+        '/community/conversation/bysit',
+        queryParameters: {'situationid': situationID, 'userid': UserService.instance.userId},
+      );
       ConversationListResponse getConversationListResponse = ConversationListResponse.fromJson(response.data);
       return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getConversationListResponse);
     } on DioError catch (e) {
@@ -68,8 +69,10 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<TalkingResponse>> getTalkingListByConID(String id) async {
     try {
-      var response = await communityDio.get('/community/talking/$id,${UserService.instance.userId}');
-      print(response.data);
+      var response = await communityDio.get(
+        '/community/talking',
+        queryParameters: {'conversationid': id, 'userid': UserService.instance.userId},
+      );
       TalkingResponse getTalkingListResponse = TalkingResponse.fromJson(response.data);
 
       return ApiResponse<TalkingResponse>(result: response.isSuccessful, value: getTalkingListResponse);
@@ -160,8 +163,8 @@ class ApiService extends GetxService {
   Future<ApiResponse<SituationResponse>> getSituation(String situationid) async {
     try {
       var response = await communityDio.get(
-        '/community/situation/$situationid,${UserService.instance.userId}',
-        data: jsonEncode({}),
+        '/community/situation',
+        queryParameters: {'situationid': situationid, 'userid': UserService.instance.userId},
       );
       SituationResponse getClassRoomResponse = SituationResponse.fromJson(response.data);
       return ApiResponse<SituationResponse>(result: response.isSuccessful, value: getClassRoomResponse);
@@ -178,35 +181,11 @@ class ApiService extends GetxService {
     }
   }
 
-  Future<ApiResponse<ConversationResponse>> getConversationInfo(String conversationId) async {
-    try {
-      var response = await communityDio.get(
-        '/community/conversation/$conversationId,${UserService.instance.userId}',
-        data: jsonEncode({}),
-      );
-      ConversationResponse getClassRoomResponse = ConversationResponse.fromJson(response.data);
-      return ApiResponse<ConversationResponse>(result: response.isSuccessful, value: getClassRoomResponse);
-    } on DioError catch (e) {
-      Common.logger.d(e);
-      try {
-        return ApiResponse<ConversationResponse>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.");
-      } catch (e) {
-        return ApiResponse<ConversationResponse>(result: false, errorMsg: "오류가 발생했습니다.");
-      }
-    } catch (e) {
-      Common.logger.d(e);
-      return ApiResponse<ConversationResponse>(result: false, errorMsg: "오류가 발생했습니다.");
-    }
-  }
-
   Future<ApiResponse<LikeResponse>> likeConversation(String conversationId, String userId) async {
     try {
       var response = await userDio.post(
-        '/like/conversation/$conversationId,$userId',
-        data: {
-          'conversationid': conversationId,
-          'userid': userId,
-        },
+        '/like/conversation',
+        queryParameters: {'conversationid': conversationId, 'userid': userId},
       );
 
       LikeResponse likeResponse = LikeResponse.fromJson(response.data);
@@ -231,9 +210,9 @@ class ApiService extends GetxService {
   Future<ApiResponse<LikeResponse>> likeSituation(String situationId, String userId) async {
     try {
       var response = await userDio.post(
-        '/like/situation/$situationId,$userId',
-        data: {
-          'situationId': situationId,
+        '/like/situation',
+        queryParameters: {
+          'situationid': situationId,
           'userid': userId,
         },
       );
@@ -259,7 +238,7 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<String>> unlikeSituation(String situationId, String userId) async {
     try {
-      var response = await userDio.delete('/like/situation/$situationId,$userId');
+      var response = await userDio.delete('/like/situation', queryParameters: {'situationid': situationId, 'userid': userId});
       return ApiResponse<String>(result: response.isSuccessful, value: response.data['message']);
     } on DioError catch (e) {
       Common.logger.d(e);
@@ -276,7 +255,7 @@ class ApiService extends GetxService {
 
   Future<ApiResponse<String>> unlikeConversation(String conversationId, String userId) async {
     try {
-      var response = await userDio.delete('/like/conversation/$conversationId,$userId');
+      var response = await userDio.delete('/like/conversation', queryParameters: {'conversationid': conversationId, 'userid': userId});
       return ApiResponse<String>(result: response.isSuccessful, value: response.data['message']);
     } on DioError catch (e) {
       Common.logger.d(e);
