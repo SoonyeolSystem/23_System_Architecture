@@ -9,18 +9,17 @@ import 'package:soonyeol_architecture/pages/situation/view/component/conversatio
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
-import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
-
 class LikeSituationComponent extends StatelessWidget {
   final Situation model;
   const LikeSituationComponent({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
-    final controller = MainViewController.instance;
+    // final controller = MainViewController.instance;
     final controller2 = SituationMainController.instance;
     return InkWell(
       onTap: () {
+        controller2.getSituation(model.situationId ?? "");
         controller2.getCoversationBysit(model.situationId ?? "");
         showModalBottomSheet(
             isScrollControlled: true,
@@ -84,7 +83,8 @@ class LikeSituationComponent extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(UserService.instance.nickname,
+                                        Text(
+                                            "${controller2.situation.value.userName}",
                                             style: const TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold)),
@@ -122,28 +122,91 @@ class LikeSituationComponent extends StatelessWidget {
                                       Row(
                                         children: [
                                           const SizedBox(height: 3),
-                                          InkWell(
-                                            onTap: () {
-                                              // Toggle the bookmark status here (change the value of model.isbookmark)
-                                              // For example, you can do:
-                                              // model.like = !model.like!;
-                                            },
-                                            child: Icon(
-                                              model.like == 1
-                                                  ? CupertinoIcons.star_fill
-                                                  : CupertinoIcons.star,
-                                              size: 22,
-                                              //color: model.isbookmark == true ? Colors.yellow : const Color(0xFF434343),
-                                              color: Colors.yellow,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 3),
-                                          Text(
-                                            "${model.likeCount}",
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Color(0xFF434343),
-                                                fontWeight: FontWeight.w500),
+                                          // InkWell(
+                                          //   onTap: () {
+                                          //     // Toggle the bookmark status here (change the value of model.isbookmark)
+                                          //     // For example, you can do:
+                                          //     // model.like = !model.like!;
+                                          //   },
+                                          //   child: Icon(
+                                          //     model.like == 1
+                                          //         ? CupertinoIcons.star_fill
+                                          //         : CupertinoIcons.star,
+                                          //     size: 22,
+                                          //     //color: model.isbookmark == true ? Colors.yellow : const Color(0xFF434343),
+                                          //     color: Colors.yellow,
+                                          //   ),
+                                          // ),
+                                          // const SizedBox(width: 3),
+                                          // Text(
+                                          //   "${model.likeCount}",
+                                          //   style: const TextStyle(
+                                          //       fontSize: 15,
+                                          //       color: Color(0xFF434343),
+                                          //       fontWeight: FontWeight.w500),
+                                          // ),
+                                          Obx(
+                                            () => controller2.situation.value
+                                                            .isLike ==
+                                                        null ||
+                                                    UserService.instance
+                                                            .isLogin() ==
+                                                        false
+                                                ? const SizedBox()
+                                                : Row(
+                                                    children: [
+                                                      controller2
+                                                                  .situation
+                                                                  .value
+                                                                  .isLike ==
+                                                              true
+                                                          ? IconButton(
+                                                              icon: Icon(
+                                                                  CupertinoIcons
+                                                                      .star_fill),
+                                                              iconSize: 22,
+                                                              color:
+                                                                  Colors.yellow,
+                                                              onPressed:
+                                                                  () async {
+                                                                controller2.unlikeSituation(
+                                                                    model
+                                                                        .situationId!,
+                                                                    UserService
+                                                                        .instance
+                                                                        .userId);
+                                                              },
+                                                            )
+                                                          : IconButton(
+                                                              icon: Icon(
+                                                                  CupertinoIcons
+                                                                      .star),
+                                                              iconSize: 22,
+                                                              color: Color(
+                                                                  0xFF434343),
+                                                              onPressed:
+                                                                  () async {
+                                                                controller2.likeSituation(
+                                                                    model
+                                                                        .situationId!,
+                                                                    UserService
+                                                                        .instance
+                                                                        .userId);
+                                                              },
+                                                            ),
+                                                      const SizedBox(width: 3),
+                                                      Text(
+                                                        "${controller2.situation.value.likeCount}",
+                                                        style: const TextStyle(
+                                                            fontSize: 15,
+                                                            color: Color(
+                                                                0xFF434343),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                      ),
+                                                    ],
+                                                  ),
                                           ),
                                         ],
                                       ),

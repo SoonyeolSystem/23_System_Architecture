@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/component/likeSituationcomponent.dart';
+import 'package:soonyeol_architecture/pages/situation/controller/situation_main_controller.dart';
 
 import '../../../common/common.dart';
 
@@ -13,6 +14,7 @@ class LikePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
+    final controller2 = SituationMainController.instance;
     return Scaffold(
       body: Align(
         alignment: Alignment.topCenter,
@@ -62,22 +64,22 @@ class LikePage extends StatelessWidget {
                     ),
                   ),
                   Obx(
-                    () => (controller.situationlikeList.isEmpty)
-                        ? const CircularProgressIndicator(
-                            color: Color(0xFF33C26C))
+                    () => (controller2.situationlikeList.isEmpty)
+                        ? Text("아직 즐겨찾기 한 시나리오가 없어요!")
                         : Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Column(
                               children: [
                                 for (int index = 0;
-                                    index < controller.situationlikeList.length;
+                                    index <
+                                        controller2.situationlikeList.length;
                                     index++)
                                   Column(
                                     children: [
                                       if (index == 0)
                                         const SizedBox(height: 20),
                                       LikeSituationComponent(
-                                        model: controller
+                                        model: controller2
                                             .situationlikeList.value[index],
                                       ),
                                       const Padding(

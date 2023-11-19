@@ -27,16 +27,6 @@ class MainViewController extends GetxController {
     bestConversationList.refresh();
   }
 
-  Future<void> getLikeSituationlist() async {
-    ApiResponse<SituationListResponse> response = await ApiService.instance
-        .getLikeSituationlist(UserService.instance.userId);
-    if (response.result) {
-      situationlikeList.value = response.value!.situationList!;
-    }
-    situationlikeList.refresh();
-  }
-
-  RxList<Situation> situationlikeList = <Situation>[].obs;
   RxList<Conversation> bestConversationList = <Conversation>[].obs;
   RxList<Conversation> conversationList = <Conversation>[].obs;
 

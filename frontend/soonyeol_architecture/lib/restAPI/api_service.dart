@@ -232,7 +232,7 @@ class ApiService extends GetxService {
       String conversationId, String userId) async {
     try {
       var response = await userDio.post(
-        '/user/conversation/$conversationId,$userId',
+        '/like/conversation/$conversationId,$userId',
         data: {
           'conversationid': conversationId,
           'userid': userId,
@@ -266,7 +266,7 @@ class ApiService extends GetxService {
       String situationId, String userId) async {
     try {
       var response = await userDio.post(
-        '/user/situation/$situationId,$userId',
+        '/like/situation/$situationId,$userId',
         data: {
           'situationId': situationId,
           'userid': userId,
@@ -300,7 +300,7 @@ class ApiService extends GetxService {
       String situationId, String userId) async {
     try {
       var response =
-          await communityDio.delete('/user/situation/$situationId,$userId');
+          await userDio.delete('/like/situation/$situationId,$userId');
       return ApiResponse<String>(
           result: response.isSuccessful, value: response.data['message']);
     } on DioError catch (e) {
@@ -321,8 +321,8 @@ class ApiService extends GetxService {
   Future<ApiResponse<String>> unlikeConversation(
       String conversationId, String userId) async {
     try {
-      var response = await communityDio
-          .delete('/user/conversation/$conversationId,$userId');
+      var response =
+          await userDio.delete('/like/conversation/$conversationId,$userId');
       return ApiResponse<String>(
           result: response.isSuccessful, value: response.data['message']);
     } on DioError catch (e) {

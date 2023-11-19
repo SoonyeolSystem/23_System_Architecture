@@ -122,28 +122,79 @@ class SituationComponent extends StatelessWidget {
                                       Row(
                                         children: [
                                           const SizedBox(height: 3),
-                                          InkWell(
-                                            onTap: () {
-                                              // Toggle the bookmark status here (change the value of model.isbookmark)
-                                              // For example, you can do:
-                                              // model.like = !model.like!;
-                                            },
-                                            child: Icon(
-                                              model.isLike == 1
-                                                  ? CupertinoIcons.star_fill
-                                                  : CupertinoIcons.star,
-                                              size: 22,
-                                              //color: model.isbookmark == true ? Colors.yellow : const Color(0xFF434343),
-                                              color: Colors.yellow,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 3),
-                                          Text(
-                                            "${model.likeCount}",
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Color(0xFF434343),
-                                                fontWeight: FontWeight.w500),
+                                          // InkWell(
+                                          //   onTap: () {
+
+                                          //   },
+                                          //   child: Icon(
+                                          //     model.isLike == 1
+                                          //         ? CupertinoIcons.star_fill
+                                          //         : CupertinoIcons.star,
+                                          //     size: 22,
+                                          //     //color: model.isbookmark == true ? Colors.yellow : const Color(0xFF434343),
+                                          //     color: Colors.yellow,
+                                          //   ),
+                                          // ),
+                                          Obx(
+                                            () => controller.situation.value
+                                                            .isLike ==
+                                                        null ||
+                                                    UserService.instance
+                                                            .isLogin() ==
+                                                        false
+                                                ? const SizedBox()
+                                                : Row(
+                                                    children: [
+                                                      controller.situation.value
+                                                                  .isLike ==
+                                                              true
+                                                          ? IconButton(
+                                                              icon: Icon(
+                                                                  CupertinoIcons
+                                                                      .star_fill),
+                                                              iconSize: 22,
+                                                              color:
+                                                                  Colors.yellow,
+                                                              onPressed:
+                                                                  () async {
+                                                                controller.unlikeSituation(
+                                                                    model
+                                                                        .situationId!,
+                                                                    UserService
+                                                                        .instance
+                                                                        .userId);
+                                                              },
+                                                            )
+                                                          : IconButton(
+                                                              icon: Icon(
+                                                                  CupertinoIcons
+                                                                      .star),
+                                                              iconSize: 22,
+                                                              color: Color(
+                                                                  0xFF434343),
+                                                              onPressed:
+                                                                  () async {
+                                                                controller.likeSituation(
+                                                                    model
+                                                                        .situationId!,
+                                                                    UserService
+                                                                        .instance
+                                                                        .userId);
+                                                              },
+                                                            ),
+                                                      const SizedBox(width: 3),
+                                                      Text(
+                                                        "${controller.situation.value.likeCount}",
+                                                        style: const TextStyle(
+                                                            fontSize: 15,
+                                                            color: Color(
+                                                                0xFF434343),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                      ),
+                                                    ],
+                                                  ),
                                           ),
                                         ],
                                       ),
@@ -457,11 +508,11 @@ class SituationComponent extends StatelessWidget {
                         children: [
                           const SizedBox(height: 3),
                           Icon(
-                            model.isLike == 1
+                            model.isLike == true
                                 ? CupertinoIcons.star_fill
                                 : CupertinoIcons.star,
                             size: 15,
-                            color: model.isLike == 1
+                            color: model.isLike == true
                                 ? Colors.yellow
                                 : const Color(0xFF434343),
                           ),
