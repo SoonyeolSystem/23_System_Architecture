@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
-import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_custom_controller.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
@@ -197,15 +196,12 @@ class TalkingCustomPage extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            Get.offAllNamed(Navigation.url, arguments: {"KEY":"2"});
-                            //MyInfoViewController.instance.getInfoList();
-                             final controller =
-                                        NavigationController.instance;
-                                    controller.selectTab(2);
-                          
+                            Get.back();
+                            final controller = NavigationController.instance;
+                            controller.selectTab(1);
                           },
                           child: const Text(
-                            '다른 사람이\n추천한\n시나리오',
+                            '다른 사람이\n작성한\n시나리오',
                             style: TextStyle(fontSize: 23, color: Colors.white),
                             textAlign: TextAlign.center,
                           ),
@@ -224,10 +220,14 @@ class TalkingCustomPage extends StatelessWidget {
                           onPressed: () {
                             if (userService.isLogin() == false) {
                               Get.toNamed(LoginPage.url);
+                              return;
                             }
+                            Get.back();
+                            final controller = NavigationController.instance;
+                            controller.selectTab(2);
                           },
                           child: const Text(
-                            '내가 했던\n시나리오',
+                            '과거에 했던\n대화\n계속하기',
                             style: TextStyle(fontSize: 23, color: Colors.white),
                             textAlign: TextAlign.center,
                           ),
