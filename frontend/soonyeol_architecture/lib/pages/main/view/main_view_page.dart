@@ -284,8 +284,7 @@ class MainViewPage extends StatelessWidget {
                   : Column(
                       children: [
                         Container(
-                          width: 410,
-                          height: 892.2,
+                          margin: const EdgeInsets.symmetric(horizontal: 25),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: const Color.fromARGB(70, 221, 225, 227),
