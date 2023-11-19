@@ -8,6 +8,7 @@ import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_conversation_response.dart';
+import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/script_response.dart';
 import 'package:soonyeol_architecture/restAPI/response/talking_response.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
@@ -64,6 +65,20 @@ class TalkingViewController extends GetxController {
       conversation.value = response.value!.conversation!;
     }
     conversation.refresh();
+  }
+
+  Future<void> likeConversation(String conversationId, String userId) async {
+    ApiResponse<LikeResponse> response = await ApiService.instance.likeConversation(conversationId, userId);
+    if (response.result) {
+      getConversationInfo(conversationId);
+    } else {}
+  }
+
+  Future<void> unlikeConversation(String conversationId, String userId) async {
+    ApiResponse<String> response = await ApiService.instance.unlikeConversation(conversationId, userId);
+    if (response.result) {
+      getConversationInfo(conversationId);
+    }
   }
 
   void passParameter(Map parameters) async {

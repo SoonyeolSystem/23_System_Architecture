@@ -8,6 +8,7 @@ import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.d
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 class TalkingViewPage extends StatelessWidget {
   const TalkingViewPage({
@@ -258,161 +259,6 @@ void showCustomAlertDialog(BuildContext context) {
   );
 }
 
-//           width: 307,
-//           //height: ,
-//           child: Column(
-//             mainAxisSize: MainAxisSize.min,
-//             children: [
-//               Row(children: [
-//                 SizedBox(
-//                   width: 270,
-//                   child: Text(
-//                     "${controller.parameters['title']}",
-//                     style: const TextStyle(fontSize: 21, color: Color(0xFF384252), fontWeight: FontWeight.bold),
-//                     textAlign: TextAlign.start,
-//                   ),
-//                 ),
-//                 InkWell(
-//                   onTap: () {
-//                     TalkingViewController.instance.likeConversation();
-//                     //model.isLike= !model.isLike;
-//                   },
-//                   child: Icon(model.isLike == true ? Icons.favorite : CupertinoIcons.heart,
-//                       size: 33, color: model.isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
-//                 )
-//               ]),
-//               const SizedBox(
-//                 height: 40,
-//               ),
-//               Row(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Container(
-//                       width: 97,
-//                       decoration: const BoxDecoration(
-//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-//                       ),
-//                       child: const Text(
-//                         '  상황',
-//                         style: TextStyle(
-//                           fontSize: 16,
-//                           fontWeight: FontWeight.bold,
-//                           color: Color(0xFF384252),
-//                         ),
-//                       )),
-//                   SizedBox(
-//                     width: 210,
-//                     child: Text(
-//                       "${controller.parameters['situation']}",
-//                       style: const TextStyle(
-//                         fontSize: 16,
-//                         color: Color(0xFF373737),
-//                       ),
-//                       textAlign: TextAlign.start,
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               const SizedBox(
-//                 height: 31,
-//               ),
-//               Row(
-//                 children: [
-//                   Container(
-//                       width: 97,
-//                       decoration: const BoxDecoration(
-//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-//                       ),
-//                       child: const Text(
-//                         '  장르',
-//                         style: TextStyle(
-//                           fontSize: 16,
-//                           fontWeight: FontWeight.bold,
-//                           color: Color(0xFF384252),
-//                         ),
-//                       )),
-//                   SizedBox(
-//                     width: 210,
-//                     child: Text(
-//                       "${controller.parameters['genre']}",
-//                       style: const TextStyle(
-//                         fontSize: 16,
-//                         color: Color(0xFF373737),
-//                       ),
-//                       textAlign: TextAlign.start,
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               const SizedBox(
-//                 height: 31,
-//               ),
-//               Row(
-//                 children: [
-//                   Container(
-//                       width: 97,
-//                       decoration: const BoxDecoration(
-//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-//                       ),
-//                       child: const Text(
-//                         '  주인공',
-//                         style: TextStyle(
-//                           fontSize: 16,
-//                           fontWeight: FontWeight.bold,
-//                           color: Color(0xFF384252),
-//                         ),
-//                       )),
-//                   SizedBox(
-//                     width: 210,
-//                     child: Text(
-//                       "${controller.parameters['name']}",
-//                       style: const TextStyle(
-//                         fontSize: 16,
-//                         color: Color(0xFF373737),
-//                       ),
-//                       textAlign: TextAlign.start,
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               const SizedBox(
-//                 height: 31,
-//               ),
-//               Row(
-//                 children: [
-//                   Container(
-//                       width: 97,
-//                       decoration: const BoxDecoration(
-//                         border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-//                       ),
-//                       child: const Text(
-//                         '  대화 상대',
-//                         style: TextStyle(
-//                           fontSize: 16,
-//                           fontWeight: FontWeight.bold,
-//                           color: Color(0xFF384252),
-//                         ),
-//                       )),
-//                   SizedBox(
-//                     width: 210,
-//                     child: Text(
-//                       "${controller.parameters['character']}",
-//                       style: const TextStyle(
-//                         fontSize: 16,
-//                         color: Color(0xFF373737),
-//                       ),
-//                       textAlign: TextAlign.start,
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       );
-//     },
-//   );
-// }
 void showInformation(BuildContext context, TalkingViewController controller, bool isLike) {
   showDialog(
     context: context,
@@ -433,20 +279,52 @@ void showInformation(BuildContext context, TalkingViewController controller, boo
             children: [
               Row(children: [
                 SizedBox(
-                  width: 270,
+                  width: 257,
                   child: Text(
                     "${controller.parameters['title']}",
                     style: const TextStyle(fontSize: 21, color: Color(0xFF384252), fontWeight: FontWeight.bold),
                     textAlign: TextAlign.start,
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    //model.isLike= !model.isLike;
-                  },
-                  child: Icon(isLike == true ? Icons.favorite : CupertinoIcons.heart,
-                      size: 33, color: isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
-                )
+                // InkWell(
+                //   onTap: () {
+                //     //model.isLike= !model.isLike;
+                //   },
+                //   child: Icon(isLike == true ? Icons.favorite : CupertinoIcons.heart,
+                //       size: 33, color: isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
+                // )
+                Obx(() {
+                  // 값이 null이면 기본값 false로 설정
+                  bool isLike = controller.conversation.value.isLike ?? false;
+
+                  return UserService.instance.isLogin() == false
+                      ? IconButton(
+                          onPressed: () {
+                            //로그인 페이지로 이동
+                          },
+                          icon: const Icon(CupertinoIcons.heart),
+                          iconSize: 33,
+                          color: const Color(0xFF384252),
+                        )
+                      : isLike == true
+                          ? IconButton(
+                              icon: const Icon(Icons.favorite),
+                              iconSize: 33,
+                              color: const Color.fromARGB(255, 243, 106, 106),
+                              onPressed: () async {
+                                controller.unlikeConversation(controller.parameters['conversationid'], UserService.instance.userId);
+                                print(isLike);
+                              },
+                            )
+                          : IconButton(
+                              icon: const Icon(CupertinoIcons.heart),
+                              iconSize: 33,
+                              color: const Color(0xFF384252),
+                              onPressed: () async {
+                                controller.likeConversation(controller.parameters['conversationid'], UserService.instance.userId);
+                              },
+                            );
+                }),
               ]),
               const SizedBox(
                 height: 40,
