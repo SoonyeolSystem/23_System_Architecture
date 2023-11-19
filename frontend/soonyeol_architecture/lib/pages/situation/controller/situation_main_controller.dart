@@ -45,28 +45,23 @@ class SituationMainController extends GetxController {
   }
 
   Future<void> likeSituation(String situationId, String userId) async {
-    ApiResponse<LikeResponse> response =
-        await ApiService.instance.likeSituation(situationId, userId);
+    ApiResponse<LikeResponse> response = await ApiService.instance.likeSituation(situationId, userId);
     if (response.result) {
       getSituation(situationId);
-      getSituationList();
-      getLikeSituationlist();
+      UserService.instance.reloadData();
     } else {}
   }
 
   Future<void> unlikeSituation(String situationId, String userId) async {
-    ApiResponse<String> response =
-        await ApiService.instance.unlikeSituation(situationId, userId);
+    ApiResponse<String> response = await ApiService.instance.unlikeSituation(situationId, userId);
     if (response.result) {
       getSituation(situationId);
-      getSituationList();
-      getLikeSituationlist();
+      UserService.instance.reloadData();
     }
   }
 
   Future<void> getLikeSituationlist() async {
-    ApiResponse<SituationListResponse> response = await ApiService.instance
-        .getLikeSituationlist(UserService.instance.userId);
+    ApiResponse<SituationListResponse> response = await ApiService.instance.getLikeSituationlist(UserService.instance.userId);
     if (response.result) {
       situationlikeList.value = response.value!.situationList!;
     }

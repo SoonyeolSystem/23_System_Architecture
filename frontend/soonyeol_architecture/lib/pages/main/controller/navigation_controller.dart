@@ -13,7 +13,6 @@ class NavigationController extends GetxController {
   void selectTab(int index) async {
     if (index == 0) {
       MainViewController.instance.getBestConversationList();
-      SituationMainController.instance.getLikeSituationlist();
     } else if (index == 1) {
       SituationMainController.instance.getSituationList();
     } else if (index == 2) {

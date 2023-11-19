@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/restAPI/response/get_conversation_list_response.dart';
-import 'package:soonyeol_architecture/restAPI/response/get_situation_list_response.dart';
-import 'package:soonyeol_architecture/service/user_service.dart';
 
 class MainViewController extends GetxController {
   static MainViewController get instance => Get.find<MainViewController>();
@@ -26,15 +23,6 @@ class MainViewController extends GetxController {
     bestConversationList.refresh();
   }
 
-  Future<void> getLikeSituationlist() async {
-    ApiResponse<SituationListResponse> response = await ApiService.instance.getLikeSituationlist(UserService.instance.userId);
-    if (response.result) {
-      situationlikeList.value = response.value!.situationList!;
-    }
-    situationlikeList.refresh();
-  }
-
-  RxList<Situation> situationlikeList = <Situation>[].obs;
   RxList<Conversation> bestConversationList = <Conversation>[].obs;
   RxList<Conversation> conversationList = <Conversation>[].obs;
 

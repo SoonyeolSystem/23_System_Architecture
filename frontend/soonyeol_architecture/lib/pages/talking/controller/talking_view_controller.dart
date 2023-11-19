@@ -61,14 +61,16 @@ class TalkingViewController extends GetxController {
   Future<void> likeConversation(String conversationId, String userId) async {
     ApiResponse<LikeResponse> response = await ApiService.instance.likeConversation(conversationId, userId);
     if (response.result) {
-      getTalkingListByConID(conversationId);
+      await getTalkingListByConID(conversationId);
+      UserService.instance.reloadData();
     } else {}
   }
 
   Future<void> unlikeConversation(String conversationId, String userId) async {
     ApiResponse<String> response = await ApiService.instance.unlikeConversation(conversationId, userId);
     if (response.result) {
-      getTalkingListByConID(conversationId);
+      await getTalkingListByConID(conversationId);
+      UserService.instance.reloadData();
     }
   }
 

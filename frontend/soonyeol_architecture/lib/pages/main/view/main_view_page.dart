@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:soonyeol_architecture/pages/likeList/view/like_page.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/component/bestTalking_component.dart';
 import 'package:soonyeol_architecture/pages/main/view/component/ongoing_component.dart';
-import 'package:soonyeol_architecture/pages/main/view/like_page.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
@@ -35,15 +35,11 @@ class MainViewPage extends StatelessWidget {
                     //순열 타이틀, 검색 버튼
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         SizedBox(
                           width: 20,
                         ),
-                        Text('SoonYeol',
-                            style: TextStyle(
-                                fontSize: 26,
-                                color: Color(0xFF33C26C),
-                                fontWeight: FontWeight.bold)),
+                        Text('SoonYeol', style: TextStyle(fontSize: 26, color: Color(0xFF33C26C), fontWeight: FontWeight.bold)),
                       ],
                     ),
                     //공간 띄우기
@@ -73,28 +69,21 @@ class MainViewPage extends StatelessWidget {
                                   gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromARGB(255, 183, 230, 183),
-                                      Color.fromARGB(255, 26, 141, 72)
-                                    ], // 그라데이션 색상 설정
+                                    colors: [Color.fromARGB(255, 183, 230, 183), Color.fromARGB(255, 26, 141, 72)], // 그라데이션 색상 설정
                                   ),
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Padding(
-                                      padding: EdgeInsets.only(right: 24),
+                                      padding: const EdgeInsets.only(right: 24),
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
                                           Text(
                                             '커스텀\n시나리오',
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w700),
+                                            style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w700),
                                             textAlign: TextAlign.left,
                                           ),
                                           SizedBox(height: 27),
@@ -134,43 +123,33 @@ class MainViewPage extends StatelessWidget {
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color:
-                                      const Color.fromARGB(57, 140, 187, 126),
+                                  color: const Color.fromARGB(57, 140, 187, 126),
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 15),
+                                      padding: const EdgeInsets.only(left: 15),
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(
+                                          const Text(
                                             '즐겨찾기',
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                color: Color.fromARGB(
-                                                    255, 46, 161, 92),
-                                                fontWeight: FontWeight.w700),
+                                            style: TextStyle(fontSize: 30, color: Color.fromARGB(255, 46, 161, 92), fontWeight: FontWeight.w700),
                                             textAlign: TextAlign.left,
                                           ),
-                                          SizedBox(height: 70),
-                                          Text(
+                                          const SizedBox(height: 70),
+                                          const Text(
                                             '즐겨찾기한',
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black54),
+                                            style: TextStyle(fontSize: 15, color: Colors.black54),
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            children: [
+                                            children: const [
                                               Text(
                                                 '시나리오를 확인해보세요',
-                                                style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: Colors.black54),
+                                                style: TextStyle(fontSize: 15, color: Colors.black54),
                                                 textAlign: TextAlign.center,
                                               ),
                                             ],
@@ -194,36 +173,23 @@ class MainViewPage extends StatelessWidget {
                       //     CrossAxisAlignment.start,
                       children: [
                         const SizedBox(width: 25),
-                        const Text('이어서 대화하기',
-                            style: TextStyle(
-                                fontSize: 23,
-                                color: Color.fromARGB(255, 90, 90, 90),
-                                fontWeight: FontWeight.w600)),
+                        const Text('이어서 대화하기', style: TextStyle(fontSize: 23, color: Color.fromARGB(255, 90, 90, 90), fontWeight: FontWeight.w600)),
                         const SizedBox(width: 240),
                         if (userService.isLogin() == true)
-                          Obx(() => (MyInfoViewController
-                                  .instance.myConversation.isNotEmpty)
+                          Obx(() => (MyInfoViewController.instance.myConversation.isNotEmpty)
                               ? TextButton(
                                   onPressed: () async {
                                     //Get.to(() => MyInfoPage());
-                                    final controller =
-                                        NavigationController.instance;
+                                    final controller = NavigationController.instance;
                                     controller.selectTab(2);
-                                    final controller2 =
-                                        MyInfoViewController.instance;
-                                    await Future.delayed(
-                                        const Duration(milliseconds: 50));
+                                    final controller2 = MyInfoViewController.instance;
+                                    await Future.delayed(const Duration(milliseconds: 50));
 
-                                    controller2.scrollcontroller.value
-                                        .animateTo(537.0,
-                                            duration: const Duration(
-                                                milliseconds: 500),
-                                            curve: Curves.ease);
+                                    controller2.scrollcontroller.value.animateTo(537.0, duration: const Duration(milliseconds: 500), curve: Curves.ease);
                                   },
                                   child: const Text(
                                     '전체보기',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.grey),
+                                    style: TextStyle(fontSize: 14, color: Colors.grey),
                                   ),
                                 )
                               : const SizedBox())
@@ -251,10 +217,7 @@ class MainViewPage extends StatelessWidget {
                     },
                     child: const Text(
                       '로그인 하기 >',
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Color(0xFF33C26C),
-                          fontWeight: FontWeight.w700),
+                      style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
                     ),
                   ),
                   const SizedBox(
@@ -263,18 +226,13 @@ class MainViewPage extends StatelessWidget {
                 ],
               )
             else
-              Obx(() => (MyInfoViewController
-                      .instance.myConversation.isNotEmpty)
+              Obx(() => (MyInfoViewController.instance.myConversation.isNotEmpty)
                   ? SizedBox(
                       height: 150,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
-                          for (int index = 0;
-                              index <
-                                  MyInfoViewController
-                                      .instance.myConversation.length;
-                              index++)
+                          for (int index = 0; index < MyInfoViewController.instance.myConversation.length; index++)
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -282,9 +240,7 @@ class MainViewPage extends StatelessWidget {
                                   const SizedBox(
                                     width: 40,
                                   ),
-                                OngoingComponent(
-                                    model: MyInfoViewController
-                                        .instance.myConversation[index]),
+                                OngoingComponent(model: MyInfoViewController.instance.myConversation[index]),
                               ],
                             )
                         ],
@@ -293,8 +249,7 @@ class MainViewPage extends StatelessWidget {
                   : Column(
                       children: [
                         const SizedBox(height: 20),
-                        const Text('아직 진행 중인 대화가 없어요.',
-                            style: TextStyle(fontSize: 15, color: Colors.grey)),
+                        const Text('아직 진행 중인 대화가 없어요.', style: TextStyle(fontSize: 15, color: Colors.grey)),
                         const SizedBox(
                           height: 25,
                         ),
@@ -305,10 +260,7 @@ class MainViewPage extends StatelessWidget {
                           },
                           child: const Text(
                             '대화 시작하기 >',
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Color(0xFF33C26C),
-                                fontWeight: FontWeight.w700),
+                            style: TextStyle(fontSize: 15, color: Color(0xFF33C26C), fontWeight: FontWeight.w700),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -318,13 +270,9 @@ class MainViewPage extends StatelessWidget {
               height: 35,
             ),
             Row(
-              children: [
+              children: const [
                 SizedBox(width: 25),
-                Text('Best Conversation',
-                    style: TextStyle(
-                        fontSize: 23,
-                        color: Color.fromARGB(255, 90, 90, 90),
-                        fontWeight: FontWeight.w600)),
+                Text('Best Conversation', style: TextStyle(fontSize: 23, color: Color.fromARGB(255, 90, 90, 90), fontWeight: FontWeight.w600)),
               ],
             ),
             const SizedBox(
@@ -348,21 +296,14 @@ class MainViewPage extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              for (int index = 0;
-                                  index <
-                                      controller.bestConversationList.length;
-                                  index++)
+                              for (int index = 0; index < controller.bestConversationList.length; index++)
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    BestTalkingComponent(
-                                        model: controller
-                                            .bestConversationList[index],
-                                        index: index + 1),
+                                    BestTalkingComponent(model: controller.bestConversationList[index], index: index + 1),
                                     if (index < 9)
                                       const Padding(
-                                        padding: EdgeInsets.only(
-                                            left: 20, right: 20),
+                                        padding: EdgeInsets.only(left: 20, right: 20),
                                         child: Divider(
                                           height: 1,
                                           thickness: 0.7,
