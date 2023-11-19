@@ -42,7 +42,6 @@ class UserService extends GetxService {
       Get.offAllNamed(MainViewPage.url);
 
       Get.snackbar("success", "로그인에 성공하였습니다.");
-      Get.snackbar('User ID: $userId', 'Nickname: $nickname');
 
       const storage = FlutterSecureStorage();
 
@@ -51,6 +50,7 @@ class UserService extends GetxService {
 
       Common.logger.d('User ID: $userId');
       Common.logger.d('Nickname: $nickname');
+      reloadData();
     } else if (response.statusCode == 400) {
       // ID가 존재하지 않음
       Get.snackbar("ID/Password not Found", "ID/비밀번호가 존재하지 않습니다.");
