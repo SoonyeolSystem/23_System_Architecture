@@ -33,9 +33,9 @@ class MainViewPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //순열 타이틀, 검색 버튼
-                    Row(
+                    const Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         SizedBox(
                           width: 20,
                         ),
@@ -72,15 +72,15 @@ class MainViewPage extends StatelessWidget {
                                     colors: [Color.fromARGB(255, 183, 230, 183), Color.fromARGB(255, 26, 141, 72)], // 그라데이션 색상 설정
                                   ),
                                 ),
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    const SizedBox(height: 10),
+                                    SizedBox(height: 10),
                                     Padding(
-                                      padding: const EdgeInsets.only(right: 24),
+                                      padding: EdgeInsets.only(right: 24),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: const [
+                                        children: [
                                           Text(
                                             '커스텀\n시나리오',
                                             style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w700),
@@ -125,28 +125,28 @@ class MainViewPage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                   color: const Color.fromARGB(57, 140, 187, 126),
                                 ),
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    const SizedBox(height: 10),
+                                    SizedBox(height: 10),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 15),
+                                      padding: EdgeInsets.only(left: 15),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          const Text(
+                                          Text(
                                             '즐겨찾기',
                                             style: TextStyle(fontSize: 30, color: Color.fromARGB(255, 46, 161, 92), fontWeight: FontWeight.w700),
                                             textAlign: TextAlign.left,
                                           ),
-                                          const SizedBox(height: 70),
-                                          const Text(
+                                          SizedBox(height: 70),
+                                          Text(
                                             '즐겨찾기한',
                                             style: TextStyle(fontSize: 15, color: Colors.black54),
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            children: const [
+                                            children: [
                                               Text(
                                                 '시나리오를 확인해보세요',
                                                 style: TextStyle(fontSize: 15, color: Colors.black54),
@@ -269,8 +269,8 @@ class MainViewPage extends StatelessWidget {
             const SizedBox(
               height: 35,
             ),
-            Row(
-              children: const [
+            const Row(
+              children: [
                 SizedBox(width: 25),
                 Text('Best Conversation', style: TextStyle(fontSize: 23, color: Color.fromARGB(255, 90, 90, 90), fontWeight: FontWeight.w600)),
               ],
@@ -300,7 +300,7 @@ class MainViewPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     BestTalkingComponent(model: controller.bestConversationList[index], index: index + 1),
-                                    if (index < 9)
+                                    if (index < 9 && index != controller.bestConversationList.length - 1)
                                       const Padding(
                                         padding: EdgeInsets.only(left: 20, right: 20),
                                         child: Divider(
