@@ -92,7 +92,7 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
-                                '${controller.speakingCount.value}',
+                                '',
                                 style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
