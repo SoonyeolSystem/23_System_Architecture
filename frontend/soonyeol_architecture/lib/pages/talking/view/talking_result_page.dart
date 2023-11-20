@@ -58,7 +58,10 @@ class TalkingResultPage extends StatelessWidget {
                               padding: EdgeInsets.only(left: 35.0, top: 30.0),
                               child: Text(
                                 '스피킹 평균 속도',
-                                style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
@@ -66,25 +69,38 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
-                                controller.speakingSpeed.value == null ? '??' : '${controller.speakingSpeed.value}',
-                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
+                                controller.speakingSpeed.value == null
+                                    ? '??'
+                                    : '${controller.speakingSpeed.value}',
+                                style: const TextStyle(
+                                    fontSize: 24,
+                                    color: Color(0xFF33C26C),
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 10, right: 48.0, top: 35.0),
-                              child: Text('s', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 48.0, top: 35.0),
+                              child: Text('s',
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
                         ),
-                        const Row(
+                        Row(
                           children: [
                             Padding(
                               padding: EdgeInsets.only(left: 35.0, top: 35.0),
                               child: Text(
                                 '대화 나눈 횟수',
-                                style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
@@ -92,14 +108,24 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(top: 35.0),
                               child: Text(
-                                '',
-                                style: TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
+                                controller.talkingCount.value == null
+                                    ? '??'
+                                    : '${controller.talkingCount.value}',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Color.fromARGB(255, 23, 104, 55),
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 10.0, right: 40, top: 35.0),
-                              child: Text('회', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
+                              padding: EdgeInsets.only(
+                                  left: 10.0, right: 40, top: 35.0),
+                              child: Text('회',
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
@@ -110,7 +136,10 @@ class TalkingResultPage extends StatelessWidget {
                               padding: EdgeInsets.only(left: 35.0, top: 35.0),
                               child: Text(
                                 '대화 나눈 시간',
-                                style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
@@ -118,14 +147,24 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
-                                controller.speakingTime.value == null ? '??' : '${controller.speakingTime.value}',
-                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
+                                controller.speakingTime.value == null
+                                    ? '??'
+                                    : '${controller.speakingTime.value}',
+                                style: const TextStyle(
+                                    fontSize: 24,
+                                    color: Color(0xFF33C26C),
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 10.0, right: 40, top: 35.0),
-                              child: Text('m', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
+                              padding: EdgeInsets.only(
+                                  left: 10.0, right: 40, top: 35.0),
+                              child: Text('m',
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
@@ -136,7 +175,10 @@ class TalkingResultPage extends StatelessWidget {
                               padding: EdgeInsets.only(left: 35.0, top: 35.0),
                               child: Text(
                                 '토킹 점수',
-                                style: TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    color: Color(0xFF33C26C),
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
@@ -144,14 +186,24 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
-                                controller.talkingScore.value == null ? '??' : '${controller.talkingScore.value}',
-                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
+                                controller.talkingScore.value == null
+                                    ? '??'
+                                    : '${controller.talkingScore.value}',
+                                style: const TextStyle(
+                                    fontSize: 24,
+                                    color: Color(0xFF33C26C),
+                                    fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 10.0, right: 40, top: 35.0),
-                              child: Text('점', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
+                              padding: EdgeInsets.only(
+                                  left: 10.0, right: 40, top: 35.0),
+                              child: Text('점',
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
                             ),
                             // ),
                           ],
@@ -182,7 +234,8 @@ class TalkingResultPage extends StatelessWidget {
                       // controller: controller.scrollcontroller.value,
                       child: Text(
                         controller.evaluation.value,
-                        style: const TextStyle(fontSize: 18, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
