@@ -14,6 +14,7 @@ class Conversation {
   String? situationID;
   String? conversationID;
   int? like;
+  String? rate; //점수
 
   Conversation(
       {this.situationname,
@@ -30,10 +31,12 @@ class Conversation {
       this.endStory,
       this.situationID,
       this.conversationID,
+      this.rate,
       this.like});
 
   Conversation.fromJson(Map<String, dynamic> json) {
     situationname = json['title'];
+    rate = json['rate'];
     likeCount = json['like'];
     views = json['view'];
     isLike = json['islike'];
@@ -71,6 +74,7 @@ class Conversation {
     data['situationid'] = situationID;
     data['conversationid'] = conversationID;
     data['like'] = like;
+    data['rate'] = rate;
     return data;
   }
 }
