@@ -19,6 +19,8 @@ import '../../../restAPI/models/Talking.dart';
 class TalkingViewController extends GetxController {
   static TalkingViewController get instance => Get.find<TalkingViewController>();
 
+  RxBool waitingToResult = false.obs;
+
   late final WebSocketChannel? channel;
   var isListening = false.obs;
   var speechText = ''.obs;

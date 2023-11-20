@@ -8,6 +8,7 @@ import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
+import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
 class TalkingViewPage extends StatelessWidget {
@@ -208,45 +209,57 @@ void showCustomAlertDialog(BuildContext context) {
               const SizedBox(
                 height: 26,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  if (controller.parameters.value['situationid'] != "" && controller.parameters.value['end_story'] == 'false')
-                    TextButton(
-                      onPressed: () {
-                        Get.toNamed(TalkingResultPage.url, arguments: controller.parameters.value['conversationid']);
-                      },
-                      style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
-                        backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF33C26C)),
-                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                          const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
-                        ),
+              Obx(
+                () => controller.waitingToResult.value
+                    ? const CircularProgressIndicator(color: Color(0xFF33C26C))
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          if (controller.parameters.value['situationid'] != "" && controller.parameters.value['end_story'] == 'false')
+                            TextButton(
+                              onPressed: () async {
+                                controller.waitingToResult.value = true;
+                                final response = await ApiService.instance.evaluateConversation(controller.parameters.value['conversationid']);
+                                if (response.result) {
+                                  Get.offAllNamed(TalkingResultPage.url, arguments: response.value);
+                                } else {
+                                  Get.snackbar("에러", "에러가 발생했습니다.");
+                                  controller.waitingToResult.value = false;
+                                }
+                              },
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
+                                backgroundColor: MaterialStateProperty.all<Color>(const Color(0xFF33C26C)),
+                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                  const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
+                                ),
+                              ),
+                              child: const Text('대화 결과 보기', style: TextStyle(color: Colors.white, fontSize: 14)),
+                            ),
+                          TextButton(
+                            onPressed: () {
+                              UserService.instance.reloadData();
+                              Get.offAllNamed(Navigation.url);
+                              // 홈으로 돌아가기 동작 수행
+                            },
+                            style: ButtonStyle(
+                              side: MaterialStateProperty.all<BorderSide>(
+                                const BorderSide(color: Color(0xFF33C26C), width: 2.0),
+                              ),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
+                              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+                              ),
+                            ),
+                            child: const Text(
+                              '홈으로 돌아가기',
+                              style: TextStyle(color: Colors.black, fontSize: 14),
+                            ),
+                          ),
+                        ],
                       ),
-                      child: const Text('대화 결과 보기', style: TextStyle(color: Colors.white, fontSize: 14)),
-                    ),
-                  TextButton(
-                    onPressed: () {
-                      Get.offAllNamed(Navigation.url);
-                      // 홈으로 돌아가기 동작 수행
-                    },
-                    style: ButtonStyle(
-                      side: MaterialStateProperty.all<BorderSide>(
-                        const BorderSide(color: Color(0xFF33C26C), width: 2.0),
-                      ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                        const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
-                      ),
-                    ),
-                    child: const Text(
-                      '홈으로 돌아가기',
-                      style: TextStyle(color: Colors.black, fontSize: 14),
-                    ),
-                  ),
-                ],
-              ),
+              )
             ],
           ),
         ),
