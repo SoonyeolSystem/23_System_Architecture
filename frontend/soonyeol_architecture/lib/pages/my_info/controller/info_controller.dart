@@ -22,15 +22,14 @@ class MyInfoViewController extends GetxController {
       myConversation.value = response.value!.conversationList!;
     }
     myConversation.refresh();
-
+    completeSituation.value  = 0;
     for (int index = 0; index < myConversation.length; index++) {
+   
     if (myConversation[index].endStory == true) {
       completeSituation+=1;
       totalscore.value += int.parse(myConversation[index].rate!);
       talkingScore.value = (totalscore/completeSituation.value);
     }
-
-    
   }
   }
 
