@@ -124,6 +124,25 @@ class ApiService extends GetxService {
     }
   }
 
+  Future<ApiResponse<ConversationListResponse>> getConversationUnfinished(String userID) async {
+    try {
+      var response = await communityDio.get('/user/conversation/unfinished/$userID');
+
+      ConversationListResponse getunConversationListResponse = ConversationListResponse.fromJson(response.data);
+      return ApiResponse<ConversationListResponse>(result: response.isSuccessful, value: getunConversationListResponse, statusCode: response.statusCode);
+    } on DioError catch (e) {
+      Common.logger.d(e);
+      try {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: e.response?.data['message'] ?? "오류가 발생했습니다.");
+      } catch (e) {
+        return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+      }
+    } catch (e) {
+      Common.logger.d(e);
+      return ApiResponse<ConversationListResponse>(result: false, errorMsg: "오류가 발생했습니다.");
+    }
+  }
+
   Future<ApiResponse<SituationListResponse>> getSituationList(String userID) async {
     try {
       var response = await communityDio.get('/community/situationlist/$userID');
