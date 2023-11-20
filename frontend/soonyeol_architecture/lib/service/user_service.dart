@@ -2,7 +2,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
-import 'package:soonyeol_architecture/pages/likeList/controller/like_view_controller.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/main_view_page.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
@@ -83,6 +82,5 @@ class UserService extends GetxService {
     MyInfoViewController.instance.getInfoList();
     MainViewController.instance.getBestConversationList();
     SituationMainController.instance.getSituationList();
-    LikeViewController.instance.getLikeSituationlist();
   }
 }

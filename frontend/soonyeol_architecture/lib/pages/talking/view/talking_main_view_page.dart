@@ -238,7 +238,6 @@ void showCustomAlertDialog(BuildContext context) {
                             ),
                           TextButton(
                             onPressed: () {
-                              UserService.instance.reloadData();
                               Get.offAllNamed(Navigation.url);
                               // 홈으로 돌아가기 동작 수행
                             },

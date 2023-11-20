@@ -45,10 +45,7 @@ class LikeSituationComponent extends StatelessWidget {
                                 scrollDirection: Axis.horizontal,
                                 child: Text(
                                   '${model.title}',
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 23),
+                                  style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 23),
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.clip,
                                 ),
@@ -79,36 +76,29 @@ class LikeSituationComponent extends StatelessWidget {
                             Expanded(
                               child: Row(
                                 children: [
-                                  Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                    Text("${controller2.situation.value.userName}", style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                                    const SizedBox(height: 7),
+                                    Row(
                                       children: [
-                                        Text(
-                                            "${controller2.situation.value.userName}",
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                        const SizedBox(height: 7),
-                                        Row(
-                                          children: [
-                                            const Text(
-                                              "#",
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Color(0xFF33C26C),
-                                              ),
-                                            ),
-                                            Text(
-                                              "${model.genre}",
-                                              style: const TextStyle(
-                                                fontSize: 12,
-                                                color: Color(0xFF808080),
-                                              ),
-                                            ),
-                                            const SizedBox(width: 5)
-                                          ],
+                                        const Text(
+                                          "#",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF33C26C),
+                                          ),
                                         ),
-                                      ]),
+                                        Text(
+                                          "${model.genre}",
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF808080),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 5)
+                                      ],
+                                    ),
+                                  ]),
                                 ],
                               ),
                             ),
@@ -146,64 +136,31 @@ class LikeSituationComponent extends StatelessWidget {
                                           //       fontWeight: FontWeight.w500),
                                           // ),
                                           Obx(
-                                            () => controller2.situation.value
-                                                            .isLike ==
-                                                        null ||
-                                                    UserService.instance
-                                                            .isLogin() ==
-                                                        false
+                                            () => controller2.situation.value.isLike == null || UserService.instance.isLogin() == false
                                                 ? const SizedBox()
                                                 : Row(
                                                     children: [
-                                                      controller2
-                                                                  .situation
-                                                                  .value
-                                                                  .isLike ==
-                                                              true
+                                                      controller2.situation.value.isLike == true
                                                           ? IconButton(
-                                                              icon: Icon(
-                                                                  CupertinoIcons
-                                                                      .star_fill),
+                                                              icon: const Icon(CupertinoIcons.star_fill),
                                                               iconSize: 22,
-                                                              color:
-                                                                  Colors.yellow,
-                                                              onPressed:
-                                                                  () async {
-                                                                controller2.unlikeSituation(
-                                                                    model
-                                                                        .situationId!,
-                                                                    UserService
-                                                                        .instance
-                                                                        .userId);
+                                                              color: Colors.yellow,
+                                                              onPressed: () async {
+                                                                controller2.unlikeSituation(model.situationId!, UserService.instance.userId);
                                                               },
                                                             )
                                                           : IconButton(
-                                                              icon: Icon(
-                                                                  CupertinoIcons
-                                                                      .star),
+                                                              icon: const Icon(CupertinoIcons.star),
                                                               iconSize: 22,
-                                                              color: Color(
-                                                                  0xFF434343),
-                                                              onPressed:
-                                                                  () async {
-                                                                controller2.likeSituation(
-                                                                    model
-                                                                        .situationId!,
-                                                                    UserService
-                                                                        .instance
-                                                                        .userId);
+                                                              color: const Color(0xFF434343),
+                                                              onPressed: () async {
+                                                                controller2.likeSituation(model.situationId!, UserService.instance.userId);
                                                               },
                                                             ),
                                                       const SizedBox(width: 3),
                                                       Text(
                                                         "${controller2.situation.value.likeCount}",
-                                                        style: const TextStyle(
-                                                            fontSize: 15,
-                                                            color: Color(
-                                                                0xFF434343),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500),
+                                                        style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500),
                                                       ),
                                                     ],
                                                   ),
@@ -213,10 +170,7 @@ class LikeSituationComponent extends StatelessWidget {
                                       const SizedBox(height: 3),
                                       Text(
                                         "플레이 수 ${model.play ?? "0"}회",
-                                        style: const TextStyle(
-                                            fontSize: 15,
-                                            color: Color(0xFF434343),
-                                            fontWeight: FontWeight.w500),
+                                        style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500),
                                       ),
                                     ],
                                   ),
@@ -245,29 +199,21 @@ class LikeSituationComponent extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           const Padding(
                                             padding: EdgeInsets.only(left: 8.0),
                                             child: Text(
                                               '상황',
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Color(0xFF888888),
-                                                  fontWeight: FontWeight.w500),
+                                              style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
                                             ),
                                           ),
                                           const SizedBox(height: 10),
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 15.0),
+                                            padding: const EdgeInsets.only(left: 15.0),
                                             child: Text(
                                               "${model.situation}",
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: Color(0xFF000000),
-                                                  fontWeight: FontWeight.w500),
+                                              style: const TextStyle(fontSize: 16, color: Color(0xFF000000), fontWeight: FontWeight.w500),
                                             ),
                                           ),
                                         ],
@@ -279,117 +225,77 @@ class LikeSituationComponent extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Expanded(
-                                      child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const SizedBox(height: 23),
-                                            const Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 8.0),
-                                              child: Text(
-                                                '장르',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    color: Color(0xFF888888),
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 10),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 15.0),
-                                              child: Text(
-                                                "${model.genre}",
-                                                style: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 23),
-                                            const Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 8.0),
-                                              child: Text(
-                                                '등장인물',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    color: Color(0xFF888888),
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 10),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 15.0),
-                                              child: Text(
-                                                "${model.character}",
-                                                style: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 23),
-                                            const Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 8.0),
-                                              child: Text(
-                                                '주인공',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    color: Color(0xFF888888),
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 10),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 15.0),
-                                              child: Text(
-                                                "${model.name}",
-                                                style: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ),
-                                            )
-                                          ]),
+                                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '장르',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.genre}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '등장인물',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.character}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 23),
+                                        const Padding(
+                                          padding: EdgeInsets.only(left: 8.0),
+                                          child: Text(
+                                            '주인공',
+                                            style: TextStyle(fontSize: 18, color: Color(0xFF888888), fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 15.0),
+                                          child: Text(
+                                            "${model.name}",
+                                            style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w500),
+                                          ),
+                                        )
+                                      ]),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 10, bottom: 5),
+                                      padding: const EdgeInsets.only(right: 10, bottom: 5),
                                       child: ElevatedButton(
                                         onPressed: () {
                                           if (!UserService.instance.isLogin()) {
                                             Get.toNamed(LoginPage.url);
                                             return;
                                           }
-                                          MoveService.instance
-                                              .moveTalkingPageBySituation(
-                                                  model);
+                                          MoveService.instance.moveTalkingPageBySituation(model);
                                         },
                                         style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  const Color(0xFF33C26C)),
+                                          backgroundColor: MaterialStateProperty.all(const Color(0xFF33C26C)),
                                           padding: MaterialStateProperty.all(
-                                            const EdgeInsets.symmetric(
-                                                horizontal: 45, vertical: 13),
+                                            const EdgeInsets.symmetric(horizontal: 45, vertical: 13),
                                           ),
                                         ),
                                         child: const Text(
                                           '시작하기',
                                           style: TextStyle(
-                                            fontSize:
-                                                22, // Text size remains the same
+                                            fontSize: 22, // Text size remains the same
                                             color: Colors.white,
                                           ),
                                         ),
@@ -407,28 +313,21 @@ class LikeSituationComponent extends StatelessWidget {
                         width: double.infinity, //가로 꽉 차게 설정
                         height: 15,
                         child: DecoratedBox(
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 242, 242, 242)),
+                          decoration: BoxDecoration(color: Color.fromARGB(255, 242, 242, 242)),
                         ),
                       ),
                       Container(
                         alignment: Alignment.topLeft,
                         child: const Padding(
-                          padding:
-                              EdgeInsets.only(left: 30, top: 20, bottom: 25),
+                          padding: EdgeInsets.only(left: 30, top: 20, bottom: 25),
                           child: Text(
                             '다른 유저의 Conversation',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black),
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
                           ),
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.only(
-                              left: Common.getWidth * 0.03,
-                              right: Common.getWidth * 0.03),
+                          margin: EdgeInsets.only(left: Common.getWidth * 0.03, right: Common.getWidth * 0.03),
                           height: 1.0,
                           width: double.infinity,
                           color: const Color.fromARGB(255, 209, 209, 209)),
@@ -441,18 +340,14 @@ class LikeSituationComponent extends StatelessWidget {
                           child: Obx(
                             () => Column(
                               children: [
-                                for (int index = 0;
-                                    index < controller2.conversationList.length;
-                                    index++)
+                                for (int index = 0; index < controller2.conversationList.length; index++)
                                   Column(
                                     children: [
                                       ConversationComponent(
-                                        model:
-                                            controller2.conversationList[index],
+                                        model: controller2.conversationList[index],
                                       ),
                                       const Padding(
-                                        padding: EdgeInsets.only(
-                                            bottom: 10, top: 15),
+                                        padding: EdgeInsets.only(bottom: 10, top: 15),
                                         child: Divider(
                                           height: 1,
                                           thickness: 1,
@@ -478,74 +373,59 @@ class LikeSituationComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  SizedBox(
+                    width: 330,
+                    child: Text("${model.title}", style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis),
+                  ),
+                  const SizedBox(height: 7),
+                  Row(
                     children: [
-                      SizedBox(
-                        width: 330,
-                        child: Text("${model.title}",
-                            style: const TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w500),
-                            overflow: TextOverflow.ellipsis),
+                      const Text(
+                        "#",
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF33C26C),
+                        ),
                       ),
-                      const SizedBox(height: 7),
-                      Row(
-                        children: [
-                          const Text(
-                            "#",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF33C26C),
-                            ),
-                          ),
-                          Text(
-                            "${model.genre}",
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF808080),
-                            ),
-                          ),
-                          const SizedBox(width: 5)
-                        ],
-                      )
-                    ]),
+                      Text(
+                        "${model.genre}",
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF808080),
+                        ),
+                      ),
+                      const SizedBox(width: 5)
+                    ],
+                  )
+                ]),
               ),
               const Spacer(),
               Container(
                 alignment: Alignment.centerRight,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          const SizedBox(height: 3),
-                          Icon(
-                            // model.like == 1
-                            //     ? CupertinoIcons.star_fill
-                            //     : CupertinoIcons.star,
-                            // size: 15,
-                            // color: model.like == 1
-                            //     ? Colors.yellow
-                            //     : const Color(0xFF434343),
-                            CupertinoIcons.star_fill,
-                            size: 15,
-                            color: Colors.yellow,
-                          ),
-                          const SizedBox(width: 3),
-                          Text("${model.likeCount}",
-                              style: const TextStyle(
-                                  fontSize: 15,
-                                  color: Color(0xFF434343),
-                                  fontWeight: FontWeight.w500)),
-                        ],
+                      const SizedBox(height: 3),
+                      const Icon(
+                        // model.like == 1
+                        //     ? CupertinoIcons.star_fill
+                        //     : CupertinoIcons.star,
+                        // size: 15,
+                        // color: model.like == 1
+                        //     ? Colors.yellow
+                        //     : const Color(0xFF434343),
+                        CupertinoIcons.star_fill,
+                        size: 15,
+                        color: Colors.yellow,
                       ),
-                      const SizedBox(height: 5),
-                      Text("플레이 수 ${model.play}회",
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: Color(0xFF434343),
-                              fontWeight: FontWeight.w500)),
-                    ]),
+                      const SizedBox(width: 3),
+                      Text("${model.likeCount}", style: const TextStyle(fontSize: 15, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Text("플레이 수 ${model.play}회", style: const TextStyle(fontSize: 13, color: Color(0xFF434343), fontWeight: FontWeight.w500)),
+                ]),
               ),
             ],
           ),
