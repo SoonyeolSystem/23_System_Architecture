@@ -40,6 +40,16 @@ class MyInfoViewController extends GetxController {
   //   myConversationUnfinished.refresh();
   // }
 
+  int getNotEndStoryLength() {
+    int count = 0;
+    for (int index = 0; index < myConversation.length; index++) {
+      if (myConversation[index].endStory == false) {
+        count += 1;
+      }
+    }
+    return count;
+  }
+
   RxList<Conversation> myConversation = <Conversation>[].obs;
   // RxList<Conversation> myConversationUnfinished = <Conversation>[].obs;
 

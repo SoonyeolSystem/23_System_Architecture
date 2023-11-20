@@ -5,7 +5,6 @@ import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
-import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
@@ -138,7 +137,7 @@ class TalkingViewPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: Obx(
-        () => controller.parameters.value['situationid'] == ""
+        () => controller.parameters.value['situationid'] == "" || controller.parameters.value['end_story'] == 'true'
             ? const SizedBox()
             : FloatingActionButton(
                 onPressed: () {
@@ -212,11 +211,10 @@ void showCustomAlertDialog(BuildContext context) {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  if (controller.parameters.value['situationid'] != "")
+                  if (controller.parameters.value['situationid'] != "" && controller.parameters.value['end_story'] == 'false')
                     TextButton(
                       onPressed: () {
-                        Get.toNamed(TalkingResultPage.url);
-                        MyInfoViewController.instance.getInfoList();
+                        Get.toNamed(TalkingResultPage.url, arguments: controller.parameters.value['conversationid']);
                       },
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0))),
@@ -230,7 +228,6 @@ void showCustomAlertDialog(BuildContext context) {
                   TextButton(
                     onPressed: () {
                       Get.offAllNamed(Navigation.url);
-                      MyInfoViewController.instance.getInfoList();
                       // 홈으로 돌아가기 동작 수행
                     },
                     style: ButtonStyle(

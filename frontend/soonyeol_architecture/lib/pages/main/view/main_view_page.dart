@@ -21,6 +21,7 @@ class MainViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = MainViewController.instance;
     final userService = UserService.instance;
+    final infoController = MyInfoViewController.instance;
     return SizedBox(
       width: Common.getWidth,
       //height: Common.getHeight,
@@ -226,13 +227,13 @@ class MainViewPage extends StatelessWidget {
                 ],
               )
             else
-              Obx(() => (controller.myConversationUnfinished.value.isNotEmpty)
+              Obx(() => (infoController.getNotEndStoryLength() != 0)
                   ? SizedBox(
                       height: 150,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
-                          for (int index = 0; index < controller.myConversationUnfinished.length; index++)
+                          for (int index = 0; index < infoController.myConversation.length; index++)
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -240,7 +241,7 @@ class MainViewPage extends StatelessWidget {
                                   const SizedBox(
                                     width: 40,
                                   ),
-                                OngoingComponent(model: controller.myConversationUnfinished.value[index]),
+                                if (infoController.myConversation[index].endStory == false) OngoingComponent(model: infoController.myConversation.value[index]),
                               ],
                             )
                         ],

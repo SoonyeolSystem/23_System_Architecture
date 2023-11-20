@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/main/controller/navigation_controller.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
-import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
+import 'package:soonyeol_architecture/pages/talking/controller/talking_result_controller.dart';
 
 import '../../../common/common.dart';
 
@@ -14,7 +14,7 @@ class TalkingResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = TalkingViewController.instance;
+    final controller = Get.put(TalkingResultController());
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -66,7 +66,7 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
-                                '${controller.speakingSpeed.value}',
+                                controller.speakingSpeed.value == null ? '??' : '${controller.speakingSpeed.value}',
                                 style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
@@ -78,9 +78,9 @@ class TalkingResultPage extends StatelessWidget {
                             // ),
                           ],
                         ),
-                        Row(
+                        const Row(
                           children: [
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.only(left: 35.0, top: 35.0),
                               child: Text(
                                 '대화 나눈 횟수',
@@ -88,16 +88,16 @@ class TalkingResultPage extends StatelessWidget {
                               ),
                               // ),
                             ),
-                            const Spacer(),
+                            Spacer(),
                             Padding(
-                              padding: const EdgeInsets.only(top: 35.0),
+                              padding: EdgeInsets.only(top: 35.0),
                               child: Text(
                                 '',
-                                style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
                             ),
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.only(left: 10.0, right: 40, top: 35.0),
                               child: Text('회', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold)),
                             ),
@@ -118,7 +118,7 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
-                                '${controller.speakingTime.value}',
+                                controller.speakingTime.value == null ? '??' : '${controller.speakingTime.value}',
                                 style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
@@ -144,7 +144,7 @@ class TalkingResultPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 35.0),
                               child: Text(
-                                '${controller.talkingScore.value}',
+                                controller.talkingScore.value == null ? '??' : '${controller.talkingScore.value}',
                                 style: const TextStyle(fontSize: 24, color: Color(0xFF33C26C), fontWeight: FontWeight.bold),
                               ),
                               // ),
@@ -177,17 +177,12 @@ class TalkingResultPage extends StatelessWidget {
                     width: Common.getWidth - 100,
                     height: 200,
                     // alignment: Alignment.center,
-                    child: const SingleChildScrollView(
+                    child: SingleChildScrollView(
                       // physics: const BouncingScrollPhysics(),
                       // controller: controller.scrollcontroller.value,
                       child: Text(
-                        '이곳에 긴 글을 넣어주세요. 이 글이 화면보다 길어지면 스크롤이 가능하도록 설정되었습니다. '
-                        'Flutter는 이러한 기능을 지원하기 위해 SingleChildScrollView와 같은 다양한 위젯을 제공합니다. '
-                        '이를 통해 사용자는 긴 컨텐츠를 편리하게 탐색할 수 있습니다. '
-                        '글이 계속 이어지면, 이 글은 화면의 크기를 초과하여 아래로 확장됩니다. '
-                        '따라서 사용자는 화면을 스크롤하여 글의 나머지 부분을 볼 수 있습니다. '
-                        '이와 같이 Flutter는 사용자 경험을 향상시키기 위한 다양한 위젯과 도구를 제공합니다.',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        controller.evaluation.value,
+                        style: const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
