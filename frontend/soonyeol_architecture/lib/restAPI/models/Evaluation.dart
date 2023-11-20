@@ -9,8 +9,8 @@ class Evaluation {
 
   // JSON serialization method
   Evaluation.fromJson(Map<String, dynamic> json) {
-    evaluation = json['evaluation'];
-    rate = json['rate'];
+    evaluation = json['evaluation'].toString();
+    rate = int.parse(json['rate'].toString());
   }
 
   // JSON serialization method
