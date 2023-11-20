@@ -112,7 +112,7 @@ class TalkingViewController extends GetxController {
     if (channel != null) {
       channel?.sink.close();
     }
-    
+
     tts.stop();
     super.onClose();
   }
@@ -152,13 +152,11 @@ class TalkingViewController extends GetxController {
       sendMesage(speechText.value);
       speechToText.stop();
       speechText.value = '';
-      
-
     }
   }
 
   void sendMesage(String text) {
-    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text}));
+    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text, 'timer': 0}));
   }
 
   void receiveMessage() {
