@@ -90,7 +90,7 @@ class TalkingViewController extends GetxController {
     if (channel != null) {
       channel?.sink.close();
     }
-    speakingCount = checkTime.length.obs;
+    
     tts.stop();
     super.onClose();
   }
@@ -124,17 +124,20 @@ class TalkingViewController extends GetxController {
     } else {
       isLoaded.value = true;
       isListening.value = false;
-      sendMesage(speechText.value);
+
+      //통계내기 시작
+      stopwatch.stop();
+
+      sendMesage(speechText.value, stopwatch.elapsedMilliseconds);
       speechToText.stop();
       speechText.value = '';
-      stopwatch.stop();
-      checkTime.add(stopwatch.elapsedMilliseconds);
-      print(checkTime);
+      
+
     }
   }
 
-  void sendMesage(String text) {
-    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text}));
+  void sendMesage(String text, int timer) {
+    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text, 'timer': timer}));
   }
 
   void receiveMessage() {
@@ -190,10 +193,8 @@ class TalkingViewController extends GetxController {
 
   RxList<Talking> talkingList = <Talking>[].obs;
   RxDouble speakingSpeed = 15.0.obs;
-  RxInt speakingCount = 0.obs;
   RxDouble speakingTime = 2.4.obs;
   RxInt talkingScore = 80.obs;
-  RxList<int> checkTime = <int>[].obs; 
 
   Rx<ScrollController> scrollcontroller = ScrollController().obs;
 }
