@@ -157,7 +157,7 @@ class TalkingViewController extends GetxController {
     }
   }
 
-  void sendMesage(String text, int timer) {
+  void sendMesage(String text) {
     channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text}));
   }
 
