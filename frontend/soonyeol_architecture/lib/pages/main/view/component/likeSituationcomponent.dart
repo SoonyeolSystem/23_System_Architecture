@@ -4,23 +4,23 @@ import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
+import 'package:soonyeol_architecture/pages/situation/controller/situation_main_controller.dart';
 import 'package:soonyeol_architecture/pages/situation/view/component/conversation_component.dart';
 import 'package:soonyeol_architecture/restAPI/models/Situation.dart';
 import 'package:soonyeol_architecture/service/user_service.dart';
 
-import '../../controller/situation_main_controller.dart';
-
-class SituationComponent extends StatelessWidget {
+class LikeSituationComponent extends StatelessWidget {
   final Situation model;
-  const SituationComponent({super.key, required this.model});
+  const LikeSituationComponent({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
-    final controller = SituationMainController.instance;
+    // final controller = MainViewController.instance;
+    final controller2 = SituationMainController.instance;
     return InkWell(
       onTap: () {
-        controller.getSituation(model.situationId ?? "");
-        controller.getCoversationBysit(model.situationId ?? "");
+        controller2.getSituation(model.situationId ?? "");
+        controller2.getCoversationBysit(model.situationId ?? "");
         showModalBottomSheet(
             isScrollControlled: true,
             context: context,
@@ -84,7 +84,7 @@ class SituationComponent extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                            "${controller.situation.value.userName}",
+                                            "${controller2.situation.value.userName}",
                                             style: const TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold)),
@@ -124,10 +124,12 @@ class SituationComponent extends StatelessWidget {
                                           const SizedBox(height: 3),
                                           // InkWell(
                                           //   onTap: () {
-
+                                          //     // Toggle the bookmark status here (change the value of model.isbookmark)
+                                          //     // For example, you can do:
+                                          //     // model.like = !model.like!;
                                           //   },
                                           //   child: Icon(
-                                          //     model.isLike == 1
+                                          //     model.like == 1
                                           //         ? CupertinoIcons.star_fill
                                           //         : CupertinoIcons.star,
                                           //     size: 22,
@@ -135,8 +137,16 @@ class SituationComponent extends StatelessWidget {
                                           //     color: Colors.yellow,
                                           //   ),
                                           // ),
+                                          // const SizedBox(width: 3),
+                                          // Text(
+                                          //   "${model.likeCount}",
+                                          //   style: const TextStyle(
+                                          //       fontSize: 15,
+                                          //       color: Color(0xFF434343),
+                                          //       fontWeight: FontWeight.w500),
+                                          // ),
                                           Obx(
-                                            () => controller.situation.value
+                                            () => controller2.situation.value
                                                             .isLike ==
                                                         null ||
                                                     UserService.instance
@@ -145,7 +155,9 @@ class SituationComponent extends StatelessWidget {
                                                 ? const SizedBox()
                                                 : Row(
                                                     children: [
-                                                      controller.situation.value
+                                                      controller2
+                                                                  .situation
+                                                                  .value
                                                                   .isLike ==
                                                               true
                                                           ? IconButton(
@@ -157,7 +169,7 @@ class SituationComponent extends StatelessWidget {
                                                                   Colors.yellow,
                                                               onPressed:
                                                                   () async {
-                                                                controller.unlikeSituation(
+                                                                controller2.unlikeSituation(
                                                                     model
                                                                         .situationId!,
                                                                     UserService
@@ -174,7 +186,7 @@ class SituationComponent extends StatelessWidget {
                                                                   0xFF434343),
                                                               onPressed:
                                                                   () async {
-                                                                controller.likeSituation(
+                                                                controller2.likeSituation(
                                                                     model
                                                                         .situationId!,
                                                                     UserService
@@ -184,7 +196,7 @@ class SituationComponent extends StatelessWidget {
                                                             ),
                                                       const SizedBox(width: 3),
                                                       Text(
-                                                        "${controller.situation.value.likeCount}",
+                                                        "${controller2.situation.value.likeCount}",
                                                         style: const TextStyle(
                                                             fontSize: 15,
                                                             color: Color(
@@ -430,13 +442,13 @@ class SituationComponent extends StatelessWidget {
                             () => Column(
                               children: [
                                 for (int index = 0;
-                                    index < controller.conversationList.length;
+                                    index < controller2.conversationList.length;
                                     index++)
                                   Column(
                                     children: [
                                       ConversationComponent(
                                         model:
-                                            controller.conversationList[index],
+                                            controller2.conversationList[index],
                                       ),
                                       const Padding(
                                         padding: EdgeInsets.only(
@@ -508,11 +520,11 @@ class SituationComponent extends StatelessWidget {
                         children: [
                           const SizedBox(height: 3),
                           Icon(
-                            model.isLike == true
+                            model.like == 1
                                 ? CupertinoIcons.star_fill
                                 : CupertinoIcons.star,
                             size: 15,
-                            color: model.isLike == true
+                            color: model.like == 1
                                 ? Colors.yellow
                                 : const Color(0xFF434343),
                           ),

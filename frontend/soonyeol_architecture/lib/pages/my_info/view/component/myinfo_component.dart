@@ -43,7 +43,7 @@ class InfoViewComponent extends StatelessWidget {
                               "#",
                               style: TextStyle(
                                 fontSize: 12,
-                                color: model.endStory ?? false == false ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
+                                color: (model.endStory ?? false) == false ? const Color(0xFF33C26C) : const Color.fromARGB(255, 255, 0, 0),
                               ),
                             ),
                             Text(

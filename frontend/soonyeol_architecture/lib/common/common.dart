@@ -7,8 +7,8 @@ class Common extends GetxService {
   static Logger logger = Logger(filter: MyFilter());
   // static const String userServiceUrl = "http://43.200.93.144/user/";
   // static const String communityServiceUrl = "http://43.200.93.144/community/";
-  static const String userServiceUrl = "http://0.0.0.0:8081/";
-  static const String communityServiceUrl = "http://0.0.0.0:8080/";
+  static const String userServiceUrl = "http://127.0.0.1:8081/";
+  static const String communityServiceUrl = "http://127.0.0.1:8080/";
   static const String websocketUrl = "wss://h78bsknjuf.execute-api.ap-northeast-2.amazonaws.com/dev";
   // static const String userServiceUrl="https://kq7a0ulv2i.execute-api.ap-northeast-2.amazonaws.com/";
   static double get getWidth => GetPlatform.isMobile ? Get.width : 500;

@@ -70,21 +70,24 @@ class Situation {
   String? genre; // 장르
   String? name; // 이름
   String? title; // 제목
+  String? userName;
   int? likeCount; // 좋아요 수
+  bool? isLike;
 
-  Situation({
-    this.situation,
-    this.userId,
-    this.play,
-    this.timestamp,
-    this.like,
-    this.situationId,
-    this.character,
-    this.genre,
-    this.name,
-    this.title,
-    this.likeCount,
-  });
+  Situation(
+      {this.situation,
+      this.userId,
+      this.play,
+      this.timestamp,
+      this.like,
+      this.situationId,
+      this.character,
+      this.genre,
+      this.name,
+      this.title,
+      this.userName,
+      this.likeCount,
+      this.isLike});
 
   Situation.fromJson(Map<String, dynamic> json) {
     situation = json['situation'];
@@ -97,7 +100,9 @@ class Situation {
     genre = json['genre'];
     name = json['name'];
     title = json['title'];
-    likeCount = json['likecount'];
+    userName = json['userName'];
+    likeCount = json['like'];
+    isLike = json['islike'];
   }
 
   Map<String, dynamic> toJson() {
@@ -112,7 +117,9 @@ class Situation {
     data['genre'] = genre;
     data['name'] = name;
     data['title'] = title;
-    data['likecount'] = likeCount;
+    data['userName'] = userName;
+    data['like'] = likeCount;
+    data['islike'] = isLike;
 
     return data;
   }

@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_visualizer/music_visualizer.dart';
 import 'package:soonyeol_architecture/common/common.dart';
+import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/my_info/controller/info_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/controller/talking_view_controller.dart';
 import 'package:soonyeol_architecture/pages/talking/view/component/talking_viewpage_component.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_result_page.dart';
-import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
-
-bool isLike = false;
+import 'package:soonyeol_architecture/service/user_service.dart';
 
 class TalkingViewPage extends StatelessWidget {
   const TalkingViewPage({
@@ -70,8 +69,7 @@ class TalkingViewPage extends StatelessWidget {
                           const SizedBox(width: 25), // Add some spacing between text and icon
                           InkWell(
                             onTap: () {
-                              // Use Builder to get the context of the current Scaffold
-                              showInformation(context, controller);
+                              showInformation(context);
                             },
                             child: const Icon(Icons.info_outline_rounded, color: Colors.white, size: 18),
                           ),
@@ -260,173 +258,175 @@ void showCustomAlertDialog(BuildContext context) {
   );
 }
 
-void showInformation(BuildContext context, TalkingViewController controller) {
-      final Conversation model=Conversation();
-
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        contentPadding: const EdgeInsets.all(20), // 알림창의 내용(padding) 크기 조절
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
-        ),
-        backgroundColor: const Color.fromARGB(232, 255, 255, 255),
-        alignment: Alignment.lerp(Alignment.topCenter, Alignment.bottomCenter, 0.09),
-
-        content: SizedBox(
-          width: 307,
-          //height: ,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(children: [
-                SizedBox(
-                  width: 270,
-                  child: Text(
-                    "${controller.parameters['title']}",
-                    style: const TextStyle(fontSize: 21, color: Color(0xFF384252), fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-    TalkingViewController.instance.likeConversation();
-                    //model.isLike= !model.isLike;
+void showInformation(BuildContext context) {
+  final controller = TalkingViewController.instance;
+  Get.dialog(AlertDialog(
+    contentPadding: const EdgeInsets.all(20), // 알림창의 내용(padding) 크기 조절
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12.0), // 알림창의 모서리(rounded corners) 조절
+    ),
+    backgroundColor: const Color.fromARGB(232, 255, 255, 255),
+    alignment: Alignment.lerp(Alignment.topCenter, Alignment.bottomCenter, 0.09),
+    content: SizedBox(
+      width: 307,
+      //height: ,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(children: [
+            SizedBox(
+              width: 257,
+              child: Text(
+                "${controller.parameters['title']}",
+                style: const TextStyle(fontSize: 21, color: Color(0xFF384252), fontWeight: FontWeight.bold),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Obx(() => IconButton(
+                  onPressed: () {
+                    print(controller.conversation.value.isLike);
+                    if (UserService.instance.isLogin() == false) {
+                      Get.toNamed(LoginPage.url);
+                      return;
+                    }
+                    if (controller.conversation.value.isLike ?? false == true) {
+                      controller.unlikeConversation(controller.parameters['conversationid'], UserService.instance.userId);
+                    } else {
+                      controller.likeConversation(controller.parameters['conversationid'], UserService.instance.userId);
+                    }
                   },
-                  child: Icon(model.isLike == true ? Icons.favorite : CupertinoIcons.heart,
-                      size: 33, color: model.isLike ?? false ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252)),
-                )
-              ]),
-              const SizedBox(
-                height: 40,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      width: 97,
-                      decoration: const BoxDecoration(
-                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-                      ),
-                      child: const Text(
-                        '  상황',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF384252),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 210,
-                    child: Text(
-                      "${controller.parameters['situation']}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF373737),
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
+                  icon: controller.conversation.value.isLike ?? false == true ? const Icon(CupertinoIcons.heart_fill) : const Icon(CupertinoIcons.heart),
+                  iconSize: 33,
+                  color: controller.conversation.value.isLike ?? false == true ? const Color.fromARGB(255, 243, 106, 106) : const Color(0xFF384252),
+                )),
+          ]),
+          const SizedBox(
+            height: 40,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  width: 97,
+                  decoration: const BoxDecoration(
+                    border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 31,
-              ),
-              Row(
-                children: [
-                  Container(
-                      width: 97,
-                      decoration: const BoxDecoration(
-                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-                      ),
-                      child: const Text(
-                        '  장르',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF384252),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 210,
-                    child: Text(
-                      "${controller.parameters['genre']}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF373737),
-                      ),
-                      textAlign: TextAlign.start,
+                  child: const Text(
+                    '  상황',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF384252),
                     ),
+                  )),
+              SizedBox(
+                width: 210,
+                child: Text(
+                  "${controller.parameters['situation']}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF373737),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 31,
-              ),
-              Row(
-                children: [
-                  Container(
-                      width: 97,
-                      decoration: const BoxDecoration(
-                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-                      ),
-                      child: const Text(
-                        '  주인공',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF384252),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 210,
-                    child: Text(
-                      "${controller.parameters['name']}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF373737),
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 31,
-              ),
-              Row(
-                children: [
-                  Container(
-                      width: 97,
-                      decoration: const BoxDecoration(
-                        border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
-                      ),
-                      child: const Text(
-                        '  대화 상대',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF384252),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 210,
-                    child: Text(
-                      "${controller.parameters['character']}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF373737),
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                ],
+                  textAlign: TextAlign.start,
+                ),
               ),
             ],
           ),
-        ),
-      );
-    },
-  );
+          const SizedBox(
+            height: 31,
+          ),
+          Row(
+            children: [
+              Container(
+                  width: 97,
+                  decoration: const BoxDecoration(
+                    border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+                  ),
+                  child: const Text(
+                    '  장르',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF384252),
+                    ),
+                  )),
+              SizedBox(
+                width: 210,
+                child: Text(
+                  "${controller.parameters['genre']}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF373737),
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 31,
+          ),
+          Row(
+            children: [
+              Container(
+                  width: 97,
+                  decoration: const BoxDecoration(
+                    border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+                  ),
+                  child: const Text(
+                    '  주인공',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF384252),
+                    ),
+                  )),
+              SizedBox(
+                width: 210,
+                child: Text(
+                  "${controller.parameters['name']}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF373737),
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 31,
+          ),
+          Row(
+            children: [
+              Container(
+                  width: 97,
+                  decoration: const BoxDecoration(
+                    border: Border(left: BorderSide(color: Color(0xFF384252), width: 3)),
+                  ),
+                  child: const Text(
+                    '  대화 상대',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF384252),
+                    ),
+                  )),
+              SizedBox(
+                width: 210,
+                child: Text(
+                  "${controller.parameters['character']}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF373737),
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  ));
 }

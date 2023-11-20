@@ -5,7 +5,6 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/common/common.dart';
 import 'package:soonyeol_architecture/common/service_response.dart';
-import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
 import 'package:soonyeol_architecture/restAPI/api_service.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 import 'package:soonyeol_architecture/restAPI/response/like_response.dart';
@@ -39,24 +38,51 @@ class TalkingViewController extends GetxController {
 //     }
 //     myConversation.refresh();
 
-  Future<void> likeConversation() async {
-    // if (parameters['conversationid'] != null && parameters['userid'] != null) {
-    // String conversationId = parameters['conversationid'];
-    // String userId = parameters['userid'];
+  // Future<void> likeConversation() async {
+  //   // if (parameters['conversationid'] != null && parameters['userid'] != null) {
+  //   // String conversationId = parameters['conversationid'];
+  //   // String userId = parameters['userid'];
 
-    Conversation conversation = Conversation();
-    String userId = UserService.instance.userId;
-    String conversationId = parameters['conversationid'];
-    // String userId = user.userId ?? "";
-    Common.logger.d('Conversation ID: $conversationId');
-    Common.logger.d('User ID: $userId');
+  //   Conversation conversation = Conversation();
+  //   String userId = UserService.instance.userId;
+  //   String conversationId = parameters['conversationid'];
+  //   // String userId = user.userId ?? "";
+  //   Common.logger.d('Conversation ID: $conversationId');
+  //   Common.logger.d('User ID: $userId');
 
-    ApiResponse<LikeResponse> likeResponse = await ApiService.instance.likeConversation(conversationId, userId);
+  //   ApiResponse<LikeResponse> likeResponse = await ApiService.instance.likeConversation(conversationId, userId);
 
-    if (likeResponse.result) {
-      isLike = !isLike;
+  //   if (likeResponse.result) {
+  //     isLike = !isLike;
+  //   } else {}
+  //
+  // }
+
+  Future<void> likeConversation(String conversationId, String userId) async {
+    ApiResponse<LikeResponse> response = await ApiService.instance.likeConversation(conversationId, userId);
+    if (response.result) {
+      await getTalkingListByConID(conversationId);
+      UserService.instance.reloadData();
     } else {}
-    // }
+  }
+
+  Future<void> unlikeConversation(String conversationId, String userId) async {
+    ApiResponse<String> response = await ApiService.instance.unlikeConversation(conversationId, userId);
+    if (response.result) {
+      await getTalkingListByConID(conversationId);
+      UserService.instance.reloadData();
+    }
+  }
+
+  Future<void> getTalkingListByConID(String conversationId) async {
+    ApiResponse<TalkingResponse> response = await ApiService.instance.getTalkingListByConID(conversationId);
+    if (response.result) {
+      talkingList.value = response.value!.scriptHistory;
+      talkingList.refresh();
+      conversation.value.isLike = response.value!.isLike;
+      conversation.value.likeCount = response.value!.likeCount;
+      conversation.refresh();
+    }
   }
 
   void passParameter(Map parameters) async {
@@ -65,11 +91,7 @@ class TalkingViewController extends GetxController {
     this.parameters.refresh();
 
     if ('true'.compareTo(parameters['new']) != 0) {
-      ApiResponse<TalkingResponse> response = await ApiService.instance.getTalkingListByConID(parameters['conversationid']);
-      if (response.result) {
-        talkingList.value = response.value!.scriptHistory;
-        talkingList.refresh();
-      }
+      await getTalkingListByConID(parameters['conversationid']);
     }
     channel = WebSocketChannel.connect(Uri.parse(
         '${Common.websocketUrl}?situation=${parameters['situation']}&genre=${parameters['genre']}&name=${parameters['name']}&character=${parameters['character']}&situationid=${parameters['situationid']}&userid=${UserService.instance.userId}&conversationid=${parameters['conversationid']}&title=${parameters['title']}'));
@@ -97,7 +119,6 @@ class TalkingViewController extends GetxController {
 
   void listen() async {
     if (!isListening.value && !isLoaded.value) {
-      
       bool available = await speechToText.initialize(
         onStatus: (val) {},
         onError: (val) {},
@@ -190,6 +211,8 @@ class TalkingViewController extends GetxController {
 
     await tts.speak(text);
   }
+
+  Rx<Conversation> conversation = Conversation().obs;
 
   RxList<Talking> talkingList = <Talking>[].obs;
   RxDouble speakingSpeed = 15.0.obs;

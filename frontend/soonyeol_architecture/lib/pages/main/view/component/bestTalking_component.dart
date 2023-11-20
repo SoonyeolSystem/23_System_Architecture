@@ -6,8 +6,6 @@ import 'package:soonyeol_architecture/common/move/moveService.dart';
 import 'package:soonyeol_architecture/pages/main/controller/main_view_controller.dart';
 import 'package:soonyeol_architecture/restAPI/models/Conversation.dart';
 
-//int index = 1;
-
 class BestTalkingComponent extends StatelessWidget {
   final Conversation model;
   final int index;
