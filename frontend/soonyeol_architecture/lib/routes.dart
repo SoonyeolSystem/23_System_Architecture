@@ -1,3 +1,4 @@
+import 'package:flutter/src/widgets/basic.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/STT/view/stt_page.dart';
 import 'package:soonyeol_architecture/pages/TTS/tts.dart';
@@ -7,6 +8,7 @@ import 'package:soonyeol_architecture/pages/login/view/login_page.dart';
 import 'package:soonyeol_architecture/pages/main/view/navigation.dart';
 import 'package:soonyeol_architecture/pages/my_info/view/info_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/signup/view/sign_up_page.dart';
+import 'package:soonyeol_architecture/pages/situation/view/situation_each_view_page.dart';
 import 'package:soonyeol_architecture/pages/situation/view/situation_main_view_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_custom_page.dart';
 import 'package:soonyeol_architecture/pages/talking/view/talking_main_view_page.dart';
@@ -27,5 +29,12 @@ class CustomRouter {
     GetPage(name: TTSPage.url, page: () => TTSPage()),
     GetPage(name: STTPage.url, page: () => const STTPage()),
     GetPage(name: LikePage.url, page: () => const LikePage()),
+    GetPage(
+        name: SituationEachPage.url,
+        page: () => const Column(
+              children: [
+                SituationEachPage(),
+              ],
+            )),
   ];
 }
