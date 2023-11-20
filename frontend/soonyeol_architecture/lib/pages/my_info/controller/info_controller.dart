@@ -20,12 +20,13 @@ class MyInfoViewController extends GetxController {
       myConversation.value = response.value!.conversationList!;
     }
     myConversation.refresh();
-
+    completeSituation.value  = 0;
+    totalscore.value = 0;
     for (int index = 0; index < myConversation.length; index++) {
       if (myConversation[index].endStory == true) {
         completeSituation += 1;
         totalscore.value += int.parse(myConversation[index].rate!);
-        talkingScore.value = (totalscore / completeSituation.value);
+        talkingScore.value = (totalscore / completeSituation.value).toStringAsFixed(1);
       }
     }
   }
@@ -55,7 +56,7 @@ class MyInfoViewController extends GetxController {
 
   RxInt speakingTime = 0.obs;
   RxInt speakingCount = 0.obs;
-  RxDouble talkingScore = 0.0.obs;
+  RxString talkingScore = '0'.obs;
   RxInt completeSituation = 0.obs;
   RxInt totalscore = 0.obs;
   // RxString nickname= "".obs;
