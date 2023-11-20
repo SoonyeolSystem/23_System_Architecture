@@ -15,6 +15,7 @@ class Conversation {
   String? conversationID;
   int? like;
   String? rate; //점수
+  List<dynamic>? timerlist;
 
   Conversation(
       {this.situationname,
@@ -32,6 +33,7 @@ class Conversation {
       this.situationID,
       this.conversationID,
       this.rate,
+      this.timerlist,
       this.like});
 
   Conversation.fromJson(Map<String, dynamic> json) {
@@ -55,6 +57,7 @@ class Conversation {
     situationID = json['situationid'];
     conversationID = json['conversationid'];
     like = json['like'];
+    timerlist = json['timerlist'];
   }
 
   Map<String, dynamic> toJson() {
@@ -75,6 +78,7 @@ class Conversation {
     data['conversationid'] = conversationID;
     data['like'] = like;
     data['rate'] = rate;
+    data['timerlist'] = timerlist;
     return data;
   }
 }
