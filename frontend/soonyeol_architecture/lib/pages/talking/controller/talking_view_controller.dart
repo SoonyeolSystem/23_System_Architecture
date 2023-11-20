@@ -149,14 +149,14 @@ class TalkingViewController extends GetxController {
       //통계내기 시작
       stopwatch.stop();
 
-      sendMesage(speechText.value);
+      sendMesage(speechText.value, stopwatch.elapsedMilliseconds);
       speechToText.stop();
       speechText.value = '';
     }
   }
 
-  void sendMesage(String text) {
-    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text, 'timer': 0}));
+  void sendMesage(String text, int millisecond) {
+    channel?.sink.add(jsonEncode({'action': 'sendMessage', 'script': text, 'timer': millisecond}));
   }
 
   void receiveMessage() {
