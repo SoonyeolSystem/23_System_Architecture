@@ -520,13 +520,16 @@ class LikeSituationComponent extends StatelessWidget {
                         children: [
                           const SizedBox(height: 3),
                           Icon(
-                            model.like == 1
-                                ? CupertinoIcons.star_fill
-                                : CupertinoIcons.star,
+                            // model.like == 1
+                            //     ? CupertinoIcons.star_fill
+                            //     : CupertinoIcons.star,
+                            // size: 15,
+                            // color: model.like == 1
+                            //     ? Colors.yellow
+                            //     : const Color(0xFF434343),
+                            CupertinoIcons.star_fill,
                             size: 15,
-                            color: model.like == 1
-                                ? Colors.yellow
-                                : const Color(0xFF434343),
+                            color: Colors.yellow,
                           ),
                           const SizedBox(width: 3),
                           Text("${model.likeCount}",
