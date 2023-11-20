@@ -1,4 +1,3 @@
-import 'package:flutter/src/widgets/basic.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/STT/view/stt_page.dart';
 import 'package:soonyeol_architecture/pages/TTS/tts.dart';
@@ -29,12 +28,6 @@ class CustomRouter {
     GetPage(name: TTSPage.url, page: () => TTSPage()),
     GetPage(name: STTPage.url, page: () => const STTPage()),
     GetPage(name: LikePage.url, page: () => const LikePage()),
-    GetPage(
-        name: SituationEachPage.url,
-        page: () => const Column(
-              children: [
-                SituationEachPage(),
-              ],
-            )),
+    GetPage(name: SituationEachPage.url, page: () => const SituationEachPage()),
   ];
 }

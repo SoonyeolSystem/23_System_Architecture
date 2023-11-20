@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soonyeol_architecture/pages/likeList/controller/like_view_controller.dart';
-import 'package:soonyeol_architecture/pages/main/view/component/likeSituationcomponent.dart';
+import 'package:soonyeol_architecture/pages/situation/view/component/situation_component.dart';
 
 import '../../../common/common.dart';
 
@@ -72,7 +72,7 @@ class LikePage extends StatelessWidget {
                                   Column(
                                     children: [
                                       if (index == 0) const SizedBox(height: 20),
-                                      LikeSituationComponent(
+                                      SituationComponent(
                                         model: controller.situationlikeList.value[index],
                                       ),
                                       const Padding(
