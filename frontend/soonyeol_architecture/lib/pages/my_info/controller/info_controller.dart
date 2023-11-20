@@ -9,8 +9,6 @@ import 'package:soonyeol_architecture/service/user_service.dart';
 class MyInfoViewController extends GetxController {
   static MyInfoViewController get instance => Get.find<MyInfoViewController>();
   @override
-
-
   void onInit() async {
     super.onInit();
     await getInfoList();
@@ -24,17 +22,26 @@ class MyInfoViewController extends GetxController {
     myConversation.refresh();
 
     for (int index = 0; index < myConversation.length; index++) {
-    if (myConversation[index].endStory == true) {
-      completeSituation+=1;
-      totalscore.value += int.parse(myConversation[index].rate!);
-      talkingScore.value = (totalscore/completeSituation.value);
+      if (myConversation[index].endStory == true) {
+        completeSituation += 1;
+        totalscore.value += int.parse(myConversation[index].rate!);
+        talkingScore.value = (totalscore / completeSituation.value);
+      }
     }
+  }
 
-    
-  }
-  }
+  // Future<void> getConversationUnfinished() async {
+  //   // myConversationUnfinished.value = [];
+  //   // myConversationUnfinished.refresh();
+  //   ApiResponse<ConversationListResponse> response = await ApiService.instance.getConversationUnfinished(UserService.instance.userId);
+  //   if (response.result) {
+  //     myConversationUnfinished.value = response.value!.conversationList!;
+  //   }
+  //   myConversationUnfinished.refresh();
+  // }
 
   RxList<Conversation> myConversation = <Conversation>[].obs;
+  // RxList<Conversation> myConversationUnfinished = <Conversation>[].obs;
 
   RxInt speakingTime = 0.obs;
   RxInt speakingCount = 0.obs;
