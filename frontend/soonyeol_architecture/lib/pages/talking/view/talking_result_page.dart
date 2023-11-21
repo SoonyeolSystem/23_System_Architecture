@@ -111,9 +111,9 @@ class TalkingResultPage extends StatelessWidget {
                                 controller.talkingCount.value == null
                                     ? '??'
                                     : '${controller.talkingCount.value}',
-                                style: TextStyle(
+                                style:  TextStyle(
                                     fontSize: 24,
-                                    color: Color.fromARGB(255, 23, 104, 55),
+                                    color: Color(0xFF33C26C),
                                     fontWeight: FontWeight.bold),
                               ),
                               // ),
@@ -150,7 +150,7 @@ class TalkingResultPage extends StatelessWidget {
                                 controller.speakingTime.value == null
                                     ? '??'
                                     : '${controller.speakingTime.value}',
-                                style: const TextStyle(
+                                style:  TextStyle(
                                     fontSize: 24,
                                     color: Color(0xFF33C26C),
                                     fontWeight: FontWeight.bold),
