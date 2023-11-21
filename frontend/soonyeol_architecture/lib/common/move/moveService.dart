@@ -41,6 +41,8 @@ class MoveService extends GetxService {
       'end_story': (model.endStory ?? true) == true ? "true" : "false",
       'new': 'false'
     };
+
+    print(arguments);
     Get.toNamed(TalkingViewPage.url, arguments: arguments);
   }
 
