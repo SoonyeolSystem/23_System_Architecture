@@ -160,7 +160,7 @@ class TalkingResultPage extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.only(
                                   left: 10.0, right: 40, top: 35.0),
-                              child: Text('m',
+                              child: Text('s',
                                   style: TextStyle(
                                       fontSize: 24,
                                       color: Colors.white,

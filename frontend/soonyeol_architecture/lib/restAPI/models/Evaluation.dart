@@ -3,9 +3,10 @@ class Evaluation {
   int? rate;
   int? speakingcount;
   int? speakingSpeed;
+  int? speakingTime;
 
 
-  Evaluation({this.evaluation, this.rate, this.speakingcount, this.speakingSpeed});
+  Evaluation({this.evaluation, this.rate, this.speakingcount, this.speakingSpeed, this.speakingTime});
 
   // JSON serialization method
   Evaluation.fromJson(Map<String, dynamic> json) {
@@ -13,6 +14,7 @@ class Evaluation {
     rate = int.parse(json['rate'].toString());
     speakingcount = json['speakingcount'];
     speakingSpeed = json['speakingspeed'];
+    speakingTime = json['speakingtime'];
   }
 
   // JSON serialization method
@@ -22,7 +24,7 @@ class Evaluation {
     data['rate'] = rate;
     data['speakingcount'] = speakingcount;
     data['speakingspeed'] = speakingSpeed;
-
+    data['speakingtime']=speakingTime;
     return data;
   }
 }

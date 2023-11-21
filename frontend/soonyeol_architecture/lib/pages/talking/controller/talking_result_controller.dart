@@ -10,7 +10,7 @@ class TalkingResultController extends GetxController {
     evaluation.value = response.evaluation!;
     talkingCount.value = response.speakingcount!;
     speakingSpeed.value = ((response.speakingSpeed!/talkingCount.value!)/1000);
-   // speakingTime.value = ((response.speakingtime!)/100);
+    speakingTime.value = ((response.speakingTime!));
     super.onInit();
   }
 
