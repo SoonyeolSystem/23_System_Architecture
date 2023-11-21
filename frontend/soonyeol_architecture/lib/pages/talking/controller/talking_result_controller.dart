@@ -8,9 +8,9 @@ class TalkingResultController extends GetxController {
     Evaluation response = Get.arguments;
     talkingScore.value = response.rate!;
     evaluation.value = response.evaluation!;
+    talkingCount.value = response.speakingcount!;
     super.onInit();
   }
-
 
   @override
   void onClose() {
@@ -21,5 +21,6 @@ class TalkingResultController extends GetxController {
   Rxn<double> speakingSpeed = Rxn<double>();
   Rxn<double> speakingTime = Rxn<double>();
   Rxn<int> talkingScore = Rxn<int>();
+  Rxn<int> talkingCount = Rxn<int>();
   RxString evaluation = "채점 중입니다...".obs;
 }
